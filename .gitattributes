@@ -1,0 +1,5 @@
+# Üretilmiş HTML, GitHub dil istatistiklerini etkilemesin.
+notebook/*.html linguist-generated=true
+
+# Word raporu ikili dosyadır.
+*.docx binary

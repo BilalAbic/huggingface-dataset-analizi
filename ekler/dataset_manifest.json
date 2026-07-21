@@ -1,0 +1,128 @@
+{
+  "as_of": "2026-07-21",
+  "scope": "Daha önce tam satır analizi yapılan dokuz Hugging Face veri seti",
+  "matching_levels": [
+    "doğrudan",
+    "kısmi",
+    "dönüştürme_kaynağı",
+    "bulunmuyor"
+  ],
+  "capabilities": [
+    {
+      "capability": "Identity",
+      "status": "Tamamlandı",
+      "direct_datasets": [
+        {
+          "dataset": "Aysenur44/namaz-vakti-identity-tr",
+          "rows": 4,
+          "url": "https://huggingface.co/datasets/Aysenur44/namaz-vakti-identity-tr",
+          "repository_note": "Ham veri teslim deposunda yer almıyor; url alanındaki Hugging Face kaynağı kullanılır.",
+          "note": "Kimlik, model adı, geliştirici ve temel yetenek cevapları; sınır ve güvenlik kapsamı yetersiz."
+        },
+        {
+          "dataset": "sk75/sahin_identity",
+          "rows": 77,
+          "url": "https://huggingface.co/datasets/sk75/sahin_identity",
+          "repository_note": "Ham veri teslim deposunda yer almıyor; url alanındaki Hugging Face kaynağı kullanılır.",
+          "note": "Türkçe/İngilizce kimlik örnekleri; yüksek cevap tekrarı, null tip hatası ve lisans eksikliği var."
+        }
+      ],
+      "partial_datasets": [],
+      "conversion_sources": [],
+      "gap": "Güvenlik ilkeleri, sınır açıklamaları, tutarlı ret davranışı ve kapsamlı değerlendirme örnekleri."
+    },
+    {
+      "capability": "Tool Call",
+      "status": "Planlandı",
+      "direct_datasets": [],
+      "partial_datasets": [],
+      "conversion_sources": [
+        {
+          "dataset": "gururaser/ithaki-bilimkurgu-klasikleri",
+          "rows": 103,
+          "target_tools": ["search_books", "filter_books", "get_book_details"]
+        },
+        {
+          "dataset": "Mer1Alii/TR-ECommerce-CustomerSupport-Instructions",
+          "rows": 186,
+          "target_tools": ["get_order_status", "cancel_order", "create_support_ticket"]
+        },
+        {
+          "dataset": "namruni/meb-ogretmen-soru-cevap",
+          "rows": 450,
+          "target_tools": ["search_regulation", "fetch_official_notice"]
+        }
+      ],
+      "gap": "tool rolü, fonksiyon şeması, argüman, araç sonucu, hata senaryosu ve nihai kullanıcı cevabı."
+    },
+    {
+      "capability": "Conversation",
+      "status": "Planlandı",
+      "direct_datasets": [
+        {"dataset": "aliFurkan123/cultural-questions-dataset", "rows": 500, "scope": "tek_tur"},
+        {"dataset": "Egertekin/marvel-domain-dataset", "rows": 177, "scope": "tek_tur"},
+        {"dataset": "Mer1Alii/TR-ECommerce-CustomerSupport-Instructions", "rows": 186, "scope": "tek_tur"},
+        {"dataset": "namruni/meb-ogretmen-soru-cevap", "rows": 450, "scope": "tek_tur"},
+        {"dataset": "nyzmemre/biyoloji-terimleri-turkce-sa", "rows": 1093, "scope": "tek_tur"},
+        {"dataset": "yoitsmeyusuf/felsefe_finetune", "rows": 529, "scope": "tek_tur"}
+      ],
+      "partial_datasets": [
+        {"dataset": "Aysenur44/namaz-vakti-identity-tr", "rows": 4, "scope": "persona"},
+        {"dataset": "sk75/sahin_identity", "rows": 77, "scope": "persona"}
+      ],
+      "conversion_sources": [],
+      "gap": "Gerçek multi-turn takip, düzeltme, önceki mesaja gönderme, konu değiştirme ve uzun bağlam koruma örnekleri."
+    },
+    {
+      "capability": "Instruction",
+      "status": "Planlandı",
+      "direct_datasets": [],
+      "partial_datasets": [
+        {"dataset": "Mer1Alii/TR-ECommerce-CustomerSupport-Instructions", "rows": 186},
+        {"dataset": "namruni/meb-ogretmen-soru-cevap", "rows": 450},
+        {"dataset": "aliFurkan123/cultural-questions-dataset", "rows": 500},
+        {"dataset": "nyzmemre/biyoloji-terimleri-turkce-sa", "rows": 1093},
+        {"dataset": "Egertekin/marvel-domain-dataset", "rows": 177},
+        {"dataset": "yoitsmeyusuf/felsefe_finetune", "rows": 529}
+      ],
+      "conversion_sources": [],
+      "gap": "Özetleme, yeniden yazma, sınıflandırma, biçim kısıtı, çok adımlı görev ve olumsuz kısıt çeşitliliği."
+    },
+    {
+      "capability": "Structured Output",
+      "status": "Planlandı",
+      "direct_datasets": [],
+      "partial_datasets": [],
+      "conversion_sources": [
+        {
+          "dataset": "gururaser/ithaki-bilimkurgu-klasikleri",
+          "rows": 103,
+          "target_formats": ["JSON", "Markdown tablo", "şemaya bağlı nesne"]
+        }
+      ],
+      "gap": "Prompt ile doğrulanabilir yapılandırılmış hedef çıktı eşleşmeleri."
+    },
+    {
+      "capability": "Math",
+      "status": "Planlandı",
+      "direct_datasets": [],
+      "partial_datasets": [],
+      "conversion_sources": [
+        {
+          "dataset": "gururaser/ithaki-bilimkurgu-klasikleri",
+          "rows": 103,
+          "scope": "Yalnız fiyat, indirim ve yüzde aritmetiği"
+        }
+      ],
+      "gap": "Doğrulanmış çözüm adımlı genel matematik problemleri."
+    },
+    {
+      "capability": "Coding",
+      "status": "Planlandı",
+      "direct_datasets": [],
+      "partial_datasets": [],
+      "conversion_sources": [],
+      "gap": "Kod üretimi, hata ayıklama, açıklama, refactor, test ve algoritma örnekleri."
+    }
+  ]
+}

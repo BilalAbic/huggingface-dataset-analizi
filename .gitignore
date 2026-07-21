@@ -1,0 +1,18 @@
+# Yerel Python ortamları ve önbellekler
+.venv/
+.notebook_deps/
+__pycache__/
+*.py[cod]
+
+# Notebook ve editör geçici dosyaları
+.ipynb_checkpoints/
+.vscode/
+.idea/
+
+# Word geçici/kilit dosyaları
+~$*.docx
+*.tmp
+
+# İşletim sistemi dosyaları
+Thumbs.db
+.DS_Store

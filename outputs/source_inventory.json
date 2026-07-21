@@ -1,0 +1,245 @@
+[
+  {
+    "dataset_id": "aliFurkan123/cultural-questions-dataset",
+    "sha": "ecd9e60bbfcdd7a129911335c63984be2302dbb6",
+    "created_at": "2026-07-18T09:14:19.000Z",
+    "last_modified": "2026-07-18T10:55:39.000Z",
+    "downloads": 19,
+    "likes": 0,
+    "used_storage": 865633,
+    "license": "mit",
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "cultural-questions.json"
+    ],
+    "viewer_receipts": [
+      {
+        "dataset": "aliFurkan123/cultural-questions-dataset",
+        "config": "default",
+        "split": "train",
+        "expected_rows": 500,
+        "downloaded_rows": 500,
+        "complete": true
+      }
+    ]
+  },
+  {
+    "dataset_id": "Aysenur44/namaz-vakti-identity-tr",
+    "sha": "fbe7b7b11c29b13547980c344602db3c70b26e91",
+    "created_at": "2026-07-20T15:40:56.000Z",
+    "last_modified": "2026-07-20T15:40:59.000Z",
+    "downloads": 0,
+    "likes": 0,
+    "used_storage": 2099,
+    "license": null,
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "data/train-00000-of-00001.parquet"
+    ],
+    "viewer_receipts": [
+      {
+        "dataset": "Aysenur44/namaz-vakti-identity-tr",
+        "config": "default",
+        "split": "train",
+        "expected_rows": 4,
+        "downloaded_rows": 4,
+        "complete": true
+      }
+    ]
+  },
+  {
+    "dataset_id": "Egertekin/marvel-domain-dataset",
+    "sha": "dec7714fc555776984d3afef5def7efc591d9671",
+    "created_at": "2026-07-18T17:36:38.000Z",
+    "last_modified": "2026-07-19T16:47:59.000Z",
+    "downloads": 0,
+    "likes": 1,
+    "used_storage": 116319,
+    "license": null,
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "data/train-00000-of-00001.parquet"
+    ],
+    "viewer_receipts": [
+      {
+        "dataset": "Egertekin/marvel-domain-dataset",
+        "config": "default",
+        "split": "train",
+        "expected_rows": 177,
+        "downloaded_rows": 177,
+        "complete": true
+      }
+    ]
+  },
+  {
+    "dataset_id": "gururaser/ithaki-bilimkurgu-klasikleri",
+    "sha": "dfb01dc91a0578cc5b7f978dd844917338c54e2b",
+    "created_at": "2026-07-19T18:32:28.000Z",
+    "last_modified": "2026-07-19T18:35:08.000Z",
+    "downloads": 0,
+    "likes": 0,
+    "used_storage": 33039,
+    "license": "cc-by-nc-4.0",
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "ithaki_bilimkurgu_klasikleri_ozetli.csv"
+    ],
+    "viewer_receipts": [
+      {
+        "dataset": "gururaser/ithaki-bilimkurgu-klasikleri",
+        "config": "default",
+        "split": "train",
+        "expected_rows": 103,
+        "downloaded_rows": 103,
+        "complete": true
+      }
+    ]
+  },
+  {
+    "dataset_id": "nyzmemre/biyoloji-terimleri-turkce-sa",
+    "sha": "6776f984be226b7c5055659b8f3fc63cb6de8fa5",
+    "created_at": "2026-07-20T04:05:52.000Z",
+    "last_modified": "2026-07-20T04:05:56.000Z",
+    "downloads": 0,
+    "likes": 0,
+    "used_storage": 118405,
+    "license": null,
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "data/train-00000-of-00001.parquet"
+    ],
+    "viewer_receipts": [
+      {
+        "dataset": "nyzmemre/biyoloji-terimleri-turkce-sa",
+        "config": "default",
+        "split": "train",
+        "expected_rows": 1093,
+        "downloaded_rows": 1093,
+        "complete": true
+      }
+    ]
+  },
+  {
+    "dataset_id": "Mer1Alii/TR-ECommerce-CustomerSupport-Instructions",
+    "sha": "be9708ce17a7624abb62cc55e60db7afd101d96e",
+    "created_at": "2026-07-18T11:34:45.000Z",
+    "last_modified": "2026-07-18T11:35:43.000Z",
+    "downloads": 10,
+    "likes": 0,
+    "used_storage": 220259,
+    "license": "apache-2.0",
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "data/train-00000-of-00001.parquet"
+    ],
+    "viewer_receipts": [
+      {
+        "dataset": "Mer1Alii/TR-ECommerce-CustomerSupport-Instructions",
+        "config": "default",
+        "split": "train",
+        "expected_rows": 186,
+        "downloaded_rows": 186,
+        "complete": true
+      }
+    ]
+  },
+  {
+    "dataset_id": "yoitsmeyusuf/felsefe_finetune",
+    "sha": "bf16d683e2f5dc38d747050fe8244eabd68c65be",
+    "created_at": "2026-07-19T16:07:48.000Z",
+    "last_modified": "2026-07-19T17:03:28.000Z",
+    "downloads": 0,
+    "likes": 0,
+    "used_storage": 242195,
+    "license": null,
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "data/turkish-00000-of-00001.parquet"
+    ],
+    "viewer_receipts": [
+      {
+        "dataset": "yoitsmeyusuf/felsefe_finetune",
+        "config": "default",
+        "split": "turkish",
+        "expected_rows": 529,
+        "downloaded_rows": 529,
+        "complete": true
+      }
+    ]
+  },
+  {
+    "dataset_id": "namruni/meb-ogretmen-soru-cevap",
+    "sha": "e6cd37d4846237723c84f6f33b78b3a701697bd4",
+    "created_at": "2026-07-19T13:27:14.000Z",
+    "last_modified": "2026-07-19T13:57:16.000Z",
+    "downloads": 0,
+    "likes": 0,
+    "used_storage": 673605,
+    "license": null,
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "data/train-00000-of-00001.parquet"
+    ],
+    "viewer_receipts": [
+      {
+        "dataset": "namruni/meb-ogretmen-soru-cevap",
+        "config": "default",
+        "split": "train",
+        "expected_rows": 450,
+        "downloaded_rows": 450,
+        "complete": true
+      }
+    ]
+  },
+  {
+    "dataset_id": "sk75/sahin_identity",
+    "sha": "66a3f8d1c170c12296c39fab3ba29f49123d9080",
+    "created_at": "2026-07-18T08:18:44.000Z",
+    "last_modified": "2026-07-18T08:21:12.000Z",
+    "downloads": 5,
+    "likes": 0,
+    "used_storage": 19419,
+    "license": null,
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "identity_dataset_en.json",
+      "identity_dataset_tr.json"
+    ],
+    "viewer_receipts": [
+      {
+        "dataset": "sk75/sahin_identity",
+        "config": "default",
+        "split": "train",
+        "expected_rows": 77,
+        "downloaded_rows": 77,
+        "complete": true
+      }
+    ]
+  }
+]

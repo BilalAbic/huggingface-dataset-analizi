@@ -1,0 +1,14 @@
+[
+  {
+    "left": "Aysenur44/namaz-vakti-identity-tr",
+    "right": "sk75/sahin_identity",
+    "shared_user_prompts": 4,
+    "shared_assistant_answers": 0,
+    "prompt_examples": [
+      "adın ne",
+      "ne işe yararsın",
+      "sen kimsin"
+    ],
+    "answer_examples": []
+  }
+]

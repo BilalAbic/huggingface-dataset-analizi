@@ -1,0 +1,3 @@
+ipykernel
+nbconvert
+pandas

@@ -1,0 +1,1315 @@
+[
+  {
+    "dataset_id": "aliFurkan123/cultural-questions-dataset",
+    "url": "https://huggingface.co/datasets/aliFurkan123/cultural-questions-dataset",
+    "sha": "ecd9e60bbfcdd7a129911335c63984be2302dbb6",
+    "created_at": "2026-07-18T09:14:19.000Z",
+    "last_modified": "2026-07-18T10:55:39.000Z",
+    "downloads": 19,
+    "likes": 0,
+    "used_storage": 865633,
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "cultural-questions.json"
+    ],
+    "splits": [
+      {
+        "dataset": "aliFurkan123/cultural-questions-dataset",
+        "config": "default",
+        "split": "train",
+        "expected_rows": 500,
+        "downloaded_rows": 500,
+        "complete": true
+      }
+    ],
+    "card": {
+      "license": "mit",
+      "language_tags": [
+        "tr"
+      ],
+      "task_categories": [
+        "text-generation",
+        "question-answering"
+      ],
+      "tags": [
+        "chain-of-thought",
+        "cot",
+        "turkish",
+        "instruction-tuning",
+        "trivia",
+        "general-knowledge"
+      ],
+      "readme_present": true,
+      "readme_characters": 4389,
+      "readme_has_body": true,
+      "readme_mentions_source": false,
+      "readme_mentions_limitations": false,
+      "readme_mentions_split": false
+    },
+    "profile": {
+      "data_shape": "conversation",
+      "conversation_field": "train",
+      "row_count": 500,
+      "message_count": 1000,
+      "turn_count_summary": {
+        "min": 2,
+        "median": 2.0,
+        "mean": 2,
+        "p95": 2.0,
+        "max": 2
+      },
+      "role_counts": {
+        "user": 500,
+        "assistant": 500
+      },
+      "role_sequences": {
+        "user → assistant": 500
+      },
+      "missing_conversation_rows": 0,
+      "unexpected_turn_count_rows": 0,
+      "empty_content_messages": 0,
+      "invalid_role_messages": 0,
+      "string_encoded_null_fields": 0,
+      "nonempty_thinking_messages": 500,
+      "exact_duplicate_rows": 0,
+      "exact_duplicate_rate": 0.0,
+      "normalized_duplicate_rows": 0,
+      "user_prompt_duplicates": {
+        "duplicate_rows": 0,
+        "duplicate_rate": 0.0,
+        "duplicate_groups": 0,
+        "top_repeated": []
+      },
+      "assistant_answer_duplicates": {
+        "duplicate_rows": 0,
+        "duplicate_rate": 0.0,
+        "duplicate_groups": 0,
+        "top_repeated": []
+      },
+      "matching_user_assistant_rows": 0,
+      "user_character_length": {
+        "min": 23,
+        "median": 52.0,
+        "mean": 60.34,
+        "p95": 96.0,
+        "max": 96
+      },
+      "assistant_character_length": {
+        "min": 45,
+        "median": 142.0,
+        "mean": 145.19,
+        "p95": 198.0,
+        "max": 356
+      },
+      "user_word_length": {
+        "min": 4,
+        "median": 8.0,
+        "mean": 8.91,
+        "p95": 15.0,
+        "max": 15
+      },
+      "assistant_word_length": {
+        "min": 5,
+        "median": 20.0,
+        "mean": 19.36,
+        "p95": 24.0,
+        "max": 50
+      },
+      "text_scan": {
+        "total_characters": 102768,
+        "total_words": 14922,
+        "turkish_stopword_hits": 1408,
+        "english_stopword_hits": 4,
+        "replacement_character_count": 0,
+        "mojibake_marker_count": 0,
+        "url_matches": 0,
+        "email_matches": 0,
+        "phone_matches": 0,
+        "turkish_id_like_matches": 0,
+        "profanity_matches": 0,
+        "time_sensitive_matches": 4
+      }
+    }
+  },
+  {
+    "dataset_id": "Aysenur44/namaz-vakti-identity-tr",
+    "url": "https://huggingface.co/datasets/Aysenur44/namaz-vakti-identity-tr",
+    "sha": "fbe7b7b11c29b13547980c344602db3c70b26e91",
+    "created_at": "2026-07-20T15:40:56.000Z",
+    "last_modified": "2026-07-20T15:40:59.000Z",
+    "downloads": 0,
+    "likes": 0,
+    "used_storage": 2099,
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "data/train-00000-of-00001.parquet"
+    ],
+    "splits": [
+      {
+        "dataset": "Aysenur44/namaz-vakti-identity-tr",
+        "config": "default",
+        "split": "train",
+        "expected_rows": 4,
+        "downloaded_rows": 4,
+        "complete": true
+      }
+    ],
+    "card": {
+      "license": null,
+      "language_tags": [],
+      "task_categories": [],
+      "tags": [],
+      "readme_present": true,
+      "readme_characters": 333,
+      "readme_has_body": false,
+      "readme_mentions_source": false,
+      "readme_mentions_limitations": false,
+      "readme_mentions_split": false
+    },
+    "profile": {
+      "data_shape": "conversation",
+      "conversation_field": "messages",
+      "row_count": 4,
+      "message_count": 12,
+      "turn_count_summary": {
+        "min": 3,
+        "median": 3.0,
+        "mean": 3,
+        "p95": 3.0,
+        "max": 3
+      },
+      "role_counts": {
+        "system": 4,
+        "user": 4,
+        "assistant": 4
+      },
+      "role_sequences": {
+        "system → user → assistant": 4
+      },
+      "missing_conversation_rows": 0,
+      "unexpected_turn_count_rows": 0,
+      "empty_content_messages": 0,
+      "invalid_role_messages": 0,
+      "string_encoded_null_fields": 0,
+      "nonempty_thinking_messages": 0,
+      "exact_duplicate_rows": 0,
+      "exact_duplicate_rate": 0.0,
+      "normalized_duplicate_rows": 0,
+      "user_prompt_duplicates": {
+        "duplicate_rows": 0,
+        "duplicate_rate": 0.0,
+        "duplicate_groups": 0,
+        "top_repeated": []
+      },
+      "assistant_answer_duplicates": {
+        "duplicate_rows": 0,
+        "duplicate_rate": 0.0,
+        "duplicate_groups": 0,
+        "top_repeated": []
+      },
+      "matching_user_assistant_rows": 0,
+      "user_character_length": {
+        "min": 8,
+        "median": 13.5,
+        "mean": 13.75,
+        "p95": 19.4,
+        "max": 20
+      },
+      "assistant_character_length": {
+        "min": 21,
+        "median": 51.5,
+        "mean": 51,
+        "p95": 79.85,
+        "max": 80
+      },
+      "user_word_length": {
+        "min": 2,
+        "median": 2.5,
+        "mean": 2.5,
+        "p95": 3.0,
+        "max": 3
+      },
+      "assistant_word_length": {
+        "min": 2,
+        "median": 6.0,
+        "mean": 6.25,
+        "p95": 10.7,
+        "max": 11
+      },
+      "text_scan": {
+        "total_characters": 335,
+        "total_words": 49,
+        "turkish_stopword_hits": 16,
+        "english_stopword_hits": 0,
+        "replacement_character_count": 0,
+        "mojibake_marker_count": 0,
+        "url_matches": 0,
+        "email_matches": 0,
+        "phone_matches": 0,
+        "turkish_id_like_matches": 0,
+        "profanity_matches": 0,
+        "time_sensitive_matches": 0
+      }
+    }
+  },
+  {
+    "dataset_id": "Egertekin/marvel-domain-dataset",
+    "url": "https://huggingface.co/datasets/Egertekin/marvel-domain-dataset",
+    "sha": "dec7714fc555776984d3afef5def7efc591d9671",
+    "created_at": "2026-07-18T17:36:38.000Z",
+    "last_modified": "2026-07-19T16:47:59.000Z",
+    "downloads": 0,
+    "likes": 1,
+    "used_storage": 116319,
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "data/train-00000-of-00001.parquet"
+    ],
+    "splits": [
+      {
+        "dataset": "Egertekin/marvel-domain-dataset",
+        "config": "default",
+        "split": "train",
+        "expected_rows": 177,
+        "downloaded_rows": 177,
+        "complete": true
+      }
+    ],
+    "card": {
+      "license": null,
+      "language_tags": [
+        "tr"
+      ],
+      "task_categories": [
+        "question-answering",
+        "text-generation"
+      ],
+      "tags": [
+        "marvel",
+        "qa",
+        "instruction-tuning",
+        "web-scraping",
+        "data-augmentation"
+      ],
+      "readme_present": true,
+      "readme_characters": 2166,
+      "readme_has_body": true,
+      "readme_mentions_source": true,
+      "readme_mentions_limitations": false,
+      "readme_mentions_split": false
+    },
+    "profile": {
+      "data_shape": "conversation",
+      "conversation_field": "messages",
+      "row_count": 177,
+      "message_count": 354,
+      "turn_count_summary": {
+        "min": 2,
+        "median": 2,
+        "mean": 2,
+        "p95": 2.0,
+        "max": 2
+      },
+      "role_counts": {
+        "user": 177,
+        "assistant": 177
+      },
+      "role_sequences": {
+        "user → assistant": 177
+      },
+      "missing_conversation_rows": 0,
+      "unexpected_turn_count_rows": 0,
+      "empty_content_messages": 0,
+      "invalid_role_messages": 0,
+      "string_encoded_null_fields": 0,
+      "nonempty_thinking_messages": 0,
+      "exact_duplicate_rows": 0,
+      "exact_duplicate_rate": 0.0,
+      "normalized_duplicate_rows": 0,
+      "user_prompt_duplicates": {
+        "duplicate_rows": 134,
+        "duplicate_rate": 0.7571,
+        "duplicate_groups": 7,
+        "top_repeated": [
+          {
+            "count": 83,
+            "text": "Spider-Man (Örümcek Adam) hakkında detaylı bilgi verir misin?"
+          },
+          {
+            "count": 18,
+            "text": "Marvel Comics tarihi ve evreni hakkında bilgi ver."
+          },
+          {
+            "count": 15,
+            "text": "Wolverine karakterinin özellikleri ve hikayesi nedir?"
+          },
+          {
+            "count": 10,
+            "text": "X-Men mutant ekibi hakkında bilgi ver."
+          },
+          {
+            "count": 9,
+            "text": "Kaptan Amerika'nın (Captain America) kökeni ve özellikleri nelerdir?"
+          }
+        ]
+      },
+      "assistant_answer_duplicates": {
+        "duplicate_rows": 24,
+        "duplicate_rate": 0.1356,
+        "duplicate_groups": 12,
+        "top_repeated": [
+          {
+            "count": 3,
+            "text": "Spider-Man'in gerçek adı Peter Parker'dır."
+          },
+          {
+            "count": 3,
+            "text": "Doctor Doom, kurgusal Latveria ülkesinin mutlak hükümdarıdır."
+          },
+          {
+            "count": 3,
+            "text": "Scarlet Witch'in yetenekleri kaos büyüsüne ve gerçekliği bükme gücüne dayanır."
+          },
+          {
+            "count": 3,
+            "text": "Çizgi romanlarda kurucu üyeler Iron Man, Thor, Ant-Man, Wasp ve Hulk'tır."
+          },
+          {
+            "count": 3,
+            "text": "Mutantlardan oluşan X-Men ekibini Profesör Charles Xavier kurmuştur."
+          }
+        ]
+      },
+      "matching_user_assistant_rows": 0,
+      "user_character_length": {
+        "min": 27,
+        "median": 61,
+        "mean": 54.16,
+        "p95": 63.2,
+        "max": 68
+      },
+      "assistant_character_length": {
+        "min": 42,
+        "median": 424,
+        "mean": 483.05,
+        "p95": 1124.8,
+        "max": 2225
+      },
+      "user_word_length": {
+        "min": 3,
+        "median": 8,
+        "mean": 7.15,
+        "p95": 8.0,
+        "max": 8
+      },
+      "assistant_word_length": {
+        "min": 5,
+        "median": 56,
+        "mean": 64.08,
+        "p95": 153.4,
+        "max": 292
+      },
+      "text_scan": {
+        "total_characters": 95086,
+        "total_words": 13705,
+        "turkish_stopword_hits": 1483,
+        "english_stopword_hits": 76,
+        "replacement_character_count": 0,
+        "mojibake_marker_count": 0,
+        "url_matches": 0,
+        "email_matches": 0,
+        "phone_matches": 0,
+        "turkish_id_like_matches": 0,
+        "profanity_matches": 0,
+        "time_sensitive_matches": 1
+      }
+    }
+  },
+  {
+    "dataset_id": "gururaser/ithaki-bilimkurgu-klasikleri",
+    "url": "https://huggingface.co/datasets/gururaser/ithaki-bilimkurgu-klasikleri",
+    "sha": "dfb01dc91a0578cc5b7f978dd844917338c54e2b",
+    "created_at": "2026-07-19T18:32:28.000Z",
+    "last_modified": "2026-07-19T18:35:08.000Z",
+    "downloads": 0,
+    "likes": 0,
+    "used_storage": 33039,
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "ithaki_bilimkurgu_klasikleri_ozetli.csv"
+    ],
+    "splits": [
+      {
+        "dataset": "gururaser/ithaki-bilimkurgu-klasikleri",
+        "config": "default",
+        "split": "train",
+        "expected_rows": 103,
+        "downloaded_rows": 103,
+        "complete": true
+      }
+    ],
+    "card": {
+      "license": "cc-by-nc-4.0",
+      "language_tags": [
+        "tr"
+      ],
+      "task_categories": [],
+      "tags": [
+        "bilimkurgu",
+        "kitap-katalogu"
+      ],
+      "readme_present": true,
+      "readme_characters": 1502,
+      "readme_has_body": true,
+      "readme_mentions_source": true,
+      "readme_mentions_limitations": false,
+      "readme_mentions_split": false
+    },
+    "profile": {
+      "data_shape": "catalog",
+      "row_count": 103,
+      "column_count": 17,
+      "columns": [
+        "cevirmen",
+        "eski_fiyat",
+        "gorsel_url",
+        "indirim_orani",
+        "isbn",
+        "kapak_tipi",
+        "kategori",
+        "kitap_adi",
+        "kitap_url",
+        "olculeri",
+        "orijinal_adi",
+        "ozet",
+        "satis_fiyati",
+        "sayfa_sayisi",
+        "yayin_tarihi",
+        "yayinevi",
+        "yazar"
+      ],
+      "null_counts": {
+        "cevirmen": 62,
+        "eski_fiyat": 0,
+        "gorsel_url": 0,
+        "indirim_orani": 0,
+        "isbn": 0,
+        "kapak_tipi": 96,
+        "kategori": 0,
+        "kitap_adi": 0,
+        "kitap_url": 0,
+        "olculeri": 0,
+        "orijinal_adi": 65,
+        "ozet": 0,
+        "satis_fiyati": 0,
+        "sayfa_sayisi": 0,
+        "yayin_tarihi": 12,
+        "yayinevi": 0,
+        "yazar": 0
+      },
+      "null_rates": {
+        "cevirmen": 0.6019,
+        "eski_fiyat": 0.0,
+        "gorsel_url": 0.0,
+        "indirim_orani": 0.0,
+        "isbn": 0.0,
+        "kapak_tipi": 0.932,
+        "kategori": 0.0,
+        "kitap_adi": 0.0,
+        "kitap_url": 0.0,
+        "olculeri": 0.0,
+        "orijinal_adi": 0.6311,
+        "ozet": 0.0,
+        "satis_fiyati": 0.0,
+        "sayfa_sayisi": 0.0,
+        "yayin_tarihi": 0.1165,
+        "yayinevi": 0.0,
+        "yazar": 0.0
+      },
+      "exact_duplicate_rows": 0,
+      "duplicate_isbn_rows": 0,
+      "duplicate_book_url_rows": 0,
+      "duplicate_title_author_rows": 0,
+      "invalid_isbn13_rows": 0,
+      "invalid_url_rows": 0,
+      "page_count_summary": {
+        "min": 72,
+        "median": 296,
+        "mean": 348.58,
+        "p95": 719.2,
+        "max": 984
+      },
+      "old_price_summary": {
+        "min": 140,
+        "median": 320,
+        "mean": 365.05,
+        "p95": 747.0,
+        "max": 900
+      },
+      "sale_price_summary": {
+        "min": 98,
+        "median": 224,
+        "mean": 255.51,
+        "p95": 522.9,
+        "max": 630
+      },
+      "discount_summary": {
+        "min": 30,
+        "median": 30,
+        "mean": 30,
+        "p95": 30.0,
+        "max": 30
+      },
+      "discount_inconsistency_rows": 0,
+      "summary_duplicates": {
+        "duplicate_rows": 0,
+        "duplicate_rate": 0.0,
+        "duplicate_groups": 0,
+        "top_repeated": []
+      },
+      "summary_character_length": {
+        "min": 96,
+        "median": 126,
+        "mean": 126.06,
+        "p95": 141.9,
+        "max": 148
+      },
+      "category_counts": {
+        "Bilimkurgu Klasikleri": 103
+      },
+      "text_scan": {
+        "total_characters": 45106,
+        "total_words": 6578,
+        "turkish_stopword_hits": 225,
+        "english_stopword_hits": 38,
+        "replacement_character_count": 0,
+        "mojibake_marker_count": 0,
+        "url_matches": 206,
+        "email_matches": 0,
+        "phone_matches": 0,
+        "turkish_id_like_matches": 0,
+        "profanity_matches": 0,
+        "time_sensitive_matches": 0
+      }
+    }
+  },
+  {
+    "dataset_id": "Mer1Alii/TR-ECommerce-CustomerSupport-Instructions",
+    "url": "https://huggingface.co/datasets/Mer1Alii/TR-ECommerce-CustomerSupport-Instructions",
+    "sha": "be9708ce17a7624abb62cc55e60db7afd101d96e",
+    "created_at": "2026-07-18T11:34:45.000Z",
+    "last_modified": "2026-07-18T11:35:43.000Z",
+    "downloads": 10,
+    "likes": 0,
+    "used_storage": 220259,
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "data/train-00000-of-00001.parquet"
+    ],
+    "splits": [
+      {
+        "dataset": "Mer1Alii/TR-ECommerce-CustomerSupport-Instructions",
+        "config": "default",
+        "split": "train",
+        "expected_rows": 186,
+        "downloaded_rows": 186,
+        "complete": true
+      }
+    ],
+    "card": {
+      "license": "apache-2.0",
+      "language_tags": [
+        "tr"
+      ],
+      "task_categories": [
+        "text-generation"
+      ],
+      "tags": [
+        "e-commerce",
+        "customer-support",
+        "chain-of-thought",
+        "instruction-tuning"
+      ],
+      "readme_present": true,
+      "readme_characters": 5383,
+      "readme_has_body": true,
+      "readme_mentions_source": false,
+      "readme_mentions_limitations": false,
+      "readme_mentions_split": false
+    },
+    "profile": {
+      "data_shape": "conversation",
+      "conversation_field": "conversations",
+      "row_count": 186,
+      "message_count": 372,
+      "turn_count_summary": {
+        "min": 2,
+        "median": 2.0,
+        "mean": 2,
+        "p95": 2.0,
+        "max": 2
+      },
+      "role_counts": {
+        "user": 186,
+        "assistant": 186
+      },
+      "role_sequences": {
+        "user → assistant": 186
+      },
+      "missing_conversation_rows": 0,
+      "unexpected_turn_count_rows": 0,
+      "empty_content_messages": 0,
+      "invalid_role_messages": 0,
+      "string_encoded_null_fields": 0,
+      "nonempty_thinking_messages": 186,
+      "exact_duplicate_rows": 0,
+      "exact_duplicate_rate": 0.0,
+      "normalized_duplicate_rows": 0,
+      "user_prompt_duplicates": {
+        "duplicate_rows": 0,
+        "duplicate_rate": 0.0,
+        "duplicate_groups": 0,
+        "top_repeated": []
+      },
+      "assistant_answer_duplicates": {
+        "duplicate_rows": 0,
+        "duplicate_rate": 0.0,
+        "duplicate_groups": 0,
+        "top_repeated": []
+      },
+      "matching_user_assistant_rows": 0,
+      "user_character_length": {
+        "min": 45,
+        "median": 104.0,
+        "mean": 105.72,
+        "p95": 150.75,
+        "max": 177
+      },
+      "assistant_character_length": {
+        "min": 436,
+        "median": 718.0,
+        "mean": 706.39,
+        "p95": 964.0,
+        "max": 1067
+      },
+      "user_word_length": {
+        "min": 7,
+        "median": 15.0,
+        "mean": 15.48,
+        "p95": 21.75,
+        "max": 26
+      },
+      "assistant_word_length": {
+        "min": 48,
+        "median": 87.0,
+        "mean": 84.91,
+        "p95": 119.0,
+        "max": 129
+      },
+      "text_scan": {
+        "total_characters": 151051,
+        "total_words": 18880,
+        "turkish_stopword_hits": 1861,
+        "english_stopword_hits": 32,
+        "replacement_character_count": 0,
+        "mojibake_marker_count": 0,
+        "url_matches": 0,
+        "email_matches": 1,
+        "phone_matches": 0,
+        "turkish_id_like_matches": 0,
+        "profanity_matches": 0,
+        "time_sensitive_matches": 31
+      }
+    }
+  },
+  {
+    "dataset_id": "namruni/meb-ogretmen-soru-cevap",
+    "url": "https://huggingface.co/datasets/namruni/meb-ogretmen-soru-cevap",
+    "sha": "e6cd37d4846237723c84f6f33b78b3a701697bd4",
+    "created_at": "2026-07-19T13:27:14.000Z",
+    "last_modified": "2026-07-19T13:57:16.000Z",
+    "downloads": 0,
+    "likes": 0,
+    "used_storage": 673605,
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "data/train-00000-of-00001.parquet"
+    ],
+    "splits": [
+      {
+        "dataset": "namruni/meb-ogretmen-soru-cevap",
+        "config": "default",
+        "split": "train",
+        "expected_rows": 450,
+        "downloaded_rows": 450,
+        "complete": true
+      }
+    ],
+    "card": {
+      "license": null,
+      "language_tags": [
+        "tr"
+      ],
+      "task_categories": [
+        "question-answering",
+        "text-generation"
+      ],
+      "tags": [
+        "turkish",
+        "education",
+        "meb",
+        "mevzuat",
+        "teacher"
+      ],
+      "readme_present": true,
+      "readme_characters": 3068,
+      "readme_has_body": true,
+      "readme_mentions_source": true,
+      "readme_mentions_limitations": true,
+      "readme_mentions_split": false
+    },
+    "profile": {
+      "data_shape": "conversation",
+      "conversation_field": "train",
+      "row_count": 450,
+      "message_count": 900,
+      "turn_count_summary": {
+        "min": 2,
+        "median": 2.0,
+        "mean": 2,
+        "p95": 2.0,
+        "max": 2
+      },
+      "role_counts": {
+        "user": 450,
+        "assistant": 450
+      },
+      "role_sequences": {
+        "user → assistant": 450
+      },
+      "missing_conversation_rows": 0,
+      "unexpected_turn_count_rows": 0,
+      "empty_content_messages": 0,
+      "invalid_role_messages": 0,
+      "string_encoded_null_fields": 0,
+      "nonempty_thinking_messages": 450,
+      "exact_duplicate_rows": 0,
+      "exact_duplicate_rate": 0.0,
+      "normalized_duplicate_rows": 0,
+      "user_prompt_duplicates": {
+        "duplicate_rows": 0,
+        "duplicate_rate": 0.0,
+        "duplicate_groups": 0,
+        "top_repeated": []
+      },
+      "assistant_answer_duplicates": {
+        "duplicate_rows": 0,
+        "duplicate_rate": 0.0,
+        "duplicate_groups": 0,
+        "top_repeated": []
+      },
+      "matching_user_assistant_rows": 0,
+      "user_character_length": {
+        "min": 58,
+        "median": 317.5,
+        "mean": 396.03,
+        "p95": 1003.35,
+        "max": 2329
+      },
+      "assistant_character_length": {
+        "min": 138,
+        "median": 651.0,
+        "mean": 639.75,
+        "p95": 917.2,
+        "max": 1111
+      },
+      "user_word_length": {
+        "min": 10,
+        "median": 44.0,
+        "mean": 55.61,
+        "p95": 136.0,
+        "max": 324
+      },
+      "assistant_word_length": {
+        "min": 20,
+        "median": 81.0,
+        "mean": 79.3,
+        "p95": 114.55,
+        "max": 135
+      },
+      "text_scan": {
+        "total_characters": 466103,
+        "total_words": 62232,
+        "turkish_stopword_hits": 5703,
+        "english_stopword_hits": 50,
+        "replacement_character_count": 0,
+        "mojibake_marker_count": 0,
+        "url_matches": 3,
+        "email_matches": 0,
+        "phone_matches": 0,
+        "turkish_id_like_matches": 0,
+        "profanity_matches": 0,
+        "time_sensitive_matches": 297
+      }
+    }
+  },
+  {
+    "dataset_id": "nyzmemre/biyoloji-terimleri-turkce-sa",
+    "url": "https://huggingface.co/datasets/nyzmemre/biyoloji-terimleri-turkce-sa",
+    "sha": "6776f984be226b7c5055659b8f3fc63cb6de8fa5",
+    "created_at": "2026-07-20T04:05:52.000Z",
+    "last_modified": "2026-07-20T04:05:56.000Z",
+    "downloads": 0,
+    "likes": 0,
+    "used_storage": 118405,
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "data/train-00000-of-00001.parquet"
+    ],
+    "splits": [
+      {
+        "dataset": "nyzmemre/biyoloji-terimleri-turkce-sa",
+        "config": "default",
+        "split": "train",
+        "expected_rows": 1093,
+        "downloaded_rows": 1093,
+        "complete": true
+      }
+    ],
+    "card": {
+      "license": null,
+      "language_tags": [],
+      "task_categories": [],
+      "tags": [],
+      "readme_present": true,
+      "readme_characters": 472,
+      "readme_has_body": false,
+      "readme_mentions_source": false,
+      "readme_mentions_limitations": false,
+      "readme_mentions_split": false
+    },
+    "profile": {
+      "data_shape": "conversation",
+      "conversation_field": "conversations",
+      "row_count": 1093,
+      "message_count": 2186,
+      "turn_count_summary": {
+        "min": 2,
+        "median": 2,
+        "mean": 2,
+        "p95": 2.0,
+        "max": 2
+      },
+      "role_counts": {
+        "user": 1093,
+        "assistant": 1093
+      },
+      "role_sequences": {
+        "user → assistant": 1093
+      },
+      "missing_conversation_rows": 0,
+      "unexpected_turn_count_rows": 0,
+      "empty_content_messages": 0,
+      "invalid_role_messages": 0,
+      "string_encoded_null_fields": 0,
+      "nonempty_thinking_messages": 0,
+      "exact_duplicate_rows": 0,
+      "exact_duplicate_rate": 0.0,
+      "normalized_duplicate_rows": 0,
+      "user_prompt_duplicates": {
+        "duplicate_rows": 2,
+        "duplicate_rate": 0.0018,
+        "duplicate_groups": 2,
+        "top_repeated": [
+          {
+            "count": 2,
+            "text": "Bir öğrenci, MEB ders kitaplarından MSH terimini araştırmak isterse nasıl bir tanım bulabilir?"
+          },
+          {
+            "count": 2,
+            "text": "Alg kavramının kapsamına girmeden önce bilinmesi gereken ana tanım nedir?"
+          }
+        ]
+      },
+      "assistant_answer_duplicates": {
+        "duplicate_rows": 236,
+        "duplicate_rate": 0.2159,
+        "duplicate_groups": 188,
+        "top_repeated": [
+          {
+            "count": 8,
+            "text": "Genelde boyu 1-3 m arasında değişen sık dallı, dikenli, dağınık görünümlü ve yayılıcı bir çalıdır. Gövde kabuğu siyahımsı kahverengindedir. Kazınan kabuğun altından turuncu renkli bir doku ortaya çıkar. Genç dalları kadife gibi yumuşak tüylerle kaplıdır, dalların ucu güçlü bir dikenle sonlanır. En e"
+          },
+          {
+            "count": 5,
+            "text": "Dişi organ, erkek organ, taç yapraklar ve çanak yaprakların tamamını bulunduran çiçeklere tam çiçek (hermofradit = erselik) denir."
+          },
+          {
+            "count": 4,
+            "text": "TSH, LH ve LTH gibi cinsiyet hormonları salgılar. LTH sadece dişilere özgüdür."
+          },
+          {
+            "count": 4,
+            "text": "Ultrason testi ses dalgaları kullanılarak yapılan, anne rahmindeki bebeğin veya karın içi organların görüntülenmesini sağlayan ağrısız bir muayene yöntemidir. Ultrasonografiyle x ışınlarına maruz kalınmadan hamilelik ve bebeğin oluşumu hakkında detaylı bilgi edinilir."
+          },
+          {
+            "count": 3,
+            "text": "Genomundaki tüm nükleotit dizilimi gösterilen ve insanlarla yüksek derecede genetik benzerliği olan ev faresi, bilinen en klasik model organizmadır."
+          }
+        ]
+      },
+      "matching_user_assistant_rows": 0,
+      "user_character_length": {
+        "min": 10,
+        "median": 78,
+        "mean": 82.13,
+        "p95": 152.4,
+        "max": 228
+      },
+      "assistant_character_length": {
+        "min": 40,
+        "median": 117,
+        "mean": 142.56,
+        "p95": 335.0,
+        "max": 880
+      },
+      "user_word_length": {
+        "min": 2,
+        "median": 10,
+        "mean": 10.34,
+        "p95": 19.0,
+        "max": 24
+      },
+      "assistant_word_length": {
+        "min": 3,
+        "median": 15,
+        "mean": 18.01,
+        "p95": 41.0,
+        "max": 108
+      },
+      "text_scan": {
+        "total_characters": 245580,
+        "total_words": 31270,
+        "turkish_stopword_hits": 3278,
+        "english_stopword_hits": 2,
+        "replacement_character_count": 0,
+        "mojibake_marker_count": 0,
+        "url_matches": 0,
+        "email_matches": 0,
+        "phone_matches": 0,
+        "turkish_id_like_matches": 0,
+        "profanity_matches": 0,
+        "time_sensitive_matches": 0
+      }
+    }
+  },
+  {
+    "dataset_id": "sk75/sahin_identity",
+    "url": "https://huggingface.co/datasets/sk75/sahin_identity",
+    "sha": "66a3f8d1c170c12296c39fab3ba29f49123d9080",
+    "created_at": "2026-07-18T08:18:44.000Z",
+    "last_modified": "2026-07-18T08:21:12.000Z",
+    "downloads": 5,
+    "likes": 0,
+    "used_storage": 19419,
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "identity_dataset_en.json",
+      "identity_dataset_tr.json"
+    ],
+    "splits": [
+      {
+        "dataset": "sk75/sahin_identity",
+        "config": "default",
+        "split": "train",
+        "expected_rows": 77,
+        "downloaded_rows": 77,
+        "complete": true
+      }
+    ],
+    "card": {
+      "license": null,
+      "language_tags": [],
+      "task_categories": [],
+      "tags": [],
+      "readme_present": false,
+      "readme_characters": 0,
+      "readme_has_body": false,
+      "readme_mentions_source": false,
+      "readme_mentions_limitations": false,
+      "readme_mentions_split": false
+    },
+    "profile": {
+      "data_shape": "conversation",
+      "conversation_field": "messages",
+      "row_count": 77,
+      "message_count": 154,
+      "turn_count_summary": {
+        "min": 2,
+        "median": 2,
+        "mean": 2,
+        "p95": 2.0,
+        "max": 2
+      },
+      "role_counts": {
+        "user": 77,
+        "assistant": 77
+      },
+      "role_sequences": {
+        "user → assistant": 77
+      },
+      "missing_conversation_rows": 0,
+      "unexpected_turn_count_rows": 0,
+      "empty_content_messages": 0,
+      "invalid_role_messages": 0,
+      "string_encoded_null_fields": 462,
+      "nonempty_thinking_messages": 0,
+      "exact_duplicate_rows": 0,
+      "exact_duplicate_rate": 0.0,
+      "normalized_duplicate_rows": 0,
+      "user_prompt_duplicates": {
+        "duplicate_rows": 0,
+        "duplicate_rate": 0.0,
+        "duplicate_groups": 0,
+        "top_repeated": []
+      },
+      "assistant_answer_duplicates": {
+        "duplicate_rows": 50,
+        "duplicate_rate": 0.6494,
+        "duplicate_groups": 24,
+        "top_repeated": [
+          {
+            "count": 6,
+            "text": "Ben Şahin, sürüm 1.0. Sana yardımcı olmak için buradayım."
+          },
+          {
+            "count": 4,
+            "text": "Serhat Kılıç created and fine-tuned me."
+          },
+          {
+            "count": 4,
+            "text": "My main capabilities include natural language understanding in Turkish and English, question answering and reasoning, text summarization, code writing and debugging assistance, and multi-step task planning."
+          },
+          {
+            "count": 4,
+            "text": "Geliştiricim Serhat Kılıç. İstanbul, Türkiye'de bu proje üzerinde çalışıyor."
+          },
+          {
+            "count": 4,
+            "text": "açık kaynaklı bir temel dil modeli üzerine fine-tune edilerek oluşturuldum."
+          }
+        ]
+      },
+      "matching_user_assistant_rows": 0,
+      "user_character_length": {
+        "min": 8,
+        "median": 22,
+        "mean": 23.48,
+        "p95": 36.0,
+        "max": 39
+      },
+      "assistant_character_length": {
+        "min": 38,
+        "median": 76,
+        "mean": 91.04,
+        "p95": 190.8,
+        "max": 206
+      },
+      "user_word_length": {
+        "min": 2,
+        "median": 4,
+        "mean": 3.79,
+        "p95": 6.0,
+        "max": 7
+      },
+      "assistant_word_length": {
+        "min": 4,
+        "median": 11,
+        "mean": 13.31,
+        "p95": 26.0,
+        "max": 28
+      },
+      "text_scan": {
+        "total_characters": 8818,
+        "total_words": 1385,
+        "turkish_stopword_hits": 111,
+        "english_stopword_hits": 169,
+        "replacement_character_count": 0,
+        "mojibake_marker_count": 0,
+        "url_matches": 0,
+        "email_matches": 0,
+        "phone_matches": 0,
+        "turkish_id_like_matches": 0,
+        "profanity_matches": 0,
+        "time_sensitive_matches": 0
+      }
+    }
+  },
+  {
+    "dataset_id": "yoitsmeyusuf/felsefe_finetune",
+    "url": "https://huggingface.co/datasets/yoitsmeyusuf/felsefe_finetune",
+    "sha": "bf16d683e2f5dc38d747050fe8244eabd68c65be",
+    "created_at": "2026-07-19T16:07:48.000Z",
+    "last_modified": "2026-07-19T17:03:28.000Z",
+    "downloads": 0,
+    "likes": 0,
+    "used_storage": 242195,
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "data/turkish-00000-of-00001.parquet"
+    ],
+    "splits": [
+      {
+        "dataset": "yoitsmeyusuf/felsefe_finetune",
+        "config": "default",
+        "split": "turkish",
+        "expected_rows": 529,
+        "downloaded_rows": 529,
+        "complete": true
+      }
+    ],
+    "card": {
+      "license": null,
+      "language_tags": [],
+      "task_categories": [],
+      "tags": [],
+      "readme_present": true,
+      "readme_characters": 680,
+      "readme_has_body": true,
+      "readme_mentions_source": true,
+      "readme_mentions_limitations": false,
+      "readme_mentions_split": false
+    },
+    "profile": {
+      "data_shape": "conversation",
+      "conversation_field": "train",
+      "row_count": 529,
+      "message_count": 1058,
+      "turn_count_summary": {
+        "min": 2,
+        "median": 2,
+        "mean": 2,
+        "p95": 2.0,
+        "max": 2
+      },
+      "role_counts": {
+        "user": 529,
+        "assistant": 529
+      },
+      "role_sequences": {
+        "user → assistant": 529
+      },
+      "missing_conversation_rows": 0,
+      "unexpected_turn_count_rows": 0,
+      "empty_content_messages": 0,
+      "invalid_role_messages": 0,
+      "string_encoded_null_fields": 0,
+      "nonempty_thinking_messages": 0,
+      "exact_duplicate_rows": 0,
+      "exact_duplicate_rate": 0.0,
+      "normalized_duplicate_rows": 0,
+      "user_prompt_duplicates": {
+        "duplicate_rows": 405,
+        "duplicate_rate": 0.7656,
+        "duplicate_groups": 58,
+        "top_repeated": [
+          {
+            "count": 9,
+            "text": "Varoluşçuluk nedir?"
+          },
+          {
+            "count": 8,
+            "text": "Nietzsche kimdir?"
+          },
+          {
+            "count": 8,
+            "text": "Sokrates kimdir?"
+          },
+          {
+            "count": 8,
+            "text": "Platon kimdir?"
+          },
+          {
+            "count": 8,
+            "text": "Aristoteles kimdir?"
+          }
+        ]
+      },
+      "assistant_answer_duplicates": {
+        "duplicate_rows": 0,
+        "duplicate_rate": 0.0,
+        "duplicate_groups": 0,
+        "top_repeated": []
+      },
+      "matching_user_assistant_rows": 0,
+      "user_character_length": {
+        "min": 11,
+        "median": 19,
+        "mean": 26.07,
+        "p95": 65.0,
+        "max": 771
+      },
+      "assistant_character_length": {
+        "min": 25,
+        "median": 263,
+        "mean": 651.29,
+        "p95": 2693.0,
+        "max": 5993
+      },
+      "user_word_length": {
+        "min": 2,
+        "median": 2,
+        "mean": 3.53,
+        "p95": 9.6,
+        "max": 109
+      },
+      "assistant_word_length": {
+        "min": 2,
+        "median": 35,
+        "mean": 86.1,
+        "p95": 353.6,
+        "max": 822
+      },
+      "text_scan": {
+        "total_characters": 358324,
+        "total_words": 48151,
+        "turkish_stopword_hits": 5677,
+        "english_stopword_hits": 465,
+        "replacement_character_count": 0,
+        "mojibake_marker_count": 0,
+        "url_matches": 7,
+        "email_matches": 0,
+        "phone_matches": 0,
+        "turkish_id_like_matches": 0,
+        "profanity_matches": 6,
+        "time_sensitive_matches": 21
+      }
+    }
+  }
+]

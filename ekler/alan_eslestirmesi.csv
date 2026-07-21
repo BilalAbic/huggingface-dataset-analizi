@@ -1,0 +1,21 @@
+alan,durum,eslesme_duzeyi,dataset,satir_sayisi,kullanim_notu,link
+Identity,Tamamlandı,Doğrudan,Aysenur44/namaz-vakti-identity-tr,4,"Kimlik ve geliştirici tohumu; güvenlik ve sınır kapsamı yetersiz",https://huggingface.co/datasets/Aysenur44/namaz-vakti-identity-tr
+Identity,Tamamlandı,Doğrudan,sk75/sahin_identity,77,"İki dilli kimlik; tekrar, null tipi ve lisans sorunu var",https://huggingface.co/datasets/sk75/sahin_identity
+Tool Call,Planlandı,Dönüştürme kaynağı,gururaser/ithaki-bilimkurgu-klasikleri,103,"Kitap arama ve detay araçlarına dönüştürülebilir",https://huggingface.co/datasets/gururaser/ithaki-bilimkurgu-klasikleri
+Tool Call,Planlandı,Dönüştürme kaynağı,Mer1Alii/TR-ECommerce-CustomerSupport-Instructions,186,"Sipariş ve destek araçlarına dönüştürülebilir",https://huggingface.co/datasets/Mer1Alii/TR-ECommerce-CustomerSupport-Instructions
+Tool Call,Planlandı,Dönüştürme kaynağı,namruni/meb-ogretmen-soru-cevap,450,"Mevzuat arama aracına dönüştürülebilir",https://huggingface.co/datasets/namruni/meb-ogretmen-soru-cevap
+Conversation,Planlandı,Doğrudan,aliFurkan123/cultural-questions-dataset,500,"Tek seferlik genel bilgi diyaloğu",https://huggingface.co/datasets/aliFurkan123/cultural-questions-dataset
+Conversation,Planlandı,Doğrudan,Egertekin/marvel-domain-dataset,177,"Tek seferlik alan diyaloğu; yüksek istem tekrarı",https://huggingface.co/datasets/Egertekin/marvel-domain-dataset
+Conversation,Planlandı,Doğrudan,Mer1Alii/TR-ECommerce-CustomerSupport-Instructions,186,"Tek seferlik müşteri destek diyaloğu",https://huggingface.co/datasets/Mer1Alii/TR-ECommerce-CustomerSupport-Instructions
+Conversation,Planlandı,Doğrudan,namruni/meb-ogretmen-soru-cevap,450,"Tek seferlik uzun bağlamlı soru-cevap",https://huggingface.co/datasets/namruni/meb-ogretmen-soru-cevap
+Conversation,Planlandı,Doğrudan,nyzmemre/biyoloji-terimleri-turkce-sa,1093,"Tek seferlik bilimsel açıklama",https://huggingface.co/datasets/nyzmemre/biyoloji-terimleri-turkce-sa
+Conversation,Planlandı,Doğrudan,yoitsmeyusuf/felsefe_finetune,529,"Tek seferlik öznel görüş diyaloğu",https://huggingface.co/datasets/yoitsmeyusuf/felsefe_finetune
+Instruction,Planlandı,Kısmi,Mer1Alii/TR-ECommerce-CustomerSupport-Instructions,186,"Alan talebine cevap; genel instruction çeşitliliği yok",https://huggingface.co/datasets/Mer1Alii/TR-ECommerce-CustomerSupport-Instructions
+Instruction,Planlandı,Kısmi,namruni/meb-ogretmen-soru-cevap,450,"Uzun sorudan açıklama; geniş görev çeşitliliği yok",https://huggingface.co/datasets/namruni/meb-ogretmen-soru-cevap
+Instruction,Planlandı,Kısmi,aliFurkan123/cultural-questions-dataset,500,"Bilgi talebine açıklama; format kısıtı yok",https://huggingface.co/datasets/aliFurkan123/cultural-questions-dataset
+Instruction,Planlandı,Kısmi,nyzmemre/biyoloji-terimleri-turkce-sa,1093,"Terim açıklama; görev çeşitliliği yok",https://huggingface.co/datasets/nyzmemre/biyoloji-terimleri-turkce-sa
+Instruction,Planlandı,Kısmi,Egertekin/marvel-domain-dataset,177,"Alan sorusu; yüksek istem tekrarı",https://huggingface.co/datasets/Egertekin/marvel-domain-dataset
+Instruction,Planlandı,Kısmi,yoitsmeyusuf/felsefe_finetune,529,"Görüş üretimi; olgusal instruction olarak kullanılmamalı",https://huggingface.co/datasets/yoitsmeyusuf/felsefe_finetune
+Structured Output,Planlandı,Dönüştürme kaynağı,gururaser/ithaki-bilimkurgu-klasikleri,103,"JSON ve tablo hedeflerine dönüştürülebilir",https://huggingface.co/datasets/gururaser/ithaki-bilimkurgu-klasikleri
+Math,Planlandı,Dönüştürme kaynağı,gururaser/ithaki-bilimkurgu-klasikleri,103,"Yalnız fiyat, indirim ve yüzde aritmetiği türetilebilir",https://huggingface.co/datasets/gururaser/ithaki-bilimkurgu-klasikleri
+Coding,Planlandı,Bulunmuyor,,,"Mevcut koleksiyonda Coding örneği yok",
