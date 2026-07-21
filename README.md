@@ -2,16 +2,17 @@
 
 Bu depo, dokuz Türkçe veya Türkçe odaklı Hugging Face veri setinin kalite
 profillerini ve model yetenek alanı eşleştirmesini içerir. Toplam **3.119 satır**;
-Identity, Tool Call, Conversation, Instruction, Structured Output, Math ve Coding
-alanları açısından incelenmiştir.
+Kimlik (Identity), Araç Çağrısı (Tool Calling), Diyalog (Conversation), Talimat
+İzleme (Instruction Following), Yapılandırılmış Çıktı (Structured Output),
+Matematik (Math) ve Kodlama (Coding) alanları açısından incelenmiştir.
 
 ## Raporlar ve analiz
 
 | İçerik | Biçim | Bağlantı |
 |---|---|---|
-| Toplu teknik değerlendirme | Markdown | [Ana raporu aç](raporlar/HuggingFace_Veri_Setleri_Yetenek_Alani_Raporu.md) |
-| Model yetenek alanı eşleştirmesi | Markdown | [Eşleştirme raporunu aç](raporlar/Model_Yetenek_Alanlari_Eslestirme_Raporu.md) |
-| Proje ve dosya rehberi | Markdown | [Dosya rehberini aç](raporlar/Proje_Dosya_Rehberi.md) |
+| Toplu teknik değerlendirme | Markdown | [Ana raporu aç](raporlar/veri-seti-teknik-degerlendirme.md) |
+| Model yetenek alanı eşleştirmesi | Markdown | [Eşleştirme raporunu aç](raporlar/model-yetenek-alani-eslestirmesi.md) |
+| Proje ve dosya rehberi | Markdown | [Dosya rehberini aç](raporlar/dosya-rehberi.md) |
 | Çalıştırılmış kalite analizi | HTML | [Notebook HTML çıktısını aç](notebook/huggingface_dataset_quality_analysis.html) |
 | Yeniden çalıştırılabilir analiz | Jupyter Notebook | [Notebook kaynağını aç](notebook/huggingface_dataset_quality_analysis.ipynb) |
 
@@ -19,11 +20,15 @@ alanları açısından incelenmiştir.
 
 - Sekiz sohbet veri setinde 3.016, yapılandırılmış katalogda 103 satır vardır.
 - Sohbet kayıtlarında boş içerik veya geçersiz rol tespit edilmemiştir.
-- Etiketli tool call ve gerçek çok turlu konuşma örneği bulunmamaktadır.
-- 1.136 asistan mesajında ayrı `thinking` içeriği vardır.
-- Şahin Identity verisinde 462 alan gerçek `null` yerine `"null"` dizesidir.
-- Marvel ve felsefe istemlerinde; biyoloji ve Şahin Identity cevaplarında yüksek
+- Etiketli araç çağrısı (tool calling) ve gerçek çok turlu diyalog örneği bulunmamaktadır.
+- 1.136 asistan mesajında ayrı `thinking` (akıl yürütme) içeriği vardır.
+- Şahin kimlik verisinde 462 alan gerçek `null` yerine `"null"` dizesidir.
+- Marvel ve felsefe istemlerinde; biyoloji ve Şahin kimlik cevaplarında yüksek
   normalleştirilmiş tekrar yoğunluğu görülmüştür.
+
+Raporlarda teknik kavramlar ilk kullanımda Türkçe karşılığı ve yerleşik İngilizce
+terimiyle birlikte verilir. Veri şemalarındaki `messages`, `tool_calls`, `prompt`
+ve `target` gibi alan adları ise kaynak yapıyla uyumluluk için değiştirilmemiştir.
 
 Ayrıntılı kanıtlar [`outputs/`](outputs/) dosyalarında, alan eşleştirmeleri ise
 [`ekler/`](ekler/) altında makinece okunabilir biçimde sunulmuştur.
@@ -48,9 +53,9 @@ Ayrıntılı kanıtlar [`outputs/`](outputs/) dosyalarında, alan eşleştirmele
 .
 ├── README.md
 ├── raporlar/
-│   ├── HuggingFace_Veri_Setleri_Yetenek_Alani_Raporu.md
-│   ├── Model_Yetenek_Alanlari_Eslestirme_Raporu.md
-│   ├── Proje_Dosya_Rehberi.md
+│   ├── veri-seti-teknik-degerlendirme.md
+│   ├── model-yetenek-alani-eslestirmesi.md
+│   ├── dosya-rehberi.md
 │   └── gorseller/
 ├── notebook/
 │   ├── huggingface_dataset_quality_analysis.ipynb

@@ -1,4 +1,4 @@
-# Hugging Face Veri Setleri: Teknik Değerlendirme Raporu
+# Hugging Face Veri Setleri: Teknik Değerlendirme
 
 ## Teknik özet
 
@@ -6,11 +6,13 @@
   sohbet veri setinde, 103 satırı ise 17 alanlı İthaki kitap kataloğundadır.
 - **Yapısal bütünlük genel olarak iyi, semantik çeşitlilik eşit değil.** Sohbet
   setlerinde boş içerik ve geçersiz rol bulunmazken Marvel ve felsefe istemlerinde,
-  biyoloji ve Şahin Identity cevaplarında belirgin normalleştirilmiş tekrar vardır.
-- **Mevcut koleksiyon Conversation ve alan soru-cevap eğitimi için kullanılabilir.**
-  Buna karşılık gerçek multi-turn diyalog, etiketli tool call, doğrulanabilir
-  structured output, genel matematik ve coding örnekleri hazır durumda değildir.
-- **Veri hazırlığı görev bazlı yapılmalıdır.** `thinking` içeriğinin nihai cevaptan
+  biyoloji ve Şahin kimlik cevaplarında belirgin normalleştirilmiş tekrar vardır.
+- **Mevcut koleksiyon Diyalog (Conversation) ve alan soru-cevap eğitimi için kullanılabilir.**
+  Buna karşılık gerçek çok turlu diyalog (multi-turn conversation), etiketli Araç
+  Çağrısı (Tool Calling), doğrulanabilir Yapılandırılmış Çıktı (Structured Output),
+  genel Matematik (Math) ve Kodlama (Coding) örnekleri hazır durumda değildir.
+- **Veri hazırlığı görev bazlı yapılmalıdır.** `thinking` (akıl yürütme) içeriğinin
+  nihai cevaptan
   ayrılması, tekrar ailelerinin azaltılması, metin biçimindeki `"null"` değerlerinin
   düzeltilmesi ve zaman hassas cevapların güncel kaynaklara bağlanması gerekir.
 
@@ -21,6 +23,7 @@ içerik kalitesi ve hazırlık gereksinimi
 
 ## İçindekiler
 
+- [Terimler ve kullanım biçimi](#terimler-ve-kullanım-biçimi)
 - [Portföyün yapısı](#portföyün-yapısı)
 - [Temel kalite bulguları](#temel-kalite-bulguları)
 - [Veri seti envanteri](#veri-seti-envanteri)
@@ -30,6 +33,19 @@ içerik kalitesi ve hazırlık gereksinimi
 - [Teknik uygulama planı](#teknik-uygulama-planı)
 - [Sınırlılıklar ve doğrulama kapsamı](#sınırlılıklar-ve-doğrulama-kapsamı)
 
+## Terimler ve kullanım biçimi
+
+| Rapor terimi | Bu rapordaki anlamı |
+|---|---|
+| Birebir tekrar (exact duplicate) | Metnin doğrudan karşılaştırmada aynı olması |
+| Normalleştirilmiş tekrar (normalized duplicate) | Büyük/küçük harf ve noktalama gibi biçim farkları giderildikten sonra metinlerin aynı olması |
+| Denetimli ince ayar (Supervised Fine-Tuning, SFT) | İstem ve beklenen cevap çiftleriyle yapılan model uyarlaması |
+| İstem–hedef çifti (prompt–target pair) | Kullanıcı görevi ile doğrulanabilir beklenen çıktının birlikte tutulması |
+| Model kimliği (persona) | Model adı, geliştirici, rol, yetenek ve sınır davranışlarını tanımlayan bilgiler |
+
+Veri şemalarındaki `messages`, `tool_calls`, `prompt`, `target` ve `thinking` gibi
+alan adları teknik uyumluluk için çevrilmeden korunmuştur.
+
 ## Portföyün yapısı
 
 Veri hacmi birkaç sohbet koleksiyonunda yoğunlaşmaktadır. Biyoloji, felsefe,
@@ -37,54 +53,55 @@ genel bilgi ve MEB veri setleri birlikte 2.572 satırla toplam koleksiyonun
 %82,46'sını oluşturur. Bu oran yalnız hacmi gösterir; içerik çeşitliliği veya
 göreve uygunluk göstergesi değildir.
 
-![Dokuz veri setinin satır sayıları](gorseller/veri_seti_satir_sayilari.png)
+![Dokuz veri setinin satır sayıları](gorseller/veri-seti-satir-sayilari.png)
 
 Grafik, sohbet eğitimi için en geniş içerik havuzlarının hangi veri setlerinde
 olduğunu gösterir. Kimlik setlerinin küçük olması beklenen bir durumdur; bu setler
-genel alan bilgisi yerine persona ve sahiplik cevaplarını hedefler.
+genel alan bilgisi yerine model kimliği (persona) ve sahiplik cevaplarını hedefler.
 
 ## Temel kalite bulguları
 
 ### Yapısal kontroller temiz, tekrar yoğunluğu görev riskini değiştiriyor
 
-Sekiz sohbet veri setinde mesaj rolleri ve içerik alanları geçerlidir. Exact satır
+Sekiz sohbet veri setinde mesaj rolleri ve içerik alanları geçerlidir. Birebir satır
 tekrarı gözlenmemiştir; ancak noktalama ve büyük/küçük harf farkları yok sayıldığında
 bazı istem veya cevap ailelerinin çok sık tekrarlandığı görülür.
 
-![Sohbet veri setlerinde normalleştirilmiş tekrar oranları](gorseller/normalizasyon_tekrar_oranlari.png)
+![Sohbet veri setlerinde normalleştirilmiş tekrar oranları](gorseller/tekrar-oranlari.png)
 
 **Yorum:** Felsefe ve Marvel setlerinde aynı istem ailesi çok sayıda cevapla
-eşleşir. Şahin Identity'de ise cevap çeşitliliği düşüktür. Biyoloji setinde aynı
+eşleşir. Şahin kimlik veri setinde ise cevap çeşitliliği düşüktür. Biyoloji setinde aynı
 tanımın farklı sorularla yinelenmesi, belirli cevap kalıplarına eğitim sırasında
 gereğinden fazla ağırlık verebilir. Sıfır görünen değerler içeriklerin olgusal
 olarak doğru olduğunu değil, bu normalizasyon kuralına göre tekrar bulunmadığını
 ifade eder.
 
-### `thinking`, araç çağrısı ve tip bütünlüğü ayrı veri işlemleri gerektiriyor
+### Akıl yürütme alanı, araç çağrısı ve tip bütünlüğü ayrı veri işlemleri gerektiriyor
 
 | Kontrol | Bulgular | Teknik etkisi |
 |---|---:|---|
-| `thinking` içeren asistan mesajı | 1.136 | Nihai cevap hedefi ayrı üretilmeli; özel akıl yürütme alanı doğrudan yayımlanmamalı |
-| Dolu `tool_calls` alanı | 0 | Tool Call eğitimi için fonksiyon şeması, argüman ve araç sonucu ayrıca oluşturulmalı |
-| Gerçek multi-turn kayıt | 0 | Bağlam takibi ve takip sorusu davranışı mevcut koleksiyonla ölçülemez |
+| `thinking` (akıl yürütme) içeren asistan mesajı | 1.136 | Nihai cevap hedefi ayrı üretilmeli; özel akıl yürütme alanı doğrudan yayımlanmamalı |
+| Dolu `tool_calls` alanı | 0 | Araç Çağrısı (Tool Calling) eğitimi için fonksiyon şeması, argüman ve araç sonucu ayrıca oluşturulmalı |
+| Gerçek çok turlu (multi-turn) kayıt | 0 | Bağlam takibi ve takip sorusu davranışı mevcut koleksiyonla ölçülemez |
 | Metin olarak saklanan `"null"` | 462 | Şema doğrulama ve tip normalizasyonu gerekir |
-| Prompt–target JSON/tablo örneği | 0 | Structured Output için doğrulanabilir hedef kayıtlar üretilmeli |
+| İstem–hedef (prompt–target) JSON/tablo örneği | 0 | Yapılandırılmış Çıktı (Structured Output) için doğrulanabilir hedef kayıtlar üretilmeli |
 
 ### Yetenek alanı kapsamı aynı düzeyde değil
 
-![Yetenek alanlarında doğrudan, kısmi ve dönüşüm kaynağı eşleşmeleri](gorseller/yetenek_alani_kapsami.png)
+![Yetenek alanlarında doğrudan, kısmi ve dönüşüm kaynağı eşleşmeleri](gorseller/yetenek-alani-kapsami.png)
 
-Conversation için doğrudan kullanılabilecek altı alan veri seti vardır. Instruction
-katkısı ise genel talimat çeşitliliğinden çok alan soru-cevap davranışıdır. Tool
-Call, Structured Output ve Math için içerik kaynağı bulunmasına rağmen hedef örnek
-şemaları henüz yoktur. Coding için mevcut koleksiyonda uygun kayıt bulunmamaktadır.
+Diyalog (Conversation) için doğrudan kullanılabilecek altı alan veri seti vardır.
+Talimat İzleme (Instruction Following) katkısı ise genel talimat çeşitliliğinden
+çok alan soru-cevap davranışıdır. Araç Çağrısı (Tool Calling), Yapılandırılmış Çıktı
+(Structured Output) ve Matematik (Math) için içerik kaynağı bulunmasına rağmen hedef
+örnek şemaları henüz yoktur. Kodlama (Coding) için mevcut koleksiyonda uygun kayıt bulunmamaktadır.
 
 ## Veri seti envanteri
 
 | Katılımcı | Veri seti | Satır | Yapı | Temel kullanım |
 |---|---|---:|---|---|
 | Ali Furkan Ak | [cultural-questions-dataset](https://huggingface.co/datasets/aliFurkan123/cultural-questions-dataset) | 500 | İki mesajlı sohbet | Türkçe genel bilgi ve açıklayıcı cevap |
-| Ayşe Nur Yeşilova | [namaz-vakti-identity-tr](https://huggingface.co/datasets/Aysenur44/namaz-vakti-identity-tr) | 4 | System–user–assistant | Model kimliği ve geliştirici bilgisi |
+| Ayşe Nur Yeşilova | [namaz-vakti-identity-tr](https://huggingface.co/datasets/Aysenur44/namaz-vakti-identity-tr) | 4 | `system–user–assistant` | Model kimliği ve geliştirici bilgisi |
 | Ege Ertekin | [marvel-domain-dataset](https://huggingface.co/datasets/Egertekin/marvel-domain-dataset) | 177 | İki mesajlı sohbet | Marvel alan soru-cevapları |
 | Gurur Aşer | [ithaki-bilimkurgu-klasikleri](https://huggingface.co/datasets/gururaser/ithaki-bilimkurgu-klasikleri) | 103 | 17 alanlı katalog | Kitap kataloğu ve kontrollü dönüşüm |
 | Mehmet Emre Öz | [biyoloji-terimleri-turkce-sa](https://huggingface.co/datasets/nyzmemre/biyoloji-terimleri-turkce-sa) | 1.093 | İki mesajlı sohbet | Türkçe biyoloji terim açıklamaları |
@@ -103,8 +120,9 @@ sağlıyor.
 **Artıları**
 
 - 500 satırın tamamında kullanıcı ve asistan içeriği doludur.
-- Exact veya normalleştirilmiş istem/cevap tekrarı tespit edilmemiştir.
-- Standart sohbet şeması ve yönetilebilir yanıt uzunlukları SFT dönüşümünü kolaylaştırır.
+- Birebir veya normalleştirilmiş istem/cevap tekrarı tespit edilmemiştir.
+- Standart sohbet şeması ve yönetilebilir yanıt uzunlukları, denetimli ince ayar
+  (SFT) formatına dönüştürmeyi kolaylaştırır.
 
 **Eksileri ve riskleri**
 
@@ -113,7 +131,7 @@ sağlıyor.
 - Veri seti adı kültürel soru izlenimi verse de içerik daha geniş genel bilgi kapsamındadır.
 
 **Hazırlık kararı:** Olgusal doğrulama, konu etiketi ve yalnız nihai cevabı taşıyan
-bir hedef sürüm üretildikten sonra Conversation ve dar Instruction görevlerinde
+bir hedef sürüm üretildikten sonra Diyalog ve dar Talimat İzleme görevlerinde
 kullanılabilir.
 
 ### Ayşe Nur Yeşilova — kimlik tohumu olarak uygun, alan yetkinliği sağlamıyor
@@ -124,13 +142,13 @@ dört system–user–assistant kaydıyla tanımlıyor.
 **Artıları**
 
 - Dört kaydın tamamında mesaj sırası ve içerik geçerlidir.
-- Standart `messages` alanı doğrudan persona/identity eğitimine uyarlanabilir.
+- Standart `messages` alanı doğrudan model kimliği (persona) eğitimine uyarlanabilir.
 
 **Eksileri ve riskleri**
 
 - Dört satır, namaz vakti, dua veya ibadet alan yetkinliği öğretmez.
 - Güvenlik ilkeleri, kapsam sınırları ve ayrıntılı reddetme davranışları yoktur.
-- Dört kullanıcı istemi Şahin Identity veri setiyle örtüşür.
+- Dört kullanıcı istemi Şahin kimlik veri setiyle örtüşür.
 
 **Hazırlık kararı:** Genel eğitim verisi yerine düşük ağırlıklı çekirdek kimlik
 tohumu olarak tutulmalı; güvenlik ve sınır örnekleri ayrı veriyle tamamlanmalıdır.
@@ -163,7 +181,7 @@ alanıyla sunuyor.
 
 **Artıları**
 
-- Exact tekrar, ISBN/URL ve kitap–yazar anahtar tekrarı yoktur.
+- Birebir tekrar, ISBN/URL ve kitap–yazar anahtar tekrarı yoktur.
 - ISBN-13 ve URL kontrolleri geçerlidir.
 - Fiyat ve indirim alanları kendi içinde tutarlıdır.
 - Yapılandırılmış alanlar JSON, tablo, arama ve filtreleme görevleri üretmeye uygundur.
@@ -175,9 +193,9 @@ alanıyla sunuyor.
 - Üretilmiş özetlerin doğruluğu ve üst kaynak hakları ayrıca doğrulanmalıdır.
 - Kaynak sayfasındaki CC BY-NC 4.0 bildirimi ticari kullanımı sınırlar.
 
-**Hazırlık kararı:** Structured Output, kitap arama Tool Call ve dar fiyat/indirim
-Math görevleri için dönüşüm kaynağı olarak kullanılabilir; mevcut hali prompt–target
-eğitim seti değildir.
+**Hazırlık kararı:** Yapılandırılmış Çıktı, kitap arama için Araç Çağrısı ve dar
+fiyat/indirim Matematik görevleri için dönüşüm kaynağı olarak kullanılabilir;
+mevcut hali istem–hedef (prompt–target) eğitim seti değildir.
 
 ### Mehmet Emre Öz — kapsam geniş, cevap ailesi tekrarları azaltılmalı
 
@@ -187,7 +205,7 @@ açıklamalar sunuyor.
 **Artıları**
 
 - 1.093 satırla geniş bir konu ve terim hacmi sağlar.
-- Rol ve içerik alanları geçerlidir; boş içerik veya exact satır tekrarı yoktur.
+- Rol ve içerik alanları geçerlidir; boş içerik veya birebir satır tekrarı yoktur.
 - Kısa terim açıklaması biçimi açık ve dönüşümü kolaydır.
 
 **Eksileri ve riskleri**
@@ -197,7 +215,7 @@ açıklamalar sunuyor.
 - Aynı tanımın farklı istemlerle tekrarı belirli cevap kalıplarını aşırı ağırlıklandırabilir.
 
 **Hazırlık kararı:** Terim kimliği, kaynak alanı ve cevap ailesi bazlı tekrar
-azaltma sonrasında Conversation ve alan Instruction verisi olarak kullanılabilir.
+azaltma sonrasında Diyalog ve alan odaklı Talimat İzleme verisi olarak kullanılabilir.
 
 ### Mert Ali Alkan — müşteri destek davranışı iyi, politika içeriği doğrulanmalı
 
@@ -217,7 +235,7 @@ ve sonraki adım önerisi üretiyor.
 - Gerçek görünümlü bir e-posta adresi yer tutucuya çevrilmelidir.
 
 **Hazırlık kararı:** Politika metinleri doğrulanmalı, iletişim bilgileri
-anonimleştirilmeli ve Tool Call hedefleniyorsa sipariş/destek fonksiyon şemaları
+anonimleştirilmeli ve Araç Çağrısı hedefleniyorsa sipariş/destek fonksiyon şemaları
 ayrıca yazılmalıdır.
 
 ### Muhammet Yusuf Kaydın — öznel söylem için değerli, olgusal veri olarak uygun değil
@@ -227,7 +245,7 @@ ayrıca yazılmalıdır.
 
 **Artıları**
 
-- 529 satırda boş içerik, geçersiz rol veya exact satır tekrarı yoktur.
+- 529 satırda boş içerik, geçersiz rol veya birebir satır tekrarı yoktur.
 - Aynı konuya farklı bakış açıları sunan uzun cevaplar vardır.
 - Topluluk dili ve öznel görüş üretimi araştırmalarında kullanılabilir.
 
@@ -236,7 +254,7 @@ ayrıca yazılmalıdır.
 - 405 kullanıcı istemi normalleştirilmiş tekrardır: **%76,56**.
 - Çelişkili görüşler tek doğru cevap gibi öğrenilebilir.
 - Satır düzeyinde kaynak URL'si ve içerik kaldırma mekanizması yoktur.
-- README 527 satır bildirirken gerçek split 529 satırdır.
+- README 527 satır bildirirken gerçek veri bölümü (split) 529 satırdır.
 
 **Hazırlık kararı:** Yalnız görüş çeşitliliği ve öznel diyalog görevlerinde,
 kaynak türü ve görüş etiketi korunarak kullanılmalıdır.
@@ -260,7 +278,7 @@ cevaplar sağlıyor.
 - İdari etkili cevaplar güncel kaynak getirilmeden kesin yanıt gibi sunulmamalıdır.
 
 **Hazırlık kararı:** Güncel resmî kaynak getirme, geçerlilik tarihi, atıf zorunluluğu
-ve belirsizlik diliyle Conversation/Instruction kaynağı olabilir.
+ve belirsizlik diliyle Diyalog/Talimat İzleme kaynağı olabilir.
 
 ### Serhat Kılıç — iki dilli kimlik çeşitliliği var, tip ve tekrar temizliği gerekli
 
@@ -278,51 +296,52 @@ sorularına cevap veriyor.
 - 154 mesajdaki `images`, `thinking` ve `tool_calls` alanları gerçek `null` yerine
   `"null"` dizesi taşır; toplam 462 tip hatası vardır.
 - Güvenlik, sınır ve tutarlı ret davranışı sınırlıdır.
-- NamazAsistan Identity ile dört ortak kullanıcı istemi bulunur.
+- NamazAsistan kimlik veri setiyle dört ortak kullanıcı istemi bulunur.
 
 **Hazırlık kararı:** Tip düzeltmesi ve tekrar azaltma sonrasında düşük ağırlıklı,
-iki dilli Identity tohumu olarak kullanılabilir.
+iki dilli Kimlik (Identity) tohumu olarak kullanılabilir.
 
 ## Model yetenek alanlarıyla eşleşme
 
 | Alan | Mevcut karşılık | Kullanılabilecek kaynaklar | Hazırlanması gerekenler |
 |---|---|---|---|
-| Identity | 2 doğrudan | NamazAsistan Identity, Şahin Identity | Güvenlik, sınır, tutarlı ret ve kapsam dışı soru örnekleri |
-| Tool Call | 3 dönüşüm kaynağı | İthaki, e-ticaret, MEB | Araç şeması, argüman, sonuç, hata ve nihai cevap zinciri |
-| Conversation | 6 doğrudan, 2 kısmi | Genel bilgi, Marvel, e-ticaret, MEB, biyoloji, felsefe; kimlik setleri persona desteği | Multi-turn takip, düzeltme, konu geçişi ve uzun bağlam |
-| Instruction | 6 kısmi | E-ticaret, MEB, genel bilgi, biyoloji, Marvel, felsefe | Özetleme, yeniden yazma, sınıflandırma, biçim kısıtı ve çok adımlı görev |
-| Structured Output | 1 dönüşüm kaynağı | İthaki kataloğu | Prompt ile doğrulanabilir JSON/tablo hedefleri |
-| Math | 1 dar dönüşüm kaynağı | İthaki fiyat ve indirim alanları | Çözüm adımı, birim testleri ve genel matematik çeşitliliği |
-| Coding | Karşılık yok | — | Kod üretimi, test, hata ayıklama, açıklama, refactor ve algoritma verisi |
+| Kimlik (Identity) | 2 doğrudan | NamazAsistan kimlik, Şahin kimlik | Güvenlik, sınır, tutarlı ret ve kapsam dışı soru örnekleri |
+| Araç Çağrısı (Tool Calling) | 3 dönüşüm kaynağı | İthaki, e-ticaret, MEB | Araç şeması, argüman, sonuç, hata ve nihai cevap zinciri |
+| Diyalog (Conversation) | 6 doğrudan, 2 kısmi | Genel bilgi, Marvel, e-ticaret, MEB, biyoloji, felsefe; kimlik setleri model kimliği desteği | Çok turlu takip, düzeltme, konu geçişi ve uzun bağlam |
+| Talimat İzleme (Instruction Following) | 6 kısmi | E-ticaret, MEB, genel bilgi, biyoloji, Marvel, felsefe | Özetleme, yeniden yazma, sınıflandırma, biçim kısıtı ve çok adımlı görev |
+| Yapılandırılmış Çıktı (Structured Output) | 1 dönüşüm kaynağı | İthaki kataloğu | İstemle doğrulanabilir JSON/tablo hedefleri |
+| Matematik (Math) | 1 dar dönüşüm kaynağı | İthaki fiyat ve indirim alanları | Çözüm adımı, birim testleri ve genel matematik çeşitliliği |
+| Kodlama (Coding) | Karşılık yok | — | Kod üretimi, test, hata ayıklama, açıklama, yeniden düzenleme (refactoring) ve algoritma verisi |
 
 Alan bazındaki ayrıntılı tasarım ve kayıt sözleşmeleri için
-[Model Yetenek Alanları Eşleştirme Raporu](Model_Yetenek_Alanlari_Eslestirme_Raporu.md)
+[Model Yetenek Alanları Eşleştirmesi](model-yetenek-alani-eslestirmesi.md)
 kullanılabilir.
 
 ## Önerilen hedef veri şemaları
 
 | Alan | Önerilen kayıt biçimi | Zorunlu alanlar | Temel doğrulama |
 |---|---|---|---|
-| Identity | `messages` + persona metadata | `system`, `user`, `assistant`, `persona_id`, `language`, `policy_scope` | Kimlik tutarlılığı, sınır ve ret davranışı testleri |
-| Tool Call | Araç tanımı + çağrı + sonuç + cevap | `tools`, `tool_name`, `arguments`, `tool_result`, `assistant_final` | JSON Schema, araç adı, argüman tipi ve sonuç bağımlılığı |
-| Conversation | Çok turlu mesaj dizisi | `conversation_id`, `turn_index`, `role`, `content`, `topic` | Rol sırası, bağlam referansı ve tur bütünlüğü |
-| Instruction | İstem–kısıt–hedef üçlüsü | `instruction`, `constraints`, `input`, `target` | Kısıt karşılanması ve görev türü kontrolü |
-| Structured Output | İstem + şema + çıktı | `prompt`, `schema`, `target_json` | JSON parse, şema uyumu ve alan tipi kontrolü |
-| Math | Problem + çözüm + cevap | `problem`, `solution_steps`, `final_answer`, `unit` | Yeniden hesaplama ve birim tutarlılığı |
-| Coding | Görev + bağlam + kod + test | `task`, `language`, `context`, `solution`, `tests` | Derleme/çalıştırma, test ve güvenli kod kontrolü |
+| Kimlik (Identity) | `messages` + model kimliği meta verisi (persona metadata) | `system`, `user`, `assistant`, `persona_id`, `language`, `policy_scope` | Kimlik tutarlılığı, sınır ve ret davranışı testleri |
+| Araç Çağrısı (Tool Calling) | Araç tanımı + çağrı + sonuç + cevap | `tools`, `tool_name`, `arguments`, `tool_result`, `assistant_final` | JSON Schema, araç adı, argüman tipi ve sonuç bağımlılığı |
+| Diyalog (Conversation) | Çok turlu mesaj dizisi | `conversation_id`, `turn_index`, `role`, `content`, `topic` | Rol sırası, bağlam referansı ve tur bütünlüğü |
+| Talimat İzleme (Instruction Following) | İstem–kısıt–hedef üçlüsü | `instruction`, `constraints`, `input`, `target` | Kısıt karşılanması ve görev türü kontrolü |
+| Yapılandırılmış Çıktı (Structured Output) | İstem + şema + çıktı | `prompt`, `schema`, `target_json` | JSON ayrıştırma (parse), şema uyumu ve alan tipi kontrolü |
+| Matematik (Math) | Problem + çözüm + cevap | `problem`, `solution_steps`, `final_answer`, `unit` | Yeniden hesaplama ve birim tutarlılığı |
+| Kodlama (Coding) | Görev + bağlam + kod + test | `task`, `language`, `context`, `solution`, `tests` | Derleme/çalıştırma, test ve güvenli kod kontrolü |
 
 ## Teknik uygulama planı
 
-1. **Ortak kanonik şema oluşturun.** Kaynak veri seti, commit kimliği, dil, görev
+1. **Ortak kanonik şema oluşturun.** Kaynak veri seti, sürüm kimliği (commit), dil, görev
    türü ve özgün satır kimliğini her kayıtta koruyun.
 2. **Mesaj tiplerini normalize edin.** `"null"` dizelerini gerçek `null` değerine
    dönüştürün; rol sırası ve içerik tiplerini JSON Schema ile doğrulayın.
-3. **Tekrar ailelerini kümeleyin.** Exact kontrolün yanında normalleştirilmiş istem
+3. **Tekrar ailelerini kümeleyin.** Birebir tekrar kontrolünün yanında normalleştirilmiş istem
    ve cevap anahtarlarını kullanın; eğitim ağırlığını küme büyüklüğüne göre dengeleyin.
-4. **`thinking` ve nihai cevabı ayırın.** Yayımlanacak SFT hedefinde yalnız
+4. **`thinking` ve nihai cevabı ayırın.** Yayımlanacak denetimli ince ayar (SFT) hedefinde yalnız
    kullanıcıya gösterilecek nihai cevabı tutun.
 5. **Dönüşüm görevlerini açık şemayla üretin.** İthaki, e-ticaret ve MEB kaynaklarından
-   Tool Call veya Structured Output türetilirken her hedefi deterministik doğrulayıcıyla sınayın.
+   Araç Çağrısı veya Yapılandırılmış Çıktı türetilirken her hedefi deterministik
+   bir doğrulayıcıyla sınayın.
 6. **Zaman hassas cevapları kaynak katmanına bağlayın.** MEB ve politika içeren
    e-ticaret örneklerinde geçerlilik tarihi ve resmî kaynak alanı zorunlu olsun.
 7. **Alan bazlı kabul testleri yazın.** JSON Schema, araç argümanı, matematik
@@ -332,10 +351,10 @@ kullanılabilir.
 
 - Normalleştirilmiş tekrar analizi noktalama ve harf farklarını yok sayar; tam
   anlamsal benzerlik modeli değildir.
-- Kişisel veri taraması regex tabanlıdır; bağlamsal kişi ve kurum adlarını bütünüyle yakalayamaz.
+- Kişisel veri taraması düzenli ifade (regex) tabanlıdır; bağlamsal kişi ve kurum adlarını bütünüyle yakalayamaz.
 - Olgusal cevapların tamamı alan uzmanı tarafından yeniden doğrulanmamıştır.
 - Analiz, veri seti anlık görüntülerini değerlendirir; kaynak depolar sonradan değişebilir.
-- Bu çalışma model eğitimi veya benchmark sonucu içermez; veri kalitesi ve görev
+- Bu çalışma model eğitimi veya kıyaslama testi (benchmark) sonucu içermez; veri kalitesi ve görev
   uyumu bulguları doğrudan model performansı iddiasına dönüştürülemez.
 
 ## Kanıt ve yeniden üretilebilirlik
@@ -357,5 +376,5 @@ ile bu depodaki JSON çıktılarından yeniden üretilebilir.
 - Eğitimde hangi yetenek alanları birlikte, hangileri ayrı adaptör veya veri karışımıyla ele alınmalı?
 - Zaman hassas alanlarda kaynak getirme başarısı nasıl ölçülmeli?
 - Normalleştirilmiş tekrar kümelerinde korunacak örnek sayısı görev bazında nasıl belirlenmeli?
-- Identity davranışı için güvenlik ve kapsam sınırı testleri hangi senaryoları içermeli?
-- Tool Call, Structured Output, Math ve Coding veri üretiminde otomatik doğrulama eşiği ne olmalı?
+- Kimlik davranışı için güvenlik ve kapsam sınırı testleri hangi senaryoları içermeli?
+- Araç Çağrısı, Yapılandırılmış Çıktı, Matematik ve Kodlama veri üretiminde otomatik doğrulama eşiği ne olmalı?

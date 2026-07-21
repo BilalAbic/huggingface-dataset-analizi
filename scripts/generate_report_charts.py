@@ -21,15 +21,25 @@ GOLD = "#B7791F"
 OLIVE = "#6B7B2E"
 
 DISPLAY_NAMES = {
-    "aliFurkan123/cultural-questions-dataset": "Kültürel / genel bilgi",
-    "Aysenur44/namaz-vakti-identity-tr": "NamazAsistan Identity",
+    "aliFurkan123/cultural-questions-dataset": "Kültürel ve genel bilgi",
+    "Aysenur44/namaz-vakti-identity-tr": "NamazAsistan kimlik",
     "Egertekin/marvel-domain-dataset": "Marvel",
     "gururaser/ithaki-bilimkurgu-klasikleri": "İthaki kataloğu",
     "Mer1Alii/TR-ECommerce-CustomerSupport-Instructions": "E-ticaret destek",
-    "namruni/meb-ogretmen-soru-cevap": "MEB öğretmen S-C",
+    "namruni/meb-ogretmen-soru-cevap": "MEB öğretmen soru-cevap",
     "nyzmemre/biyoloji-terimleri-turkce-sa": "Biyoloji terimleri",
-    "sk75/sahin_identity": "Şahin Identity",
+    "sk75/sahin_identity": "Şahin kimlik",
     "yoitsmeyusuf/felsefe_finetune": "Felsefe",
+}
+
+CAPABILITY_DISPLAY_NAMES = {
+    "Identity": "Kimlik (Identity)",
+    "Tool Call": "Araç Çağrısı (Tool Calling)",
+    "Conversation": "Diyalog (Conversation)",
+    "Instruction": "Talimat İzleme (Instruction Following)",
+    "Structured Output": "Yapılandırılmış Çıktı (Structured Output)",
+    "Math": "Matematik (Math)",
+    "Coding": "Kodlama (Coding)",
 }
 
 
@@ -113,7 +123,7 @@ def dataset_size_chart(profiles: list[dict]) -> None:
         draw.text((x0 + bar_width + 12, y + 2), f"{value:,}".replace(",", "."), font=VALUE_FONT, fill=INK)
 
     draw.text((72, 808), "Kaynak: outputs/data_quality_profiles.json", font=NOTE_FONT, fill=MUTED)
-    save(image, "veri_seti_satir_sayilari.png")
+    save(image, "veri-seti-satir-sayilari.png")
 
 
 def duplicate_rate_chart(profiles: list[dict]) -> None:
@@ -155,7 +165,7 @@ def duplicate_rate_chart(profiles: list[dict]) -> None:
             draw.text((x0 + max(bar_width, 0) + 10, y + offset), value_label, font=TICK_FONT, fill=INK if value else MUTED)
 
     draw.text((72, 898), "Kaynak: outputs/data_quality_profiles.json", font=NOTE_FONT, fill=MUTED)
-    save(image, "normalizasyon_tekrar_oranlari.png")
+    save(image, "tekrar-oranlari.png")
 
 
 def capability_coverage_chart(manifest: dict) -> None:
@@ -163,7 +173,7 @@ def capability_coverage_chart(manifest: dict) -> None:
     for capability in manifest["capabilities"]:
         rows.append(
             (
-                capability["capability"],
+                CAPABILITY_DISPLAY_NAMES[capability["capability"]],
                 len(capability.get("direct_datasets", [])),
                 len(capability.get("partial_datasets", [])),
                 len(capability.get("conversion_sources", [])),
@@ -175,14 +185,14 @@ def capability_coverage_chart(manifest: dict) -> None:
         "Yetenek alanı için kullanılabilir veri seti sayısı",
         "Bir veri seti birden fazla alanda sayılabilir; doğrudan, kısmi ve dönüşüm kaynağı ayrımı korunmuştur",
     )
-    x0, y0, width = 475, 230, 990
+    x0, y0, width = 700, 230, 765
     group_height, bar_height = 82, 20
     plot_height = group_height * len(rows)
     maximum = 6
     draw_axis(draw, x0=x0, y0=y0, plot_width=width, plot_height=plot_height, maximum=maximum, ticks=[0, 1, 2, 3, 4, 5, 6])
 
     legend = [(BLUE, "Doğrudan"), (GOLD, "Kısmi"), (OLIVE, "Dönüşüm kaynağı")]
-    legend_x = 940
+    legend_x = 850
     for color, label in legend:
         draw.rounded_rectangle((legend_x, 174, legend_x + 22, 196), radius=5, fill=color)
         draw.text((legend_x + 32, 173), label, font=LEGEND_FONT, fill=INK)
@@ -199,7 +209,7 @@ def capability_coverage_chart(manifest: dict) -> None:
             draw.text((x0 + bar_width + 9, y + offset - 1), str(value), font=TICK_FONT, fill=INK if value else MUTED)
 
     draw.text((72, 818), "Kaynak: ekler/dataset_manifest.json", font=NOTE_FONT, fill=MUTED)
-    save(image, "yetenek_alani_kapsami.png")
+    save(image, "yetenek-alani-kapsami.png")
 
 
 def main() -> None:

@@ -1,18 +1,20 @@
-# Model Yetenek Alanları Eşleştirme Raporu
+# Model Yetenek Alanları Eşleştirmesi
 
-[Ana teknik değerlendirme](HuggingFace_Veri_Setleri_Yetenek_Alani_Raporu.md) ·
+[Ana teknik değerlendirme](veri-seti-teknik-degerlendirme.md) ·
 [Depo ana sayfası](../README.md) ·
 [Makinece okunabilir manifest](../ekler/dataset_manifest.json)
 
 ## Teknik özet
 
-- **Identity için iki doğrudan veri seti vardır;** kimlik ve geliştirici cevapları
+- **Kimlik (Identity) için iki doğrudan veri seti vardır;** kimlik ve geliştirici cevapları
   mevcut olsa da güvenlik, kapsam sınırı ve tutarlı ret davranışı ayrıca hazırlanmalıdır.
-- **Conversation için altı doğrudan ve iki persona destek kaynağı bulunur;** mevcut
-  örnekler tek turludur ve gerçek multi-turn bağlam takibi sağlamaz.
-- **Instruction katkısı altı veri setinde kısmi düzeydedir;** bunlar genel talimat
-  çeşitliliğinden çok alan soru-cevap davranışı öğretir.
-- **Tool Call, Structured Output ve Math dönüşüm gerektirir; Coding karşılığı yoktur.**
+- **Diyalog (Conversation) için altı doğrudan ve iki model kimliği (persona) destek
+  kaynağı bulunur;** mevcut örnekler tek turludur ve gerçek çok turlu (multi-turn)
+  bağlam takibi sağlamaz.
+- **Talimat İzleme (Instruction Following) katkısı altı veri setinde kısmi
+  düzeydedir;** bunlar genel talimat çeşitliliğinden çok alan soru-cevap davranışı öğretir.
+- **Araç Çağrısı (Tool Calling), Yapılandırılmış Çıktı (Structured Output) ve
+  Matematik (Math) dönüşüm gerektirir; Kodlama (Coding) karşılığı yoktur.**
   Bu alanlar için hedef kayıt şemaları ve otomatik doğrulayıcılar ayrıca yazılmalıdır.
 
 ## Kapsam ve eşleştirme ölçütleri
@@ -20,6 +22,10 @@
 Bu çalışma yalnızca daha önce indirilen ve tam satır analizi yapılan dokuz
 Hugging Face veri setini kapsar. Yeni veri seti eklenmemiştir. Eşleştirme,
 veri seti adından değil gerçek satır şeması ve içeriklerinden yapılmıştır.
+
+Yetenek adları ilk kullanımda Türkçe ve İngilizce birlikte yazılmıştır. `messages`,
+`tool_calls`, `prompt`, `target` ve JSON Schema gibi teknik adlar, veri yapısıyla
+uyumluluğu korumak için çevrilmemiştir.
 
 ### Eşleştirme düzeyleri
 
@@ -32,18 +38,18 @@ veri seti adından değil gerçek satır şeması ve içeriklerinden yapılmış
 
 | Alan | Proje durumu | Mevcut veri setleri | Sonuç |
 |---|---|---|---|
-| Identity | Tamamlandı | `Aysenur44/namaz-vakti-identity-tr`, `sk75/sahin_identity` | Doğrudan kimlik örnekleri var; güvenlik ilkeleri ve ayrıntılı sınır cevapları eksik. |
-| Tool Call | Planlandı | Doğrudan veri seti yok | İthaki, e-ticaret ve MEB içerikleri dönüştürme kaynağı olabilir. |
-| Conversation | Planlandı | Genel bilgi, Marvel, e-ticaret, MEB, biyoloji ve felsefe | Tek seferlik diyalog için kullanılabilir; gerçek multi-turn bağlam takibi yok. |
-| Instruction | Planlandı | E-ticaret, MEB, genel bilgi, biyoloji, Marvel ve felsefe | Alan soru-cevap eğitimi sağlar; geniş kapsamlı talimat izleme için kısmi kalır. |
-| Structured Output | Planlandı | Doğrudan hedef çıktı veri seti yok | İthaki kataloğu JSON/tablo hedeflerine dönüştürülebilir. |
-| Math | Planlandı | Doğrudan veri seti yok | İthaki fiyat/indirim alanlarından sınırlı aritmetik örnekleri türetilebilir. |
-| Coding | Planlandı | Veri seti yok | Mevcut koleksiyonda kod yazma, hata ayıklama veya refactor örneği bulunmuyor. |
+| Kimlik (Identity) | Tamamlandı | `Aysenur44/namaz-vakti-identity-tr`, `sk75/sahin_identity` | Doğrudan kimlik örnekleri var; güvenlik ilkeleri ve ayrıntılı sınır cevapları eksik. |
+| Araç Çağrısı (Tool Calling) | Planlandı | Doğrudan veri seti yok | İthaki, e-ticaret ve MEB içerikleri dönüştürme kaynağı olabilir. |
+| Diyalog (Conversation) | Planlandı | Genel bilgi, Marvel, e-ticaret, MEB, biyoloji ve felsefe | Tek seferlik diyalog için kullanılabilir; gerçek çok turlu bağlam takibi yok. |
+| Talimat İzleme (Instruction Following) | Planlandı | E-ticaret, MEB, genel bilgi, biyoloji, Marvel ve felsefe | Alan soru-cevap eğitimi sağlar; geniş kapsamlı talimat izleme için kısmi kalır. |
+| Yapılandırılmış Çıktı (Structured Output) | Planlandı | Doğrudan hedef çıktı veri seti yok | İthaki kataloğu JSON/tablo hedeflerine dönüştürülebilir. |
+| Matematik (Math) | Planlandı | Doğrudan veri seti yok | İthaki fiyat/indirim alanlarından sınırlı aritmetik örnekleri türetilebilir. |
+| Kodlama (Coding) | Planlandı | Veri seti yok | Mevcut koleksiyonda kod yazma, hata ayıklama veya yeniden düzenleme (refactoring) örneği bulunmuyor. |
 
-![Yetenek alanlarında doğrudan, kısmi ve dönüşüm kaynağı eşleşmeleri](gorseller/yetenek_alani_kapsami.png)
+![Yetenek alanlarında doğrudan, kısmi ve dönüşüm kaynağı eşleşmeleri](gorseller/yetenek-alani-kapsami.png)
 
-Grafik, veri seti sayısını eşleşme düzeyine göre gösterir. Conversation kapsamı
-görece geniştir; Instruction kayıtları kısmi, Tool Call ve yapılandırılmış görevler
+Grafik, veri seti sayısını eşleşme düzeyine göre gösterir. Diyalog kapsamı
+görece geniştir; Talimat İzleme kayıtları kısmi, Araç Çağrısı ve yapılandırılmış görevler
 ise dönüşüm kaynağı düzeyindedir. Sayılar model başarısını veya veri kalitesini
 değil, mevcut içeriğin hangi görev biçimine ne kadar yakın olduğunu ifade eder.
 
@@ -51,15 +57,15 @@ değil, mevcut içeriğin hangi görev biçimine ne kadar yakın olduğunu ifade
 
 | Alan | Önerilen kayıt | Zorunlu alanlar | Kabul kontrolü |
 |---|---|---|---|
-| Identity | Persona metadata içeren `messages` | `system`, `user`, `assistant`, `persona_id`, `language`, `policy_scope` | Aynı kimliğe tutarlı cevap, kapsam dışı soruda sınır davranışı |
-| Tool Call | Araç tanımı + çağrı + sonuç + nihai cevap | `tools`, `tool_name`, `arguments`, `tool_result`, `assistant_final` | JSON Schema, araç adı, argüman tipi, sonucun cevapta doğru kullanımı |
-| Conversation | Çok turlu mesaj dizisi | `conversation_id`, `turn_index`, `role`, `content`, `topic` | Rol sırası, önceki mesaja referans ve tur bütünlüğü |
-| Instruction | Görev, girdi, kısıt ve hedef | `instruction`, `input`, `constraints`, `target` | Görev türü ve bütün kısıtların karşılanması |
-| Structured Output | İstem + şema + çıktı | `prompt`, `schema`, `target_json` | JSON parse, zorunlu alan ve veri tipi doğrulaması |
-| Math | Problem + çözüm + nihai cevap | `problem`, `solution_steps`, `final_answer`, `unit` | Yeniden hesaplama, tolerans ve birim tutarlılığı |
-| Coding | Görev + bağlam + çözüm + test | `task`, `language`, `context`, `solution`, `tests` | Derleme/çalıştırma, test sonucu ve güvenli kod kontrolü |
+| Kimlik (Identity) | Model kimliği meta verisi (persona metadata) içeren `messages` | `system`, `user`, `assistant`, `persona_id`, `language`, `policy_scope` | Aynı kimliğe tutarlı cevap, kapsam dışı soruda sınır davranışı |
+| Araç Çağrısı (Tool Calling) | Araç tanımı + çağrı + sonuç + nihai cevap | `tools`, `tool_name`, `arguments`, `tool_result`, `assistant_final` | JSON Schema, araç adı, argüman tipi, sonucun cevapta doğru kullanımı |
+| Diyalog (Conversation) | Çok turlu mesaj dizisi | `conversation_id`, `turn_index`, `role`, `content`, `topic` | Rol sırası, önceki mesaja referans ve tur bütünlüğü |
+| Talimat İzleme (Instruction Following) | Görev, girdi, kısıt ve hedef | `instruction`, `input`, `constraints`, `target` | Görev türü ve bütün kısıtların karşılanması |
+| Yapılandırılmış Çıktı (Structured Output) | İstem + şema + çıktı | `prompt`, `schema`, `target_json` | JSON ayrıştırma (parse), zorunlu alan ve veri tipi doğrulaması |
+| Matematik (Math) | Problem + çözüm + nihai cevap | `problem`, `solution_steps`, `final_answer`, `unit` | Yeniden hesaplama, tolerans ve birim tutarlılığı |
+| Kodlama (Coding) | Görev + bağlam + çözüm + test | `task`, `language`, `context`, `solution`, `tests` | Derleme/çalıştırma, test sonucu ve güvenli kod kontrolü |
 
-## Identity — Tamamlandı
+## Kimlik (Identity) — Tamamlandı
 
 ### Doğrudan veri setleri
 
@@ -79,11 +85,11 @@ değil, mevcut içeriğin hangi görev biçimine ne kadar yakın olduğunu ifade
    - **Sınırı:** Asistan cevaplarının %64,94'ü normalleştirilmiş tekrardır; 462 alanda gerçek `null` yerine `"null"` dizesi vardır. README ve lisans yoktur.
    - **Kaynak erişimi:** Ham veri bu teslim deposunda çoğaltılmamıştır; yukarıdaki Hugging Face bağlantısı kullanılır.
 
-> Projedeki **Tamamlandı** durumu korunmuştur. Ancak verilen Identity tanımındaki
+> Projedeki **Tamamlandı** durumu korunmuştur. Ancak verilen Kimlik tanımındaki
 > “sınırlar ve güvenlik ilkeleri” bölümü bu iki veri setinde yeterli kapsamda
 > bulunmadığı için ayrıca test verisiyle tamamlanmalıdır.
 
-## Tool Call — Planlandı
+## Araç Çağrısı (Tool Calling) — Planlandı
 
 ### Doğrudan eşleşme
 
@@ -97,32 +103,32 @@ rolü, fonksiyon adı, argüman, fonksiyon sonucu veya sonuçtan kullanıcı cev
 - [Mer1Alii/TR-ECommerce-CustomerSupport-Instructions](https://huggingface.co/datasets/Mer1Alii/TR-ECommerce-CustomerSupport-Instructions): `get_order_status`, `cancel_order` ve `create_support_ticket` senaryolarına dönüştürülebilir. Gerçek dışı politika ve iletişim iddiaları önce temizlenmelidir.
 - [namruni/meb-ogretmen-soru-cevap](https://huggingface.co/datasets/namruni/meb-ogretmen-soru-cevap): `search_regulation` ve `fetch_official_notice` araçlarına dönüştürülebilir; sonuçlar güncel resmî kaynaklardan gelmelidir.
 
-Bu kaynaklar Tool Call veri seti değildir. Fonksiyon şeması, doğru argümanlar,
+Bu kaynaklar doğrudan Araç Çağrısı veri seti değildir. Fonksiyon şeması, doğru argümanlar,
 araç sonucu, hata senaryosu ve sonuçtan üretilen nihai cevap ayrıca yazılmalıdır.
 
-## Conversation — Planlandı
+## Diyalog (Conversation) — Planlandı
 
 ### Tek seferlik diyalog için kullanılabilecek veri setleri
 
 | Veri seti | Satır | Kullanım | Temel sınırlama |
 |---|---:|---|---|
-| [aliFurkan123/cultural-questions-dataset](https://huggingface.co/datasets/aliFurkan123/cultural-questions-dataset) | 500 | Türkçe genel bilgi ve açıklayıcı cevap | Sentetik olgular kaynaklandırılmamış; tüm asistan örneklerinde `thinking` var. |
+| [aliFurkan123/cultural-questions-dataset](https://huggingface.co/datasets/aliFurkan123/cultural-questions-dataset) | 500 | Türkçe genel bilgi ve açıklayıcı cevap | Sentetik olgular kaynaklandırılmamış; tüm asistan örneklerinde `thinking` (akıl yürütme) alanı var. |
 | [Egertekin/marvel-domain-dataset](https://huggingface.co/datasets/Egertekin/marvel-domain-dataset) | 177 | Alan odaklı Türkçe soru-cevap | Kullanıcı istemlerinin %75,71'i tekrar; kaynak/lisans zinciri eksik. |
 | [Mer1Alii/TR-ECommerce-CustomerSupport-Instructions](https://huggingface.co/datasets/Mer1Alii/TR-ECommerce-CustomerSupport-Instructions) | 186 | Müşteriyle doğal ve çözüm odaklı konuşma | Sentetik şirket politikaları yanlış davranış öğretebilir; `thinking` kaldırılmalı. |
 | [namruni/meb-ogretmen-soru-cevap](https://huggingface.co/datasets/namruni/meb-ogretmen-soru-cevap) | 450 | Uzun, bağlamlı öğretmen soru-cevapları | Zaman hassas mevzuat; lisans yok; güncel kaynak getirme gerekir. |
 | [nyzmemre/biyoloji-terimleri-turkce-sa](https://huggingface.co/datasets/nyzmemre/biyoloji-terimleri-turkce-sa) | 1.093 | Kısa Türkçe bilimsel açıklamalar | Cevapların %21,59'u tekrar; kaynak ve lisans yok. |
 | [yoitsmeyusuf/felsefe_finetune](https://huggingface.co/datasets/yoitsmeyusuf/felsefe_finetune) | 529 | Öznel ve farklı görüş içeren Türkçe cevaplar | İstemlerin %76,56'sı tekrar; görüşler doğrulanmış bilgi gibi kullanılmamalı. |
 
-Identity veri setleri persona konuşmalarına düşük ağırlıkla eklenebilir; genel
-Conversation setinin ana gövdesi olmamalıdır.
+Kimlik veri setleri model kimliği (persona) konuşmalarına düşük ağırlıkla eklenebilir; genel
+Diyalog setinin ana gövdesi olmamalıdır.
 
 ### Eksik kapsam
 
 Mevcut satırlar çoğunlukla `user → assistant` biçimindedir. Önceki kullanıcı
 mesajına gönderme, düzeltme, takip sorusu, konu değiştirme ve çok turlu bağlam
-koruma örnekleri bulunmadığı için **multi-turn Conversation ayrıca üretilmelidir**.
+koruma örnekleri bulunmadığı için **çok turlu Diyalog verisi ayrıca üretilmelidir**.
 
-## Instruction — Planlandı
+## Talimat İzleme (Instruction Following) — Planlandı
 
 Mevcut soru-cevap setleri, dar alan talimatlarına cevap vermeyi kısmen öğretir:
 
@@ -130,14 +136,15 @@ Mevcut soru-cevap setleri, dar alan talimatlarına cevap vermeyi kısmen öğret
 - MEB: uzun bir sorudan uygulanabilir açıklama üretme.
 - Genel bilgi ve biyoloji: bilgi istemini açıklayıcı cevapla karşılama.
 - Marvel: alan sorularını cevaplama; tekrarlar düzeltilmeden kullanılmamalı.
-- Felsefe: görüş üretme; olgusal instruction seti olarak kullanılmamalı.
+- Felsefe: görüş üretme; olgusal talimat izleme veri seti olarak kullanılmamalı.
 
 Ancak özetleme, yeniden yazma, sınıflandırma, karşılaştırma, biçim kısıtı,
-çok adımlı görev, olumsuz kısıt ve örnekle yönlendirme gibi instruction-following
-çeşitliliği yoktur. Bu nedenle bu veri setleri **genel Instruction veri seti
-değil, alan SFT kaynağıdır**.
+çok adımlı görev, olumsuz kısıt ve örnekle yönlendirme gibi talimat izleme
+(instruction-following) çeşitliliği yoktur. Bu nedenle bu veri setleri **genel
+Talimat İzleme veri seti değil, alan odaklı denetimli ince ayar
+(Supervised Fine-Tuning, SFT) kaynağıdır**.
 
-## Structured Output — Planlandı
+## Yapılandırılmış Çıktı (Structured Output) — Planlandı
 
 ### Doğrudan eşleşme
 
@@ -155,10 +162,11 @@ kullanılabilir:
 - Eksik alanları gerçek `null` ile döndürme
 - ISBN, fiyat ve indirim alanlarında tür doğrulaması
 
-Katalog zaten yapılandırılmış veri olsa da mevcut haliyle prompt/target Structured
-Output eğitim seti değildir; görev istemleri ve beklenen çıktılar oluşturulmalıdır.
+Katalog zaten yapılandırılmış veri olsa da mevcut haliyle istem–hedef
+(prompt–target) Yapılandırılmış Çıktı eğitim seti değildir; görev istemleri ve
+beklenen çıktılar oluşturulmalıdır.
 
-## Math — Planlandı
+## Matematik (Math) — Planlandı
 
 ### Doğrudan eşleşme
 
@@ -169,17 +177,17 @@ cevabı içeren veri seti yoktur.
 temel yüzde/indirim soruları üretmek için kullanılabilir. Bu yalnızca dar kapsamlı
 aritmetik sağlar; cebir, geometri, olasılık veya ileri matematik yerine geçmez.
 
-## Coding — Planlandı
+## Kodlama (Coding) — Planlandı
 
 **Bulunmuyor.** Mevcut dokuz veri setinde kod üretimi, test yazma, hata ayıklama,
-kod açıklama, refactor, algoritma veya teknik problem çözme hedefi yoktur.
-Alanla ilgisi olmayan metinleri Coding etiketiyle kullanmak eğitim kalitesini
-düşüreceğinden mevcut koleksiyondan Coding seti seçilmemiştir.
+kod açıklama, yeniden düzenleme (refactoring), algoritma veya teknik problem çözme hedefi yoktur.
+Alanla ilgisi olmayan metinleri Kodlama etiketiyle kullanmak eğitim kalitesini
+düşüreceğinden mevcut koleksiyondan Kodlama seti seçilmemiştir.
 
 ## Uygulama kararları
 
-- Identity dışındaki durumlar kullanıcı tarafından verilen şekilde `Planlandı` olarak korunmuştur.
+- Kimlik dışındaki durumlar kullanıcı tarafından verilen şekilde `Planlandı` olarak korunmuştur.
 - Aynı veri seti birden fazla alana katkı sağlayabilir; bu, içeriğin her alanda doğrudan hazır olduğu anlamına gelmez.
 - `thinking` içeren 1.136 asistan mesajından ayrıca yalnızca nihai cevabı taşıyan bir sürüm oluşturulmalıdır.
-- Tool Call, Structured Output, Math ve Coding kayıtları yalnız otomatik doğrulayıcıları geçtikten sonra eğitim havuzuna alınmalıdır.
-- Alan bazındaki ayrıntılı veri kalitesi riskleri için [ana teknik rapor](HuggingFace_Veri_Setleri_Yetenek_Alani_Raporu.md) kullanılmalıdır.
+- Araç Çağrısı, Yapılandırılmış Çıktı, Matematik ve Kodlama kayıtları yalnız otomatik doğrulayıcıları geçtikten sonra eğitim havuzuna alınmalıdır.
+- Alan bazındaki ayrıntılı veri kalitesi riskleri için [ana teknik rapor](veri-seti-teknik-degerlendirme.md) kullanılmalıdır.
