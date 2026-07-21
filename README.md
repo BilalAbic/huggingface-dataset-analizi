@@ -9,8 +9,8 @@ alanları açısından incelenmiştir.
 
 | İçerik | Biçim | Bağlantı |
 |---|---|---|
-| Toplu değerlendirme raporu | Word | [Raporu indir](raporlar/HuggingFace_Veri_Setleri_Yetenek_Alani_Raporu.docx) |
-| Teknik yetenek alanı eşleştirmesi | Markdown | [Teknik raporu aç](raporlar/Teknik_Yetenek_Alani_Eslestirmesi.md) |
+| Toplu teknik değerlendirme | Markdown | [Ana raporu aç](raporlar/HuggingFace_Veri_Setleri_Yetenek_Alani_Raporu.md) |
+| Model yetenek alanı eşleştirmesi | Markdown | [Eşleştirme raporunu aç](raporlar/Model_Yetenek_Alanlari_Eslestirme_Raporu.md) |
 | Proje ve dosya rehberi | Markdown | [Dosya rehberini aç](raporlar/Proje_Dosya_Rehberi.md) |
 | Çalıştırılmış kalite analizi | HTML | [Notebook HTML çıktısını aç](notebook/huggingface_dataset_quality_analysis.html) |
 | Yeniden çalıştırılabilir analiz | Jupyter Notebook | [Notebook kaynağını aç](notebook/huggingface_dataset_quality_analysis.ipynb) |
@@ -48,9 +48,10 @@ Ayrıntılı kanıtlar [`outputs/`](outputs/) dosyalarında, alan eşleştirmele
 .
 ├── README.md
 ├── raporlar/
-│   ├── HuggingFace_Veri_Setleri_Yetenek_Alani_Raporu.docx
+│   ├── HuggingFace_Veri_Setleri_Yetenek_Alani_Raporu.md
+│   ├── Model_Yetenek_Alanlari_Eslestirme_Raporu.md
 │   ├── Proje_Dosya_Rehberi.md
-│   └── Teknik_Yetenek_Alani_Eslestirmesi.md
+│   └── gorseller/
 ├── notebook/
 │   ├── huggingface_dataset_quality_analysis.ipynb
 │   └── huggingface_dataset_quality_analysis.html
@@ -62,6 +63,8 @@ Ayrıntılı kanıtlar [`outputs/`](outputs/) dosyalarında, alan eşleştirmele
 ├── ekler/
 │   ├── alan_eslestirmesi.csv
 │   └── dataset_manifest.json
+├── scripts/
+│   └── generate_report_charts.py
 └── requirements.txt
 ```
 
