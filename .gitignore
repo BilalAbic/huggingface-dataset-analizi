@@ -1,18 +1,18 @@
-# Yerel Python ortamları ve önbellekler
+# Local Python environments and caches
 .venv/
 .notebook_deps/
 __pycache__/
 *.py[cod]
 
-# Notebook ve editör geçici dosyaları
+# Notebook and editor temporary files
 .ipynb_checkpoints/
 .vscode/
 .idea/
 
-# Word geçici/kilit dosyaları
+# Word temporary/lock files
 ~$*.docx
 *.tmp
 
-# İşletim sistemi dosyaları
+# Operating system files
 Thumbs.db
 .DS_Store

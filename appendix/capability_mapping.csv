@@ -1,0 +1,23 @@
+capability,status,matching_level,dataset,row_count,usage_note,link
+Identity,Completed,Direct,Aysenur44/namaz-vakti-identity-tr,4,"Identity and developer seed; safety and boundary coverage insufficient",https://huggingface.co/datasets/Aysenur44/namaz-vakti-identity-tr
+Identity,Completed,Direct,sk75/sahin_identity,77,"Bilingual identity; duplicate, null type and data card issues",https://huggingface.co/datasets/sk75/sahin_identity
+Tool Call,Planned,Conversion source,gururaser/ithaki-bilimkurgu-klasikleri,103,"Convertible into book search and detail tools",https://huggingface.co/datasets/gururaser/ithaki-bilimkurgu-klasikleri
+Tool Call,Planned,Conversion source,Mer1Alii/TR-ECommerce-CustomerSupport-Instructions,186,"Convertible into order and support tools",https://huggingface.co/datasets/Mer1Alii/TR-ECommerce-CustomerSupport-Instructions
+Tool Call,Planned,Conversion source,namruni/meb-ogretmen-soru-cevap,450,"Convertible into a regulation search tool",https://huggingface.co/datasets/namruni/meb-ogretmen-soru-cevap
+Conversation,Planned,Direct,aliFurkan123/cultural-questions-dataset,500,"Single-turn general knowledge dialogue",https://huggingface.co/datasets/aliFurkan123/cultural-questions-dataset
+Conversation,Planned,Direct,Egertekin/marvel-domain-dataset,177,"Single-turn domain dialogue; high prompt duplication",https://huggingface.co/datasets/Egertekin/marvel-domain-dataset
+Conversation,Planned,Direct,Mer1Alii/TR-ECommerce-CustomerSupport-Instructions,186,"Single-turn customer support dialogue",https://huggingface.co/datasets/Mer1Alii/TR-ECommerce-CustomerSupport-Instructions
+Conversation,Planned,Direct,namruni/meb-ogretmen-soru-cevap,450,"Single-turn long-context question answering",https://huggingface.co/datasets/namruni/meb-ogretmen-soru-cevap
+Conversation,Planned,Direct,nyzmemre/biyoloji-terimleri-turkce-sa,1093,"Single-turn scientific explanation",https://huggingface.co/datasets/nyzmemre/biyoloji-terimleri-turkce-sa
+Conversation,Planned,Direct,yoitsmeyusuf/felsefe_finetune,529,"Single-turn subjective opinion dialogue",https://huggingface.co/datasets/yoitsmeyusuf/felsefe_finetune
+Conversation,Planned,Partial,Aysenur44/namaz-vakti-identity-tr,4,"Persona support only; add at low weight",https://huggingface.co/datasets/Aysenur44/namaz-vakti-identity-tr
+Conversation,Planned,Partial,sk75/sahin_identity,77,"Persona support only; add at low weight",https://huggingface.co/datasets/sk75/sahin_identity
+Instruction,Planned,Partial,Mer1Alii/TR-ECommerce-CustomerSupport-Instructions,186,"Answers domain requests; no general instruction diversity",https://huggingface.co/datasets/Mer1Alii/TR-ECommerce-CustomerSupport-Instructions
+Instruction,Planned,Partial,namruni/meb-ogretmen-soru-cevap,450,"Explanation from a long question; no broad task diversity",https://huggingface.co/datasets/namruni/meb-ogretmen-soru-cevap
+Instruction,Planned,Partial,aliFurkan123/cultural-questions-dataset,500,"Explanation for an information request; no format constraints",https://huggingface.co/datasets/aliFurkan123/cultural-questions-dataset
+Instruction,Planned,Partial,nyzmemre/biyoloji-terimleri-turkce-sa,1093,"Term explanation; no task diversity",https://huggingface.co/datasets/nyzmemre/biyoloji-terimleri-turkce-sa
+Instruction,Planned,Partial,Egertekin/marvel-domain-dataset,177,"Domain question; high prompt duplication",https://huggingface.co/datasets/Egertekin/marvel-domain-dataset
+Instruction,Planned,Partial,yoitsmeyusuf/felsefe_finetune,529,"Opinion generation; must not be used as factual instruction data",https://huggingface.co/datasets/yoitsmeyusuf/felsefe_finetune
+Structured Output,Planned,Conversion source,gururaser/ithaki-bilimkurgu-klasikleri,103,"Convertible into JSON and table targets",https://huggingface.co/datasets/gururaser/ithaki-bilimkurgu-klasikleri
+Math,Planned,Conversion source,gururaser/ithaki-bilimkurgu-klasikleri,103,"Only price, discount and percentage arithmetic can be derived",https://huggingface.co/datasets/gururaser/ithaki-bilimkurgu-klasikleri
+Coding,Planned,No match,,,"No Coding example in the current collection",

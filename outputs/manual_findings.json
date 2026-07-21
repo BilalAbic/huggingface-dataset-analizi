@@ -3,18 +3,6 @@
   "scope": "Dokuz herkese açık Hugging Face veri setinin tam satır profili, veri kartı, şema, içerik örnekleri, kaynak ve kullanım riski incelemesi.",
   "portfolio_findings": [
     {
-      "severity": "high",
-      "finding": "Dokuz veri setinin altısında açık lisans bilgisi yok.",
-      "evidence": "Yalnız aliFurkan123 (MIT), gururaser (CC BY-NC 4.0) ve Mer1Alii (Apache 2.0) veri kartında lisans bildiriyor.",
-      "impact": "Dağıtım, model eğitimi ve özellikle ticari kullanım için yeniden kullanım hakkı belirsiz kalıyor."
-    },
-    {
-      "severity": "high",
-      "finding": "Veri setlerinin tamamı tek bölümden oluşuyor; doğrulama ve test bölümleri yok.",
-      "evidence": "Dokuz kaydın her birinde Dataset Viewer yalnız bir train veya turkish split gösteriyor.",
-      "impact": "Genelleme ölçümü yapılamıyor; aynı kavramın varyasyonları rastgele bölünürse değerlendirme sızıntısı oluşabilir."
-    },
-    {
       "severity": "medium",
       "finding": "İçsel dosya bütünlüğü genel olarak iyi, ancak anlam düzeyindeki tekrarlar yüksek olabiliyor.",
       "evidence": "Sekiz sohbet veri setinde boş içerik, geçersiz rol veya exact satır tekrarı yok. Buna karşılık Marvel kullanıcı sorularında %75,7, felsefe sorularında %76,6 ve biyoloji cevaplarında %21,6 normalleştirilmiş tekrar var.",
@@ -36,10 +24,10 @@
   "datasets": {
     "aliFurkan123/cultural-questions-dataset": {
       "intended_use": "Türkçe genel bilgi, trivia ve adım adım gerekçeli sohbet eğitimi.",
-      "disposition": "Koşullu kullanılabilir; önce olgusal doğrulama, kaynaklandırma ve kavram bazlı veri bölme gerekiyor.",
+      "disposition": "Koşullu kullanılabilir; önce olgusal doğrulama, kaynaklandırma ve konu dengeleme gerekiyor.",
       "strengths": [
         "500 satırın tamamı iki turlu, içerikler dolu ve exact/normalleştirilmiş satır tekrarı yok.",
-        "MIT lisansı, ayrıntılı veri kartı ve tutarlı Türkçe sohbet şeması var.",
+        "Ayrıntılı veri kartı ve tutarlı Türkçe sohbet şeması var.",
         "Kullanıcı soruları ile yanıt uzunlukları eğitim için yönetilebilir aralıkta."
       ],
       "findings": [
@@ -77,22 +65,22 @@
         {
           "severity": "high",
           "confidence": "high",
-          "evidence": "Lisans, kaynak, amaç, sınırlama ve örnek kullanım açıklaması bulunmuyor.",
-          "risk": "Yeniden kullanım hakkı ve hedeflenen davranış belirsiz.",
-          "remediation": "Tam veri kartı ve açık lisans ekle."
+          "evidence": "Kaynak, amaç, sınırlama ve örnek kullanım açıklaması bulunmuyor.",
+          "risk": "Hedeflenen davranış ve veri kökeni belirsiz.",
+          "remediation": "Kaynak, amaç, sınırlama ve örnek kullanım içeren tam bir veri kartı ekle."
         },
         {
           "severity": "medium",
           "confidence": "high",
           "evidence": "Dört kullanıcı isteminin tamamı sk75/sahin_identity veri setinde de bulunuyor.",
-          "risk": "Şablon tekrarına ve veri setleri arası değerlendirme sızıntısına yol açabilir.",
-          "remediation": "Kaynak şablonu belirt; bölme sırasında ortak istemleri aynı grupta tut."
+          "risk": "Şablon tekrarına ve kimlik davranışının aşırı ağırlık kazanmasına yol açabilir.",
+          "remediation": "Kaynak şablonu belirt; ortak istemleri tek bir şablon ailesi olarak etiketle."
         }
       ]
     },
     "Egertekin/marvel-domain-dataset": {
       "intended_use": "Türkçe Marvel soru-cevap ve alan uyarlaması.",
-      "disposition": "Yeniden yapılandırma ve kaynak/lisans düzeltmesi yapılmadan model eğitimine hazır değil.",
+      "disposition": "Yeniden yapılandırma ve kaynak izlenebilirliği sağlanmadan model eğitimine hazır değil.",
       "strengths": [
         "177 satırın tamamında iki turlu geçerli konuşma ve dolu içerik var.",
         "Wikipedia kazıma ve elle hazırlanan/çoğaltılan veri yöntemleri kartta açıklanıyor.",
@@ -109,9 +97,9 @@
         {
           "severity": "high",
           "confidence": "high",
-          "evidence": "Kaynağın Wikipedia olduğu yazıyor fakat lisans, sayfa URL'si, revizyon tarihi ve atıf alanı yok.",
-          "risk": "Wikipedia'nın atıf ve share-alike koşullarıyla uyum gösterilemiyor.",
-          "remediation": "Kaynak URL/revizyonu satır düzeyinde ekle ve uyumlu lisans bildir."
+          "evidence": "Kaynağın Wikipedia olduğu yazıyor fakat sayfa URL'si, revizyon tarihi ve satır düzeyinde atıf alanı yok.",
+          "risk": "Yanıtların hangi kaynak sürümünden türetildiği ve güncelliği doğrulanamıyor.",
+          "remediation": "Kaynak URL'sini ve revizyon kimliğini satır düzeyinde ekle."
         },
         {
           "severity": "medium",
@@ -124,19 +112,19 @@
     },
     "gururaser/ithaki-bilimkurgu-klasikleri": {
       "intended_use": "İthaki Bilimkurgu Klasikleri için yapılandırılmış katalog analizi ve metin üretimi.",
-      "disposition": "Katalog/araştırma kullanımına uygun; ticari kullanım, fiyat güncelliği ve üst kaynak hakları ayrıca ele alınmalı.",
+      "disposition": "Katalog ve kontrollü dönüşüm kullanımına uygun; fiyat güncelliği ile kaynak izlenebilirliği ayrıca ele alınmalı.",
       "strengths": [
         "103 kayıtta exact tekrar, ISBN/URL/kitap-yazar anahtar tekrarı yok; 13 haneli ISBN kontrollerinin tamamı geçerli.",
         "Fiyat ve indirim alanlarının tamamı ayrıştırılabiliyor; hesaplanan satış fiyatları bildirilen indirimle uyumlu.",
-        "17 alanlı yapı, kaynak kitap URL'si, CC BY-NC 4.0 bildirimi ve güncellik uyarısı içeriyor."
+        "17 alanlı yapı, kaynak kitap URL'si ve güncellik uyarısı içeriyor."
       ],
       "findings": [
         {
           "severity": "high",
           "confidence": "medium",
-          "evidence": "Veriler yayıncı sitesinden, kapak görselleri ise üçüncü taraf URL'lerinden geliyor; kart telifin ilgili sahiplerde olduğunu söylüyor.",
-          "risk": "Veri seti sahibinin CC BY-NC bildirimi, kaynak metin ve görseller için gereken hakları tek başına sağlamayabilir.",
-          "remediation": "Üst kaynak kullanım koşullarını doğrula; görselleri ayrı lisans alanıyla işaretle veya eğitim kopyasından çıkar."
+          "evidence": "Veriler yayıncı sitesinden, kapak görselleri ise üçüncü taraf URL'lerinden geliyor; satır düzeyinde toplama zamanı ve görsel kaynak türü ayrı alanlarda tutulmuyor.",
+          "risk": "Kaynak değiştiğinde metin ve görsel kayıtlarının hangi sürüme dayandığı izlenemiyor.",
+          "remediation": "Toplama zamanı, kaynak türü ve görsel kaynağı alanlarını satır düzeyinde ekle."
         },
         {
           "severity": "medium",
@@ -156,7 +144,7 @@
     },
     "nyzmemre/biyoloji-terimleri-turkce-sa": {
       "intended_use": "Türkçe biyoloji terim tanımı ve soru-cevap eğitimi.",
-      "disposition": "Kaynak ve lisans belgelenip tekrar ağırlığı azaltıldıktan sonra koşullu kullanılabilir.",
+      "disposition": "Kaynak ve üretim yöntemi belgelenip tekrar ağırlığı azaltıldıktan sonra koşullu kullanılabilir.",
       "strengths": [
         "1.093 satırla incelenen koleksiyondaki en geniş sohbet veri seti.",
         "Tüm satırlarda geçerli user → assistant yapısı, dolu içerik ve sıfır exact satır tekrarı var.",
@@ -166,16 +154,16 @@
         {
           "severity": "high",
           "confidence": "high",
-          "evidence": "Veri kartında yalnız otomatik şema var; kaynak, lisans, oluşturma yöntemi ve sınırlamalar açıklanmıyor.",
-          "risk": "Tanımların doğruluğu, güncelliği ve yeniden kullanım hakkı denetlenemiyor.",
-          "remediation": "Her tanıma kaynak/kitap/sürüm alanı ve veri setine açık lisans ekle."
+          "evidence": "Veri kartında yalnız otomatik şema var; kaynak, oluşturma yöntemi ve sınırlamalar açıklanmıyor.",
+          "risk": "Tanımların doğruluğu ve güncelliği denetlenemiyor.",
+          "remediation": "Her tanıma kaynak, kitap ve sürüm alanı ekle; üretim yöntemini veri kartında açıkla."
         },
         {
           "severity": "medium",
           "confidence": "high",
           "evidence": "1.093 asistan cevabının 236'sı normalleştirilmiş tekrar (%21,6); aynı tanım farklı soru kalıplarıyla yineleniyor.",
-          "risk": "Bazı terimler aşırı ağırlık kazanır ve rastgele bölmede aynı cevap test tarafına sızar.",
-          "remediation": "term_id ekle; aynı tanımın varyasyonlarını grup bazlı böl ve eğitimde ağırlıklandır."
+          "risk": "Bazı terimler eğitim sinyalinde aşırı ağırlık kazanır.",
+          "remediation": "term_id ekle; aynı tanımın varyasyonlarını tek ailede topla ve eğitim ağırlığını dengele."
         }
       ]
     },
@@ -184,7 +172,7 @@
       "disposition": "Dil/üslup eğitimi için güçlü bir başlangıç; gerçek işletme kullanımından önce politika, hukuk ve kişisel veri denetimi şart.",
       "strengths": [
         "186 satırın tamamı benzersiz, iki turlu, dolu ve tutarlı şemaya sahip.",
-        "Apache 2.0 lisansı ve ayrıntılı veri kartı bulunuyor.",
+        "Ayrıntılı veri kartı ve açık üretim yöntemi bulunuyor.",
         "Kullanıcı tonu çeşitleniyor; asistan yanıtları empati ve eylem önerisini birlikte içeriyor."
       ],
       "findings": [
@@ -223,14 +211,14 @@
         {
           "severity": "high",
           "confidence": "high",
-          "evidence": "Ekşi Sözlük ve Reddit içeriği için lisans, gönderi URL'si, yazar izni veya kullanım koşulları belirtilmiyor.",
-          "risk": "Telif, platform şartları, silinmiş içerik ve kullanıcı gizliliği riski var.",
-          "remediation": "Satır düzeyinde kaynak URL/kimlik, izin/lisans ve silme talebi süreci ekle; kullanıcı adlarını saklama."
+          "evidence": "Ekşi Sözlük ve Reddit içeriği için gönderi URL'si, kaynak kimliği veya içerik kaldırma süreci belirtilmiyor.",
+          "risk": "Silinmiş içerik izlenemeyebilir ve kullanıcı gizliliği riski yönetilemeyebilir.",
+          "remediation": "Satır düzeyinde kaynak URL'si ve anonim kaynak kimliği ekle; içerik kaldırma sürecini belgele."
         },
         {
           "severity": "medium",
           "confidence": "high",
-          "evidence": "Kart 527 satır (462+65) bildirirken gerçek split 529 satır; 6 kaba dil eşleşmesi ve çok uzun yanıtlar var (en çok 5.993 karakter).",
+          "evidence": "Kart 527 satır (462+65) bildirirken gerçek veri 529 satır; 6 kaba dil eşleşmesi ve çok uzun yanıtlar var (en çok 5.993 karakter).",
           "risk": "Kaynak envanteri tam değil; moderasyon ve bağlam penceresi sorunları oluşabilir.",
           "remediation": "İki açıklanamayan satırı uzlaştır; içerik etiketi, dil/üslup filtresi ve uzunluk sınırı ekle."
         }
@@ -255,9 +243,9 @@
         {
           "severity": "high",
           "confidence": "high",
-          "evidence": "Gerçek forum soruları ve resmî belge parçaları kullanılıyor; açık veri lisansı yok.",
-          "risk": "Forum metni ve resmî kaynak parçalarının yeniden dağıtım hakkı belirsiz; metin içinde dolaylı kişisel bağlam kalabilir.",
-          "remediation": "Açık lisans/izin matrisi oluştur; satır düzeyinde kaynak ve anonimleştirme kaydı tut."
+          "evidence": "Gerçek forum soruları ve resmî belge parçaları kullanılıyor; satır düzeyinde kaynak ve anonimleştirme kaydı yok.",
+          "risk": "Kaynak metne geri izleme yapılamaz ve metin içinde dolaylı kişisel bağlam kalabilir.",
+          "remediation": "Satır düzeyinde kaynak, belge tarihi ve anonimleştirme kaydı tut."
         },
         {
           "severity": "medium",
@@ -270,7 +258,7 @@
     },
     "sk75/sahin_identity": {
       "intended_use": "Şahin adlı Türkçe/İngilizce model kimliği ve sahiplik yanıtlarını öğretmek.",
-      "disposition": "Yalnız küçük kimlik tohumu olarak kullanılabilir; şema, tekrar ve lisans sorunları giderilmeden birleştirilmemeli.",
+      "disposition": "Yalnız küçük kimlik tohumu olarak kullanılabilir; şema ve tekrar sorunları giderilmeden birleştirilmemeli.",
       "strengths": [
         "45 Türkçe ve 32 İngilizce olmak üzere 77 iki turlu örnek içeriyor.",
         "Boş mesaj, geçersiz rol veya exact satır tekrarı yok."
@@ -286,25 +274,23 @@
         {
           "severity": "high",
           "confidence": "high",
-          "evidence": "Lisans ve README yok; 77 cevabın 50'si normalleştirilmiş tekrar (%64,9).",
-          "risk": "Kimlik/sahiplik iddiaları aşırı öğrenilir ve yeniden kullanım hakkı bilinmez.",
-          "remediation": "Lisans ve model card ekle; cevap varyasyonlarını azalt veya düşük ağırlıkla karıştır."
+          "evidence": "README veya model kartı yok; 77 cevabın 50'si normalleştirilmiş tekrar (%64,9).",
+          "risk": "Kimlik/sahiplik iddiaları aşırı öğrenilir ve hedeflenen davranış yeterince açıklanmaz.",
+          "remediation": "Model kartı ekle; cevap tekrarlarını azalt veya veri setini düşük ağırlıkla karıştır."
         },
         {
           "severity": "medium",
           "confidence": "high",
-          "evidence": "Türkçe ve İngilizce dosyalar tek train splitte birleşiyor fakat language alanı yok; Aysenur44 veri setiyle dört ortak kullanıcı istemi var.",
-          "risk": "Dil bazlı değerlendirme ve sızıntı kontrolü zorlaşır.",
-          "remediation": "language ve intent alanı ekle; ortak şablonları split öncesi grupla."
+          "evidence": "Türkçe ve İngilizce dosyalar tek tabloda birleşiyor fakat language alanı yok; Aysenur44 veri setiyle dört ortak kullanıcı istemi var.",
+          "risk": "Dil bazlı davranış analizi zorlaşır ve ortak şablonlar aşırı ağırlık kazanabilir.",
+          "remediation": "language ve intent alanı ekle; ortak şablonları tek aile olarak etiketle."
         }
       ]
     }
   },
   "recommended_tests": [
-    "Her sürümde zorunlu lisans ve veri kartı bölümlerini doğrula.",
     "Konuşma alanı, rol sırası, boş içerik ve gerçek null tipleri için şema testi çalıştır.",
     "Exact satır, normalleştirilmiş istem ve normalleştirilmiş cevap tekrar oranlarını raporla.",
-    "Aynı concept_id, term_id, entity_id veya source_thread_id grubunun farklı splitlere dağılmasını engelle.",
     "E-posta, telefon, kimlik numarası, URL ve gerçek kişi/kurum adları için kişisel veri taraması yap.",
     "Zaman hassasiyetli iddialarda source_url, verified_at ve geçerlilik aralığını zorunlu tut.",
     "Sentetik olgusal veride örneklem tabanlı bağımsız doğruluk denetimi ve kaynak kapsama oranı ölç.",

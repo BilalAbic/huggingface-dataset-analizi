@@ -1,39 +1,39 @@
 {
   "as_of": "2026-07-21",
-  "scope": "Daha önce tam satır analizi yapılan dokuz Hugging Face veri seti",
+  "scope": "The nine Hugging Face datasets previously analyzed row by row",
   "matching_levels": [
-    "doğrudan",
-    "kısmi",
-    "dönüştürme_kaynağı",
-    "bulunmuyor"
+    "direct",
+    "partial",
+    "conversion_source",
+    "no_match"
   ],
   "capabilities": [
     {
       "capability": "Identity",
-      "status": "Tamamlandı",
+      "status": "Completed",
       "direct_datasets": [
         {
           "dataset": "Aysenur44/namaz-vakti-identity-tr",
           "rows": 4,
           "url": "https://huggingface.co/datasets/Aysenur44/namaz-vakti-identity-tr",
-          "repository_note": "Ham veri teslim deposunda yer almıyor; url alanındaki Hugging Face kaynağı kullanılır.",
-          "note": "Kimlik, model adı, geliştirici ve temel yetenek cevapları; sınır ve güvenlik kapsamı yetersiz."
+          "repository_note": "Raw data is not redistributed in this delivery repository; use the Hugging Face URL above.",
+          "note": "Identity, model name, developer and core capability answers; boundary and safety coverage insufficient."
         },
         {
           "dataset": "sk75/sahin_identity",
           "rows": 77,
           "url": "https://huggingface.co/datasets/sk75/sahin_identity",
-          "repository_note": "Ham veri teslim deposunda yer almıyor; url alanındaki Hugging Face kaynağı kullanılır.",
-          "note": "Türkçe/İngilizce kimlik örnekleri; yüksek cevap tekrarı, null tip hatası ve lisans eksikliği var."
+          "repository_note": "Raw data is not redistributed in this delivery repository; use the Hugging Face URL above.",
+          "note": "Turkish/English identity examples; high answer duplication, null type errors and a missing model card."
         }
       ],
       "partial_datasets": [],
       "conversion_sources": [],
-      "gap": "Güvenlik ilkeleri, sınır açıklamaları, tutarlı ret davranışı ve kapsamlı değerlendirme örnekleri."
+      "gap": "Safety principles, boundary explanations, consistent refusal behavior and comprehensive evaluation examples."
     },
     {
       "capability": "Tool Call",
-      "status": "Planlandı",
+      "status": "Planned",
       "direct_datasets": [],
       "partial_datasets": [],
       "conversion_sources": [
@@ -53,29 +53,29 @@
           "target_tools": ["search_regulation", "fetch_official_notice"]
         }
       ],
-      "gap": "tool rolü, fonksiyon şeması, argüman, araç sonucu, hata senaryosu ve nihai kullanıcı cevabı."
+      "gap": "tool role, function schema, arguments, tool result, error scenario and the final user answer."
     },
     {
       "capability": "Conversation",
-      "status": "Planlandı",
+      "status": "Planned",
       "direct_datasets": [
-        {"dataset": "aliFurkan123/cultural-questions-dataset", "rows": 500, "scope": "tek_tur"},
-        {"dataset": "Egertekin/marvel-domain-dataset", "rows": 177, "scope": "tek_tur"},
-        {"dataset": "Mer1Alii/TR-ECommerce-CustomerSupport-Instructions", "rows": 186, "scope": "tek_tur"},
-        {"dataset": "namruni/meb-ogretmen-soru-cevap", "rows": 450, "scope": "tek_tur"},
-        {"dataset": "nyzmemre/biyoloji-terimleri-turkce-sa", "rows": 1093, "scope": "tek_tur"},
-        {"dataset": "yoitsmeyusuf/felsefe_finetune", "rows": 529, "scope": "tek_tur"}
+        {"dataset": "aliFurkan123/cultural-questions-dataset", "rows": 500, "scope": "single_turn"},
+        {"dataset": "Egertekin/marvel-domain-dataset", "rows": 177, "scope": "single_turn"},
+        {"dataset": "Mer1Alii/TR-ECommerce-CustomerSupport-Instructions", "rows": 186, "scope": "single_turn"},
+        {"dataset": "namruni/meb-ogretmen-soru-cevap", "rows": 450, "scope": "single_turn"},
+        {"dataset": "nyzmemre/biyoloji-terimleri-turkce-sa", "rows": 1093, "scope": "single_turn"},
+        {"dataset": "yoitsmeyusuf/felsefe_finetune", "rows": 529, "scope": "single_turn"}
       ],
       "partial_datasets": [
         {"dataset": "Aysenur44/namaz-vakti-identity-tr", "rows": 4, "scope": "persona"},
         {"dataset": "sk75/sahin_identity", "rows": 77, "scope": "persona"}
       ],
       "conversion_sources": [],
-      "gap": "Gerçek multi-turn takip, düzeltme, önceki mesaja gönderme, konu değiştirme ve uzun bağlam koruma örnekleri."
+      "gap": "True multi-turn follow-up, correction, reference to a previous message, topic switching and long-context preservation examples."
     },
     {
       "capability": "Instruction",
-      "status": "Planlandı",
+      "status": "Planned",
       "direct_datasets": [],
       "partial_datasets": [
         {"dataset": "Mer1Alii/TR-ECommerce-CustomerSupport-Instructions", "rows": 186},
@@ -86,43 +86,43 @@
         {"dataset": "yoitsmeyusuf/felsefe_finetune", "rows": 529}
       ],
       "conversion_sources": [],
-      "gap": "Özetleme, yeniden yazma, sınıflandırma, biçim kısıtı, çok adımlı görev ve olumsuz kısıt çeşitliliği."
+      "gap": "Summarization, rewriting, classification, format constraints, multi-step tasks and negative constraint diversity."
     },
     {
       "capability": "Structured Output",
-      "status": "Planlandı",
+      "status": "Planned",
       "direct_datasets": [],
       "partial_datasets": [],
       "conversion_sources": [
         {
           "dataset": "gururaser/ithaki-bilimkurgu-klasikleri",
           "rows": 103,
-          "target_formats": ["JSON", "Markdown tablo", "şemaya bağlı nesne"]
+          "target_formats": ["JSON", "Markdown table", "schema-bound object"]
         }
       ],
-      "gap": "Prompt ile doğrulanabilir yapılandırılmış hedef çıktı eşleşmeleri."
+      "gap": "Structured target outputs that are verifiable against the prompt."
     },
     {
       "capability": "Math",
-      "status": "Planlandı",
+      "status": "Planned",
       "direct_datasets": [],
       "partial_datasets": [],
       "conversion_sources": [
         {
           "dataset": "gururaser/ithaki-bilimkurgu-klasikleri",
           "rows": 103,
-          "scope": "Yalnız fiyat, indirim ve yüzde aritmetiği"
+          "scope": "Price, discount and percentage arithmetic only"
         }
       ],
-      "gap": "Doğrulanmış çözüm adımlı genel matematik problemleri."
+      "gap": "General math problems with verified solution steps."
     },
     {
       "capability": "Coding",
-      "status": "Planlandı",
+      "status": "Planned",
       "direct_datasets": [],
       "partial_datasets": [],
       "conversion_sources": [],
-      "gap": "Kod üretimi, hata ayıklama, açıklama, refactor, test ve algoritma örnekleri."
+      "gap": "Code generation, debugging, explanation, refactoring, testing and algorithm examples."
     }
   ]
 }

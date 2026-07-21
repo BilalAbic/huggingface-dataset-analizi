@@ -1,5 +1,5 @@
-# Üretilmiş HTML, GitHub dil istatistiklerini etkilemesin.
+# Keep the generated HTML out of GitHub language statistics.
 notebook/*.html linguist-generated=true
 
-# Rapor görselleri ikili dosyalardır.
-raporlar/gorseller/*.png binary
+# Report figures are binary files.
+reports/figures/*.png binary
