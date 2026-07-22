@@ -28,6 +28,8 @@ REQUIRED_FILES = {
     "outputs/excluded_datasets.json",
     "appendix/dataset_manifest.json",
     "appendix/capability_mapping.csv",
+    "appendix/topic_profile.csv",
+    "appendix/provenance.csv",
     "reports/dataset-technical-assessment.md",
     "reports/model-capability-mapping.md",
     "reports/file-guide.md",
@@ -361,6 +363,20 @@ def check_evidence(baseline: dict, registry: dict) -> None:
             entry.get("rows") == profile_rows[dataset_id],
             f"Manifest row count for {dataset_id} in {capability}/{level} is "
             f"{entry.get('rows')}, but the profile reports {profile_rows[dataset_id]}",
+        )
+
+    # The reference appendices must cover exactly the profiled scope: a dataset
+    # missing from them is a dataset the report silently stops describing.
+    for name in ("topic_profile.csv", "provenance.csv"):
+        with (ROOT / "appendix" / name).open(encoding="utf-8-sig", newline="") as handle:
+            appendix_rows = list(csv.DictReader(handle))
+        listed = [row["dataset"] for row in appendix_rows]
+        require(len(listed) == len(set(listed)), f"appendix/{name} has duplicate rows")
+        require(
+            set(listed) == set(profile_rows),
+            f"appendix/{name} scope differs from the profiles: "
+            f"missing={sorted(set(profile_rows) - set(listed))}, "
+            f"extra={sorted(set(listed) - set(profile_rows))}",
         )
 
     csv_path = ROOT / "appendix" / "capability_mapping.csv"

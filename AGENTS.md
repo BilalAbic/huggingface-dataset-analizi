@@ -111,7 +111,7 @@ The following values were rechecked against all local raw rows on 22 July 2026:
   Jaccard threshold of 0.85. The comparison is exact, not hashed or sampled.
 - Language signal: 43 datasets Turkish, 2 English. This is a heuristic from
   Turkish-only letters plus stopwords, not a classifier.
-- Repository validation ran 1,568 checks and all passed. The validator reports
+- Repository validation ran 1,572 checks and all passed. The validator reports
   its own check count, so this number must be taken from a fresh run rather than
   carried forward.
 
@@ -192,7 +192,8 @@ the profile irreproducible. Verify by running the profiler twice and comparing
 - `notebook/huggingface_dataset_quality_analysis.ipynb`: executed analysis.
 - `notebook/huggingface_dataset_quality_analysis.html`: generated notebook view.
 - `outputs/*.json`: fixed inventory, profiles, overlap, and reviewed findings.
-- `appendix/*`: machine-readable capability mapping.
+- `appendix/*`: machine-readable capability mapping, per-dataset topic profile,
+  and the provenance and rights table.
 - `scripts/download_hf_datasets.py`: snapshot downloader and inventory updater.
 - `scripts/profile_datasets.py`: row-level schema and quality profiler.
 - `scripts/build_notebook.py`: dynamic notebook builder and executor.

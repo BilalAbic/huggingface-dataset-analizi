@@ -1,0 +1,46 @@
+dataset,url,source_class,origin,declared_license,reuse_question
+aliFurkan123/cultural-questions-dataset,https://huggingface.co/datasets/aliFurkan123/cultural-questions-dataset,Synthetic,LLM-generated,mit,
+aliFurkan123/identity,https://huggingface.co/datasets/aliFurkan123/identity,Synthetic,LLM-generated,,
+Aysenur44/namaz-vakti-dua-asistan-tr,https://huggingface.co/datasets/Aysenur44/namaz-vakti-dua-asistan-tr,Undocumented,card has no body,,
+Aysenur44/namaz-vakti-identity-tr,https://huggingface.co/datasets/Aysenur44/namaz-vakti-identity-tr,Undocumented,card has no body,,
+berkbirkan/turkish-x-engagement-quotes,https://huggingface.co/datasets/berkbirkan/turkish-x-engagement-quotes,Scraped,X (Twitter) posts via Xquik MCP,other,Platform terms and post authors' rights
+berkbirkan/turkish-x-engagement-replies,https://huggingface.co/datasets/berkbirkan/turkish-x-engagement-replies,Scraped,X (Twitter) posts via Xquik MCP,other,Platform terms and post authors' rights
+berkcangumusisik/voleykoc-antrenorluk-tr,https://huggingface.co/datasets/berkcangumusisik/voleykoc-antrenorluk-tr,Scraped + synthetic,"Wikipedia, then LLM-shaped",mit,Wikipedia attribution
+berkcangumusisik/voleykoc-identity-tr,https://huggingface.co/datasets/berkcangumusisik/voleykoc-identity-tr,Derived,structure from alibayram/identity_finetune_magibu_q3,mit,Upstream licence
+cihatyldz/lojistik-soru-cevap,https://huggingface.co/datasets/cihatyldz/lojistik-soru-cevap,Undocumented,no source stated,mit,
+Egertekin/marvel-domain-dataset,https://huggingface.co/datasets/Egertekin/marvel-domain-dataset,Scraped,Wikipedia articles,,Wikipedia attribution; Marvel trademarks
+Endezyar/siyer_datasets,https://huggingface.co/datasets/Endezyar/siyer_datasets,Undocumented,card has no body,,
+enes1863/bilisim-hukuku-domain-dataset,https://huggingface.co/datasets/enes1863/bilisim-hukuku-domain-dataset,Scraped + synthetic,"KVKK guidance pages, summarised",other,Public-sector text reuse
+enesozdemr/benim_ilk_datasetim,https://huggingface.co/datasets/enesozdemr/benim_ilk_datasetim,Undocumented,card has no body,,
+Erenyanic/seasoned-advice-dataset,https://huggingface.co/datasets/Erenyanic/seasoned-advice-dataset,Scraped,cooking.stackexchange.com via API,cc-by-sa-4.0,CC BY-SA share-alike obligation
+erhanalsr/langusta-identity,https://huggingface.co/datasets/erhanalsr/langusta-identity,Undocumented,no source stated,mit,
+erhanalsr/langusta-kpss-reasoning,https://huggingface.co/datasets/erhanalsr/langusta-kpss-reasoning,Derived,filtered from AhmetSemih/Deepseek-mcq-reasoning-dataset,apache-2.0,Upstream Apache-2.0
+filiz-yalcin/identity-finetune,https://huggingface.co/datasets/filiz-yalcin/identity-finetune,Derived,"copy of alibayram/identity_finetune_magibu_q3, renamed",gpl-3.0,Upstream licence
+filiz-yalcin/turkish-figure-skating-qa,https://huggingface.co/datasets/filiz-yalcin/turkish-figure-skating-qa,Synthetic,DeepSeek-generated after 17 manual rows,gpl-3.0,
+gmz1234/stackoverflow_ai,https://huggingface.co/datasets/gmz1234/stackoverflow_ai,Scraped,AI Stack Exchange (card absent),,CC BY-SA share-alike; undeclared
+gorkemergune/ayarlicazhocam_finetune,https://huggingface.co/datasets/gorkemergune/ayarlicazhocam_finetune,Mixed,includes scraped GitHub content,mit,Third-party repository content
+gururaser/ithaki-bilimkurgu-klasikleri,https://huggingface.co/datasets/gururaser/ithaki-bilimkurgu-klasikleri,Scraped,İthaki publisher catalogue,cc-by-nc-4.0,Publisher content and images
+haticenurcakr/turkish-classic-books-qa,https://huggingface.co/datasets/haticenurcakr/turkish-classic-books-qa,Undocumented,card has no body,,
+meldakahramann/animasyon-domain-dataset,https://huggingface.co/datasets/meldakahramann/animasyon-domain-dataset,Undocumented,card has no body,,
+Mer1Alii/TR-ECommerce-CustomerSupport-Instructions,https://huggingface.co/datasets/Mer1Alii/TR-ECommerce-CustomerSupport-Instructions,Synthetic,authored across 20 categories,apache-2.0,
+namruni/meb-ogretmen-soru-cevap,https://huggingface.co/datasets/namruni/meb-ogretmen-soru-cevap,Scraped,forum.memurlar.net threads,,Forum terms; user-authored posts
+nursimakgul/meb-soru-uretme,https://huggingface.co/datasets/nursimakgul/meb-soru-uretme,Derived,MEB curriculum question sources,mit,Ministry material reuse
+nyzmemre/biyoloji-terimleri-turkce-sa,https://huggingface.co/datasets/nyzmemre/biyoloji-terimleri-turkce-sa,Undocumented,card has no body,,
+sadecebirisii/turkish-llm-authority-bypass-safety-sft,https://huggingface.co/datasets/sadecebirisii/turkish-llm-authority-bypass-safety-sft,Synthetic,authored red-team prompts,cc-by-nc-4.0,Publishes working jailbreak patterns
+SalihHub/trendyol-marangoz-urun-asistan-qa,https://huggingface.co/datasets/SalihHub/trendyol-marangoz-urun-asistan-qa,Scraped + synthetic,Trendyol 'Satıcıya Sor' Q&A; synthetic thinking,other,Platform terms; customer order references present
+samliumay/turkish_cyber_security_controls_dataset,https://huggingface.co/datasets/samliumay/turkish_cyber_security_controls_dataset,Synthetic,authored from NIST SP 800-53 principles,mit,
+samliumay/umay_samli_identification_dataset,https://huggingface.co/datasets/samliumay/umay_samli_identification_dataset,Synthetic,authored identity data,,Contains the author's professional history
+seali/turkce-saglik-qa,https://huggingface.co/datasets/seali/turkce-saglik-qa,Undocumented,no source stated,cc-by-4.0,
+sedayzc/trendyol-electronics-products-features-and-comments,https://huggingface.co/datasets/sedayzc/trendyol-electronics-products-features-and-comments,Scraped,Trendyol product pages and reviews,,Platform terms; reviewer-authored text
+sedayzc/turkish-electronics-product-comparison-recommendation,https://huggingface.co/datasets/sedayzc/turkish-electronics-product-comparison-recommendation,Derived,built on the product table above,other,Inherits the scrape's terms
+senemde/saglik-qa-tr,https://huggingface.co/datasets/senemde/saglik-qa-tr,Scraped + synthetic,Turkish Wikipedia health categories,mit,Wikipedia attribution
+sk75/sahin_identity,https://huggingface.co/datasets/sk75/sahin_identity,Undocumented,card absent,,
+srhskrkc/odysseia-destani-tr,https://huggingface.co/datasets/srhskrkc/odysseia-destani-tr,Undocumented,card has no body,,
+ssilistre/carnegie-dost-kazanma-tr,https://huggingface.co/datasets/ssilistre/carnegie-dost-kazanma-tr,Derived,written from the ideas in a copyrighted book,cc-by-4.0,Card states no verbatim quotation
+ssilistre/semih-silistre-ai-identity,https://huggingface.co/datasets/ssilistre/semih-silistre-ai-identity,Synthetic,authored identity data,cc-by-4.0,
+Talayhan/skatepal_dataset,https://huggingface.co/datasets/Talayhan/skatepal_dataset,Synthetic,authored persona data,,
+Toivo0/Turkce-istatistik-reasoning,https://huggingface.co/datasets/Toivo0/Turkce-istatistik-reasoning,Synthetic,authored across 7 modules,cc-by-sa-4.0,
+Uunan/turkish-cuisine-qa,https://huggingface.co/datasets/Uunan/turkish-cuisine-qa,Scraped + synthetic,"dish data scraped, QA by Gemma, CoT by Gemini",cc-by-nc-4.0,Source sites unnamed
+yoitsmeyusuf/felsefe_finetune,https://huggingface.co/datasets/yoitsmeyusuf/felsefe_finetune,Undocumented,no source stated,,
+YusufSimsek/llm-kisisellestirme,https://huggingface.co/datasets/YusufSimsek/llm-kisisellestirme,Undocumented,card absent,,
+YusufSimsek/turkce-atasozleri-dataset,https://huggingface.co/datasets/YusufSimsek/turkce-atasozleri-dataset,Compiled,"Turkish proverbs, public domain",cc-by-sa-4.0,

@@ -28,6 +28,8 @@ outputs, and a re-runnable notebook; the raw Hugging Face data files are not rep
 | `outputs/excluded_datasets.json` | Enabled datasets that cannot be analyzed, with the re-verified HTTP evidence for each access block |
 | `appendix/capability_mapping.csv` | Row-based mapping of the seven capability areas |
 | `appendix/dataset_manifest.json` | The detailed, machine-readable JSON manifest of the mapping |
+| `appendix/topic_profile.csv` | Per-dataset vocabulary concentration and distinctive terms |
+| `appendix/provenance.csv` | Per-dataset source class, origin, declared licence and reuse question |
 | `config/datasets.json` | Enabled Hugging Face dataset IDs, contributor names, contributor sources, and declared access blocks |
 | `config/verified_baseline.json` | Reviewed counts and artifact expectations enforced by repository validation |
 | `config/evaluation_criteria.json` | The seven assessment dimensions, their thresholds, and the limits of each measure |

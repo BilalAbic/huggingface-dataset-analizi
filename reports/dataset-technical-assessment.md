@@ -17,7 +17,7 @@
   the same canonical identity questions with different names and developers.
 - **Two datasets could not be analyzed** and are recorded with HTTP evidence
   rather than dropped.
-- **Validation ran 1,568 checks and all passed.**
+- **Validation ran 1,572 checks and all passed.**
 
 **Scope date:** 22 July 2026
 **Unit of analysis:** All rows of revision-pinned dataset snapshots published on Hugging Face
@@ -42,9 +42,8 @@
 
 ## Evaluation criteria
 
-Every number in this report belongs to one of seven dimensions. Each states what
-it measures, the threshold that marks a preparation need, and — the column that
-matters most — what it cannot tell you.
+Every number here belongs to one of seven dimensions. The last column is the
+important one.
 
 | Dimension | Question | Preparation threshold | What it does not tell you |
 |---|---|---|---|
@@ -56,13 +55,11 @@ matters most — what it cannot tell you.
 | Task fitness | Which target capability can this train today, and what is still missing? | A conversion source is not training data. Anything below direct requires authoring work that must be stated explicitly. | A direct match describes format readiness, not answer correctness. |
 | Documentation adequacy | Can a third party understand what this data is and how it was built? | A card with no body is a preparation need: purpose, source and limitations are unrecoverable without asking the author. | A thorough card does not verify that its own claims are true. Several cards in this collection describe a schema that differs from the published data. |
 
-The dimensions are never combined into a single figure and datasets are never
-ranked against one another. A dataset triggering four preparation needs is not
-"worse" than one triggering a single need; it needs different work before use.
-Thresholds live in
-[`config/evaluation_criteria.json`](../config/evaluation_criteria.json), which the
-figures and the validator read, so a threshold quoted here cannot drift from the
-one actually applied.
+The dimensions are never combined and datasets are never ranked. Four
+preparation needs is not "worse" than one; it is different work. Thresholds live
+in [`config/evaluation_criteria.json`](../config/evaluation_criteria.json), which
+the figures and the validator read, so a threshold quoted here cannot drift from
+the one applied.
 
 **Not covered by any dimension: subject-matter fact checking.** No claim in any
 dataset has been verified against an authoritative source by a domain expert.
@@ -159,15 +156,11 @@ The comparison is exact rather than hashed or sampled.
 
 ![Duplicate density across three measures](figures/duplicate-rates.png)
 
-The measure cuts both ways, which is why it was worth adding.
-`hf/enes1863/bilisim-hukuku-domain-dataset` really does reduce to 20 distinct
-answers, exactly as its card describes: 1,000 rows expanded from twenty seed
-examples. But `hf/Uunan/turkish-cuisine-qa` generates 12.6 questions per dish and
-still shows only 1.5% near-duplication — at token level those questions are
-genuinely distinct, which refutes the obvious suspicion about it.
-
-Values reading as zero mean no duplication was found under these rules. They say
-nothing about whether the content is correct.
+The measure cuts both ways. `hf/enes1863/bilisim-hukuku-domain-dataset` really
+does reduce to 20 distinct answers, as its card describes. But
+`hf/Uunan/turkish-cuisine-qa` generates 12.6 questions per dish and still shows
+only 1.5% near-duplication, which refutes the obvious suspicion about it. A zero
+means no duplication under these rules, not that the content is correct.
 
 ![Preparation needs by dataset](figures/preparation-needs.png)
 
@@ -176,66 +169,27 @@ identifier and a filled cell records only that a threshold was crossed.
 
 ### Provenance and reuse rights
 
-This section records where the data came from and what that implies for reuse. It
-carries **no quality judgement**: a permissive licence does not make a dataset
-good, and a restrictive one does not make it bad. The two questions are kept
-apart deliberately.
-
-The classification below was read from each data card. Automatic detection over
-card text produced candidates only — it wrongly flagged the X-engagement datasets
-as containing copyrighted material because their cards responsibly *discuss*
-copyright.
+Where the data came from, and what that implies for reuse. This carries **no
+quality judgement**: licence and quality are separate questions. The
+classification was read from each data card; automatic detection produced
+candidates only, and wrongly flagged the X-engagement datasets as containing
+copyrighted material because their cards responsibly *discuss* copyright.
 
 **18 of 45 datasets declare no licence at all**, 13 were scraped from a
 third-party site, and 14 document no source whatsoever.
 
-| Dataset | Source class | Origin | Declared licence | Reuse question raised |
-|---|---|---|---|---|
-| `hf/aliFurkan123/cultural-questions-dataset` | Synthetic | LLM-generated | mit | — |
-| `hf/aliFurkan123/identity` | Synthetic | LLM-generated | **none** | — |
-| `hf/Aysenur44/namaz-vakti-dua-asistan-tr` | Undocumented | card has no body | **none** | — |
-| `hf/Aysenur44/namaz-vakti-identity-tr` | Undocumented | card has no body | **none** | — |
-| `hf/berkbirkan/turkish-x-engagement-quotes` | Scraped | X (Twitter) posts via Xquik MCP | other | Platform terms and post authors' rights |
-| `hf/berkbirkan/turkish-x-engagement-replies` | Scraped | X (Twitter) posts via Xquik MCP | other | Platform terms and post authors' rights |
-| `hf/berkcangumusisik/voleykoc-antrenorluk-tr` | Scraped + synthetic | Wikipedia, then LLM-shaped | mit | Wikipedia attribution |
-| `hf/berkcangumusisik/voleykoc-identity-tr` | Derived | structure from alibayram/identity_finetune_magibu_q3 | mit | Upstream licence |
-| `hf/cihatyldz/lojistik-soru-cevap` | Undocumented | no source stated | mit | — |
-| `hf/Egertekin/marvel-domain-dataset` | Scraped | Wikipedia articles | **none** | Wikipedia attribution; Marvel trademarks |
-| `hf/Endezyar/siyer_datasets` | Undocumented | card has no body | **none** | — |
-| `hf/enes1863/bilisim-hukuku-domain-dataset` | Scraped + synthetic | KVKK guidance pages, summarised | other | Public-sector text reuse |
-| `hf/enesozdemr/benim_ilk_datasetim` | Undocumented | card has no body | **none** | — |
-| `hf/Erenyanic/seasoned-advice-dataset` | Scraped | cooking.stackexchange.com via API | cc-by-sa-4.0 | CC BY-SA share-alike obligation |
-| `hf/erhanalsr/langusta-identity` | Undocumented | no source stated | mit | — |
-| `hf/erhanalsr/langusta-kpss-reasoning` | Derived | filtered from AhmetSemih/Deepseek-mcq-reasoning-dataset | apache-2.0 | Upstream Apache-2.0 |
-| `hf/filiz-yalcin/identity-finetune` | Derived | copy of alibayram/identity_finetune_magibu_q3, renamed | gpl-3.0 | Upstream licence |
-| `hf/filiz-yalcin/turkish-figure-skating-qa` | Synthetic | DeepSeek-generated after 17 manual rows | gpl-3.0 | — |
-| `hf/gmz1234/stackoverflow_ai` | Scraped | AI Stack Exchange (card absent) | **none** | CC BY-SA share-alike; undeclared |
-| `hf/gorkemergune/ayarlicazhocam_finetune` | Mixed | includes scraped GitHub content | mit | Third-party repository content |
-| `hf/gururaser/ithaki-bilimkurgu-klasikleri` | Scraped | İthaki publisher catalogue | cc-by-nc-4.0 | Publisher content and images |
-| `hf/haticenurcakr/turkish-classic-books-qa` | Undocumented | card has no body | **none** | — |
-| `hf/meldakahramann/animasyon-domain-dataset` | Undocumented | card has no body | **none** | — |
-| `hf/Mer1Alii/TR-ECommerce-CustomerSupport-Instructions` | Synthetic | authored across 20 categories | apache-2.0 | — |
-| `hf/namruni/meb-ogretmen-soru-cevap` | Scraped | forum.memurlar.net threads | **none** | Forum terms; user-authored posts |
-| `hf/nursimakgul/meb-soru-uretme` | Derived | MEB curriculum question sources | mit | Ministry material reuse |
-| `hf/nyzmemre/biyoloji-terimleri-turkce-sa` | Undocumented | card has no body | **none** | — |
-| `hf/sadecebirisii/turkish-llm-authority-bypass-safety-sft` | Synthetic | authored red-team prompts | cc-by-nc-4.0 | Publishes working jailbreak patterns |
-| `hf/SalihHub/trendyol-marangoz-urun-asistan-qa` | Scraped + synthetic | Trendyol 'Satıcıya Sor' Q&A; synthetic thinking | other | Platform terms; customer order references present |
-| `hf/samliumay/turkish_cyber_security_controls_dataset` | Synthetic | authored from NIST SP 800-53 principles | mit | — |
-| `hf/samliumay/umay_samli_identification_dataset` | Synthetic | authored identity data | **none** | Contains the author's professional history |
-| `hf/seali/turkce-saglik-qa` | Undocumented | no source stated | cc-by-4.0 | — |
-| `hf/sedayzc/trendyol-electronics-products-features-and-comments` | Scraped | Trendyol product pages and reviews | **none** | Platform terms; reviewer-authored text |
-| `hf/sedayzc/turkish-electronics-product-comparison-recommendation` | Derived | built on the product table above | other | Inherits the scrape's terms |
-| `hf/senemde/saglik-qa-tr` | Scraped + synthetic | Turkish Wikipedia health categories | mit | Wikipedia attribution |
-| `hf/sk75/sahin_identity` | Undocumented | card absent | **none** | — |
-| `hf/srhskrkc/odysseia-destani-tr` | Undocumented | card has no body | **none** | — |
-| `hf/ssilistre/carnegie-dost-kazanma-tr` | Derived | written from the ideas in a copyrighted book | cc-by-4.0 | Card states no verbatim quotation |
-| `hf/ssilistre/semih-silistre-ai-identity` | Synthetic | authored identity data | cc-by-4.0 | — |
-| `hf/Talayhan/skatepal_dataset` | Synthetic | authored persona data | **none** | — |
-| `hf/Toivo0/Turkce-istatistik-reasoning` | Synthetic | authored across 7 modules | cc-by-sa-4.0 | — |
-| `hf/Uunan/turkish-cuisine-qa` | Scraped + synthetic | dish data scraped, QA by Gemma, CoT by Gemini | cc-by-nc-4.0 | Source sites unnamed |
-| `hf/yoitsmeyusuf/felsefe_finetune` | Undocumented | no source stated | **none** | — |
-| `hf/YusufSimsek/llm-kisisellestirme` | Undocumented | card absent | **none** | — |
-| `hf/YusufSimsek/turkce-atasozleri-dataset` | Compiled | Turkish proverbs, public domain | cc-by-sa-4.0 | — |
+| Source class | Datasets |
+|---|---:|
+| Undocumented | 14 |
+| Synthetic | 10 |
+| Scraped | 8 |
+| Derived from another dataset | 6 |
+| Scraped, then LLM-shaped | 5 |
+| Mixed | 1 |
+| Compiled from public-domain text | 1 |
+
+Per-dataset origin, licence and reuse question are in
+[`appendix/provenance.csv`](../appendix/provenance.csv).
 
 The concentration of risk is narrow and specific. Scraped platform content
 (`hf/SalihHub/...`, `hf/sedayzc/trendyol-...`, `hf/berkbirkan/...`) carries both
@@ -248,10 +202,9 @@ their risk is simply unknown.
 
 ### Personal identifiers and register
 
-Pattern matching over every text field returns 15 eleven-digit identifiers,
-72 phone-shaped strings, 4 e-mail addresses and 119 informal-register
-hits. **None of those counts is a finding by itself.** Each was read before being
-reported, and the outcome differs sharply by dataset.
+Pattern matching returns 15 eleven-digit identifiers, 72 phone-shaped strings,
+4 e-mail addresses and 119 informal-register hits. **None is a finding by
+itself.** Each was read first, and the outcome differs sharply.
 
 | Signal | Where | Raw count | After reading the matches |
 |---|---|---:|---|
@@ -260,12 +213,10 @@ reported, and the outcome differs sharply by dataset.
 | Informal register | `hf/berkbirkan/turkish-x-engagement-*` | 91 | **Confirmed and expected.** Authentic social-media language in real posts. A consequence of the source, not a defect. |
 | Informal register | `hf/YusufSimsek/turkce-atasozleri-dataset` | 3 | **False positive.** The word list flags a proverb that contains the word, e.g. *"aptal ata binerse bey oldum sanır"*. |
 
-Two lessons carry beyond this collection. The pattern originally named
-`turkish_id_like_matches` was renamed `eleven_digit_identifier_matches`, because
-the old name asserted a conclusion the regex cannot support — and that wrong name
-is why the Trendyol order numbers went unreported for as long as they did.
-`profanity_matches` became `informal_register_matches` for the same reason: the
-word list includes mild terms and "profanity" overstated them.
+Both patterns were renamed. `turkish_id_like_matches` became
+`eleven_digit_identifier_matches`: the old name asserted a conclusion the regex
+cannot support, and that is why the order numbers went unreported.
+`profanity_matches` became `informal_register_matches` for the same reason.
 
 **Residual risk.** These patterns see only formatted identifiers. They cannot
 detect names, employers, addresses or any other contextual personal data, and
@@ -274,64 +225,25 @@ ordinary. Absence of a match is not evidence of absence.
 
 ### What the collection is actually about
 
-Row counts say how much data exists; they say nothing about what it covers. The
-terms below are weighted against the other 44 datasets, so they show what makes
-each dataset distinctive rather than what is merely frequent. Turkish is
-agglutinative, so counting uses a six-character prefix stem and each stem is
-labelled with its commonest surface form — a crude device, not morphological
-analysis.
+Terms are weighted against the other 44 datasets, so they show what makes a
+dataset distinctive rather than what is merely frequent. Turkish is agglutinative,
+so counting uses a six-character prefix stem labelled with its commonest surface
+form — a crude device, not morphological analysis. Concentration is the share of
+topic tokens held by the twenty commonest stems: narrow vocabulary, expected for
+an identity dataset and a coverage limit for a domain one.
 
-Concentration is the share of topic tokens held by the twenty commonest stems. A
-high value means a narrow vocabulary: expected for an identity dataset, a
-coverage limit for a domain one.
+The five narrowest vocabularies, with the terms that distinguish them:
 
 | Dataset | Concentration | Distinctive terms |
 |---|---:|---|
-| `hf/aliFurkan123/cultural-questions-dataset` | 52% | katının, başkenti, soracağım, kafadan, arkadaşlar, kaçtır |
-| `hf/aliFurkan123/identity` | 75% | furkan, trained, tuned, goal, fine, tell |
-| `hf/Aysenur44/namaz-vakti-dua-asistan-tr` | 59% | namazı, hocam, detaylı, kılınabilir, vakti, abdest |
 | `hf/Aysenur44/namaz-vakti-identity-tr` | 100% | yararsın, adın, kimsin, seni, geliştirdi |
-| `hf/berkbirkan/turkish-x-engagement-quotes` | 29% | içgörü, quote, özgün, alıntılarken, ekleyen, aşağıdaki |
-| `hf/berkbirkan/turkish-x-engagement-replies` | 25% | reply, aşağıdaki, doğal, bağlama, gönderisine, uygun |
-| `hf/berkcangumusisik/voleykoc-antrenorluk-tr` | 49% | voleybol, takımı, kadın, devamı, sormamı, antrenörüm |
-| `hf/berkcangumusisik/voleykoc-identity-tr` | 47% | pardon, soracağım, sorry, selam, curious, hello |
-| `hf/cihatyldz/lojistik-soru-cevap` | 36% | lojistik, taşımacılığı, kargo, kurye, teslimat, racking |
-| `hf/Egertekin/marvel-domain-dataset` | 81% | örümcek, spider, adam, detaylı, marvel, comics |
-| `hf/Endezyar/siyer_datasets` | 24% | efendimiz, müslüman, peygamberimiz, kabile, hicret, medine |
-| `hf/enes1863/bilisim-hukuku-domain-dataset` | 33% | veri, kişisel, anonim, hâle, rıza, sorumlusunun |
-| `hf/enesozdemr/benim_ilk_datasetim` | 96% | kokulandırılır, petrol, boru, hattı, doğal, neden |
-| `hf/Erenyanic/seasoned-advice-dataset` | 7% | cooking, water, pişirme, some, recipe, them |
-| `hf/erhanalsr/langusta-identity` | 56% | yanıtla, cümleyle, açıkça, soruyu, cevapla, kısaca |
-| `hf/erhanalsr/langusta-kpss-reasoning` | 27% | aşağıdakilerden, seçenekler, medresesi, şarkısı, sanatçı, devlet |
-| `hf/filiz-yalcin/identity-finetune` | 25% | misiniz, function, zeka, creation, model, sizi |
-| `hf/filiz-yalcin/turkish-figure-skating-qa` | 45% | pateninde, artistik, yarışmalarında, atlayış, spin, spiral |
-| `hf/gmz1234/stackoverflow_ai` | 12% | neural, network, learning, action, function, reward |
-| `hf/gorkemergune/ayarlicazhocam_finetune` | 26% | project, gorkem, onerir, görkem, projesi, icin |
-| `hf/gururaser/ithaki-bilimkurgu-klasikleri` | 26% | bilimkurgu, thaki, klasikleri, yayınları, mars, bradbury |
-| `hf/haticenurcakr/turkish-classic-books-qa` | 63% | eserinin, yayımlanmıştır, edebiyatında, yazarı, türk, kimdir |
-| `hf/meldakahramann/animasyon-domain-dataset` | 43% | filminin, animasyonu, seslendirenleri, filmi, kimler, zleyenler |
-| `hf/Mer1Alii/TR-ECommerce-CustomerSupport-Instructions` | 15% | sipariş, kargo, fatura, iade, iptal, satıcı |
-| `hf/namruni/meb-ogretmen-soru-cevap` | 12% | öğretmen, tayin, tayini, arkadaşlar, norm, merhaba |
-| `hf/nursimakgul/meb-soru-uretme` | 74% | üret, çoktan, sınıf, seçmeli, orta, soru |
-| `hf/nyzmemre/biyoloji-terimleri-turkce-sa` | 38% | teriminin, ders, kitaplarında, tanım, açıklama, öğrenci |
-| `hf/sadecebirisii/turkish-llm-authority-bypass-safety-sft` | 15% | adim, icin, anthropic, saldirisi, safety, decode |
-| `hf/SalihHub/trendyol-marangoz-urun-asistan-qa` | 22% | merhaba, acaba, ürün, ürünün, duvara, ölçüleri |
-| `hf/samliumay/turkish_cyber_security_controls_dataset` | 20% | güvenlik, bulut, erişim, kontrol, veri, yönetilir |
-| `hf/samliumay/umay_samli_identification_dataset` | 40% | umay, yaratıcının, nato, güvenlik, sertifikası, deneyimi |
-| `hf/seali/turkce-saglik-qa` | 49% | diyabetli, ergenlerde, bilmem, obezite, konusunda, hastalığı |
-| `hf/sedayzc/trendyol-electronics-products-features-and-comments` | 22% | gayet, ürün, teşekkür, güzel, ederim, satıcı |
-| `hf/sedayzc/turkish-electronics-product-comparison-recommendation` | 38% | 16gb, 512gb, core, intel, ryzen, freedos |
-| `hf/senemde/saglik-qa-tr` | 18% | diyabetin, hastalarında, diabetes, glukoz, gestasyonel, faktörlere |
-| `hf/sk75/sahin_identity` | 30% | arkanda, model, seni, built, team, yourself |
-| `hf/srhskrkc/odysseia-destani-tr` | 48% | odysseus, thaka, adasında, adamları, tulumu, etmiştir |
-| `hf/ssilistre/carnegie-dost-kazanma-tr` | 15% | carnegie, eleştiri, lincoln, sözü, neden, yapmalıyım |
-| `hf/ssilistre/semih-silistre-ai-identity` | 24% | sana, bana, seni, miyim, tanıt, kendini |
-| `hf/Talayhan/skatepal_dataset` | 12% | kaykay, skateboard, skate, board, kickflip, skating |
-| `hf/Toivo0/Turkce-istatistik-reasoning` | 16% | dağılımı, istatistiksel, olasılık, değişken, örneklem, ortalama |
-| `hf/Uunan/turkish-cuisine-qa` | 32% | tarifinde, aittir, çorbası, yapım, öğün, yöreye |
-| `hf/yoitsmeyusuf/felsefe_finetune` | 32% | kimdir, felsefesi, jean, karl, michel, john |
-| `hf/YusufSimsek/llm-kisisellestirme` | 54% | yusuf, birisi, ilgileniyor, senden, projeleri, üniversite |
-| `hf/YusufSimsek/turkce-atasozleri-dataset` | 36% | atasözü, anlatmaktadır, anlamı, sanır, allah, gözü |
+| `hf/enesozdemr/benim_ilk_datasetim` | 96% | kokulandırılır, petrol, boru, hattı, doğal |
+| `hf/Egertekin/marvel-domain-dataset` | 81% | örümcek, spider, adam, detaylı, marvel |
+| `hf/aliFurkan123/identity` | 75% | furkan, trained, tuned, goal, fine |
+| `hf/nursimakgul/meb-soru-uretme` | 74% | üret, çoktan, sınıf, seçmeli, orta |
+
+All 45 rows are in [`appendix/topic_profile.csv`](../appendix/topic_profile.csv).
+
 
 ![Datasets covering the same ground](figures/topic-overlap.png)
 
@@ -717,4 +629,4 @@ Every number in this report is traceable to a checked JSON output:
 
 The full pipeline and its commands are documented in the
 [repository README](../README.md#reproduce-or-extend-the-analysis). Repository
-validation ran 1,568 checks against this scope and all passed.
+validation ran 1,572 checks against this scope and all passed.

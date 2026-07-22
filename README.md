@@ -26,6 +26,8 @@ with live HTTP evidence rather than dropped — see
 | Chart definitions and provenance | Markdown | [Open the chart guide](reports/figures/README.md) |
 | Row-level capability mapping | CSV | [Open the mapping table](appendix/capability_mapping.csv) |
 | Machine-readable capability manifest | JSON | [Open the manifest](appendix/dataset_manifest.json) |
+| Per-dataset topics | CSV | [Open the topic profile](appendix/topic_profile.csv) |
+| Per-dataset provenance and rights | CSV | [Open the provenance table](appendix/provenance.csv) |
 | Recorded access blocks | JSON | [Open the exclusion record](outputs/excluded_datasets.json) |
 | Evaluation criteria | JSON | [Open the criteria](config/evaluation_criteria.json) |
 | Vocabulary similarity | JSON | [Open the topic overlap](outputs/topic_overlap.json) |
@@ -33,7 +35,7 @@ with live HTTP evidence rather than dropped — see
 ## Verified findings
 
 - All 45 snapshots were downloaded at pinned revisions and profiled row by row
-  on 22 July 2026. Repository validation ran **1,568 checks, all of which passed**.
+  on 22 July 2026. Repository validation ran **1,572 checks, all of which passed**.
 - Conversation rows contain **no invalid roles** and **no prompt identical to its
   own answer**. Two assistant messages are empty, both in the same dataset.
 - **5,033 rows are exact duplicates.** 4,851 of them sit in one repository that
