@@ -398,6 +398,23 @@ def check_evidence(baseline: dict, registry: dict) -> None:
             f"No contributor feedback page mentions {dataset_id}",
         )
 
+    # The README dataset tables carry one feedback link per dataset. Checking the
+    # count catches a row added without its link, which a broken-link check
+    # cannot see because the missing link is not there to be broken.
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    feedback_links = re.findall(r"\[Feedback\]\(feedback/([^)]+)\.md\)", readme)
+    require(
+        len(feedback_links) == len(registry.get("datasets", [])),
+        f"README has {len(feedback_links)} feedback links for "
+        f"{len(registry.get('datasets', []))} registry datasets",
+    )
+    require(
+        set(feedback_links) == pages,
+        "README feedback links do not cover exactly the generated pages: "
+        f"missing={sorted(pages - set(feedback_links))}, "
+        f"unknown={sorted(set(feedback_links) - pages)}",
+    )
+
     csv_path = ROOT / "appendix" / "capability_mapping.csv"
     with csv_path.open(encoding="utf-8-sig", newline="") as handle:
         rows = list(csv.DictReader(handle))

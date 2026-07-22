@@ -113,53 +113,57 @@ All charts are generated from the checked JSON outputs by
 
 ## Datasets
 
-| Contributor | Dataset | Rows | Structure |
-|---|---|---:|---|
-| Ali Furkan Ak | [hf/aliFurkan123/cultural-questions-dataset](https://huggingface.co/datasets/aliFurkan123/cultural-questions-dataset) | 500 | Conversation |
-| Ali Furkan Ak | [hf/aliFurkan123/identity](https://huggingface.co/datasets/aliFurkan123/identity) | 30 | Conversation |
-| Ayşe Nur Yeşilova | [hf/Aysenur44/namaz-vakti-dua-asistan-tr](https://huggingface.co/datasets/Aysenur44/namaz-vakti-dua-asistan-tr) | 60 | Conversation |
-| Ayşe Nur Yeşilova | [hf/Aysenur44/namaz-vakti-identity-tr](https://huggingface.co/datasets/Aysenur44/namaz-vakti-identity-tr) | 4 | Conversation |
-| Berk Birkan | [hf/berkbirkan/turkish-x-engagement-quotes](https://huggingface.co/datasets/berkbirkan/turkish-x-engagement-quotes) | 1,000 | Conversation |
-| Berk Birkan | [hf/berkbirkan/turkish-x-engagement-replies](https://huggingface.co/datasets/berkbirkan/turkish-x-engagement-replies) | 1,000 | Conversation |
-| Berkcan Gümüşışık | [hf/berkcangumusisik/voleykoc-antrenorluk-tr](https://huggingface.co/datasets/berkcangumusisik/voleykoc-antrenorluk-tr) | 166 | Conversation |
-| Berkcan Gümüşışık | [hf/berkcangumusisik/voleykoc-identity-tr](https://huggingface.co/datasets/berkcangumusisik/voleykoc-identity-tr) | 182 | Conversation |
-| Cihat Yıldız | [hf/cihatyldz/lojistik-soru-cevap](https://huggingface.co/datasets/cihatyldz/lojistik-soru-cevap) | 139 | Conversation |
-| Ege Ertekin | [hf/Egertekin/marvel-domain-dataset](https://huggingface.co/datasets/Egertekin/marvel-domain-dataset) | 177 | Conversation |
-| Enes Hakan | [hf/enes1863/bilisim-hukuku-domain-dataset](https://huggingface.co/datasets/enes1863/bilisim-hukuku-domain-dataset) | 1,000 | Conversation |
-| enesozdemr (account handle) | [hf/enesozdemr/benim_ilk_datasetim](https://huggingface.co/datasets/enesozdemr/benim_ilk_datasetim) | 113 | Conversation |
-| Eren Yanic | [hf/Erenyanic/seasoned-advice-dataset](https://huggingface.co/datasets/Erenyanic/seasoned-advice-dataset) | 1,000 | Conversation |
-| Erhan Alasar | [hf/erhanalsr/langusta-identity](https://huggingface.co/datasets/erhanalsr/langusta-identity) | 100 | Conversation |
-| Erhan Alasar | [hf/erhanalsr/langusta-kpss-reasoning](https://huggingface.co/datasets/erhanalsr/langusta-kpss-reasoning) | 21 | Conversation |
-| Filiz Yalçin | [hf/filiz-yalcin/identity-finetune](https://huggingface.co/datasets/filiz-yalcin/identity-finetune) | 1,600 | Conversation |
-| Filiz Yalçin | [hf/filiz-yalcin/turkish-figure-skating-qa](https://huggingface.co/datasets/filiz-yalcin/turkish-figure-skating-qa) | 526 | Conversation |
-| gmz1234 (account handle) | [hf/gmz1234/stackoverflow_ai](https://huggingface.co/datasets/gmz1234/stackoverflow_ai) | 1,000 | Conversation |
-| Görkem Ergüne | [hf/gorkemergune/ayarlicazhocam_finetune](https://huggingface.co/datasets/gorkemergune/ayarlicazhocam_finetune) | 429 | Conversation |
-| Gurur Aşer | [hf/gururaser/ithaki-bilimkurgu-klasikleri](https://huggingface.co/datasets/gururaser/ithaki-bilimkurgu-klasikleri) | 103 | Catalog |
-| Hatice Nur Çakır | [hf/haticenurcakr/turkish-classic-books-qa](https://huggingface.co/datasets/haticenurcakr/turkish-classic-books-qa) | 220 | Conversation |
-| Hilal Kavas | [hf/sadecebirisii/turkish-llm-authority-bypass-safety-sft](https://huggingface.co/datasets/sadecebirisii/turkish-llm-authority-bypass-safety-sft) | 29 | Conversation |
-| Mehmet Emre Öz | [hf/nyzmemre/biyoloji-terimleri-turkce-sa](https://huggingface.co/datasets/nyzmemre/biyoloji-terimleri-turkce-sa) | 1,093 | Conversation |
-| Melda Kahraman | [hf/meldakahramann/animasyon-domain-dataset](https://huggingface.co/datasets/meldakahramann/animasyon-domain-dataset) | 1,020 | Conversation |
-| Mert Ali Alkan | [hf/Mer1Alii/TR-ECommerce-CustomerSupport-Instructions](https://huggingface.co/datasets/Mer1Alii/TR-ECommerce-CustomerSupport-Instructions) | 186 | Conversation |
-| Muhammed Bakır Kurt | [hf/Endezyar/siyer_datasets](https://huggingface.co/datasets/Endezyar/siyer_datasets) | 509 | Conversation |
-| Muhammet Yusuf Kaydın | [hf/yoitsmeyusuf/felsefe_finetune](https://huggingface.co/datasets/yoitsmeyusuf/felsefe_finetune) | 529 | Conversation |
-| Mustafa Özdemir | [hf/namruni/meb-ogretmen-soru-cevap](https://huggingface.co/datasets/namruni/meb-ogretmen-soru-cevap) | 450 | Conversation |
-| Nur Sima Akgül | [hf/nursimakgul/meb-soru-uretme](https://huggingface.co/datasets/nursimakgul/meb-soru-uretme) | 20,874 | Conversation |
-| Salih Dede | [hf/SalihHub/trendyol-marangoz-urun-asistan-qa](https://huggingface.co/datasets/SalihHub/trendyol-marangoz-urun-asistan-qa) | 1,211 | Conversation |
-| Seda Nur Yazıcı | [hf/sedayzc/trendyol-electronics-products-features-and-comments](https://huggingface.co/datasets/sedayzc/trendyol-electronics-products-features-and-comments) | 500 | Product table |
-| Seda Nur Yazıcı | [hf/sedayzc/turkish-electronics-product-comparison-recommendation](https://huggingface.co/datasets/sedayzc/turkish-electronics-product-comparison-recommendation) | 11,858 | Conversation |
-| Semih Silistre | [hf/ssilistre/carnegie-dost-kazanma-tr](https://huggingface.co/datasets/ssilistre/carnegie-dost-kazanma-tr) | 1,001 | Conversation |
-| Semih Silistre | [hf/ssilistre/semih-silistre-ai-identity](https://huggingface.co/datasets/ssilistre/semih-silistre-ai-identity) | 382 | Conversation |
-| Senem Deniz | [hf/senemde/saglik-qa-tr](https://huggingface.co/datasets/senemde/saglik-qa-tr) | 553 | Conversation |
-| Serhat Kılıç | [hf/sk75/sahin_identity](https://huggingface.co/datasets/sk75/sahin_identity) | 77 | Conversation |
-| Seyit Ali Yorğun | [hf/seali/turkce-saglik-qa](https://huggingface.co/datasets/seali/turkce-saglik-qa) | 773 | Conversation |
-| Şakir Koç | [hf/srhskrkc/odysseia-destani-tr](https://huggingface.co/datasets/srhskrkc/odysseia-destani-tr) | 10 | Conversation |
-| Talayhan (account handle) | [hf/Talayhan/skatepal_dataset](https://huggingface.co/datasets/Talayhan/skatepal_dataset) | 299 | Conversation |
-| Umay Şamlı | [hf/samliumay/turkish_cyber_security_controls_dataset](https://huggingface.co/datasets/samliumay/turkish_cyber_security_controls_dataset) | 800 | Conversation |
-| Umay Şamlı | [hf/samliumay/umay_samli_identification_dataset](https://huggingface.co/datasets/samliumay/umay_samli_identification_dataset) | 219 | Conversation |
-| Umut Kıvanç Sipahioglu | [hf/Toivo0/Turkce-istatistik-reasoning](https://huggingface.co/datasets/Toivo0/Turkce-istatistik-reasoning) | 400 | Conversation |
-| Uunan (account handle) | [hf/Uunan/turkish-cuisine-qa](https://huggingface.co/datasets/Uunan/turkish-cuisine-qa) | 34,244 | Conversation |
-| Yusuf Şimşek | [hf/YusufSimsek/llm-kisisellestirme](https://huggingface.co/datasets/YusufSimsek/llm-kisisellestirme) | 46 | Conversation |
-| Yusuf Şimşek | [hf/YusufSimsek/turkce-atasozleri-dataset](https://huggingface.co/datasets/YusufSimsek/turkce-atasozleri-dataset) | 1,398 | Conversation |
+| Contributor | Dataset | Rows | Structure | Review |
+|---|---|---:|---|---|
+| Ali Furkan Ak | [hf/aliFurkan123/cultural-questions-dataset](https://huggingface.co/datasets/aliFurkan123/cultural-questions-dataset) | 500 | Conversation | [Feedback](feedback/ali-furkan-ak.md) |
+| Ali Furkan Ak | [hf/aliFurkan123/identity](https://huggingface.co/datasets/aliFurkan123/identity) | 30 | Conversation | [Feedback](feedback/ali-furkan-ak.md) |
+| Ayşe Nur Yeşilova | [hf/Aysenur44/namaz-vakti-dua-asistan-tr](https://huggingface.co/datasets/Aysenur44/namaz-vakti-dua-asistan-tr) | 60 | Conversation | [Feedback](feedback/ayse-nur-yesilova.md) |
+| Ayşe Nur Yeşilova | [hf/Aysenur44/namaz-vakti-identity-tr](https://huggingface.co/datasets/Aysenur44/namaz-vakti-identity-tr) | 4 | Conversation | [Feedback](feedback/ayse-nur-yesilova.md) |
+| Berk Birkan | [hf/berkbirkan/turkish-x-engagement-quotes](https://huggingface.co/datasets/berkbirkan/turkish-x-engagement-quotes) | 1,000 | Conversation | [Feedback](feedback/berk-birkan.md) |
+| Berk Birkan | [hf/berkbirkan/turkish-x-engagement-replies](https://huggingface.co/datasets/berkbirkan/turkish-x-engagement-replies) | 1,000 | Conversation | [Feedback](feedback/berk-birkan.md) |
+| Berkcan Gümüşışık | [hf/berkcangumusisik/voleykoc-antrenorluk-tr](https://huggingface.co/datasets/berkcangumusisik/voleykoc-antrenorluk-tr) | 166 | Conversation | [Feedback](feedback/berkcan-gumusisik.md) |
+| Berkcan Gümüşışık | [hf/berkcangumusisik/voleykoc-identity-tr](https://huggingface.co/datasets/berkcangumusisik/voleykoc-identity-tr) | 182 | Conversation | [Feedback](feedback/berkcan-gumusisik.md) |
+| Cihat Yıldız | [hf/cihatyldz/lojistik-soru-cevap](https://huggingface.co/datasets/cihatyldz/lojistik-soru-cevap) | 139 | Conversation | [Feedback](feedback/cihat-yildiz.md) |
+| Ege Ertekin | [hf/Egertekin/marvel-domain-dataset](https://huggingface.co/datasets/Egertekin/marvel-domain-dataset) | 177 | Conversation | [Feedback](feedback/ege-ertekin.md) |
+| Enes Hakan | [hf/enes1863/bilisim-hukuku-domain-dataset](https://huggingface.co/datasets/enes1863/bilisim-hukuku-domain-dataset) | 1,000 | Conversation | [Feedback](feedback/enes-hakan.md) |
+| enesozdemr (account handle) | [hf/enesozdemr/benim_ilk_datasetim](https://huggingface.co/datasets/enesozdemr/benim_ilk_datasetim) | 113 | Conversation | [Feedback](feedback/enesozdemr.md) |
+| Eren Yanic | [hf/Erenyanic/seasoned-advice-dataset](https://huggingface.co/datasets/Erenyanic/seasoned-advice-dataset) | 1,000 | Conversation | [Feedback](feedback/eren-yanic.md) |
+| Erhan Alasar | [hf/erhanalsr/langusta-identity](https://huggingface.co/datasets/erhanalsr/langusta-identity) | 100 | Conversation | [Feedback](feedback/erhan-alasar.md) |
+| Erhan Alasar | [hf/erhanalsr/langusta-kpss-reasoning](https://huggingface.co/datasets/erhanalsr/langusta-kpss-reasoning) | 21 | Conversation | [Feedback](feedback/erhan-alasar.md) |
+| Filiz Yalçin | [hf/filiz-yalcin/identity-finetune](https://huggingface.co/datasets/filiz-yalcin/identity-finetune) | 1,600 | Conversation | [Feedback](feedback/filiz-yalcin.md) |
+| Filiz Yalçin | [hf/filiz-yalcin/turkish-figure-skating-qa](https://huggingface.co/datasets/filiz-yalcin/turkish-figure-skating-qa) | 526 | Conversation | [Feedback](feedback/filiz-yalcin.md) |
+| gmz1234 (account handle) | [hf/gmz1234/stackoverflow_ai](https://huggingface.co/datasets/gmz1234/stackoverflow_ai) | 1,000 | Conversation | [Feedback](feedback/gmz1234.md) |
+| Gurur Aşer | [hf/gururaser/ithaki-bilimkurgu-klasikleri](https://huggingface.co/datasets/gururaser/ithaki-bilimkurgu-klasikleri) | 103 | Catalog | [Feedback](feedback/gurur-aser.md) |
+| Görkem Ergüne | [hf/gorkemergune/ayarlicazhocam_finetune](https://huggingface.co/datasets/gorkemergune/ayarlicazhocam_finetune) | 429 | Conversation | [Feedback](feedback/gorkem-ergune.md) |
+| Hatice Nur Çakır | [hf/haticenurcakr/turkish-classic-books-qa](https://huggingface.co/datasets/haticenurcakr/turkish-classic-books-qa) | 220 | Conversation | [Feedback](feedback/hatice-nur-cakir.md) |
+| Hilal Kavas | [hf/sadecebirisii/turkish-llm-authority-bypass-safety-sft](https://huggingface.co/datasets/sadecebirisii/turkish-llm-authority-bypass-safety-sft) | 29 | Conversation | [Feedback](feedback/hilal-kavas.md) |
+| Mehmet Emre Öz | [hf/nyzmemre/biyoloji-terimleri-turkce-sa](https://huggingface.co/datasets/nyzmemre/biyoloji-terimleri-turkce-sa) | 1,093 | Conversation | [Feedback](feedback/mehmet-emre-oz.md) |
+| Melda Kahraman | [hf/meldakahramann/animasyon-domain-dataset](https://huggingface.co/datasets/meldakahramann/animasyon-domain-dataset) | 1,020 | Conversation | [Feedback](feedback/melda-kahraman.md) |
+| Mert Ali Alkan | [hf/Mer1Alii/TR-ECommerce-CustomerSupport-Instructions](https://huggingface.co/datasets/Mer1Alii/TR-ECommerce-CustomerSupport-Instructions) | 186 | Conversation | [Feedback](feedback/mert-ali-alkan.md) |
+| Muhammed Bakır Kurt | [hf/Endezyar/siyer_datasets](https://huggingface.co/datasets/Endezyar/siyer_datasets) | 509 | Conversation | [Feedback](feedback/muhammed-bakir-kurt.md) |
+| Muhammet Yusuf Kaydın | [hf/yoitsmeyusuf/felsefe_finetune](https://huggingface.co/datasets/yoitsmeyusuf/felsefe_finetune) | 529 | Conversation | [Feedback](feedback/muhammet-yusuf-kaydin.md) |
+| Mustafa Özdemir | [hf/namruni/meb-ogretmen-soru-cevap](https://huggingface.co/datasets/namruni/meb-ogretmen-soru-cevap) | 450 | Conversation | [Feedback](feedback/mustafa-ozdemir.md) |
+| Nur Sima Akgül | [hf/nursimakgul/meb-soru-uretme](https://huggingface.co/datasets/nursimakgul/meb-soru-uretme) | 20,874 | Conversation | [Feedback](feedback/nur-sima-akgul.md) |
+| Salih Dede | [hf/SalihHub/trendyol-marangoz-urun-asistan-qa](https://huggingface.co/datasets/SalihHub/trendyol-marangoz-urun-asistan-qa) | 1,211 | Conversation | [Feedback](feedback/salih-dede.md) |
+| Seda Nur Yazıcı | [hf/sedayzc/trendyol-electronics-products-features-and-comments](https://huggingface.co/datasets/sedayzc/trendyol-electronics-products-features-and-comments) | 500 | Product table | [Feedback](feedback/seda-nur-yazici.md) |
+| Seda Nur Yazıcı | [hf/sedayzc/turkish-electronics-product-comparison-recommendation](https://huggingface.co/datasets/sedayzc/turkish-electronics-product-comparison-recommendation) | 11,858 | Conversation | [Feedback](feedback/seda-nur-yazici.md) |
+| Semih Silistre | [hf/ssilistre/carnegie-dost-kazanma-tr](https://huggingface.co/datasets/ssilistre/carnegie-dost-kazanma-tr) | 1,001 | Conversation | [Feedback](feedback/semih-silistre.md) |
+| Semih Silistre | [hf/ssilistre/semih-silistre-ai-identity](https://huggingface.co/datasets/ssilistre/semih-silistre-ai-identity) | 382 | Conversation | [Feedback](feedback/semih-silistre.md) |
+| Senem Deniz | [hf/senemde/saglik-qa-tr](https://huggingface.co/datasets/senemde/saglik-qa-tr) | 553 | Conversation | [Feedback](feedback/senem-deniz.md) |
+| Serhat Kılıç | [hf/sk75/sahin_identity](https://huggingface.co/datasets/sk75/sahin_identity) | 77 | Conversation | [Feedback](feedback/serhat-kilic.md) |
+| Seyit Ali Yorğun | [hf/seali/turkce-saglik-qa](https://huggingface.co/datasets/seali/turkce-saglik-qa) | 773 | Conversation | [Feedback](feedback/seyit-ali-yorgun.md) |
+| Talayhan (account handle) | [hf/Talayhan/skatepal_dataset](https://huggingface.co/datasets/Talayhan/skatepal_dataset) | 299 | Conversation | [Feedback](feedback/talayhan.md) |
+| Umay Şamlı | [hf/samliumay/turkish_cyber_security_controls_dataset](https://huggingface.co/datasets/samliumay/turkish_cyber_security_controls_dataset) | 800 | Conversation | [Feedback](feedback/umay-samli.md) |
+| Umay Şamlı | [hf/samliumay/umay_samli_identification_dataset](https://huggingface.co/datasets/samliumay/umay_samli_identification_dataset) | 219 | Conversation | [Feedback](feedback/umay-samli.md) |
+| Umut Kıvanç Sipahioglu | [hf/Toivo0/Turkce-istatistik-reasoning](https://huggingface.co/datasets/Toivo0/Turkce-istatistik-reasoning) | 400 | Conversation | [Feedback](feedback/umut-kivanc-sipahioglu.md) |
+| Uunan (account handle) | [hf/Uunan/turkish-cuisine-qa](https://huggingface.co/datasets/Uunan/turkish-cuisine-qa) | 34,244 | Conversation | [Feedback](feedback/uunan.md) |
+| Yusuf Şimşek | [hf/YusufSimsek/llm-kisisellestirme](https://huggingface.co/datasets/YusufSimsek/llm-kisisellestirme) | 46 | Conversation | [Feedback](feedback/yusuf-simsek.md) |
+| Yusuf Şimşek | [hf/YusufSimsek/turkce-atasozleri-dataset](https://huggingface.co/datasets/YusufSimsek/turkce-atasozleri-dataset) | 1,398 | Conversation | [Feedback](feedback/yusuf-simsek.md) |
+| Şakir Koç | [hf/srhskrkc/odysseia-destani-tr](https://huggingface.co/datasets/srhskrkc/odysseia-destani-tr) | 10 | Conversation | [Feedback](feedback/sakir-koc.md) |
+
+Each row links to a one-page review in Turkish covering only that contributor's
+datasets: what the data is for, what already works, and what to fix, ordered by
+severity. The full set is indexed in [`feedback/`](feedback/README.md).
 
 Contributor names come from the assignment submission form. Where a submitter
 did not supply a verifiable full name, the Hugging Face account handle is
@@ -172,10 +176,10 @@ Every run re-verifies the block and records the live HTTP result in
 [`outputs/excluded_datasets.json`](outputs/excluded_datasets.json). Their rows
 are excluded from every total in this repository.
 
-| Contributor | Dataset | Status | Evidence |
-|---|---|---|---|
-| Muhammet Enes Nas | [hf/menesnas/Pharmacy_Identity_Synthetic_QA](https://huggingface.co/datasets/menesnas/Pharmacy_Identity_Synthetic_QA) | Gated, access not granted | Repository metadata reports `gated: "manual"`. Authenticated requests return `403 "Access to dataset … is restricted and you are not in the authorized list"`. The data card is public; only the data files are withheld. |
-| Oguz Caliskan | [hf/uzcaliskan/magibu_dataset_drilling](https://huggingface.co/datasets/uzcaliskan/magibu_dataset_drilling) | Not reachable | Anonymous requests return `401`; authenticated requests return `404 "Repository not found"`. A valid credential turning 401 into 404 means the repository is not visible to the auditing account at all, so it is deleted, renamed, or private to a different owner. |
+| Contributor | Dataset | Status | Evidence | Review |
+|---|---|---|---|---|
+| Muhammet Enes Nas | [hf/menesnas/Pharmacy_Identity_Synthetic_QA](https://huggingface.co/datasets/menesnas/Pharmacy_Identity_Synthetic_QA) | Gated, access not granted | Repository metadata reports `gated: "manual"`. Authenticated requests return `403 "Access to dataset … is restricted and you are not in the authorized list"`. The data card is public; only the data files are withheld.  | [Feedback](feedback/muhammet-enes-nas.md) |
+| Oguz Caliskan | [hf/uzcaliskan/magibu_dataset_drilling](https://huggingface.co/datasets/uzcaliskan/magibu_dataset_drilling) | Not reachable | Anonymous requests return `401`; authenticated requests return `404 "Repository not found"`. A valid credential turning 401 into 404 means the repository is not visible to the auditing account at all, so it is deleted, renamed, or private to a different owner.  | [Feedback](feedback/oguz-caliskan.md) |
 
 To bring the first dataset into scope, its owner must approve an access request
 for the auditing account; the audit then picks it up with no code change. For
