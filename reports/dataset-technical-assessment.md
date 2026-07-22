@@ -236,37 +236,43 @@ The five narrowest vocabularies, with the terms that distinguish them:
 
 | Dataset | Concentration | Distinctive terms |
 |---|---:|---|
-| `hf/Aysenur44/namaz-vakti-identity-tr` | 100% | yararsın, adın, kimsin, seni, geliştirdi |
-| `hf/enesozdemr/benim_ilk_datasetim` | 96% | kokulandırılır, petrol, boru, hattı, doğal |
-| `hf/Egertekin/marvel-domain-dataset` | 81% | örümcek, spider, adam, detaylı, marvel |
-| `hf/aliFurkan123/identity` | 75% | furkan, trained, tuned, goal, fine |
-| `hf/nursimakgul/meb-soru-uretme` | 74% | üret, çoktan, sınıf, seçmeli, orta |
+| `hf/Aysenur44/namaz-vakti-identity-tr` | 100% | ayşenur, namazasistan, vakitleri, ibadet, namaz |
+| `hf/aliFurkan123/identity` | 86% | furkan, qwen, tuned, fine, trained |
+| `hf/erhanalsr/langusta-identity` | 53% | langusta, kpss, alasar, erhan, türkçe |
+| `hf/enesozdemr/benim_ilk_datasetim` | 45% | petrol, gazın, boru, doğal, kaçakların |
+| `hf/haticenurcakr/turkish-classic-books-qa` | 45% | eserinin, edebiyatında, eserde, yayımlanmıştır, türk |
 
 All 45 rows are in [`appendix/topic_profile.csv`](../appendix/topic_profile.csv).
 
 
+Terms are drawn from both the prompt and the answer, because the subject lives in
+whichever turn carries it. Where the prompt is a fixed instruction template the
+terms can still describe the instruction rather than the subject, so those
+datasets are flagged in the profile with their prompt-repetition rate. 5 are
+flagged: `hf/Egertekin/marvel-domain-dataset`, `hf/berkbirkan/turkish-x-engagement-quotes`, `hf/berkbirkan/turkish-x-engagement-replies`, `hf/nursimakgul/meb-soru-uretme`, `hf/yoitsmeyusuf/felsefe_finetune`.
+
 ![Datasets covering the same ground](figures/topic-overlap.png)
 
-**2 pair(s) reach the 0.30 redundancy threshold.**
+**3 pair(s) reach the 0.30 redundancy threshold.**
 
 | Dataset | Dataset | Cosine | Shared terms |
 |---|---|---:|---|
-| `hf/seali/turkce-saglik-qa` | `hf/senemde/saglik-qa-tr` | 0.568 | diyabetli, hastalığı, obezite, öneriler |
-| `hf/Erenyanic/seasoned-advice-dataset` | `hf/gmz1234/stackoverflow_ai` | 0.301 | some, different, like, more |
-| `hf/Mer1Alii/TR-ECommerce-CustomerSupport-Instructions` | `hf/sedayzc/trendyol-electronics-products-features-and-comments` | 0.270 | kargo, satıcı, ürün, geldi |
-| `hf/Mer1Alii/TR-ECommerce-CustomerSupport-Instructions` | `hf/SalihHub/trendyol-marangoz-urun-asistan-qa` | 0.224 | merhaba, kargo, acaba, ürün |
-| `hf/Aysenur44/namaz-vakti-identity-tr` | `hf/ssilistre/semih-silistre-ai-identity` | 0.224 | seni, adın, kimsin, geliştirdi |
-| `hf/Aysenur44/namaz-vakti-identity-tr` | `hf/berkcangumusisik/voleykoc-identity-tr` | 0.223 | yararsın, adın, kimsin, seni |
-| `hf/enes1863/bilisim-hukuku-domain-dataset` | `hf/samliumay/turkish_cyber_security_controls_dataset` | 0.210 | veri, kişisel, bulut, gizlilik |
-| `hf/berkbirkan/turkish-x-engagement-quotes` | `hf/berkbirkan/turkish-x-engagement-replies` | 0.205 | aşağıdaki, gönderisini, kısa, alıntılarken |
+| `hf/seali/turkce-saglik-qa` | `hf/senemde/saglik-qa-tr` | 0.669 | diyabet, hastalığı, insülin, glukoz |
+| `hf/berkcangumusisik/voleykoc-antrenorluk-tr` | `hf/berkcangumusisik/voleykoc-identity-tr` | 0.350 | voleybol, antrenörüm, oyuncu, manşet |
+| `hf/gmz1234/stackoverflow_ai` | `hf/gorkemergune/ayarlicazhocam_finetune` | 0.303 | learning, neural, network, computer |
+| `hf/Mer1Alii/TR-ECommerce-CustomerSupport-Instructions` | `hf/sedayzc/trendyol-electronics-products-features-and-comments` | 0.285 | kargo, ürün, satıcı, paketleme |
+| `hf/Mer1Alii/TR-ECommerce-CustomerSupport-Instructions` | `hf/cihatyldz/lojistik-soru-cevap` | 0.265 | kargo, sipariş, teslim, müşteri |
+| `hf/sedayzc/trendyol-electronics-products-features-and-comments` | `hf/sedayzc/turkish-electronics-product-comparison-recommendation` | 0.264 | 16gb, intel, lenovo, ryzen |
+| `hf/filiz-yalcin/identity-finetune` | `hf/gmz1234/stackoverflow_ai` | 0.264 | learning, data, function, understanding |
+| `hf/enes1863/bilisim-hukuku-domain-dataset` | `hf/samliumay/turkish_cyber_security_controls_dataset` | 0.263 | veri, erişim, silme, kişisel |
 
-`hf/seali/turkce-saglik-qa` and `hf/senemde/saglik-qa-tr` sit at **0.568** and
+`hf/seali/turkce-saglik-qa` and `hf/senemde/saglik-qa-tr` sit at **0.669** and
 both concentrate on diabetes, obesity and nutrition. Two independently contributed
 health datasets, largely one subject: anyone scoping health coverage should read
 them as one source rather than two.
 
 The second pair is a caution, not a finding. `hf/Erenyanic/seasoned-advice-dataset`
-and `hf/gmz1234/stackoverflow_ai` score 0.301 on shared terms such as `some`,
+and `hf/gmz1234/stackoverflow_ai` score 0.221 on shared terms such as `some`,
 `different` and `like` — they are the collection's two English datasets and their
 similarity is language, not subject. Shared vocabulary is not shared meaning, and
 every pair must be read before it is called redundant.

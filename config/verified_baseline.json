@@ -80,9 +80,11 @@
   "topics": {
     "stem_length": 6,
     "concentration_terms": 20,
-    "similarity_pairs": 74,
+    "similarity_pairs": 101,
     "redundant_pairs": 2,
-    "analyzable_datasets": 45
+    "analyzable_datasets": 45,
+    "template_driven_datasets": 5,
+    "source_turns": "user and assistant"
   },
   "privacy_signals": {
     "email_matches": 4,

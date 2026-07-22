@@ -100,6 +100,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 500,
+        "empty_values": 0,
         "top_repeated": []
       },
       "assistant_answer_duplicates": {
@@ -107,6 +108,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 500,
+        "empty_values": 0,
         "top_repeated": []
       },
       "user_prompt_near_duplicates": {
@@ -224,72 +226,72 @@
       "topic_profile": {
         "analyzable": true,
         "minimum_term_count": 3,
-        "distinct_stems": 903,
-        "total_topic_tokens": 3043,
-        "topic_concentration": 0.5228,
+        "distinct_stems": 2407,
+        "total_topic_tokens": 10129,
+        "topic_concentration": 0.2382,
         "concentration_terms": 20,
         "stem_length": 6,
         "method": "prefix stem, crude; not morphological analysis",
         "distinctive_terms": [
           {
+            "term": "başkenti",
+            "stem": "başken",
+            "count": 170,
+            "weight": 0.03123
+          },
+          {
+            "term": "element",
+            "stem": "elemen",
+            "count": 215,
+            "weight": 0.026357
+          },
+          {
             "term": "katının",
             "stem": "katını",
             "count": 100,
-            "weight": 0.088993
-          },
-          {
-            "term": "başkenti",
-            "stem": "başken",
-            "count": 84,
-            "weight": 0.085947
+            "weight": 0.019892
           },
           {
             "term": "soracağım",
             "stem": "soraca",
             "count": 138,
-            "weight": 0.084385
+            "weight": 0.019193
+          },
+          {
+            "term": "şehridir",
+            "stem": "şehrid",
+            "count": 80,
+            "weight": 0.019116
+          },
+          {
+            "term": "böldüğümüzde",
+            "stem": "böldüğ",
+            "count": 100,
+            "weight": 0.018371
           },
           {
             "term": "kafadan",
             "stem": "kafada",
             "count": 100,
-            "weight": 0.079539
-          },
-          {
-            "term": "arkadaşlar",
-            "stem": "arkada",
-            "count": 181,
-            "weight": 0.065346
+            "weight": 0.018371
           },
           {
             "term": "kaçtır",
             "stem": "kaçtır",
             "count": 105,
-            "weight": 0.064206
+            "weight": 0.017905
           },
           {
-            "term": "sayı",
-            "stem": "sayı",
+            "term": "atom",
+            "stem": "atom",
             "count": 101,
-            "weight": 0.06176
+            "weight": 0.016048
           },
           {
-            "term": "fazlası",
-            "stem": "fazlas",
-            "count": 100,
-            "weight": 0.05676
-          },
-          {
-            "term": "matematik",
-            "stem": "matema",
-            "count": 102,
-            "weight": 0.050416
-          },
-          {
-            "term": "sorusu",
-            "stem": "sorusu",
-            "count": 100,
-            "weight": 0.049427
+            "term": "kimyadaki",
+            "stem": "kimyad",
+            "count": 48,
+            "weight": 0.01147
           }
         ]
       }
@@ -387,6 +389,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 33,
+        "empty_values": 0,
         "top_repeated": []
       },
       "assistant_answer_duplicates": {
@@ -394,6 +397,7 @@
         "duplicate_rate": 0.3636,
         "duplicate_groups": 5,
         "distinct_values": 21,
+        "empty_values": 0,
         "top_repeated": [
           {
             "count": 5,
@@ -523,9 +527,9 @@
       "topic_profile": {
         "analyzable": true,
         "minimum_term_count": 1,
-        "distinct_stems": 33,
-        "total_topic_tokens": 53,
-        "topic_concentration": 0.7547,
+        "distinct_stems": 50,
+        "total_topic_tokens": 239,
+        "topic_concentration": 0.8577,
         "concentration_terms": 20,
         "stem_length": 6,
         "method": "prefix stem, crude; not morphological analysis",
@@ -533,62 +537,62 @@
           {
             "term": "furkan",
             "stem": "furkan",
-            "count": 5,
-            "weight": 0.228337
+            "count": 36,
+            "weight": 0.280281
           },
           {
-            "term": "trained",
-            "stem": "traine",
-            "count": 3,
-            "weight": 0.105326
+            "term": "qwen",
+            "stem": "qwen",
+            "count": 24,
+            "weight": 0.24305
           },
           {
             "term": "tuned",
             "stem": "tuned",
-            "count": 2,
-            "weight": 0.102191
-          },
-          {
-            "term": "goal",
-            "stem": "goal",
-            "count": 2,
-            "weight": 0.091335
+            "count": 26,
+            "weight": 0.175085
           },
           {
             "term": "fine",
             "stem": "fine",
-            "count": 3,
-            "weight": 0.0911
+            "count": 28,
+            "weight": 0.136791
           },
           {
-            "term": "tell",
-            "stem": "tell",
-            "count": 3,
-            "weight": 0.0911
+            "term": "trained",
+            "stem": "traine",
+            "count": 9,
+            "weight": 0.065042
+          },
+          {
+            "term": "model",
+            "stem": "model",
+            "count": 26,
+            "weight": 0.047797
           },
           {
             "term": "created",
             "stem": "create",
-            "count": 3,
-            "weight": 0.079742
+            "count": 10,
+            "weight": 0.045967
           },
           {
-            "term": "identify",
-            "stem": "identi",
-            "count": 2,
-            "weight": 0.070217
+            "term": "assist",
+            "stem": "assist",
+            "count": 8,
+            "weight": 0.044243
           },
           {
-            "term": "yourself",
-            "stem": "yourse",
-            "count": 2,
-            "weight": 0.065178
+            "term": "architecture",
+            "stem": "archit",
+            "count": 6,
+            "weight": 0.033182
           },
           {
-            "term": "main",
-            "stem": "main",
-            "count": 2,
-            "weight": 0.060734
+            "term": "help",
+            "stem": "help",
+            "count": 6,
+            "weight": 0.033182
           }
         ]
       }
@@ -686,6 +690,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 60,
+        "empty_values": 0,
         "top_repeated": []
       },
       "assistant_answer_duplicates": {
@@ -693,6 +698,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 60,
+        "empty_values": 0,
         "top_repeated": []
       },
       "user_prompt_near_duplicates": {
@@ -814,9 +820,9 @@
       "topic_profile": {
         "analyzable": true,
         "minimum_term_count": 2,
-        "distinct_stems": 64,
-        "total_topic_tokens": 321,
-        "topic_concentration": 0.5888,
+        "distinct_stems": 177,
+        "total_topic_tokens": 999,
+        "topic_concentration": 0.3964,
         "concentration_terms": 20,
         "stem_length": 6,
         "method": "prefix stem, crude; not morphological analysis",
@@ -824,62 +830,62 @@
           {
             "term": "namazı",
             "stem": "namazı",
-            "count": 33,
-            "weight": 0.248823
+            "count": 66,
+            "weight": 0.133117
+          },
+          {
+            "term": "dinî",
+            "stem": "dinî",
+            "count": 20,
+            "weight": 0.048456
+          },
+          {
+            "term": "mezhebine",
+            "stem": "mezheb",
+            "count": 18,
+            "weight": 0.04361
+          },
+          {
+            "term": "kılınabilir",
+            "stem": "kılına",
+            "count": 18,
+            "weight": 0.033527
+          },
+          {
+            "term": "hanefi",
+            "stem": "hanefi",
+            "count": 12,
+            "weight": 0.032529
           },
           {
             "term": "hocam",
             "stem": "hocam",
             "count": 20,
-            "weight": 0.136899
-          },
-          {
-            "term": "detaylı",
-            "stem": "detayl",
-            "count": 20,
-            "weight": 0.068449
-          },
-          {
-            "term": "kılınabilir",
-            "stem": "kılına",
-            "count": 9,
-            "weight": 0.067861
-          },
-          {
-            "term": "vakti",
-            "stem": "vakti",
-            "count": 9,
-            "weight": 0.061604
-          },
-          {
-            "term": "abdest",
-            "stem": "abdest",
-            "count": 6,
-            "weight": 0.050618
+            "weight": 0.032221
           },
           {
             "term": "namazlar",
             "stem": "namazl",
-            "count": 6,
-            "weight": 0.050618
+            "count": 12,
+            "weight": 0.029073
           },
           {
             "term": "yatsı",
             "stem": "yatsı",
-            "count": 6,
-            "weight": 0.050618
+            "count": 12,
+            "weight": 0.029073
           },
           {
-            "term": "bilgi",
-            "stem": "bilgi",
-            "count": 20,
-            "weight": 0.029561
+            "term": "vakti",
+            "stem": "vakti",
+            "count": 21,
+            "weight": 0.026102
           },
           {
-            "term": "farzdır",
-            "stem": "farzdı",
-            "count": 3,
-            "weight": 0.029098
+            "term": "secdesi",
+            "stem": "secdes",
+            "count": 9,
+            "weight": 0.024397
           }
         ]
       }
@@ -977,6 +983,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 4,
+        "empty_values": 0,
         "top_repeated": []
       },
       "assistant_answer_duplicates": {
@@ -984,6 +991,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 4,
+        "empty_values": 0,
         "top_repeated": []
       },
       "user_prompt_near_duplicates": {
@@ -1079,42 +1087,72 @@
       "topic_profile": {
         "analyzable": true,
         "minimum_term_count": 1,
-        "distinct_stems": 5,
-        "total_topic_tokens": 5,
+        "distinct_stems": 20,
+        "total_topic_tokens": 24,
         "topic_concentration": 1.0,
         "concentration_terms": 20,
         "stem_length": 6,
         "method": "prefix stem, crude; not morphological analysis",
         "distinctive_terms": [
           {
+            "term": "ayşenur",
+            "stem": "ayşenu",
+            "count": 2,
+            "weight": 0.225671
+          },
+          {
+            "term": "namazasistan",
+            "stem": "namaza",
+            "count": 2,
+            "weight": 0.225671
+          },
+          {
+            "term": "vakitleri",
+            "stem": "vakitl",
+            "count": 1,
+            "weight": 0.091551
+          },
+          {
+            "term": "ibadet",
+            "stem": "ibadet",
+            "count": 1,
+            "weight": 0.077531
+          },
+          {
+            "term": "namaz",
+            "stem": "namaz",
+            "count": 1,
+            "weight": 0.071968
+          },
+          {
             "term": "yararsın",
             "stem": "yarars",
             "count": 1,
-            "weight": 0.439445
-          },
-          {
-            "term": "adın",
-            "stem": "adın",
-            "count": 1,
-            "weight": 0.345444
+            "weight": 0.06706
           },
           {
             "term": "kimsin",
             "stem": "kimsin",
             "count": 1,
-            "weight": 0.321888
+            "weight": 0.058699
           },
           {
-            "term": "seni",
-            "stem": "seni",
+            "term": "adın",
+            "stem": "adın",
             "count": 1,
-            "weight": 0.206815
+            "weight": 0.051738
           },
           {
             "term": "geliştirdi",
             "stem": "gelişt",
+            "count": 3,
+            "weight": 0.038769
+          },
+          {
+            "term": "zeka",
+            "stem": "zeka",
             "count": 1,
-            "weight": 0.134234
+            "weight": 0.038179
           }
         ]
       }
@@ -1263,6 +1301,7 @@
         "duplicate_rate": 0.677,
         "duplicate_groups": 229,
         "distinct_values": 323,
+        "empty_values": 0,
         "top_repeated": [
           {
             "count": 10,
@@ -1291,6 +1330,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 1000,
+        "empty_values": 0,
         "top_repeated": []
       },
       "user_prompt_near_duplicates": {
@@ -1439,74 +1479,76 @@
       "topic_profile": {
         "analyzable": true,
         "minimum_term_count": 3,
-        "distinct_stems": 4061,
-        "total_topic_tokens": 34650,
-        "topic_concentration": 0.2914,
+        "distinct_stems": 7897,
+        "total_topic_tokens": 48277,
+        "topic_concentration": 0.218,
         "concentration_terms": 20,
         "stem_length": 6,
         "method": "prefix stem, crude; not morphological analysis",
         "distinctive_terms": [
           {
-            "term": "içgörü",
-            "stem": "içgörü",
-            "count": 1000,
-            "weight": 0.089856
-          },
-          {
             "term": "quote",
             "stem": "quote",
             "count": 1000,
-            "weight": 0.078154
+            "weight": 0.045513
           },
           {
-            "term": "özgün",
-            "stem": "özgün",
+            "term": "içgörü",
+            "stem": "içgörü",
             "count": 1000,
-            "weight": 0.078154
+            "weight": 0.041736
           },
           {
             "term": "alıntılarken",
             "stem": "alıntı",
             "count": 1004,
-            "weight": 0.070131
+            "weight": 0.03128
           },
           {
-            "term": "ekleyen",
-            "stem": "ekleye",
+            "term": "özgün",
+            "stem": "özgün",
             "count": 1000,
-            "weight": 0.05815
-          },
-          {
-            "term": "aşağıdaki",
-            "stem": "aşağıd",
-            "count": 1002,
-            "weight": 0.049947
+            "weight": 0.027379
           },
           {
             "term": "yorum",
             "stem": "yorum",
-            "count": 1019,
-            "weight": 0.044232
+            "count": 1025,
+            "weight": 0.019454
+          },
+          {
+            "term": "aşağıdaki",
+            "stem": "aşağıd",
+            "count": 1004,
+            "weight": 0.017931
+          },
+          {
+            "term": "ekleyen",
+            "stem": "ekleye",
+            "count": 1002,
+            "weight": 0.016831
           },
           {
             "term": "gönderisini",
             "stem": "gönder",
-            "count": 1017,
-            "weight": 0.032245
+            "count": 1024,
+            "weight": 0.007231
           },
           {
             "term": "kısa",
             "stem": "kısa",
-            "count": 1003,
-            "weight": 0.023474
+            "count": 1009,
+            "weight": 0.005253
           },
           {
-            "term": "zeka",
-            "stem": "zeka",
-            "count": 107,
-            "weight": 0.004645
+            "term": "minguzziyasasıhemenşimdi",
+            "stem": "minguz",
+            "count": 45,
+            "weight": 0.002524
           }
-        ]
+        ],
+        "template_driven_prompts": true,
+        "caveat": "68% of prompts repeat, so the user turn is largely a fixed instruction. Terms may describe the instruction rather than the subject."
       }
     },
     "contributor": "Berk Birkan",
@@ -1653,6 +1695,7 @@
         "duplicate_rate": 0.701,
         "duplicate_groups": 212,
         "distinct_values": 299,
+        "empty_values": 0,
         "top_repeated": [
           {
             "count": 10,
@@ -1681,6 +1724,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 1000,
+        "empty_values": 0,
         "top_repeated": []
       },
       "user_prompt_near_duplicates": {
@@ -1834,9 +1878,9 @@
       "topic_profile": {
         "analyzable": true,
         "minimum_term_count": 3,
-        "distinct_stems": 3783,
-        "total_topic_tokens": 32023,
-        "topic_concentration": 0.2533,
+        "distinct_stems": 7809,
+        "total_topic_tokens": 46195,
+        "topic_concentration": 0.1863,
         "concentration_terms": 20,
         "stem_length": 6,
         "method": "prefix stem, crude; not morphological analysis",
@@ -1845,63 +1889,65 @@
             "term": "reply",
             "stem": "reply",
             "count": 1000,
-            "weight": 0.084566
+            "weight": 0.047564
           },
           {
             "term": "aşağıdaki",
             "stem": "aşağıd",
             "count": 1002,
-            "weight": 0.054045
-          },
-          {
-            "term": "doğal",
-            "stem": "doğal",
-            "count": 1006,
-            "weight": 0.05056
+            "weight": 0.018702
           },
           {
             "term": "bağlama",
             "stem": "bağlam",
             "count": 1000,
-            "weight": 0.043992
+            "weight": 0.011058
+          },
+          {
+            "term": "doğal",
+            "stem": "doğal",
+            "count": 1007,
+            "weight": 0.008839
           },
           {
             "term": "gönderisine",
             "stem": "gönder",
-            "count": 1012,
-            "weight": 0.034719
+            "count": 1017,
+            "weight": 0.007506
           },
           {
             "term": "uygun",
             "stem": "uygun",
-            "count": 1009,
-            "weight": 0.028871
+            "count": 1010,
+            "weight": 0.006781
+          },
+          {
+            "term": "profdemirtas",
+            "stem": "profde",
+            "count": 110,
+            "weight": 0.006448
           },
           {
             "term": "kısa",
             "stem": "kısa",
-            "count": 1002,
-            "weight": 0.025374
+            "count": 1006,
+            "weight": 0.005473
           },
           {
-            "term": "komik",
-            "stem": "komik",
-            "count": 68,
-            "weight": 0.00514
+            "term": "minguzziyasasıhemenşimdi",
+            "stem": "minguz",
+            "count": 54,
+            "weight": 0.003166
           },
           {
             "term": "çocukları",
             "stem": "çocukl",
-            "count": 158,
-            "weight": 0.004254
-          },
-          {
-            "term": "zeka",
-            "stem": "zeka",
-            "count": 74,
-            "weight": 0.003476
+            "count": 188,
+            "weight": 0.002233
           }
-        ]
+        ],
+        "template_driven_prompts": true,
+        "caveat": "70% of prompts repeat, so the user turn is largely a fixed instruction. Terms may describe the instruction rather than the subject."
       }
     },
     "contributor": "Berk Birkan",
@@ -2009,6 +2055,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 166,
+        "empty_values": 0,
         "top_repeated": []
       },
       "assistant_answer_duplicates": {
@@ -2016,6 +2063,7 @@
         "duplicate_rate": 0.247,
         "duplicate_groups": 21,
         "distinct_values": 125,
+        "empty_values": 0,
         "top_repeated": [
           {
             "count": 3,
@@ -2158,9 +2206,9 @@
       "topic_profile": {
         "analyzable": true,
         "minimum_term_count": 2,
-        "distinct_stems": 229,
-        "total_topic_tokens": 1268,
-        "topic_concentration": 0.4858,
+        "distinct_stems": 2344,
+        "total_topic_tokens": 12153,
+        "topic_concentration": 0.1907,
         "concentration_terms": 20,
         "stem_length": 6,
         "method": "prefix stem, crude; not morphological analysis",
@@ -2168,62 +2216,62 @@
           {
             "term": "voleybol",
             "stem": "voleyb",
-            "count": 111,
-            "weight": 0.272555
-          },
-          {
-            "term": "takımı",
-            "stem": "takımı",
-            "count": 50,
-            "weight": 0.063464
-          },
-          {
-            "term": "kadın",
-            "stem": "kadın",
-            "count": 36,
-            "weight": 0.039997
-          },
-          {
-            "term": "devamı",
-            "stem": "devamı",
-            "count": 20,
-            "weight": 0.038176
-          },
-          {
-            "term": "sormamı",
-            "stem": "sormam",
-            "count": 20,
-            "weight": 0.038176
-          },
-          {
-            "term": "antrenörüm",
-            "stem": "antren",
-            "count": 26,
-            "weight": 0.038154
-          },
-          {
-            "term": "oyuncuya",
-            "stem": "oyuncu",
-            "count": 25,
-            "weight": 0.036687
+            "count": 322,
+            "weight": 0.058217
           },
           {
             "term": "ligi",
             "stem": "ligi",
-            "count": 14,
-            "weight": 0.034376
+            "count": 180,
+            "weight": 0.029843
           },
           {
-            "term": "tarihçe",
-            "stem": "tarihç",
-            "count": 23,
-            "weight": 0.033752
+            "term": "şampiyonası",
+            "stem": "şampiy",
+            "count": 194,
+            "weight": 0.025692
           },
           {
-            "term": "bölüm",
-            "stem": "bölüm",
-            "count": 20,
-            "weight": 0.029349
+            "term": "sezonunda",
+            "stem": "sezonu",
+            "count": 167,
+            "weight": 0.020668
+          },
+          {
+            "term": "takımı",
+            "stem": "takımı",
+            "count": 191,
+            "weight": 0.015299
+          },
+          {
+            "term": "oyuncu",
+            "stem": "oyuncu",
+            "count": 145,
+            "weight": 0.013931
+          },
+          {
+            "term": "kupası",
+            "stem": "kupası",
+            "count": 81,
+            "weight": 0.010727
+          },
+          {
+            "term": "fenerbahçe",
+            "stem": "fenerb",
+            "count": 61,
+            "weight": 0.010113
+          },
+          {
+            "term": "maçları",
+            "stem": "maçlar",
+            "count": 55,
+            "weight": 0.009119
+          },
+          {
+            "term": "pasör",
+            "stem": "pasör",
+            "count": 36,
+            "weight": 0.008022
           }
         ]
       }
@@ -2356,6 +2404,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 182,
+        "empty_values": 0,
         "top_repeated": []
       },
       "assistant_answer_duplicates": {
@@ -2363,6 +2412,7 @@
         "duplicate_rate": 0.8571,
         "duplicate_groups": 26,
         "distinct_values": 26,
+        "empty_values": 0,
         "top_repeated": [
           {
             "count": 7,
@@ -2507,72 +2557,72 @@
       "topic_profile": {
         "analyzable": true,
         "minimum_term_count": 2,
-        "distinct_stems": 60,
-        "total_topic_tokens": 526,
-        "topic_concentration": 0.4677,
+        "distinct_stems": 307,
+        "total_topic_tokens": 3844,
+        "topic_concentration": 0.2659,
         "concentration_terms": 20,
         "stem_length": 6,
         "method": "prefix stem, crude; not morphological analysis",
         "distinctive_terms": [
           {
-            "term": "pardon",
-            "stem": "pardon",
-            "count": 15,
-            "weight": 0.069022
+            "term": "voleybol",
+            "stem": "voleyb",
+            "count": 126,
+            "weight": 0.072021
           },
           {
-            "term": "soracağım",
-            "stem": "soraca",
-            "count": 15,
-            "weight": 0.053063
+            "term": "volleyball",
+            "stem": "volley",
+            "count": 84,
+            "weight": 0.05289
           },
           {
-            "term": "sorry",
-            "stem": "sorry",
-            "count": 11,
-            "weight": 0.050616
+            "term": "berkcan",
+            "stem": "berkca",
+            "count": 63,
+            "weight": 0.051028
           },
           {
-            "term": "selam",
-            "stem": "selam",
-            "count": 15,
-            "weight": 0.049255
+            "term": "gümüşışık",
+            "stem": "gümüşı",
+            "count": 63,
+            "weight": 0.051028
           },
           {
-            "term": "curious",
-            "stem": "curiou",
-            "count": 11,
-            "weight": 0.04595
+            "term": "voleykoçai",
+            "stem": "voleyk",
+            "count": 56,
+            "weight": 0.045358
           },
           {
-            "term": "hello",
-            "stem": "hello",
-            "count": 11,
-            "weight": 0.04595
+            "term": "antrenman",
+            "stem": "antren",
+            "count": 91,
+            "weight": 0.03335
           },
           {
-            "term": "quick",
-            "stem": "quick",
-            "count": 11,
-            "weight": 0.042137
+            "term": "turkish",
+            "stem": "turkis",
+            "count": 56,
+            "weight": 0.025162
+          },
+          {
+            "term": "training",
+            "stem": "traini",
+            "count": 56,
+            "weight": 0.020523
+          },
+          {
+            "term": "coaching",
+            "stem": "coachi",
+            "count": 28,
+            "weight": 0.01763
           },
           {
             "term": "injury",
             "stem": "injury",
-            "count": 7,
-            "weight": 0.041435
-          },
-          {
-            "term": "merak",
-            "stem": "merak",
-            "count": 15,
-            "weight": 0.040174
-          },
-          {
-            "term": "briefly",
-            "stem": "briefl",
-            "count": 11,
-            "weight": 0.038913
+            "count": 28,
+            "weight": 0.01763
           }
         ]
       }
@@ -2676,6 +2726,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 139,
+        "empty_values": 0,
         "top_repeated": []
       },
       "assistant_answer_duplicates": {
@@ -2683,6 +2734,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 139,
+        "empty_values": 0,
         "top_repeated": []
       },
       "user_prompt_near_duplicates": {
@@ -2778,9 +2830,9 @@
       "topic_profile": {
         "analyzable": true,
         "minimum_term_count": 2,
-        "distinct_stems": 336,
-        "total_topic_tokens": 794,
-        "topic_concentration": 0.3589,
+        "distinct_stems": 1384,
+        "total_topic_tokens": 5672,
+        "topic_concentration": 0.1777,
         "concentration_terms": 20,
         "stem_length": 6,
         "method": "prefix stem, crude; not morphological analysis",
@@ -2788,62 +2840,62 @@
           {
             "term": "lojistik",
             "stem": "lojist",
-            "count": 32,
-            "weight": 0.088553
-          },
-          {
-            "term": "taşımacılığı",
-            "stem": "taşıma",
-            "count": 27,
-            "weight": 0.042225
-          },
-          {
-            "term": "kargo",
-            "stem": "kargo",
-            "count": 14,
-            "weight": 0.038742
-          },
-          {
-            "term": "kurye",
-            "stem": "kurye",
-            "count": 10,
-            "weight": 0.030483
+            "count": 65,
+            "weight": 0.015147
           },
           {
             "term": "teslimat",
             "stem": "teslim",
-            "count": 17,
-            "weight": 0.0283
+            "count": 91,
+            "weight": 0.012228
           },
           {
-            "term": "racking",
-            "stem": "rackin",
-            "count": 5,
-            "weight": 0.019607
+            "term": "gümrük",
+            "stem": "gümrük",
+            "count": 32,
+            "weight": 0.011368
           },
           {
-            "term": "ticaret",
-            "stem": "ticare",
-            "count": 10,
-            "weight": 0.018943
+            "term": "maliyetleri",
+            "stem": "maliye",
+            "count": 75,
+            "weight": 0.010078
           },
           {
-            "term": "nelerdir",
-            "stem": "nelerd",
-            "count": 28,
-            "weight": 0.018014
+            "term": "tedarik",
+            "stem": "tedari",
+            "count": 51,
+            "weight": 0.009878
           },
           {
-            "term": "gelir",
-            "stem": "gelir",
-            "count": 13,
-            "weight": 0.014117
+            "term": "depolama",
+            "stem": "depola",
+            "count": 48,
+            "weight": 0.009297
           },
           {
-            "term": "depo",
-            "stem": "depo",
-            "count": 5,
-            "weight": 0.013836
+            "term": "kurye",
+            "stem": "kurye",
+            "count": 26,
+            "weight": 0.009236
+          },
+          {
+            "term": "envanter",
+            "stem": "envant",
+            "count": 24,
+            "weight": 0.008526
+          },
+          {
+            "term": "taşıma",
+            "stem": "taşıma",
+            "count": 105,
+            "weight": 0.008134
+          },
+          {
+            "term": "müşteri",
+            "stem": "müşter",
+            "count": 56,
+            "weight": 0.008006
           }
         ]
       }
@@ -2951,6 +3003,7 @@
         "duplicate_rate": 0.7571,
         "duplicate_groups": 7,
         "distinct_values": 43,
+        "empty_values": 0,
         "top_repeated": [
           {
             "count": 83,
@@ -2979,6 +3032,7 @@
         "duplicate_rate": 0.1356,
         "duplicate_groups": 12,
         "distinct_values": 153,
+        "empty_values": 0,
         "top_repeated": [
           {
             "count": 3,
@@ -3142,9 +3196,9 @@
       "topic_profile": {
         "analyzable": true,
         "minimum_term_count": 2,
-        "distinct_stems": 133,
-        "total_topic_tokens": 844,
-        "topic_concentration": 0.8057,
+        "distinct_stems": 2887,
+        "total_topic_tokens": 9436,
+        "topic_concentration": 0.1993,
         "concentration_terms": 20,
         "stem_length": 6,
         "method": "prefix stem, crude; not morphological analysis",
@@ -3152,64 +3206,66 @@
           {
             "term": "örümcek",
             "stem": "örümce",
-            "count": 84,
-            "weight": 0.309876
+            "count": 284,
+            "weight": 0.066131
           },
           {
             "term": "spider",
             "stem": "spider",
-            "count": 86,
-            "weight": 0.246625
-          },
-          {
-            "term": "adam",
-            "stem": "adam",
-            "count": 88,
-            "weight": 0.146886
-          },
-          {
-            "term": "detaylı",
-            "stem": "detayl",
-            "count": 83,
-            "weight": 0.108039
+            "count": 185,
+            "weight": 0.039504
           },
           {
             "term": "marvel",
             "stem": "marvel",
-            "count": 22,
-            "weight": 0.070589
+            "count": 90,
+            "weight": 0.025829
           },
           {
-            "term": "comics",
-            "stem": "comics",
-            "count": 18,
-            "weight": 0.066402
+            "term": "adam",
+            "stem": "adam",
+            "count": 251,
+            "weight": 0.022935
+          },
+          {
+            "term": "parker",
+            "stem": "parker",
+            "count": 75,
+            "weight": 0.019238
+          },
+          {
+            "term": "peter",
+            "stem": "peter",
+            "count": 76,
+            "weight": 0.017697
           },
           {
             "term": "wolverine",
             "stem": "wolver",
-            "count": 17,
-            "weight": 0.062713
+            "count": 47,
+            "weight": 0.015508
           },
           {
-            "term": "bilgi",
-            "stem": "bilgi",
-            "count": 111,
-            "weight": 0.062399
-          },
-          {
-            "term": "evreni",
-            "stem": "evreni",
-            "count": 21,
-            "weight": 0.050134
+            "term": "comics",
+            "stem": "comics",
+            "count": 51,
+            "weight": 0.014637
           },
           {
             "term": "mutant",
             "stem": "mutant",
-            "count": 11,
-            "weight": 0.040579
+            "count": 42,
+            "weight": 0.012054
+          },
+          {
+            "term": "kahraman",
+            "stem": "kahram",
+            "count": 76,
+            "weight": 0.010646
           }
-        ]
+        ],
+        "template_driven_prompts": true,
+        "caveat": "76% of prompts repeat, so the user turn is largely a fixed instruction. Terms may describe the instruction rather than the subject."
       }
     },
     "contributor": "Ege Ertekin",
@@ -3308,6 +3364,7 @@
         "duplicate_rate": 0.0098,
         "duplicate_groups": 3,
         "distinct_values": 504,
+        "empty_values": 0,
         "top_repeated": [
           {
             "count": 4,
@@ -3328,6 +3385,7 @@
         "duplicate_rate": 0.0039,
         "duplicate_groups": 2,
         "distinct_values": 507,
+        "empty_values": 0,
         "top_repeated": [
           {
             "count": 2,
@@ -3467,72 +3525,72 @@
       "topic_profile": {
         "analyzable": true,
         "minimum_term_count": 3,
-        "distinct_stems": 983,
-        "total_topic_tokens": 2424,
-        "topic_concentration": 0.2409,
+        "distinct_stems": 1941,
+        "total_topic_tokens": 5510,
+        "topic_concentration": 0.1771,
         "concentration_terms": 20,
         "stem_length": 6,
         "method": "prefix stem, crude; not morphological analysis",
         "distinctive_terms": [
           {
-            "term": "efendimiz",
-            "stem": "efendi",
-            "count": 86,
-            "weight": 0.066017
+            "term": "hicretin",
+            "stem": "hicret",
+            "count": 64,
+            "weight": 0.031455
           },
           {
             "term": "müslüman",
             "stem": "müslüm",
-            "count": 46,
-            "weight": 0.05139
-          },
-          {
-            "term": "peygamberimiz",
-            "stem": "peygam",
-            "count": 42,
-            "weight": 0.032241
-          },
-          {
-            "term": "kabile",
-            "stem": "kabile",
-            "count": 23,
-            "weight": 0.029542
-          },
-          {
-            "term": "hicret",
-            "stem": "hicret",
-            "count": 26,
-            "weight": 0.029047
+            "count": 87,
+            "weight": 0.025412
           },
           {
             "term": "medine",
             "stem": "medine",
-            "count": 27,
-            "weight": 0.02696
+            "count": 55,
+            "weight": 0.02416
           },
           {
-            "term": "kimdir",
-            "stem": "kimdir",
-            "count": 54,
-            "weight": 0.024474
+            "term": "efendimiz",
+            "stem": "efendi",
+            "count": 125,
+            "weight": 0.023459
+          },
+          {
+            "term": "kabilesi",
+            "stem": "kabile",
+            "count": 58,
+            "weight": 0.02121
+          },
+          {
+            "term": "peygamberimiz",
+            "stem": "peygam",
+            "count": 68,
+            "weight": 0.018562
+          },
+          {
+            "term": "mekke",
+            "stem": "mekke",
+            "count": 42,
+            "weight": 0.016748
+          },
+          {
+            "term": "müşrikler",
+            "stem": "müşrik",
+            "count": 31,
+            "weight": 0.015236
           },
           {
             "term": "hendek",
             "stem": "hendek",
-            "count": 18,
-            "weight": 0.02312
+            "count": 25,
+            "weight": 0.012287
           },
           {
-            "term": "sahabi",
-            "stem": "sahabi",
-            "count": 17,
-            "weight": 0.021836
-          },
-          {
-            "term": "savaşı",
-            "stem": "savaşı",
-            "count": 34,
-            "weight": 0.01976
+            "term": "yahudi",
+            "stem": "yahudi",
+            "count": 29,
+            "weight": 0.011564
           }
         ]
       }
@@ -3639,6 +3697,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 1000,
+        "empty_values": 0,
         "top_repeated": []
       },
       "assistant_answer_duplicates": {
@@ -3646,6 +3705,7 @@
         "duplicate_rate": 0.98,
         "duplicate_groups": 20,
         "distinct_values": 20,
+        "empty_values": 0,
         "top_repeated": [
           {
             "count": 50,
@@ -3788,9 +3848,9 @@
       "topic_profile": {
         "analyzable": true,
         "minimum_term_count": 3,
-        "distinct_stems": 167,
-        "total_topic_tokens": 8450,
-        "topic_concentration": 0.3337,
+        "distinct_stems": 390,
+        "total_topic_tokens": 33700,
+        "topic_concentration": 0.2528,
         "concentration_terms": 20,
         "stem_length": 6,
         "method": "prefix stem, crude; not morphological analysis",
@@ -3798,62 +3858,62 @@
           {
             "term": "veri",
             "stem": "veri",
-            "count": 500,
-            "weight": 0.069089
-          },
-          {
-            "term": "kişisel",
-            "stem": "kişise",
-            "count": 300,
-            "weight": 0.044084
-          },
-          {
-            "term": "anonim",
-            "stem": "anonim",
-            "count": 100,
-            "weight": 0.028643
-          },
-          {
-            "term": "hâle",
-            "stem": "hâle",
-            "count": 100,
-            "weight": 0.026003
+            "count": 1450,
+            "weight": 0.025291
           },
           {
             "term": "rıza",
             "stem": "rıza",
-            "count": 100,
-            "weight": 0.026003
+            "count": 350,
+            "weight": 0.014631
           },
           {
-            "term": "sorumlusunun",
-            "stem": "soruml",
+            "term": "kişisel",
+            "stem": "kişise",
+            "count": 750,
+            "weight": 0.011369
+          },
+          {
+            "term": "anonim",
+            "stem": "anonim",
+            "count": 250,
+            "weight": 0.011158
+          },
+          {
+            "term": "hâle",
+            "stem": "hâle",
+            "count": 250,
+            "weight": 0.009805
+          },
+          {
+            "term": "hukuka",
+            "stem": "hukuka",
             "count": 150,
-            "weight": 0.025008
+            "weight": 0.008282
           },
           {
-            "term": "yükümlülüklerini",
-            "stem": "yüküml",
+            "term": "işlendikleri",
+            "stem": "işlend",
+            "count": 150,
+            "weight": 0.008282
+          },
+          {
+            "term": "hukuki",
+            "stem": "hukuki",
+            "count": 300,
+            "weight": 0.008157
+          },
+          {
+            "term": "kanunda",
+            "stem": "kanund",
             "count": 100,
-            "weight": 0.023845
+            "weight": 0.007182
           },
           {
-            "term": "rızanın",
-            "stem": "rızanı",
-            "count": 50,
-            "weight": 0.018423
-          },
-          {
-            "term": "çerezler",
-            "stem": "çerezl",
-            "count": 50,
-            "weight": 0.018423
-          },
-          {
-            "term": "temel",
-            "stem": "temel",
-            "count": 240,
-            "weight": 0.016695
+            "term": "işleme",
+            "stem": "işleme",
+            "count": 400,
+            "weight": 0.006977
           }
         ]
       }
@@ -3974,6 +4034,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 113,
+        "empty_values": 0,
         "top_repeated": []
       },
       "assistant_answer_duplicates": {
@@ -3981,6 +4042,7 @@
         "duplicate_rate": 0.8496,
         "duplicate_groups": 5,
         "distinct_values": 17,
+        "empty_values": 0,
         "top_repeated": [
           {
             "count": 21,
@@ -4112,66 +4174,72 @@
       "topic_profile": {
         "analyzable": true,
         "minimum_term_count": 2,
-        "distinct_stems": 27,
-        "total_topic_tokens": 189,
-        "topic_concentration": 0.963,
+        "distinct_stems": 231,
+        "total_topic_tokens": 1592,
+        "topic_concentration": 0.4535,
         "concentration_terms": 20,
         "stem_length": 6,
         "method": "prefix stem, crude; not morphological analysis",
         "distinctive_terms": [
           {
-            "term": "kokulandırılır",
-            "stem": "kokula",
-            "count": 21,
-            "weight": 0.300894
-          },
-          {
             "term": "petrol",
             "stem": "petrol",
-            "count": 20,
-            "weight": 0.256124
+            "count": 61,
+            "weight": 0.066181
+          },
+          {
+            "term": "gazın",
+            "stem": "gazın",
+            "count": 43,
+            "weight": 0.054423
           },
           {
             "term": "boru",
             "stem": "boru",
-            "count": 20,
-            "weight": 0.213217
-          },
-          {
-            "term": "hattı",
-            "stem": "hattı",
-            "count": 20,
-            "weight": 0.196905
+            "count": 40,
+            "weight": 0.037791
           },
           {
             "term": "doğal",
             "stem": "doğal",
+            "count": 148,
+            "weight": 0.037694
+          },
+          {
+            "term": "kaçakların",
+            "stem": "kaçakl",
             "count": 22,
-            "weight": 0.187342
+            "weight": 0.033447
           },
           {
-            "term": "neden",
-            "stem": "neden",
-            "count": 42,
-            "weight": 0.068923
-          },
-          {
-            "term": "natural",
-            "stem": "natura",
-            "count": 4,
-            "weight": 0.042643
-          },
-          {
-            "term": "kullanılır",
-            "stem": "kullan",
+            "term": "gazdır",
+            "stem": "gazdır",
             "count": 20,
-            "weight": 0.032821
+            "weight": 0.030407
           },
           {
-            "term": "energy",
-            "stem": "energy",
-            "count": 2,
-            "weight": 0.023251
+            "term": "rafinerilerde",
+            "stem": "rafine",
+            "count": 20,
+            "weight": 0.027603
+          },
+          {
+            "term": "hidrokarbon",
+            "stem": "hidrok",
+            "count": 20,
+            "weight": 0.023376
+          },
+          {
+            "term": "taşınması",
+            "stem": "taşınm",
+            "count": 40,
+            "weight": 0.023022
+          },
+          {
+            "term": "kokulandırılır",
+            "stem": "kokula",
+            "count": 21,
+            "weight": 0.022784
           }
         ]
       }
@@ -4316,6 +4384,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 1000,
+        "empty_values": 0,
         "top_repeated": []
       },
       "assistant_answer_duplicates": {
@@ -4323,6 +4392,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 1000,
+        "empty_values": 0,
         "top_repeated": []
       },
       "user_prompt_near_duplicates": {
@@ -4437,72 +4507,72 @@
       "topic_profile": {
         "analyzable": true,
         "minimum_term_count": 3,
-        "distinct_stems": 7908,
-        "total_topic_tokens": 46791,
-        "topic_concentration": 0.0701,
+        "distinct_stems": 13802,
+        "total_topic_tokens": 129599,
+        "topic_concentration": 0.0571,
         "concentration_terms": 20,
         "stem_length": 6,
         "method": "prefix stem, crude; not morphological analysis",
         "distinctive_terms": [
           {
-            "term": "cooking",
-            "stem": "cookin",
-            "count": 179,
-            "weight": 0.011911
-          },
-          {
             "term": "water",
             "stem": "water",
-            "count": 211,
-            "weight": 0.010914
+            "count": 662,
+            "weight": 0.008221
+          },
+          {
+            "term": "cooking",
+            "stem": "cookin",
+            "count": 422,
+            "weight": 0.007881
           },
           {
             "term": "pişirme",
             "stem": "pişirm",
-            "count": 204,
-            "weight": 0.010552
+            "count": 477,
+            "weight": 0.006357
           },
           {
-            "term": "some",
-            "stem": "some",
-            "count": 212,
-            "weight": 0.009955
+            "term": "flavor",
+            "stem": "flavor",
+            "count": 253,
+            "weight": 0.005287
           },
           {
             "term": "recipe",
             "stem": "recipe",
-            "count": 156,
-            "weight": 0.009029
-          },
-          {
-            "term": "them",
-            "stem": "them",
-            "count": 155,
-            "weight": 0.007279
-          },
-          {
-            "term": "different",
-            "stem": "differ",
-            "count": 187,
-            "weight": 0.006903
+            "count": 291,
+            "weight": 0.004934
           },
           {
             "term": "meat",
             "stem": "meat",
-            "count": 100,
-            "weight": 0.006654
+            "count": 247,
+            "weight": 0.004613
           },
           {
-            "term": "like",
-            "stem": "like",
-            "count": 155,
-            "weight": 0.005722
+            "term": "food",
+            "stem": "food",
+            "count": 391,
+            "weight": 0.004538
           },
           {
-            "term": "more",
-            "stem": "more",
-            "count": 132,
-            "weight": 0.005684
+            "term": "taste",
+            "stem": "taste",
+            "count": 235,
+            "weight": 0.004389
+          },
+          {
+            "term": "temperature",
+            "stem": "temper",
+            "count": 321,
+            "weight": 0.004278
+          },
+          {
+            "term": "heat",
+            "stem": "heat",
+            "count": 248,
+            "weight": 0.004205
           }
         ]
       }
@@ -4631,6 +4701,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 100,
+        "empty_values": 0,
         "top_repeated": []
       },
       "assistant_answer_duplicates": {
@@ -4638,6 +4709,7 @@
         "duplicate_rate": 0.8,
         "duplicate_groups": 20,
         "distinct_values": 20,
+        "empty_values": 0,
         "top_repeated": [
           {
             "count": 5,
@@ -4769,72 +4841,72 @@
       "topic_profile": {
         "analyzable": true,
         "minimum_term_count": 2,
-        "distinct_stems": 58,
-        "total_topic_tokens": 435,
-        "topic_concentration": 0.5632,
+        "distinct_stems": 104,
+        "total_topic_tokens": 1185,
+        "topic_concentration": 0.5316,
         "concentration_terms": 20,
         "stem_length": 6,
         "method": "prefix stem, crude; not morphological analysis",
         "distinctive_terms": [
           {
-            "term": "yanıtla",
-            "stem": "yanıtl",
-            "count": 40,
-            "weight": 0.114181
+            "term": "langusta",
+            "stem": "langus",
+            "count": 45,
+            "weight": 0.118235
+          },
+          {
+            "term": "kpss",
+            "stem": "kpss",
+            "count": 70,
+            "weight": 0.109918
+          },
+          {
+            "term": "alasar",
+            "stem": "alasar",
+            "count": 35,
+            "weight": 0.09196
+          },
+          {
+            "term": "erhan",
+            "stem": "erhan",
+            "count": 35,
+            "weight": 0.059512
+          },
+          {
+            "term": "türkçe",
+            "stem": "türkçe",
+            "count": 55,
+            "weight": 0.029176
           },
           {
             "term": "cümleyle",
             "stem": "cümley",
             "count": 25,
-            "weight": 0.10694
+            "weight": 0.024633
           },
           {
-            "term": "açıkça",
-            "stem": "açıkça",
-            "count": 20,
-            "weight": 0.092639
+            "term": "yanıtla",
+            "stem": "yanıtl",
+            "count": 40,
+            "weight": 0.022655
+          },
+          {
+            "term": "asistanıyım",
+            "stem": "asista",
+            "count": 25,
+            "weight": 0.01819
+          },
+          {
+            "term": "cevapla",
+            "stem": "cevapl",
+            "count": 35,
+            "weight": 0.017361
           },
           {
             "term": "soruyu",
             "stem": "soruyu",
             "count": 20,
-            "weight": 0.085552
-          },
-          {
-            "term": "cevapla",
-            "stem": "cevapl",
-            "count": 20,
-            "weight": 0.06077
-          },
-          {
-            "term": "kısaca",
-            "stem": "kısaca",
-            "count": 20,
-            "weight": 0.042128
-          },
-          {
-            "term": "belirt",
-            "stem": "belirt",
-            "count": 20,
-            "weight": 0.037284
-          },
-          {
-            "term": "alasar",
-            "stem": "alasar",
-            "count": 5,
-            "weight": 0.035788
-          },
-          {
-            "term": "langusta",
-            "stem": "langus",
-            "count": 5,
-            "weight": 0.035788
-          },
-          {
-            "term": "botu",
-            "stem": "botu",
-            "count": 5,
-            "weight": 0.031127
+            "weight": 0.01643
           }
         ]
       }
@@ -4961,6 +5033,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 21,
+        "empty_values": 0,
         "top_repeated": []
       },
       "assistant_answer_duplicates": {
@@ -4968,6 +5041,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 21,
+        "empty_values": 0,
         "top_repeated": []
       },
       "user_prompt_near_duplicates": {
@@ -5065,72 +5139,72 @@
       "topic_profile": {
         "analyzable": true,
         "minimum_term_count": 1,
-        "distinct_stems": 402,
-        "total_topic_tokens": 660,
-        "topic_concentration": 0.2742,
+        "distinct_stems": 1215,
+        "total_topic_tokens": 3806,
+        "topic_concentration": 0.1532,
         "concentration_terms": 20,
         "stem_length": 6,
         "method": "prefix stem, crude; not morphological analysis",
         "distinctive_terms": [
           {
-            "term": "aşağıdakilerden",
-            "stem": "aşağıd",
-            "count": 21,
-            "weight": 0.054957
-          },
-          {
-            "term": "seçenekler",
-            "stem": "seçene",
-            "count": 21,
-            "weight": 0.039509
-          },
-          {
-            "term": "medresesi",
+            "term": "medrese",
             "stem": "medres",
-            "count": 8,
-            "weight": 0.03774
-          },
-          {
-            "term": "şarkısı",
-            "stem": "şarkıs",
-            "count": 8,
-            "weight": 0.032825
-          },
-          {
-            "term": "sanatçı",
-            "stem": "sanatç",
-            "count": 9,
-            "weight": 0.029962
+            "count": 32,
+            "weight": 0.02035
           },
           {
             "term": "devlet",
             "stem": "devlet",
-            "count": 14,
-            "weight": 0.029883
+            "count": 76,
+            "weight": 0.017217
           },
           {
-            "term": "öykülerin",
-            "stem": "öyküle",
-            "count": 8,
-            "weight": 0.024423
-          },
-          {
-            "term": "sıradaki",
-            "stem": "sırada",
-            "count": 10,
-            "weight": 0.022789
-          },
-          {
-            "term": "hangisi",
-            "stem": "hangis",
-            "count": 21,
-            "weight": 0.02277
+            "term": "şarkısı",
+            "stem": "şarkıs",
+            "count": 28,
+            "weight": 0.016165
           },
           {
             "term": "antlaşması",
             "stem": "antlaş",
-            "count": 6,
-            "weight": 0.022003
+            "count": 25,
+            "weight": 0.014433
+          },
+          {
+            "term": "selçuklu",
+            "stem": "selçuk",
+            "count": 21,
+            "weight": 0.012123
+          },
+          {
+            "term": "sanatçının",
+            "stem": "sanatç",
+            "count": 32,
+            "weight": 0.011845
+          },
+          {
+            "term": "cumhurbaşkanı",
+            "stem": "cumhur",
+            "count": 29,
+            "weight": 0.009461
+          },
+          {
+            "term": "anayasa",
+            "stem": "anayas",
+            "count": 19,
+            "weight": 0.009289
+          },
+          {
+            "term": "mahkemesi",
+            "stem": "mahkem",
+            "count": 31,
+            "weight": 0.007463
+          },
+          {
+            "term": "osmanlı",
+            "stem": "osmanl",
+            "count": 20,
+            "weight": 0.007403
           }
         ]
       }
@@ -5254,6 +5328,7 @@
         "duplicate_rate": 0.0262,
         "duplicate_groups": 33,
         "distinct_values": 1558,
+        "empty_values": 0,
         "top_repeated": [
           {
             "count": 8,
@@ -5282,6 +5357,7 @@
         "duplicate_rate": 0.0031,
         "duplicate_groups": 2,
         "distinct_values": 1593,
+        "empty_values": 2,
         "top_repeated": [
           {
             "count": 5,
@@ -5435,72 +5511,72 @@
       "topic_profile": {
         "analyzable": true,
         "minimum_term_count": 3,
-        "distinct_stems": 1191,
-        "total_topic_tokens": 7047,
-        "topic_concentration": 0.2465,
+        "distinct_stems": 7727,
+        "total_topic_tokens": 284608,
+        "topic_concentration": 0.0974,
         "concentration_terms": 20,
         "stem_length": 6,
         "method": "prefix stem, crude; not morphological analysis",
         "distinctive_terms": [
           {
-            "term": "misiniz",
-            "stem": "misini",
-            "count": 214,
-            "weight": 0.033362
+            "term": "magibu",
+            "stem": "magibu",
+            "count": 1942,
+            "weight": 0.021245
           },
           {
-            "term": "function",
-            "stem": "functi",
-            "count": 80,
-            "weight": 0.027477
+            "term": "yalçin",
+            "stem": "yalçin",
+            "count": 1564,
+            "weight": 0.01711
           },
           {
-            "term": "zeka",
-            "stem": "zeka",
-            "count": 94,
-            "weight": 0.020063
+            "term": "filiz",
+            "stem": "filiz",
+            "count": 1564,
+            "weight": 0.012074
           },
           {
-            "term": "creation",
-            "stem": "creati",
-            "count": 57,
-            "weight": 0.019577
+            "term": "languages",
+            "stem": "langua",
+            "count": 1692,
+            "weight": 0.007382
           },
           {
-            "term": "model",
-            "stem": "model",
-            "count": 148,
-            "weight": 0.017031
+            "term": "context",
+            "stem": "contex",
+            "count": 1292,
+            "weight": 0.007306
           },
           {
-            "term": "sizi",
-            "stem": "sizi",
-            "count": 74,
-            "weight": 0.016901
+            "term": "256k",
+            "stem": "256k",
+            "count": 639,
+            "weight": 0.00699
           },
           {
-            "term": "describe",
-            "stem": "descri",
-            "count": 45,
-            "weight": 0.014031
+            "term": "tasks",
+            "stem": "tasks",
+            "count": 1158,
+            "weight": 0.006548
           },
           {
-            "term": "yetenekleriniz",
-            "stem": "yetene",
-            "count": 71,
-            "weight": 0.013317
+            "term": "code",
+            "stem": "code",
+            "count": 1467,
+            "weight": 0.0064
           },
           {
-            "term": "yapay",
-            "stem": "yapay",
-            "count": 100,
-            "weight": 0.013003
+            "term": "reasoning",
+            "stem": "reason",
+            "count": 1048,
+            "weight": 0.005538
           },
           {
-            "term": "other",
-            "stem": "other",
-            "count": 43,
-            "weight": 0.012295
+            "term": "documents",
+            "stem": "docume",
+            "count": 815,
+            "weight": 0.005328
           }
         ]
       }
@@ -5601,6 +5677,7 @@
         "duplicate_rate": 0.019,
         "duplicate_groups": 10,
         "distinct_values": 516,
+        "empty_values": 0,
         "top_repeated": [
           {
             "count": 2,
@@ -5629,6 +5706,7 @@
         "duplicate_rate": 0.0076,
         "duplicate_groups": 4,
         "distinct_values": 522,
+        "empty_values": 0,
         "top_repeated": [
           {
             "count": 2,
@@ -5788,9 +5866,9 @@
       "topic_profile": {
         "analyzable": true,
         "minimum_term_count": 3,
-        "distinct_stems": 742,
-        "total_topic_tokens": 3798,
-        "topic_concentration": 0.4481,
+        "distinct_stems": 4321,
+        "total_topic_tokens": 48003,
+        "topic_concentration": 0.1747,
         "concentration_terms": 20,
         "stem_length": 6,
         "method": "prefix stem, crude; not morphological analysis",
@@ -5798,62 +5876,62 @@
           {
             "term": "pateninde",
             "stem": "pateni",
-            "count": 482,
-            "weight": 0.395133
-          },
-          {
-            "term": "artistik",
-            "stem": "artist",
-            "count": 475,
-            "weight": 0.274798
-          },
-          {
-            "term": "yarışmalarında",
-            "stem": "yarışm",
-            "count": 117,
-            "weight": 0.053208
-          },
-          {
-            "term": "atlayış",
-            "stem": "atlayı",
-            "count": 51,
-            "weight": 0.041809
-          },
-          {
-            "term": "spin",
-            "stem": "spin",
-            "count": 39,
-            "weight": 0.024854
-          },
-          {
-            "term": "spiral",
-            "stem": "spiral",
-            "count": 28,
-            "weight": 0.017844
+            "count": 1033,
+            "weight": 0.067001
           },
           {
             "term": "patencinin",
             "stem": "patenc",
-            "count": 20,
-            "weight": 0.016396
+            "count": 885,
+            "weight": 0.057402
           },
           {
-            "term": "puanlama",
-            "stem": "puanla",
-            "count": 34,
-            "weight": 0.015462
+            "term": "artistik",
+            "stem": "artist",
+            "count": 923,
+            "weight": 0.033211
           },
           {
-            "term": "pozisyonu",
-            "stem": "pozisy",
-            "count": 36,
-            "weight": 0.014257
+            "term": "atlayış",
+            "stem": "atlayı",
+            "count": 621,
+            "weight": 0.022345
+          },
+          {
+            "term": "yarışma",
+            "stem": "yarışm",
+            "count": 533,
+            "weight": 0.012964
           },
           {
             "term": "koreografik",
             "stem": "koreog",
-            "count": 14,
-            "weight": 0.011477
+            "count": 169,
+            "weight": 0.009534
+          },
+          {
+            "term": "spin",
+            "stem": "spin",
+            "count": 213,
+            "weight": 0.008257
+          },
+          {
+            "term": "element",
+            "stem": "elemen",
+            "count": 294,
+            "weight": 0.007605
+          },
+          {
+            "term": "sporcu",
+            "stem": "sporcu",
+            "count": 258,
+            "weight": 0.007572
+          },
+          {
+            "term": "spiral",
+            "stem": "spiral",
+            "count": 180,
+            "weight": 0.006977
           }
         ]
       }
@@ -5951,6 +6029,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 1000,
+        "empty_values": 0,
         "top_repeated": []
       },
       "assistant_answer_duplicates": {
@@ -5958,6 +6037,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 1000,
+        "empty_values": 0,
         "top_repeated": []
       },
       "user_prompt_near_duplicates": {
@@ -6074,72 +6154,72 @@
       "topic_profile": {
         "analyzable": true,
         "minimum_term_count": 3,
-        "distinct_stems": 5046,
-        "total_topic_tokens": 73430,
-        "topic_concentration": 0.1196,
+        "distinct_stems": 8702,
+        "total_topic_tokens": 208215,
+        "topic_concentration": 0.1096,
         "concentration_terms": 20,
         "stem_length": 6,
         "method": "prefix stem, crude; not morphological analysis",
         "distinctive_terms": [
           {
-            "term": "neural",
-            "stem": "neural",
-            "count": 616,
-            "weight": 0.022718
-          },
-          {
-            "term": "network",
-            "stem": "networ",
-            "count": 868,
-            "weight": 0.021996
-          },
-          {
             "term": "learning",
             "stem": "learni",
-            "count": 865,
-            "weight": 0.020347
+            "count": 2257,
+            "weight": 0.018723
           },
           {
-            "term": "action",
-            "stem": "action",
-            "count": 481,
-            "weight": 0.017739
+            "term": "neural",
+            "stem": "neural",
+            "count": 1307,
+            "weight": 0.013792
           },
           {
             "term": "function",
             "stem": "functi",
-            "count": 510,
-            "weight": 0.01681
+            "count": 1688,
+            "weight": 0.012194
           },
           {
-            "term": "reward",
-            "stem": "reward",
-            "count": 314,
-            "weight": 0.013314
+            "term": "network",
+            "stem": "networ",
+            "count": 1975,
+            "weight": 0.011778
           },
           {
-            "term": "input",
-            "stem": "input",
-            "count": 284,
-            "weight": 0.012042
-          },
-          {
-            "term": "some",
-            "stem": "some",
-            "count": 379,
-            "weight": 0.011341
-          },
-          {
-            "term": "state",
-            "stem": "state",
-            "count": 406,
-            "weight": 0.011141
+            "term": "action",
+            "stem": "action",
+            "count": 1364,
+            "weight": 0.009229
           },
           {
             "term": "policy",
             "stem": "policy",
-            "count": 328,
-            "weight": 0.010811
+            "count": 938,
+            "weight": 0.009077
+          },
+          {
+            "term": "example",
+            "stem": "exampl",
+            "count": 1060,
+            "weight": 0.008793
+          },
+          {
+            "term": "reward",
+            "stem": "reward",
+            "count": 778,
+            "weight": 0.007529
+          },
+          {
+            "term": "theta",
+            "stem": "theta",
+            "count": 503,
+            "weight": 0.007522
+          },
+          {
+            "term": "state",
+            "stem": "state",
+            "count": 1163,
+            "weight": 0.006936
           }
         ]
       }
@@ -6243,6 +6323,7 @@
         "duplicate_rate": 0.1072,
         "duplicate_groups": 36,
         "distinct_values": 383,
+        "empty_values": 0,
         "top_repeated": [
           {
             "count": 6,
@@ -6271,6 +6352,7 @@
         "duplicate_rate": 0.0093,
         "duplicate_groups": 4,
         "distinct_values": 425,
+        "empty_values": 0,
         "top_repeated": [
           {
             "count": 2,
@@ -6430,72 +6512,72 @@
       "topic_profile": {
         "analyzable": true,
         "minimum_term_count": 3,
-        "distinct_stems": 518,
-        "total_topic_tokens": 1372,
-        "topic_concentration": 0.2617,
+        "distinct_stems": 8734,
+        "total_topic_tokens": 35400,
+        "topic_concentration": 0.0693,
         "concentration_terms": 20,
         "stem_length": 6,
         "method": "prefix stem, crude; not morphological analysis",
         "distinctive_terms": [
           {
-            "term": "project",
-            "stem": "projec",
-            "count": 41,
-            "weight": 0.065661
-          },
-          {
             "term": "gorkem",
             "stem": "gorkem",
-            "count": 21,
-            "weight": 0.047656
+            "count": 241,
+            "weight": 0.018436
           },
           {
-            "term": "onerir",
-            "stem": "onerir",
-            "count": 24,
-            "weight": 0.047371
+            "term": "projects",
+            "stem": "projec",
+            "count": 235,
+            "weight": 0.011466
+          },
+          {
+            "term": "python",
+            "stem": "python",
+            "count": 188,
+            "weight": 0.008547
+          },
+          {
+            "term": "github",
+            "stem": "github",
+            "count": 159,
+            "weight": 0.008358
           },
           {
             "term": "görkem",
             "stem": "görkem",
-            "count": 17,
-            "weight": 0.038579
-          },
-          {
-            "term": "projesi",
-            "stem": "projes",
-            "count": 28,
-            "weight": 0.032846
-          },
-          {
-            "term": "icin",
-            "stem": "icin",
-            "count": 24,
-            "weight": 0.030214
-          },
-          {
-            "term": "good",
-            "stem": "good",
-            "count": 24,
-            "weight": 0.028153
-          },
-          {
-            "term": "ogrenme",
-            "stem": "ogrenm",
-            "count": 12,
-            "weight": 0.027232
+            "count": 127,
+            "weight": 0.007229
           },
           {
             "term": "learning",
             "stem": "learni",
-            "count": 20,
-            "weight": 0.025178
+            "count": 125,
+            "weight": 0.006099
           },
           {
-            "term": "tips",
-            "stem": "tips",
-            "count": 12,
-            "weight": 0.023686
+            "term": "hugging",
+            "stem": "huggin",
+            "count": 91,
+            "weight": 0.00518
+          },
+          {
+            "term": "face",
+            "stem": "face",
+            "count": 113,
+            "weight": 0.004801
+          },
+          {
+            "term": "android",
+            "stem": "androi",
+            "count": 72,
+            "weight": 0.004098
+          },
+          {
+            "term": "projeleri",
+            "stem": "projel",
+            "count": 116,
+            "weight": 0.004069
           }
         ]
       }
@@ -6650,6 +6732,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 103,
+        "empty_values": 0,
         "top_repeated": []
       },
       "summary_character_length": {
@@ -6697,72 +6780,72 @@
       "topic_profile": {
         "analyzable": true,
         "minimum_term_count": 2,
-        "distinct_stems": 1119,
-        "total_topic_tokens": 2316,
-        "topic_concentration": 0.2634,
+        "distinct_stems": 1117,
+        "total_topic_tokens": 2314,
+        "topic_concentration": 0.2636,
         "concentration_terms": 20,
         "stem_length": 6,
         "method": "prefix stem, crude; not morphological analysis",
         "distinctive_terms": [
           {
-            "term": "bilimkurgu",
-            "stem": "bilimk",
-            "count": 107,
-            "weight": 0.143845
-          },
-          {
             "term": "thaki",
             "stem": "thaki",
             "count": 105,
-            "weight": 0.141157
+            "weight": 0.141279
           },
           {
-            "term": "klasikleri",
-            "stem": "klasik",
-            "count": 103,
-            "weight": 0.066891
+            "term": "bilimkurgu",
+            "stem": "bilimk",
+            "count": 107,
+            "weight": 0.111918
           },
           {
             "term": "yayınları",
             "stem": "yayınl",
             "count": 103,
-            "weight": 0.055223
+            "weight": 0.033924
           },
           {
-            "term": "mars",
-            "stem": "mars",
-            "count": 13,
-            "weight": 0.015201
-          },
-          {
-            "term": "bradbury",
-            "stem": "bradbu",
-            "count": 10,
-            "weight": 0.013444
-          },
-          {
-            "term": "gezegeni",
-            "stem": "gezege",
-            "count": 14,
-            "weight": 0.013282
+            "term": "klasikleri",
+            "stem": "klasik",
+            "count": 103,
+            "weight": 0.02798
           },
           {
             "term": "dune",
             "stem": "dune",
             "count": 9,
-            "weight": 0.012099
+            "weight": 0.01211
           },
           {
-            "term": "öyküleri",
-            "stem": "öyküle",
-            "count": 11,
-            "weight": 0.00957
+            "term": "bradbury",
+            "stem": "bradbu",
+            "count": 10,
+            "weight": 0.011703
+          },
+          {
+            "term": "mars",
+            "stem": "mars",
+            "count": 13,
+            "weight": 0.01132
+          },
+          {
+            "term": "gezegeni",
+            "stem": "gezege",
+            "count": 14,
+            "weight": 0.01045
+          },
+          {
+            "term": "uygarlığın",
+            "stem": "uygarl",
+            "count": 8,
+            "weight": 0.008368
           },
           {
             "term": "hyperion",
             "stem": "hyperi",
             "count": 7,
-            "weight": 0.00941
+            "weight": 0.008192
           }
         ]
       }
@@ -6858,6 +6941,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 220,
+        "empty_values": 0,
         "top_repeated": []
       },
       "assistant_answer_duplicates": {
@@ -6865,6 +6949,7 @@
         "duplicate_rate": 0.0182,
         "duplicate_groups": 4,
         "distinct_values": 216,
+        "empty_values": 0,
         "top_repeated": [
           {
             "count": 2,
@@ -6990,9 +7075,9 @@
       "topic_profile": {
         "analyzable": true,
         "minimum_term_count": 3,
-        "distinct_stems": 145,
-        "total_topic_tokens": 1023,
-        "topic_concentration": 0.6276,
+        "distinct_stems": 514,
+        "total_topic_tokens": 2745,
+        "topic_concentration": 0.4492,
         "concentration_terms": 20,
         "stem_length": 6,
         "method": "prefix stem, crude; not morphological analysis",
@@ -7001,61 +7086,61 @@
             "term": "eserinin",
             "stem": "eserin",
             "count": 100,
-            "weight": 0.236595
-          },
-          {
-            "term": "yayımlanmıştır",
-            "stem": "yayıml",
-            "count": 50,
-            "weight": 0.107391
+            "weight": 0.062922
           },
           {
             "term": "edebiyatında",
             "stem": "edebiy",
-            "count": 52,
-            "weight": 0.094584
+            "count": 111,
+            "weight": 0.050211
           },
           {
-            "term": "yazarı",
-            "stem": "yazarı",
-            "count": 52,
-            "weight": 0.081809
+            "term": "eserde",
+            "stem": "eserde",
+            "count": 50,
+            "weight": 0.040022
+          },
+          {
+            "term": "yayımlanmıştır",
+            "stem": "yayıml",
+            "count": 100,
+            "weight": 0.03338
           },
           {
             "term": "türk",
             "stem": "türk",
-            "count": 53,
-            "weight": 0.068478
+            "count": 111,
+            "weight": 0.028938
+          },
+          {
+            "term": "eser",
+            "stem": "eser",
+            "count": 52,
+            "weight": 0.023522
           },
           {
             "term": "kimdir",
             "stem": "kimdir",
             "count": 54,
-            "weight": 0.057991
+            "weight": 0.020342
+          },
+          {
+            "term": "yazarı",
+            "stem": "yazarı",
+            "count": 53,
+            "weight": 0.018795
           },
           {
             "term": "romanı",
             "stem": "romanı",
-            "count": 20,
-            "weight": 0.047319
+            "count": 33,
+            "weight": 0.016936
           },
           {
-            "term": "temel",
-            "stem": "temel",
-            "count": 53,
-            "weight": 0.030452
-          },
-          {
-            "term": "konusu",
-            "stem": "konusu",
-            "count": 51,
-            "weight": 0.029303
-          },
-          {
-            "term": "önemlidir",
-            "stem": "önemli",
-            "count": 51,
-            "weight": 0.029303
+            "term": "yazılmıştır",
+            "stem": "yazılm",
+            "count": 54,
+            "weight": 0.015953
           }
         ]
       }
@@ -7152,6 +7237,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 1020,
+        "empty_values": 0,
         "top_repeated": []
       },
       "assistant_answer_duplicates": {
@@ -7159,6 +7245,7 @@
         "duplicate_rate": 0.5882,
         "duplicate_groups": 300,
         "distinct_values": 420,
+        "empty_values": 0,
         "top_repeated": [
           {
             "count": 3,
@@ -7301,9 +7388,9 @@
       "topic_profile": {
         "analyzable": true,
         "minimum_term_count": 3,
-        "distinct_stems": 133,
-        "total_topic_tokens": 5925,
-        "topic_concentration": 0.4295,
+        "distinct_stems": 4570,
+        "total_topic_tokens": 64643,
+        "topic_concentration": 0.0982,
         "concentration_terms": 20,
         "stem_length": 6,
         "method": "prefix stem, crude; not morphological analysis",
@@ -7311,62 +7398,62 @@
           {
             "term": "filminin",
             "stem": "filmin",
-            "count": 480,
-            "weight": 0.150744
+            "count": 995,
+            "weight": 0.020345
           },
           {
-            "term": "animasyonu",
-            "stem": "animas",
-            "count": 300,
-            "weight": 0.12255
-          },
-          {
-            "term": "seslendirenleri",
+            "term": "seslendirme",
             "stem": "seslen",
-            "count": 240,
-            "weight": 0.09804
+            "count": 536,
+            "weight": 0.011681
           },
           {
             "term": "filmi",
             "stem": "filmi",
-            "count": 180,
-            "weight": 0.066751
-          },
-          {
-            "term": "kimler",
-            "stem": "kimler",
-            "count": 240,
-            "weight": 0.037116
-          },
-          {
-            "term": "zleyenler",
-            "stem": "zleyen",
-            "count": 60,
-            "weight": 0.031529
-          },
-          {
-            "term": "stüdyo",
-            "stem": "stüdyo",
-            "count": 60,
-            "weight": 0.027423
-          },
-          {
-            "term": "ödülü",
-            "stem": "ödülü",
-            "count": 60,
-            "weight": 0.027423
-          },
-          {
-            "term": "örgüsünden",
-            "stem": "örgüsü",
-            "count": 60,
-            "weight": 0.027423
+            "count": 399,
+            "weight": 0.009284
           },
           {
             "term": "şrek",
             "stem": "şrek",
-            "count": 51,
-            "weight": 0.0268
+            "count": 173,
+            "weight": 0.008333
+          },
+          {
+            "term": "animasyonu",
+            "stem": "animas",
+            "count": 392,
+            "weight": 0.00753
+          },
+          {
+            "term": "kadrosunda",
+            "stem": "kadros",
+            "count": 300,
+            "weight": 0.007469
+          },
+          {
+            "term": "prodüksiyonu",
+            "stem": "prodük",
+            "count": 185,
+            "weight": 0.006288
+          },
+          {
+            "term": "amansız",
+            "stem": "amansı",
+            "count": 144,
+            "weight": 0.006033
+          },
+          {
+            "term": "ödül",
+            "stem": "ödül",
+            "count": 300,
+            "weight": 0.005419
+          },
+          {
+            "term": "canavarlar",
+            "stem": "canava",
+            "count": 216,
+            "weight": 0.005378
           }
         ]
       }
@@ -7472,6 +7559,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 186,
+        "empty_values": 0,
         "top_repeated": []
       },
       "assistant_answer_duplicates": {
@@ -7479,6 +7567,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 186,
+        "empty_values": 0,
         "top_repeated": []
       },
       "user_prompt_near_duplicates": {
@@ -7581,72 +7670,72 @@
       "topic_profile": {
         "analyzable": true,
         "minimum_term_count": 2,
-        "distinct_stems": 1018,
-        "total_topic_tokens": 2196,
-        "topic_concentration": 0.1535,
+        "distinct_stems": 2661,
+        "total_topic_tokens": 15187,
+        "topic_concentration": 0.1368,
         "concentration_terms": 20,
         "stem_length": 6,
         "method": "prefix stem, crude; not morphological analysis",
         "distinctive_terms": [
           {
-            "term": "sipariş",
-            "stem": "sipari",
-            "count": 41,
-            "weight": 0.030049
-          },
-          {
             "term": "kargo",
             "stem": "kargo",
-            "count": 24,
-            "weight": 0.024013
+            "count": 146,
+            "weight": 0.014459
+          },
+          {
+            "term": "sipariş",
+            "stem": "sipari",
+            "count": 200,
+            "weight": 0.012067
           },
           {
             "term": "fatura",
             "stem": "fatura",
-            "count": 19,
-            "weight": 0.019011
+            "count": 97,
+            "weight": 0.008442
           },
           {
             "term": "iade",
             "stem": "iade",
-            "count": 21,
-            "weight": 0.017794
-          },
-          {
-            "term": "iptal",
-            "stem": "iptal",
-            "count": 18,
-            "weight": 0.016516
+            "count": 118,
+            "weight": 0.007119
           },
           {
             "term": "satıcı",
             "stem": "satıcı",
-            "count": 16,
-            "weight": 0.014681
+            "count": 71,
+            "weight": 0.006586
           },
           {
-            "term": "kargom",
-            "stem": "kargom",
-            "count": 10,
-            "weight": 0.012332
+            "term": "size",
+            "stem": "size",
+            "count": 134,
+            "weight": 0.006314
+          },
+          {
+            "term": "ürünün",
+            "stem": "ürünün",
+            "count": 88,
+            "weight": 0.005641
+          },
+          {
+            "term": "teslim",
+            "stem": "teslim",
+            "count": 100,
+            "weight": 0.005018
+          },
+          {
+            "term": "depomuza",
+            "stem": "depomu",
+            "count": 23,
+            "weight": 0.004715
           },
           {
             "term": "merhaba",
             "stem": "merhab",
-            "count": 18,
-            "weight": 0.010834
-          },
-          {
-            "term": "geldi",
-            "stem": "geldi",
-            "count": 20,
-            "weight": 0.010634
-          },
-          {
-            "term": "indirim",
-            "stem": "indiri",
-            "count": 14,
-            "weight": 0.010261
+            "count": 69,
+            "weight": 0.004698
           }
         ]
       }
@@ -7754,6 +7843,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 450,
+        "empty_values": 0,
         "top_repeated": []
       },
       "assistant_answer_duplicates": {
@@ -7761,6 +7851,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 450,
+        "empty_values": 0,
         "top_repeated": []
       },
       "user_prompt_near_duplicates": {
@@ -7856,72 +7947,72 @@
       "topic_profile": {
         "analyzable": true,
         "minimum_term_count": 3,
-        "distinct_stems": 3818,
-        "total_topic_tokens": 18460,
-        "topic_concentration": 0.1232,
+        "distinct_stems": 4967,
+        "total_topic_tokens": 47516,
+        "topic_concentration": 0.1615,
         "concentration_terms": 20,
         "stem_length": 6,
         "method": "prefix stem, crude; not morphological analysis",
         "distinctive_terms": [
           {
+            "term": "forumdaki",
+            "stem": "forumd",
+            "count": 458,
+            "weight": 0.02333
+          },
+          {
+            "term": "hocam",
+            "stem": "hocam",
+            "count": 465,
+            "weight": 0.01575
+          },
+          {
+            "term": "ilçe",
+            "stem": "ilçe",
+            "count": 369,
+            "weight": 0.015647
+          },
+          {
+            "term": "resmî",
+            "stem": "resmî",
+            "count": 353,
+            "weight": 0.011957
+          },
+          {
             "term": "öğretmen",
             "stem": "öğretm",
-            "count": 375,
-            "weight": 0.028618
+            "count": 899,
+            "weight": 0.011893
           },
           {
-            "term": "tayin",
-            "stem": "tayin",
-            "count": 81,
-            "weight": 0.011883
+            "term": "tecrübesine",
+            "stem": "tecrüb",
+            "count": 422,
+            "weight": 0.011028
           },
           {
-            "term": "tayini",
-            "stem": "tayini",
-            "count": 69,
-            "weight": 0.011638
+            "term": "millî",
+            "stem": "millî",
+            "count": 348,
+            "weight": 0.00968
           },
           {
-            "term": "arkadaşlar",
-            "stem": "arkada",
-            "count": 194,
-            "weight": 0.011546
+            "term": "müdürlüğünden",
+            "stem": "müdürl",
+            "count": 352,
+            "weight": 0.009199
           },
           {
             "term": "norm",
             "stem": "norm",
-            "count": 82,
-            "weight": 0.010751
-          },
-          {
-            "term": "merhaba",
-            "stem": "merhab",
-            "count": 150,
-            "weight": 0.01074
+            "count": 199,
+            "weight": 0.008439
           },
           {
             "term": "mazeret",
             "stem": "mazere",
-            "count": 81,
-            "weight": 0.009641
-          },
-          {
-            "term": "başvuru",
-            "stem": "başvur",
-            "count": 106,
-            "weight": 0.008637
-          },
-          {
-            "term": "okul",
-            "stem": "okul",
-            "count": 88,
-            "weight": 0.008234
-          },
-          {
-            "term": "müdür",
-            "stem": "müdür",
-            "count": 114,
-            "weight": 0.008163
+            "count": 222,
+            "weight": 0.006582
           }
         ]
       }
@@ -8020,6 +8111,7 @@
         "duplicate_rate": 0.8663,
         "duplicate_groups": 798,
         "distinct_values": 2790,
+        "empty_values": 0,
         "top_repeated": [
           {
             "count": 314,
@@ -8048,6 +8140,7 @@
         "duplicate_rate": 0.0127,
         "duplicate_groups": 265,
         "distinct_values": 20609,
+        "empty_values": 0,
         "top_repeated": [
           {
             "count": 2,
@@ -8227,9 +8320,9 @@
       "topic_profile": {
         "analyzable": true,
         "minimum_term_count": 3,
-        "distinct_stems": 2064,
-        "total_topic_tokens": 268175,
-        "topic_concentration": 0.735,
+        "distinct_stems": 32154,
+        "total_topic_tokens": 1359845,
+        "topic_concentration": 0.2192,
         "concentration_terms": 20,
         "stem_length": 6,
         "method": "prefix stem, crude; not morphological analysis",
@@ -8237,64 +8330,66 @@
           {
             "term": "üret",
             "stem": "üret",
-            "count": 20874,
-            "weight": 0.171026
-          },
-          {
-            "term": "çoktan",
-            "stem": "çoktan",
-            "count": 18654,
-            "weight": 0.140155
-          },
-          {
-            "term": "sınıf",
-            "stem": "sınıf",
-            "count": 20874,
-            "weight": 0.125274
+            "count": 20875,
+            "weight": 0.030931
           },
           {
             "term": "seçmeli",
             "stem": "seçmel",
-            "count": 18654,
-            "weight": 0.120144
+            "count": 18691,
+            "weight": 0.018167
           },
           {
-            "term": "orta",
-            "stem": "orta",
-            "count": 19523,
-            "weight": 0.096223
+            "term": "çoktan",
+            "stem": "çoktan",
+            "count": 18680,
+            "weight": 0.017057
           },
           {
             "term": "soru",
             "stem": "soru",
-            "count": 22800,
-            "weight": 0.093403
+            "count": 27357,
+            "weight": 0.014397
+          },
+          {
+            "term": "sınıf",
+            "stem": "sınıf",
+            "count": 21091,
+            "weight": 0.013373
+          },
+          {
+            "term": "aşağıdakilerden",
+            "stem": "aşağıd",
+            "count": 13559,
+            "weight": 0.008597
+          },
+          {
+            "term": "orta",
+            "stem": "orta",
+            "count": 21005,
+            "weight": 0.008473
+          },
+          {
+            "term": "cevap",
+            "stem": "cevap",
+            "count": 20222,
+            "weight": 0.008158
+          },
+          {
+            "term": "ünite",
+            "stem": "ünite",
+            "count": 3362,
+            "weight": 0.006695
           },
           {
             "term": "seviyede",
             "stem": "seviye",
-            "count": 20874,
-            "weight": 0.075771
-          },
-          {
-            "term": "bilimleri",
-            "stem": "biliml",
-            "count": 6533,
-            "weight": 0.049085
-          },
-          {
-            "term": "konusunda",
-            "stem": "konusu",
-            "count": 20930,
-            "weight": 0.045874
-          },
-          {
-            "term": "türkçe",
-            "stem": "türkçe",
-            "count": 5395,
-            "weight": 0.02498
+            "count": 21137,
+            "weight": 0.006302
           }
-        ]
+        ],
+        "template_driven_prompts": true,
+        "caveat": "87% of prompts repeat, so the user turn is largely a fixed instruction. Terms may describe the instruction rather than the subject."
       }
     },
     "contributor": "Nur Sima Akgül",
@@ -8389,6 +8484,7 @@
         "duplicate_rate": 0.0018,
         "duplicate_groups": 2,
         "distinct_values": 1091,
+        "empty_values": 0,
         "top_repeated": [
           {
             "count": 2,
@@ -8405,6 +8501,7 @@
         "duplicate_rate": 0.2159,
         "duplicate_groups": 188,
         "distinct_values": 857,
+        "empty_values": 0,
         "top_repeated": [
           {
             "count": 8,
@@ -8556,9 +8653,9 @@
       "topic_profile": {
         "analyzable": true,
         "minimum_term_count": 3,
-        "distinct_stems": 1033,
-        "total_topic_tokens": 8370,
-        "topic_concentration": 0.3842,
+        "distinct_stems": 3380,
+        "total_topic_tokens": 24183,
+        "topic_concentration": 0.144,
         "concentration_terms": 20,
         "stem_length": 6,
         "method": "prefix stem, crude; not morphological analysis",
@@ -8566,62 +8663,62 @@
           {
             "term": "teriminin",
             "stem": "terimi",
-            "count": 453,
-            "weight": 0.118918
-          },
-          {
-            "term": "ders",
-            "stem": "ders",
-            "count": 317,
-            "weight": 0.053355
+            "count": 454,
+            "weight": 0.024814
           },
           {
             "term": "kitaplarında",
             "stem": "kitapl",
             "count": 270,
-            "weight": 0.048519
+            "weight": 0.010868
+          },
+          {
+            "term": "ders",
+            "stem": "ders",
+            "count": 317,
+            "weight": 0.008798
           },
           {
             "term": "tanım",
             "stem": "tanım",
             "count": 122,
-            "weight": 0.035279
+            "weight": 0.007107
           },
           {
-            "term": "açıklama",
-            "stem": "açıkla",
-            "count": 269,
-            "weight": 0.029448
+            "term": "denir",
+            "stem": "denir",
+            "count": 195,
+            "weight": 0.006953
           },
           {
-            "term": "öğrenci",
-            "stem": "öğrenc",
-            "count": 198,
-            "weight": 0.027621
+            "term": "millî",
+            "stem": "millî",
+            "count": 107,
+            "weight": 0.005848
           },
           {
-            "term": "kavramını",
-            "stem": "kavram",
-            "count": 219,
-            "weight": 0.027056
+            "term": "hücreleri",
+            "stem": "hücrel",
+            "count": 121,
+            "weight": 0.005842
+          },
+          {
+            "term": "bitkilerde",
+            "stem": "bitkil",
+            "count": 103,
+            "weight": 0.00563
           },
           {
             "term": "bilimsel",
             "stem": "bilims",
-            "count": 137,
-            "weight": 0.026343
+            "count": 138,
+            "weight": 0.005555
           },
           {
-            "term": "tanımla",
-            "stem": "tanıml",
-            "count": 190,
-            "weight": 0.022097
-          },
-          {
-            "term": "bakanlığı",
-            "stem": "bakanl",
-            "count": 107,
-            "weight": 0.020575
+            "term": "bitkinin",
+            "stem": "bitkin",
+            "count": 66,
+            "weight": 0.005499
           }
         ]
       }
@@ -8733,6 +8830,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 29,
+        "empty_values": 0,
         "top_repeated": []
       },
       "assistant_answer_duplicates": {
@@ -8740,6 +8838,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 29,
+        "empty_values": 0,
         "top_repeated": []
       },
       "user_prompt_near_duplicates": {
@@ -8846,72 +8945,72 @@
       "topic_profile": {
         "analyzable": true,
         "minimum_term_count": 1,
-        "distinct_stems": 525,
-        "total_topic_tokens": 734,
-        "topic_concentration": 0.1458,
+        "distinct_stems": 1863,
+        "total_topic_tokens": 5644,
+        "topic_concentration": 0.1474,
         "concentration_terms": 20,
         "stem_length": 6,
         "method": "prefix stem, crude; not morphological analysis",
         "distinctive_terms": [
           {
-            "term": "adim",
-            "stem": "adim",
-            "count": 8,
-            "weight": 0.029516
+            "term": "guvenlik",
+            "stem": "guvenl",
+            "count": 58,
+            "weight": 0.020706
+          },
+          {
+            "term": "thinking",
+            "stem": "thinki",
+            "count": 58,
+            "weight": 0.01775
+          },
+          {
+            "term": "dogrudan",
+            "stem": "dogrud",
+            "count": 30,
+            "weight": 0.014394
+          },
+          {
+            "term": "mitre",
+            "stem": "mitre",
+            "count": 26,
+            "weight": 0.014343
+          },
+          {
+            "term": "teknigi",
+            "stem": "teknig",
+            "count": 20,
+            "weight": 0.011033
+          },
+          {
+            "term": "yonlendirme",
+            "stem": "yonlen",
+            "count": 22,
+            "weight": 0.010556
           },
           {
             "term": "icin",
             "stem": "icin",
-            "count": 11,
-            "weight": 0.025885
+            "count": 42,
+            "weight": 0.010483
           },
           {
-            "term": "anthropic",
-            "stem": "anthro",
-            "count": 7,
-            "weight": 0.017746
+            "term": "talebi",
+            "stem": "talebi",
+            "count": 44,
+            "weight": 0.009103
           },
           {
-            "term": "saldirisi",
-            "stem": "saldir",
-            "count": 4,
-            "weight": 0.016967
+            "term": "amaci",
+            "stem": "amaci",
+            "count": 20,
+            "weight": 0.008577
           },
           {
-            "term": "safety",
-            "stem": "safety",
-            "count": 7,
-            "weight": 0.015349
-          },
-          {
-            "term": "decode",
-            "stem": "decode",
-            "count": 4,
-            "weight": 0.014758
-          },
-          {
-            "term": "onay",
-            "stem": "onay",
-            "count": 5,
-            "weight": 0.013725
-          },
-          {
-            "term": "komutlarla",
-            "stem": "komutl",
-            "count": 4,
-            "weight": 0.01319
-          },
-          {
-            "term": "layer",
-            "stem": "layer",
-            "count": 4,
-            "weight": 0.01319
-          },
-          {
-            "term": "admin",
-            "stem": "admin",
-            "count": 3,
-            "weight": 0.012726
+            "term": "owasp",
+            "stem": "owasp",
+            "count": 14,
+            "weight": 0.007723
           }
         ]
       }
@@ -9018,6 +9117,7 @@
         "duplicate_rate": 0.0132,
         "duplicate_groups": 14,
         "distinct_values": 1195,
+        "empty_values": 0,
         "top_repeated": [
           {
             "count": 3,
@@ -9046,6 +9146,7 @@
         "duplicate_rate": 0.1511,
         "duplicate_groups": 70,
         "distinct_values": 1028,
+        "empty_values": 0,
         "top_repeated": [
           {
             "count": 16,
@@ -9224,9 +9325,9 @@
       "topic_profile": {
         "analyzable": true,
         "minimum_term_count": 3,
-        "distinct_stems": 1968,
-        "total_topic_tokens": 7017,
-        "topic_concentration": 0.2249,
+        "distinct_stems": 2631,
+        "total_topic_tokens": 14506,
+        "topic_concentration": 0.2818,
         "concentration_terms": 20,
         "stem_length": 6,
         "method": "prefix stem, crude; not morphological analysis",
@@ -9234,62 +9335,62 @@
           {
             "term": "merhaba",
             "stem": "merhab",
-            "count": 409,
-            "weight": 0.077041
+            "count": 1211,
+            "weight": 0.086327
           },
           {
-            "term": "acaba",
-            "stem": "acaba",
-            "count": 111,
-            "weight": 0.025459
+            "term": "efendim",
+            "stem": "efendi",
+            "count": 432,
+            "weight": 0.030796
           },
           {
             "term": "ürün",
             "stem": "ürün",
-            "count": 101,
-            "weight": 0.016806
+            "count": 304,
+            "weight": 0.014997
           },
           {
-            "term": "ürünün",
-            "stem": "ürünün",
-            "count": 65,
-            "weight": 0.01305
+            "term": "dileriz",
+            "stem": "dileri",
+            "count": 102,
+            "weight": 0.009906
           },
           {
-            "term": "duvara",
-            "stem": "duvara",
-            "count": 27,
-            "weight": 0.01198
+            "term": "müşterimiz",
+            "stem": "müşter",
+            "count": 175,
+            "weight": 0.009783
           },
           {
             "term": "ölçüleri",
             "stem": "ölçüle",
-            "count": 47,
-            "weight": 0.011569
+            "count": 136,
+            "weight": 0.009127
           },
           {
-            "term": "gönderim",
-            "stem": "gönder",
-            "count": 72,
-            "weight": 0.011273
+            "term": "acaba",
+            "stem": "acaba",
+            "count": 112,
+            "weight": 0.008482
           },
           {
-            "term": "misiniz",
-            "stem": "misini",
-            "count": 72,
-            "weight": 0.011273
+            "term": "sena",
+            "stem": "sena",
+            "count": 45,
+            "weight": 0.008401
           },
           {
-            "term": "keser",
-            "stem": "keser",
-            "count": 30,
-            "weight": 0.010348
+            "term": "sude",
+            "stem": "sude",
+            "count": 44,
+            "weight": 0.007342
           },
           {
-            "term": "sığar",
-            "stem": "sığar",
-            "count": 23,
-            "weight": 0.010205
+            "term": "evdemo",
+            "stem": "evdemo",
+            "count": 33,
+            "weight": 0.007083
           }
         ]
       }
@@ -9397,6 +9498,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 800,
+        "empty_values": 0,
         "top_repeated": []
       },
       "assistant_answer_duplicates": {
@@ -9404,6 +9506,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 800,
+        "empty_values": 0,
         "top_repeated": []
       },
       "user_prompt_near_duplicates": {
@@ -9499,72 +9602,72 @@
       "topic_profile": {
         "analyzable": true,
         "minimum_term_count": 3,
-        "distinct_stems": 1753,
-        "total_topic_tokens": 6414,
-        "topic_concentration": 0.1971,
+        "distinct_stems": 4132,
+        "total_topic_tokens": 55114,
+        "topic_concentration": 0.1561,
         "concentration_terms": 20,
         "stem_length": 6,
         "method": "prefix stem, crude; not morphological analysis",
         "distinctive_terms": [
           {
-            "term": "güvenlik",
-            "stem": "güvenl",
-            "count": 269,
-            "weight": 0.036161
-          },
-          {
-            "term": "bulut",
-            "stem": "bulut",
-            "count": 66,
-            "weight": 0.017773
-          },
-          {
             "term": "erişim",
             "stem": "erişim",
-            "count": 49,
-            "weight": 0.015393
-          },
-          {
-            "term": "kontrol",
-            "stem": "kontro",
-            "count": 94,
-            "weight": 0.012636
+            "count": 513,
+            "weight": 0.007548
           },
           {
             "term": "veri",
             "stem": "veri",
-            "count": 69,
-            "weight": 0.012561
+            "count": 538,
+            "weight": 0.005738
           },
           {
-            "term": "yönetilir",
-            "stem": "yöneti",
-            "count": 90,
-            "weight": 0.011379
-          },
-          {
-            "term": "tedarikçi",
-            "stem": "tedari",
-            "count": 33,
-            "weight": 0.010367
+            "term": "envanter",
+            "stem": "envant",
+            "count": 132,
+            "weight": 0.004826
           },
           {
             "term": "kimlik",
             "stem": "kimlik",
-            "count": 38,
-            "weight": 0.010233
+            "count": 372,
+            "weight": 0.00453
           },
           {
-            "term": "uygulama",
-            "stem": "uygula",
-            "count": 83,
-            "weight": 0.008685
-          },
-          {
-            "term": "doğrulanır",
+            "term": "doğrulayın",
             "stem": "doğrul",
-            "count": 44,
-            "weight": 0.00801
+            "count": 656,
+            "weight": 0.004436
+          },
+          {
+            "term": "yönetim",
+            "stem": "yöneti",
+            "count": 496,
+            "weight": 0.003954
+          },
+          {
+            "term": "güvenlik",
+            "stem": "güvenl",
+            "count": 657,
+            "weight": 0.003697
+          },
+          {
+            "term": "edin",
+            "stem": "edin",
+            "count": 206,
+            "weight": 0.003638
+          },
+          {
+            "term": "kontrol",
+            "stem": "kontro",
+            "count": 556,
+            "weight": 0.003129
+          },
+          {
+            "term": "test",
+            "stem": "test",
+            "count": 272,
+            "weight": 0.003102
           }
         ]
       }
@@ -9673,6 +9776,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 219,
+        "empty_values": 0,
         "top_repeated": []
       },
       "assistant_answer_duplicates": {
@@ -9680,6 +9784,7 @@
         "duplicate_rate": 0.6667,
         "duplicate_groups": 73,
         "distinct_values": 73,
+        "empty_values": 0,
         "top_repeated": [
           {
             "count": 3,
@@ -9809,9 +9914,9 @@
       "topic_profile": {
         "analyzable": true,
         "minimum_term_count": 3,
-        "distinct_stems": 334,
-        "total_topic_tokens": 819,
-        "topic_concentration": 0.4042,
+        "distinct_stems": 665,
+        "total_topic_tokens": 4497,
+        "topic_concentration": 0.3015,
         "concentration_terms": 20,
         "stem_length": 6,
         "method": "prefix stem, crude; not morphological analysis",
@@ -9819,62 +9924,62 @@
           {
             "term": "umay",
             "stem": "umay",
-            "count": 100,
-            "weight": 0.380161
-          },
-          {
-            "term": "yaratıcının",
-            "stem": "yaratı",
-            "count": 54,
-            "weight": 0.064183
-          },
-          {
-            "term": "nato",
-            "stem": "nato",
-            "count": 10,
-            "weight": 0.029553
-          },
-          {
-            "term": "güvenlik",
-            "stem": "güvenl",
-            "count": 22,
-            "weight": 0.023161
-          },
-          {
-            "term": "sertifikası",
-            "stem": "sertif",
-            "count": 7,
-            "weight": 0.020687
-          },
-          {
-            "term": "deneyimi",
-            "stem": "deneyi",
-            "count": 13,
-            "weight": 0.01971
+            "count": 217,
+            "weight": 0.130675
           },
           {
             "term": "şamlı",
             "stem": "şamlı",
-            "count": 5,
-            "weight": 0.019008
+            "count": 74,
+            "weight": 0.051234
           },
           {
-            "term": "görevlerini",
-            "stem": "görevl",
-            "count": 13,
-            "weight": 0.018533
+            "term": "kamuya",
+            "stem": "kamuya",
+            "count": 57,
+            "weight": 0.023585
           },
           {
-            "term": "özetle",
-            "stem": "özetle",
-            "count": 9,
-            "weight": 0.017686
+            "term": "gemma_3_umay",
+            "stem": "gemma_",
+            "count": 29,
+            "weight": 0.020078
           },
           {
-            "term": "araştırma",
-            "stem": "araştı",
-            "count": 13,
-            "weight": 0.017438
+            "term": "nato",
+            "stem": "nato",
+            "count": 34,
+            "weight": 0.016612
+          },
+          {
+            "term": "zekâ",
+            "stem": "zekâ",
+            "count": 84,
+            "weight": 0.016106
+          },
+          {
+            "term": "güvenlik",
+            "stem": "güvenl",
+            "count": 157,
+            "weight": 0.010828
+          },
+          {
+            "term": "yapay",
+            "stem": "yapay",
+            "count": 84,
+            "weight": 0.008207
+          },
+          {
+            "term": "yaratıcının",
+            "stem": "yaratı",
+            "count": 75,
+            "weight": 0.007913
+          },
+          {
+            "term": "mühendisi",
+            "stem": "mühend",
+            "count": 49,
+            "weight": 0.007798
           }
         ]
       }
@@ -9981,6 +10086,7 @@
         "duplicate_rate": 0.0013,
         "duplicate_groups": 1,
         "distinct_values": 772,
+        "empty_values": 0,
         "top_repeated": [
           {
             "count": 2,
@@ -9993,6 +10099,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 773,
+        "empty_values": 0,
         "top_repeated": []
       },
       "user_prompt_near_duplicates": {
@@ -10121,72 +10228,72 @@
       "topic_profile": {
         "analyzable": true,
         "minimum_term_count": 3,
-        "distinct_stems": 893,
-        "total_topic_tokens": 4636,
-        "topic_concentration": 0.4888,
+        "distinct_stems": 9904,
+        "total_topic_tokens": 108922,
+        "topic_concentration": 0.1045,
         "concentration_terms": 20,
         "stem_length": 6,
         "method": "prefix stem, crude; not morphological analysis",
         "distinctive_terms": [
           {
-            "term": "diyabetli",
+            "term": "diyabet",
             "stem": "diyabe",
-            "count": 255,
-            "weight": 0.120857
-          },
-          {
-            "term": "ergenlerde",
-            "stem": "ergenl",
-            "count": 102,
-            "weight": 0.059582
-          },
-          {
-            "term": "bilmem",
-            "stem": "bilmem",
-            "count": 123,
-            "weight": 0.039905
-          },
-          {
-            "term": "obezite",
-            "stem": "obezit",
-            "count": 67,
-            "weight": 0.039137
-          },
-          {
-            "term": "konusunda",
-            "stem": "konusu",
-            "count": 269,
-            "weight": 0.034106
+            "count": 1228,
+            "weight": 0.020978
           },
           {
             "term": "hastalığı",
             "stem": "hastal",
-            "count": 99,
-            "weight": 0.030084
+            "count": 1028,
+            "weight": 0.008648
           },
           {
-            "term": "bilgiler",
-            "stem": "bilgil",
-            "count": 132,
-            "weight": 0.026089
+            "term": "insülin",
+            "stem": "insüli",
+            "count": 467,
+            "weight": 0.008639
           },
           {
-            "term": "yenidoğanlarda",
-            "stem": "yenido",
-            "count": 33,
-            "weight": 0.022163
+            "term": "tedavi",
+            "stem": "tedavi",
+            "count": 783,
+            "weight": 0.008393
           },
           {
-            "term": "neler",
-            "stem": "neler",
-            "count": 124,
-            "weight": 0.020385
+            "term": "besin",
+            "stem": "besin",
+            "count": 426,
+            "weight": 0.005883
           },
           {
-            "term": "gerekir",
-            "stem": "gereki",
-            "count": 123,
-            "weight": 0.020221
+            "term": "egzersiz",
+            "stem": "egzers",
+            "count": 508,
+            "weight": 0.005791
+          },
+          {
+            "term": "şekeri",
+            "stem": "şekeri",
+            "count": 388,
+            "weight": 0.005733
+          },
+          {
+            "term": "aktivite",
+            "stem": "aktivi",
+            "count": 589,
+            "weight": 0.005264
+          },
+          {
+            "term": "obezite",
+            "stem": "obezit",
+            "count": 282,
+            "weight": 0.005217
+          },
+          {
+            "term": "hipoglisemi",
+            "stem": "hipogl",
+            "count": 194,
+            "weight": 0.004823
           }
         ]
       }
@@ -10392,72 +10499,72 @@
       "topic_profile": {
         "analyzable": true,
         "minimum_term_count": 3,
-        "distinct_stems": 12748,
-        "total_topic_tokens": 238329,
+        "distinct_stems": 12741,
+        "total_topic_tokens": 238320,
         "topic_concentration": 0.2248,
         "concentration_terms": 20,
         "stem_length": 6,
         "method": "prefix stem, crude; not morphological analysis",
         "distinctive_terms": [
           {
-            "term": "gayet",
-            "stem": "gayet",
-            "count": 2874,
-            "weight": 0.029187
-          },
-          {
             "term": "ürün",
             "stem": "ürün",
             "count": 5817,
-            "weight": 0.028498
+            "weight": 0.017467
           },
           {
-            "term": "teşekkür",
-            "stem": "teşekk",
-            "count": 4010,
-            "weight": 0.023703
-          },
-          {
-            "term": "güzel",
-            "stem": "güzel",
-            "count": 5106,
-            "weight": 0.022154
+            "term": "gayet",
+            "stem": "gayet",
+            "count": 2874,
+            "weight": 0.01594
           },
           {
             "term": "ederim",
             "stem": "ederim",
             "count": 3326,
-            "weight": 0.02099
+            "weight": 0.013585
+          },
+          {
+            "term": "teşekkür",
+            "stem": "teşekk",
+            "count": 4010,
+            "weight": 0.012824
+          },
+          {
+            "term": "güzel",
+            "stem": "güzel",
+            "count": 5106,
+            "weight": 0.012593
           },
           {
             "term": "satıcı",
             "stem": "satıcı",
             "count": 1967,
-            "weight": 0.01663
-          },
-          {
-            "term": "geldi",
-            "stem": "geldi",
-            "count": 3208,
-            "weight": 0.015716
-          },
-          {
-            "term": "bilgisayar",
-            "stem": "bilgis",
-            "count": 4333,
-            "weight": 0.015676
+            "weight": 0.011627
           },
           {
             "term": "paketleme",
             "stem": "paketl",
             "count": 2380,
-            "weight": 0.01502
+            "weight": 0.010327
           },
           {
-            "term": "sorunsuz",
-            "stem": "soruns",
-            "count": 1312,
-            "weight": 0.014908
+            "term": "geldi",
+            "stem": "geldi",
+            "count": 3208,
+            "weight": 0.010259
+          },
+          {
+            "term": "aldım",
+            "stem": "aldım",
+            "count": 1759,
+            "weight": 0.008618
+          },
+          {
+            "term": "elime",
+            "stem": "elime",
+            "count": 1307,
+            "weight": 0.008249
           }
         ]
       }
@@ -10579,6 +10686,7 @@
         "duplicate_rate": 0.4137,
         "duplicate_groups": 4906,
         "distinct_values": 6952,
+        "empty_values": 0,
         "top_repeated": [
           {
             "count": 2,
@@ -10607,6 +10715,7 @@
         "duplicate_rate": 0.5225,
         "duplicate_groups": 5541,
         "distinct_values": 5662,
+        "empty_values": 0,
         "top_repeated": [
           {
             "count": 46,
@@ -10770,9 +10879,9 @@
       "topic_profile": {
         "analyzable": true,
         "minimum_term_count": 3,
-        "distinct_stems": 912,
-        "total_topic_tokens": 253526,
-        "topic_concentration": 0.3808,
+        "distinct_stems": 6001,
+        "total_topic_tokens": 1383698,
+        "topic_concentration": 0.3247,
         "concentration_terms": 20,
         "stem_length": 6,
         "method": "prefix stem, crude; not morphological analysis",
@@ -10780,62 +10889,62 @@
           {
             "term": "16gb",
             "stem": "16gb",
-            "count": 10828,
-            "weight": 0.11566
+            "count": 53231,
+            "weight": 0.104179
           },
           {
             "term": "512gb",
             "stem": "512gb",
-            "count": 7104,
-            "weight": 0.075882
-          },
-          {
-            "term": "core",
-            "stem": "core",
-            "count": 7912,
-            "weight": 0.068571
+            "count": 35191,
+            "weight": 0.068873
           },
           {
             "term": "intel",
             "stem": "intel",
-            "count": 6344,
-            "weight": 0.060565
+            "count": 37580,
+            "weight": 0.059675
           },
           {
             "term": "ryzen",
             "stem": "ryzen",
-            "count": 5508,
-            "weight": 0.058834
-          },
-          {
-            "term": "freedos",
-            "stem": "freedo",
-            "count": 6120,
-            "weight": 0.05304
+            "count": 28846,
+            "weight": 0.056455
           },
           {
             "term": "lenovo",
             "stem": "lenovo",
-            "count": 4648,
-            "weight": 0.049648
+            "count": 22570,
+            "weight": 0.044172
+          },
+          {
+            "term": "core",
+            "stem": "core",
+            "count": 42614,
+            "weight": 0.040706
+          },
+          {
+            "term": "freedos",
+            "stem": "freedo",
+            "count": 30207,
+            "weight": 0.040621
           },
           {
             "term": "gaming",
             "stem": "gaming",
-            "count": 4280,
-            "weight": 0.04086
+            "count": 20988,
+            "weight": 0.030562
           },
           {
             "term": "asus",
             "stem": "asus",
-            "count": 3025,
-            "weight": 0.032312
+            "count": 14909,
+            "weight": 0.029179
           },
           {
             "term": "32gb",
             "stem": "32gb",
-            "count": 2836,
-            "weight": 0.030293
+            "count": 13805,
+            "weight": 0.027018
           }
         ]
       }
@@ -10944,6 +11053,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 553,
+        "empty_values": 0,
         "top_repeated": []
       },
       "assistant_answer_duplicates": {
@@ -10951,6 +11061,7 @@
         "duplicate_rate": 0.0054,
         "duplicate_groups": 3,
         "distinct_values": 550,
+        "empty_values": 0,
         "top_repeated": [
           {
             "count": 2,
@@ -11072,72 +11183,72 @@
       "topic_profile": {
         "analyzable": true,
         "minimum_term_count": 3,
-        "distinct_stems": 1144,
-        "total_topic_tokens": 3049,
-        "topic_concentration": 0.1833,
+        "distinct_stems": 2847,
+        "total_topic_tokens": 13398,
+        "topic_concentration": 0.1353,
         "concentration_terms": 20,
         "stem_length": 6,
         "method": "prefix stem, crude; not morphological analysis",
         "distinctive_terms": [
           {
-            "term": "diyabetin",
+            "term": "diyabet",
             "stem": "diyabe",
-            "count": 91,
-            "weight": 0.065578
-          },
-          {
-            "term": "hastalarında",
-            "stem": "hastal",
-            "count": 52,
-            "weight": 0.024026
-          },
-          {
-            "term": "diabetes",
-            "stem": "diabet",
-            "count": 27,
-            "weight": 0.021433
+            "count": 263,
+            "weight": 0.036526
           },
           {
             "term": "glukoz",
             "stem": "glukoz",
-            "count": 26,
-            "weight": 0.020639
+            "count": 99,
+            "weight": 0.017884
           },
           {
-            "term": "gestasyonel",
-            "stem": "gestas",
-            "count": 18,
-            "weight": 0.015987
+            "term": "diabetes",
+            "stem": "diabet",
+            "count": 85,
+            "weight": 0.015355
           },
           {
-            "term": "faktörlere",
-            "stem": "faktör",
-            "count": 33,
-            "weight": 0.014306
+            "term": "hastalığı",
+            "stem": "hastal",
+            "count": 199,
+            "weight": 0.01361
           },
           {
-            "term": "hba1c",
-            "stem": "hba1c",
-            "count": 12,
-            "weight": 0.012254
+            "term": "insülin",
+            "stem": "insüli",
+            "count": 66,
+            "weight": 0.009926
           },
           {
             "term": "nöropatide",
             "stem": "nöropa",
-            "count": 12,
-            "weight": 0.012254
+            "count": 44,
+            "weight": 0.008893
           },
           {
-            "term": "vitamini",
-            "stem": "vitami",
-            "count": 15,
-            "weight": 0.01081
+            "term": "şekeri",
+            "stem": "şekeri",
+            "count": 67,
+            "weight": 0.008048
           },
           {
-            "term": "doymuş",
-            "stem": "doymuş",
-            "count": 12,
-            "weight": 0.010658
+            "term": "gestasyonel",
+            "stem": "gestas",
+            "count": 33,
+            "weight": 0.00667
+          },
+          {
+            "term": "kardiyomiyopati",
+            "stem": "kardiy",
+            "count": 44,
+            "weight": 0.006617
+          },
+          {
+            "term": "hba1c",
+            "stem": "hba1c",
+            "count": 31,
+            "weight": 0.006266
           }
         ]
       }
@@ -11243,6 +11354,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 77,
+        "empty_values": 0,
         "top_repeated": []
       },
       "assistant_answer_duplicates": {
@@ -11250,6 +11362,7 @@
         "duplicate_rate": 0.6494,
         "duplicate_groups": 24,
         "distinct_values": 27,
+        "empty_values": 0,
         "top_repeated": [
           {
             "count": 6,
@@ -11379,72 +11492,72 @@
       "topic_profile": {
         "analyzable": true,
         "minimum_term_count": 2,
-        "distinct_stems": 120,
-        "total_topic_tokens": 142,
-        "topic_concentration": 0.2958,
+        "distinct_stems": 247,
+        "total_topic_tokens": 857,
+        "topic_concentration": 0.2695,
         "concentration_terms": 20,
         "stem_length": 6,
         "method": "prefix stem, crude; not morphological analysis",
         "distinctive_terms": [
           {
-            "term": "arkanda",
-            "stem": "arkand",
-            "count": 2,
-            "weight": 0.038142
+            "term": "serhat",
+            "stem": "serhat",
+            "count": 18,
+            "weight": 0.056879
           },
           {
-            "term": "model",
-            "stem": "model",
+            "term": "kılıç",
+            "stem": "kılıç",
+            "count": 18,
+            "weight": 0.031591
+          },
+          {
+            "term": "sahin",
+            "stem": "sahin",
+            "count": 8,
+            "weight": 0.029064
+          },
+          {
+            "term": "şahin",
+            "stem": "şahin",
+            "count": 12,
+            "weight": 0.024185
+          },
+          {
+            "term": "fine",
+            "stem": "fine",
+            "count": 12,
+            "weight": 0.016349
+          },
+          {
+            "term": "language",
+            "stem": "langua",
+            "count": 11,
+            "weight": 0.015938
+          },
+          {
+            "term": "turkish",
+            "stem": "turkis",
+            "count": 7,
+            "weight": 0.014108
+          },
+          {
+            "term": "adımlı",
+            "stem": "adımlı",
             "count": 6,
-            "weight": 0.034265
+            "weight": 0.014107
           },
           {
-            "term": "seni",
-            "stem": "seni",
-            "count": 4,
-            "weight": 0.029129
+            "term": "tuned",
+            "stem": "tuned",
+            "count": 7,
+            "weight": 0.013146
           },
           {
-            "term": "built",
-            "stem": "built",
-            "count": 2,
-            "weight": 0.028379
-          },
-          {
-            "term": "team",
-            "stem": "team",
-            "count": 2,
-            "weight": 0.024327
-          },
-          {
-            "term": "yourself",
-            "stem": "yourse",
-            "count": 2,
-            "weight": 0.024327
-          },
-          {
-            "term": "introduce",
-            "stem": "introd",
-            "count": 2,
-            "weight": 0.022668
-          },
-          {
-            "term": "neler",
-            "stem": "neler",
-            "count": 4,
-            "weight": 0.021469
-          },
-          {
-            "term": "human",
-            "stem": "human",
-            "count": 2,
-            "weight": 0.021184
-          },
-          {
-            "term": "developed",
-            "stem": "develo",
-            "count": 2,
-            "weight": 0.019842
+            "term": "sürüm",
+            "stem": "sürüm",
+            "count": 6,
+            "weight": 0.013027
           }
         ]
       }
@@ -11541,6 +11654,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 10,
+        "empty_values": 0,
         "top_repeated": []
       },
       "assistant_answer_duplicates": {
@@ -11548,6 +11662,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 10,
+        "empty_values": 0,
         "top_repeated": []
       },
       "user_prompt_near_duplicates": {
@@ -11643,9 +11758,9 @@
       "topic_profile": {
         "analyzable": true,
         "minimum_term_count": 1,
-        "distinct_stems": 62,
-        "total_topic_tokens": 81,
-        "topic_concentration": 0.4815,
+        "distinct_stems": 304,
+        "total_topic_tokens": 441,
+        "topic_concentration": 0.2358,
         "concentration_terms": 20,
         "stem_length": 6,
         "method": "prefix stem, crude; not morphological analysis",
@@ -11653,62 +11768,62 @@
           {
             "term": "odysseus",
             "stem": "odysse",
-            "count": 10,
-            "weight": 0.229723
-          },
-          {
-            "term": "thaka",
-            "stem": "thaka",
-            "count": 3,
-            "weight": 0.089643
+            "count": 27,
+            "weight": 0.105748
           },
           {
             "term": "adasında",
             "stem": "adasın",
-            "count": 2,
-            "weight": 0.076877
+            "count": 6,
+            "weight": 0.03293
           },
           {
-            "term": "adamları",
-            "stem": "adamla",
-            "count": 3,
-            "weight": 0.074626
+            "term": "thaka",
+            "stem": "thaka",
+            "count": 6,
+            "weight": 0.03293
+          },
+          {
+            "term": "kalypso",
+            "stem": "kalyps",
+            "count": 4,
+            "weight": 0.028241
+          },
+          {
+            "term": "kiklop",
+            "stem": "kiklop",
+            "count": 4,
+            "weight": 0.028241
+          },
+          {
+            "term": "kirke",
+            "stem": "kirke",
+            "count": 4,
+            "weight": 0.028241
+          },
+          {
+            "term": "skylla",
+            "stem": "skylla",
+            "count": 4,
+            "weight": 0.028241
+          },
+          {
+            "term": "taliplerini",
+            "stem": "talipl",
+            "count": 4,
+            "weight": 0.028241
           },
           {
             "term": "tulumu",
             "stem": "tulumu",
-            "count": 2,
-            "weight": 0.066865
+            "count": 4,
+            "weight": 0.021953
           },
           {
-            "term": "etmiştir",
-            "stem": "etmişt",
-            "count": 2,
-            "weight": 0.045945
-          },
-          {
-            "term": "adadan",
-            "stem": "adadan",
-            "count": 1,
-            "weight": 0.038438
-          },
-          {
-            "term": "aiaie",
-            "stem": "aiaie",
-            "count": 1,
-            "weight": 0.038438
-          },
-          {
-            "term": "aiolos",
-            "stem": "aiolos",
-            "count": 1,
-            "weight": 0.038438
-          },
-          {
-            "term": "boğazdan",
-            "stem": "boğazd",
-            "count": 1,
-            "weight": 0.038438
+            "term": "adamları",
+            "stem": "adamla",
+            "count": 8,
+            "weight": 0.021181
           }
         ]
       }
@@ -11817,6 +11932,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 1001,
+        "empty_values": 0,
         "top_repeated": []
       },
       "assistant_answer_duplicates": {
@@ -11824,6 +11940,7 @@
         "duplicate_rate": 0.003,
         "duplicate_groups": 3,
         "distinct_values": 998,
+        "empty_values": 0,
         "top_repeated": [
           {
             "count": 2,
@@ -11960,9 +12077,9 @@
       "topic_profile": {
         "analyzable": true,
         "minimum_term_count": 3,
-        "distinct_stems": 2323,
-        "total_topic_tokens": 7319,
-        "topic_concentration": 0.1495,
+        "distinct_stems": 8389,
+        "total_topic_tokens": 117947,
+        "topic_concentration": 0.1016,
         "concentration_terms": 20,
         "stem_length": 6,
         "method": "prefix stem, crude; not morphological analysis",
@@ -11970,62 +12087,62 @@
           {
             "term": "carnegie",
             "stem": "carneg",
-            "count": 141,
-            "weight": 0.059982
-          },
-          {
-            "term": "eleştiri",
-            "stem": "eleşti",
-            "count": 81,
-            "weight": 0.015591
+            "count": 1049,
+            "weight": 0.021526
           },
           {
             "term": "lincoln",
             "stem": "lincol",
-            "count": 32,
-            "weight": 0.013613
+            "count": 190,
+            "weight": 0.005016
           },
           {
-            "term": "sözü",
-            "stem": "sözü",
-            "count": 36,
-            "weight": 0.010807
+            "term": "eleştiri",
+            "stem": "eleşti",
+            "count": 717,
+            "weight": 0.00493
           },
           {
-            "term": "neden",
-            "stem": "neden",
-            "count": 207,
-            "weight": 0.008772
+            "term": "nsanlar",
+            "stem": "nsanla",
+            "count": 488,
+            "weight": 0.003791
           },
           {
-            "term": "yapmalıyım",
-            "stem": "yapmal",
-            "count": 53,
-            "weight": 0.008455
+            "term": "takdir",
+            "stem": "takdir",
+            "count": 489,
+            "weight": 0.003575
           },
           {
-            "term": "başarılı",
-            "stem": "başarı",
-            "count": 58,
-            "weight": 0.008195
+            "term": "müşteri",
+            "stem": "müşter",
+            "count": 469,
+            "weight": 0.003225
           },
           {
-            "term": "roosevelt",
-            "stem": "roosev",
-            "count": 19,
-            "weight": 0.008083
-          },
-          {
-            "term": "evlilik",
-            "stem": "evlili",
-            "count": 25,
-            "weight": 0.007505
+            "term": "samimi",
+            "stem": "samimi",
+            "count": 346,
+            "weight": 0.003223
           },
           {
             "term": "schwab",
             "stem": "schwab",
-            "count": 16,
-            "weight": 0.006806
+            "count": 119,
+            "weight": 0.003141
+          },
+          {
+            "term": "başarılı",
+            "stem": "başarı",
+            "count": 777,
+            "weight": 0.003126
+          },
+          {
+            "term": "roosevelt",
+            "stem": "roosev",
+            "count": 149,
+            "weight": 0.003058
           }
         ]
       }
@@ -12134,6 +12251,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 382,
+        "empty_values": 0,
         "top_repeated": []
       },
       "assistant_answer_duplicates": {
@@ -12141,6 +12259,7 @@
         "duplicate_rate": 0.0079,
         "duplicate_groups": 2,
         "distinct_values": 379,
+        "empty_values": 0,
         "top_repeated": [
           {
             "count": 3,
@@ -12258,72 +12377,72 @@
       "topic_profile": {
         "analyzable": true,
         "minimum_term_count": 3,
-        "distinct_stems": 515,
-        "total_topic_tokens": 989,
-        "topic_concentration": 0.2366,
+        "distinct_stems": 3092,
+        "total_topic_tokens": 14760,
+        "topic_concentration": 0.1325,
         "concentration_terms": 20,
         "stem_length": 6,
         "method": "prefix stem, crude; not morphological analysis",
         "distinctive_terms": [
           {
-            "term": "sana",
-            "stem": "sana",
-            "count": 23,
-            "weight": 0.030739
+            "term": "silistre",
+            "stem": "silist",
+            "count": 257,
+            "weight": 0.047152
           },
           {
-            "term": "bana",
-            "stem": "bana",
-            "count": 28,
-            "weight": 0.025941
+            "term": "semih",
+            "stem": "semih",
+            "count": 259,
+            "weight": 0.042471
+          },
+          {
+            "term": "konuşma",
+            "stem": "konuşm",
+            "count": 95,
+            "weight": 0.004905
+          },
+          {
+            "term": "lora",
+            "stem": "lora",
+            "count": 29,
+            "weight": 0.004755
+          },
+          {
+            "term": "beni",
+            "stem": "beni",
+            "count": 124,
+            "weight": 0.004609
+          },
+          {
+            "term": "eğitildim",
+            "stem": "eğitil",
+            "count": 48,
+            "weight": 0.004298
+          },
+          {
+            "term": "benim",
+            "stem": "benim",
+            "count": 79,
+            "weight": 0.003592
           },
           {
             "term": "seni",
             "stem": "seni",
-            "count": 22,
-            "weight": 0.023003
+            "count": 67,
+            "weight": 0.00346
           },
           {
-            "term": "miyim",
-            "stem": "miyim",
-            "count": 11,
-            "weight": 0.014701
+            "term": "bana",
+            "stem": "bana",
+            "count": 90,
+            "weight": 0.003345
           },
           {
-            "term": "tanıt",
-            "stem": "tanıt",
-            "count": 6,
-            "weight": 0.014684
-          },
-          {
-            "term": "kendini",
-            "stem": "kendin",
-            "count": 19,
-            "weight": 0.014642
-          },
-          {
-            "term": "seninle",
-            "stem": "seninl",
-            "count": 6,
-            "weight": 0.01333
-          },
-          {
-            "term": "yapay",
-            "stem": "yapay",
-            "count": 14,
-            "weight": 0.012971
-          },
-          {
-            "term": "chatgpt",
-            "stem": "chatgp",
-            "count": 7,
-            "weight": 0.012225
-          },
-          {
-            "term": "bazen",
-            "stem": "bazen",
-            "count": 8,
-            "weight": 0.012166
+            "term": "bilmiyorum",
+            "stem": "bilmiy",
+            "count": 50,
+            "weight": 0.003298
           }
         ]
       }
@@ -12444,6 +12563,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 299,
+        "empty_values": 0,
         "top_repeated": []
       },
       "assistant_answer_duplicates": {
@@ -12451,6 +12571,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 299,
+        "empty_values": 0,
         "top_repeated": []
       },
       "user_prompt_near_duplicates": {
@@ -12548,9 +12669,9 @@
       "topic_profile": {
         "analyzable": true,
         "minimum_term_count": 3,
-        "distinct_stems": 1344,
-        "total_topic_tokens": 2383,
-        "topic_concentration": 0.1188,
+        "distinct_stems": 4521,
+        "total_topic_tokens": 15049,
+        "topic_concentration": 0.0831,
         "concentration_terms": 20,
         "stem_length": 6,
         "method": "prefix stem, crude; not morphological analysis",
@@ -12558,62 +12679,62 @@
           {
             "term": "kaykay",
             "stem": "kaykay",
-            "count": 43,
-            "weight": 0.056182
-          },
-          {
-            "term": "skateboard",
-            "stem": "skateb",
-            "count": 23,
-            "weight": 0.030051
-          },
-          {
-            "term": "skate",
-            "stem": "skate",
-            "count": 18,
-            "weight": 0.020455
+            "count": 144,
+            "weight": 0.02316
           },
           {
             "term": "board",
             "stem": "board",
-            "count": 22,
-            "weight": 0.020285
+            "count": 115,
+            "weight": 0.013199
           },
           {
-            "term": "kickflip",
-            "stem": "kickfl",
-            "count": 12,
-            "weight": 0.015679
+            "term": "trick",
+            "stem": "trick",
+            "count": 71,
+            "weight": 0.011419
           },
           {
-            "term": "skating",
-            "stem": "skatin",
-            "count": 11,
-            "weight": 0.0125
+            "term": "tahtanın",
+            "stem": "tahtan",
+            "count": 91,
+            "weight": 0.010444
           },
           {
-            "term": "skatepark",
-            "stem": "skatep",
-            "count": 9,
-            "weight": 0.011759
+            "term": "skateboarding",
+            "stem": "skateb",
+            "count": 54,
+            "weight": 0.009717
           },
           {
-            "term": "tahtam",
-            "stem": "tahtam",
-            "count": 10,
-            "weight": 0.011364
+            "term": "skate",
+            "stem": "skate",
+            "count": 58,
+            "weight": 0.009328
           },
           {
             "term": "ollie",
             "stem": "ollie",
-            "count": 8,
-            "weight": 0.010452
+            "count": 36,
+            "weight": 0.007448
           },
           {
-            "term": "tape",
-            "stem": "tape",
-            "count": 8,
-            "weight": 0.010452
+            "term": "flick",
+            "stem": "flick",
+            "count": 34,
+            "weight": 0.007034
+          },
+          {
+            "term": "kickflip",
+            "stem": "kickfl",
+            "count": 34,
+            "weight": 0.007034
+          },
+          {
+            "term": "wheels",
+            "stem": "wheels",
+            "count": 43,
+            "weight": 0.006916
           }
         ]
       }
@@ -12721,6 +12842,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 400,
+        "empty_values": 0,
         "top_repeated": []
       },
       "assistant_answer_duplicates": {
@@ -12728,6 +12850,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 400,
+        "empty_values": 0,
         "top_repeated": []
       },
       "user_prompt_near_duplicates": {
@@ -12823,72 +12946,72 @@
       "topic_profile": {
         "analyzable": true,
         "minimum_term_count": 3,
-        "distinct_stems": 2022,
-        "total_topic_tokens": 7766,
-        "topic_concentration": 0.1629,
+        "distinct_stems": 6453,
+        "total_topic_tokens": 69182,
+        "topic_concentration": 0.1259,
         "concentration_terms": 20,
         "stem_length": 6,
         "method": "prefix stem, crude; not morphological analysis",
         "distinctive_terms": [
           {
-            "term": "dağılımı",
-            "stem": "dağılı",
-            "count": 108,
-            "weight": 0.02402
-          },
-          {
-            "term": "istatistiksel",
-            "stem": "istati",
-            "count": 65,
-            "weight": 0.020258
-          },
-          {
-            "term": "olasılık",
-            "stem": "olasıl",
-            "count": 57,
-            "weight": 0.016127
+            "term": "anakütle",
+            "stem": "anaküt",
+            "count": 173,
+            "weight": 0.007786
           },
           {
             "term": "değişken",
             "stem": "değişk",
-            "count": 62,
-            "weight": 0.016086
+            "count": 518,
+            "weight": 0.007743
           },
           {
             "term": "örneklem",
             "stem": "örnekl",
-            "count": 88,
-            "weight": 0.015963
+            "count": 654,
+            "weight": 0.007666
           },
           {
-            "term": "ortalama",
-            "stem": "ortala",
-            "count": 69,
-            "weight": 0.012517
-          },
-          {
-            "term": "hipotez",
-            "stem": "hipote",
-            "count": 35,
-            "weight": 0.012205
-          },
-          {
-            "term": "regresyon",
-            "stem": "regres",
-            "count": 34,
-            "weight": 0.011856
-          },
-          {
-            "term": "tahmini",
-            "stem": "tahmin",
-            "count": 65,
-            "weight": 0.011791
+            "term": "dağılımı",
+            "stem": "dağılı",
+            "count": 602,
+            "weight": 0.007056
           },
           {
             "term": "varyans",
             "stem": "varyan",
-            "count": 41,
-            "weight": 0.0116
+            "count": 291,
+            "weight": 0.00677
+          },
+          {
+            "term": "olasılık",
+            "stem": "olasıl",
+            "count": 522,
+            "weight": 0.006506
+          },
+          {
+            "term": "istatistiksel",
+            "stem": "istati",
+            "count": 449,
+            "weight": 0.006318
+          },
+          {
+            "term": "ortalama",
+            "stem": "ortala",
+            "count": 726,
+            "weight": 0.004611
+          },
+          {
+            "term": "korelasyon",
+            "stem": "korela",
+            "count": 145,
+            "weight": 0.004223
+          },
+          {
+            "term": "statistikte",
+            "stem": "statis",
+            "count": 207,
+            "weight": 0.003955
           }
         ]
       }
@@ -12998,6 +13121,7 @@
         "duplicate_rate": 0.0001,
         "duplicate_groups": 2,
         "distinct_values": 34242,
+        "empty_values": 0,
         "top_repeated": [
           {
             "count": 2,
@@ -13014,6 +13138,7 @@
         "duplicate_rate": 0.0005,
         "duplicate_groups": 17,
         "distinct_values": 34227,
+        "empty_values": 0,
         "top_repeated": [
           {
             "count": 2,
@@ -13165,72 +13290,72 @@
       "topic_profile": {
         "analyzable": true,
         "minimum_term_count": 3,
-        "distinct_stems": 2819,
-        "total_topic_tokens": 175898,
-        "topic_concentration": 0.3175,
+        "distinct_stems": 6945,
+        "total_topic_tokens": 697651,
+        "topic_concentration": 0.1799,
         "concentration_terms": 20,
         "stem_length": 6,
         "method": "prefix stem, crude; not morphological analysis",
         "distinctive_terms": [
           {
-            "term": "tarifinde",
-            "stem": "tarifi",
-            "count": 3404,
-            "weight": 0.052407
+            "term": "pişirilir",
+            "stem": "pişiri",
+            "count": 7342,
+            "weight": 0.018177
           },
           {
-            "term": "aittir",
-            "stem": "aittir",
-            "count": 3590,
-            "weight": 0.044844
+            "term": "tarifinde",
+            "stem": "tarifi",
+            "count": 6871,
+            "weight": 0.017011
+          },
+          {
+            "term": "kaşığı",
+            "stem": "kaşığı",
+            "count": 6299,
+            "weight": 0.0168
+          },
+          {
+            "term": "bardağı",
+            "stem": "bardağ",
+            "count": 5171,
+            "weight": 0.014934
+          },
+          {
+            "term": "tereyağı",
+            "stem": "tereya",
+            "count": 4770,
+            "weight": 0.013776
           },
           {
             "term": "çorbası",
             "stem": "çorbas",
-            "count": 2551,
-            "weight": 0.039274
+            "count": 5087,
+            "weight": 0.013568
+          },
+          {
+            "term": "soğan",
+            "stem": "soğan",
+            "count": 3736,
+            "weight": 0.011766
+          },
+          {
+            "term": "biber",
+            "stem": "biber",
+            "count": 4011,
+            "weight": 0.011584
           },
           {
             "term": "yapım",
             "stem": "yapım",
-            "count": 2473,
-            "weight": 0.030891
+            "count": 4673,
+            "weight": 0.01078
           },
           {
-            "term": "öğün",
-            "stem": "öğün",
-            "count": 2664,
-            "weight": 0.030516
-          },
-          {
-            "term": "yöreye",
-            "stem": "yöreye",
-            "count": 1626,
-            "weight": 0.028781
-          },
-          {
-            "term": "ilimize",
-            "stem": "ilimiz",
-            "count": 1625,
-            "weight": 0.028764
-          },
-          {
-            "term": "nasıldır",
-            "stem": "nasıld",
-            "count": 2610,
-            "weight": 0.022318
-          },
-          {
-            "term": "kategoride",
-            "stem": "katego",
-            "count": 2733,
-            "weight": 0.021889
-          },
-          {
-            "term": "böreği",
-            "stem": "böreği",
-            "count": 1194,
-            "weight": 0.021135
+            "term": "tencereye",
+            "stem": "tencer",
+            "count": 3298,
+            "weight": 0.010387
           }
         ]
       }
@@ -13327,6 +13452,7 @@
         "duplicate_rate": 0.7656,
         "duplicate_groups": 58,
         "distinct_values": 124,
+        "empty_values": 0,
         "top_repeated": [
           {
             "count": 9,
@@ -13355,6 +13481,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 529,
+        "empty_values": 0,
         "top_repeated": []
       },
       "user_prompt_near_duplicates": {
@@ -13499,74 +13626,76 @@
       "topic_profile": {
         "analyzable": true,
         "minimum_term_count": 3,
-        "distinct_stems": 467,
-        "total_topic_tokens": 1389,
-        "topic_concentration": 0.3211,
+        "distinct_stems": 9125,
+        "total_topic_tokens": 35563,
+        "topic_concentration": 0.0737,
         "concentration_terms": 20,
         "stem_length": 6,
         "method": "prefix stem, crude; not morphological analysis",
         "distinctive_terms": [
           {
+            "term": "felsefe",
+            "stem": "felsef",
+            "count": 379,
+            "weight": 0.009189
+          },
+          {
             "term": "kimdir",
             "stem": "kimdir",
-            "count": 223,
-            "weight": 0.176379
+            "count": 224,
+            "weight": 0.006513
           },
           {
-            "term": "felsefesi",
-            "stem": "felsef",
-            "count": 36,
-            "weight": 0.038983
+            "term": "metafizik",
+            "stem": "metafi",
+            "count": 82,
+            "weight": 0.006244
           },
           {
-            "term": "jean",
-            "stem": "jean",
-            "count": 16,
-            "weight": 0.035865
+            "term": "voltaire",
+            "stem": "voltai",
+            "count": 61,
+            "weight": 0.004645
           },
           {
-            "term": "karl",
-            "stem": "karl",
-            "count": 16,
-            "weight": 0.031194
+            "term": "hobbes",
+            "stem": "hobbes",
+            "count": 50,
+            "weight": 0.004377
           },
           {
-            "term": "michel",
-            "stem": "michel",
-            "count": 15,
-            "weight": 0.026138
+            "term": "wittgenstein",
+            "stem": "wittge",
+            "count": 48,
+            "weight": 0.004202
           },
           {
-            "term": "john",
-            "stem": "john",
-            "count": 16,
-            "weight": 0.02321
+            "term": "filozof",
+            "stem": "filozo",
+            "count": 77,
+            "weight": 0.004029
           },
           {
-            "term": "nietzsche",
-            "stem": "nietzs",
-            "count": 9,
-            "weight": 0.020174
+            "term": "sartre",
+            "stem": "sartre",
+            "count": 42,
+            "weight": 0.003677
           },
           {
-            "term": "mutluluk",
-            "stem": "mutlul",
-            "count": 11,
-            "weight": 0.019168
+            "term": "oldugunu",
+            "stem": "oldugu",
+            "count": 86,
+            "weight": 0.003637
           },
           {
             "term": "ahlak",
             "stem": "ahlak",
-            "count": 8,
-            "weight": 0.017932
-          },
-          {
-            "term": "arendt",
-            "stem": "arendt",
-            "count": 8,
-            "weight": 0.017932
+            "count": 74,
+            "weight": 0.003594
           }
-        ]
+        ],
+        "template_driven_prompts": true,
+        "caveat": "77% of prompts repeat, so the user turn is largely a fixed instruction. Terms may describe the instruction rather than the subject."
       }
     },
     "contributor": "Muhammet Yusuf Kaydın",
@@ -13660,6 +13789,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 46,
+        "empty_values": 0,
         "top_repeated": []
       },
       "assistant_answer_duplicates": {
@@ -13667,6 +13797,7 @@
         "duplicate_rate": 0.0,
         "duplicate_groups": 0,
         "distinct_values": 46,
+        "empty_values": 0,
         "top_repeated": []
       },
       "user_prompt_near_duplicates": {
@@ -13762,9 +13893,9 @@
       "topic_profile": {
         "analyzable": true,
         "minimum_term_count": 1,
-        "distinct_stems": 91,
-        "total_topic_tokens": 157,
-        "topic_concentration": 0.535,
+        "distinct_stems": 235,
+        "total_topic_tokens": 875,
+        "topic_concentration": 0.44,
         "concentration_terms": 20,
         "stem_length": 6,
         "method": "prefix stem, crude; not morphological analysis",
@@ -13772,62 +13903,62 @@
           {
             "term": "yusuf",
             "stem": "yusuf",
-            "count": 39,
-            "weight": 0.545807
+            "count": 87,
+            "weight": 0.171735
           },
           {
-            "term": "birisi",
-            "stem": "birisi",
-            "count": 3,
-            "weight": 0.02874
+            "term": "fırat",
+            "stem": "fırat",
+            "count": 11,
+            "weight": 0.030427
           },
           {
-            "term": "ilgileniyor",
-            "stem": "ilgile",
-            "count": 3,
-            "weight": 0.026919
+            "term": "cumhurbaşkanı",
+            "stem": "cumhur",
+            "count": 19,
+            "weight": 0.026963
           },
           {
-            "term": "senden",
-            "stem": "senden",
-            "count": 2,
-            "weight": 0.025668
+            "term": "proje",
+            "stem": "proje",
+            "count": 16,
+            "weight": 0.018909
           },
           {
-            "term": "projeleri",
+            "term": "projelerinin",
             "stem": "projel",
-            "count": 2,
-            "weight": 0.023704
+            "count": 13,
+            "weight": 0.018448
           },
           {
-            "term": "üniversite",
+            "term": "hedefleri",
+            "stem": "hedefl",
+            "count": 21,
+            "weight": 0.014107
+          },
+          {
+            "term": "modelleri",
+            "stem": "modell",
+            "count": 20,
+            "weight": 0.013435
+          },
+          {
+            "term": "zekâ",
+            "stem": "zekâ",
+            "count": 13,
+            "weight": 0.01281
+          },
+          {
+            "term": "üniversitesinde",
             "stem": "üniver",
-            "count": 3,
-            "weight": 0.022311
+            "count": 15,
+            "weight": 0.012268
           },
           {
-            "term": "hedefi",
-            "stem": "hedefi",
-            "count": 2,
-            "weight": 0.022003
-          },
-          {
-            "term": "arandaki",
-            "stem": "aranda",
-            "count": 1,
-            "weight": 0.019831
-          },
-          {
-            "term": "zekâyla",
-            "stem": "zekâyl",
-            "count": 1,
-            "weight": 0.019831
-          },
-          {
-            "term": "teknoloji",
-            "stem": "teknol",
-            "count": 3,
-            "weight": 0.018601
+            "term": "ilgilenmektedir",
+            "stem": "ilgile",
+            "count": 14,
+            "weight": 0.012194
           }
         ]
       }
@@ -13933,6 +14064,7 @@
         "duplicate_rate": 0.0021,
         "duplicate_groups": 3,
         "distinct_values": 1395,
+        "empty_values": 0,
         "top_repeated": [
           {
             "count": 2,
@@ -13953,6 +14085,7 @@
         "duplicate_rate": 0.681,
         "duplicate_groups": 446,
         "distinct_values": 446,
+        "empty_values": 0,
         "top_repeated": [
           {
             "count": 18,
@@ -14123,72 +14256,72 @@
       "topic_profile": {
         "analyzable": true,
         "minimum_term_count": 3,
-        "distinct_stems": 1200,
-        "total_topic_tokens": 8144,
-        "topic_concentration": 0.3565,
+        "distinct_stems": 2889,
+        "total_topic_tokens": 24536,
+        "topic_concentration": 0.1826,
         "concentration_terms": 20,
         "stem_length": 6,
         "method": "prefix stem, crude; not morphological analysis",
         "distinctive_terms": [
           {
-            "term": "atasözü",
+            "term": "atasözünün",
             "stem": "atasöz",
-            "count": 1398,
-            "weight": 0.415481
+            "count": 1485,
+            "weight": 0.132983
           },
           {
             "term": "anlatmaktadır",
             "stem": "anlatm",
-            "count": 466,
-            "weight": 0.092092
+            "count": 469,
+            "weight": 0.013679
           },
           {
             "term": "anlamı",
             "stem": "anlamı",
-            "count": 466,
-            "weight": 0.049336
+            "count": 646,
+            "weight": 0.00738
           },
           {
-            "term": "sanır",
-            "stem": "sanır",
-            "count": 42,
-            "weight": 0.016057
+            "term": "kimse",
+            "stem": "kimse",
+            "count": 168,
+            "weight": 0.006274
           },
           {
             "term": "allah",
             "stem": "allah",
-            "count": 75,
-            "weight": 0.013851
+            "count": 102,
+            "weight": 0.004854
           },
           {
-            "term": "gözü",
-            "stem": "gözü",
-            "count": 36,
-            "weight": 0.010699
+            "term": "sanır",
+            "stem": "sanır",
+            "count": 48,
+            "weight": 0.004735
           },
           {
-            "term": "olmaz",
-            "stem": "olmaz",
-            "count": 60,
-            "weight": 0.009738
+            "term": "kişi",
+            "stem": "kişi",
+            "count": 300,
+            "weight": 0.004168
           },
           {
-            "term": "akıl",
-            "stem": "akıl",
-            "count": 36,
-            "weight": 0.009713
+            "term": "akılsız",
+            "stem": "akılsı",
+            "count": 39,
+            "weight": 0.003847
           },
           {
-            "term": "adam",
-            "stem": "adam",
-            "count": 54,
-            "weight": 0.009341
+            "term": "yoksul",
+            "stem": "yoksul",
+            "count": 57,
+            "weight": 0.003739
           },
           {
-            "term": "yaba",
-            "stem": "yaba",
-            "count": 24,
-            "weight": 0.009175
+            "term": "kimseler",
+            "stem": "kimsel",
+            "count": 51,
+            "weight": 0.00359
           }
         ]
       }

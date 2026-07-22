@@ -78,7 +78,18 @@ TOPIC_STOPWORDS = TURKISH_STOPWORDS | ENGLISH_STOPWORDS | {
     "verir", "eder", "olur", "ile", "veya", "ancak", "sonra", "önce", "yani",
     "that", "this", "there", "they", "have", "has", "was", "were", "will",
     "would", "could", "should", "about", "from", "which", "when", "where",
+    "some", "like", "different", "other", "more", "most", "many", "much",
+    "also", "than", "then", "them", "into", "over", "only", "very", "just",
+    "such", "been", "being", "because", "between", "through", "these",
+    "those", "their", "using", "used", "make", "makes", "made", "need",
+    "want", "know", "think", "good", "well", "time", "people", "thing",
 }
+# A JSON-shaped answer would otherwise contribute its own field names as topic
+# terms: meb-soru-uretme reported "dogru_cevap" and "secenekler" as its subject.
+JSON_KEY_RE = re.compile(r'"[\w_]+"\s*:')
+# Above this prompt-duplication rate the user turn is a fixed instruction
+# template, so terms drawn from it describe the instruction, not the subject.
+TEMPLATE_PROMPT_RATE = 0.50
 # Turkish is agglutinative: diyabetin / diyabette / diyabetli are one topic split
 # three ways. Counting by a fixed-length prefix collapses them without a
 # morphological analyser. It is a crude stemmer and nothing more.
@@ -159,6 +170,10 @@ def duplicate_profile(values: list[str]) -> dict:
         # How much distinct text the dataset actually holds. Without this a
         # reader has to derive "1,000 rows but 20 distinct answers" by hand.
         "distinct_values": sum(1 for key in counts if key),
+        # Empty text belongs to neither bucket above. Recording it separately is
+        # what lets duplicate_rows + distinct_values + empty_values be checked
+        # against the message count; without it the arithmetic looks wrong.
+        "empty_values": counts.get("", 0),
         "top_repeated": top,
     }
 
@@ -369,7 +384,7 @@ def topic_term_counts(texts: list[str]) -> tuple[Counter, dict[str, str]]:
     counts: Counter[str] = Counter()
     surfaces: dict[str, Counter] = {}
     for text in texts:
-        cleaned = URL_RE.sub(" ", text)
+        cleaned = JSON_KEY_RE.sub(" ", URL_RE.sub(" ", text))
         for word in re.findall(r"\w+", normalized_text(cleaned), flags=re.UNICODE):
             if len(word) < TOPIC_MIN_TOKEN_LENGTH or word.isdigit() or word in TOPIC_STOPWORDS:
                 continue
@@ -1201,11 +1216,13 @@ def main() -> int:
         # shapes; for tables and catalogs every text field does.
         if conversation_field or bare_message_rows:
             conversations, _ = extract_conversations(rows, conversation_field, None)
+            # Both turns: the subject lives in whichever one carries it. Prompts
+            # alone describe the instruction whenever the prompt is templated.
             topic_texts = [
                 str(message.get("content") or "")
                 for conversation in conversations
                 for message in conversation
-                if normalized_text(message.get("role")) == "user"
+                if normalized_text(message.get("role")) in {"user", "assistant"}
             ]
         elif instruction_pair:
             topic_texts = [join_prompt_fields(row, instruction_pair[0]) for row in rows]
@@ -1225,6 +1242,15 @@ def main() -> int:
         term_counts[dataset_id] = counts
         term_labels[dataset_id] = labels
         data_profile["topic_profile"] = topic_profile(counts, labels, data_profile["row_count"])
+        # Record when the prompt is a template, because no amount of weighting
+        # recovers a subject the user turn never contained.
+        prompt_rate = (data_profile.get("user_prompt_duplicates") or {}).get("duplicate_rate") or 0
+        if prompt_rate >= TEMPLATE_PROMPT_RATE:
+            data_profile["topic_profile"]["template_driven_prompts"] = True
+            data_profile["topic_profile"]["caveat"] = (
+                f"{prompt_rate:.0%} of prompts repeat, so the user turn is largely a fixed "
+                "instruction. Terms may describe the instruction rather than the subject."
+            )
 
         profile_entry = {
             "dataset_id": dataset_id,
