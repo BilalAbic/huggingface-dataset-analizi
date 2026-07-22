@@ -7796,7 +7796,7 @@ a.anchor-link {
 <!-- End of mermaid configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0812bae5">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=deb2407e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7820,7 +7820,7 @@ göstergesi değildir.</li>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c0040666">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c02dd3ac">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7844,7 +7844,7 @@ onaylandığı anlamına gelmez.</li>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b67a1e74">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f06dbe1e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7854,7 +7854,7 @@ onaylandığı anlamına gelmez.</li>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=9848ed9c">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=b69dd0f2">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7911,7 +7911,7 @@ onaylandığı anlamına gelmez.</li>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8c032f0f">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=72ca0073">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7924,7 +7924,7 @@ sayısına dâhil değildir.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=3aefa2c2">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=990576e3">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8005,7 +8005,7 @@ sayısına dâhil değildir.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=357669fa">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=a5bf9dfb">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8030,6 +8030,10 @@ sayısına dâhil değildir.</p>
         <span class="s2">"time_sensitive_matches"</span><span class="p">:</span> <span class="n">scan</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"time_sensitive_matches"</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
         <span class="s2">"answer_words_median"</span><span class="p">:</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"assistant_word_length"</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"median"</span><span class="p">),</span>
         <span class="s2">"answer_words_p95"</span><span class="p">:</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"assistant_word_length"</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"p95"</span><span class="p">),</span>
+        <span class="s2">"near_dup_answers_%"</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"assistant_answer_near_duplicates"</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"near_duplicate_rate"</span><span class="p">)</span> <span class="ow">or</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">2</span><span class="p">),</span>
+        <span class="s2">"distinct_answers"</span><span class="p">:</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"assistant_answer_duplicates"</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"distinct_values"</span><span class="p">),</span>
+        <span class="s2">"distinct_rows"</span><span class="p">:</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"distinct_canonical_rows"</span><span class="p">),</span>
+        <span class="s2">"language_signal"</span><span class="p">:</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"text_scan"</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"dominant_language_signal"</span><span class="p">),</span>
         <span class="s2">"json_answers"</span><span class="p">:</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"structured_answers"</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"json_parsable_answers"</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
         <span class="s2">"json_like_broken"</span><span class="p">:</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"structured_answers"</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"json_like_but_unparsable_answers"</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
         <span class="s2">"conflicting_prompt_families"</span><span class="p">:</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"answer_families"</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
@@ -8084,6 +8088,10 @@ sayısına dâhil değildir.</p>
 <th>time_sensitive_matches</th>
 <th>answer_words_median</th>
 <th>answer_words_p95</th>
+<th>near_dup_answers_%</th>
+<th>distinct_answers</th>
+<th>distinct_rows</th>
+<th>language_signal</th>
 <th>json_answers</th>
 <th>json_like_broken</th>
 <th>conflicting_prompt_families</th>
@@ -8105,6 +8113,10 @@ sayısına dâhil değildir.</p>
 <td>0</td>
 <td>14.5</td>
 <td>20.05</td>
+<td>6.67</td>
+<td>60.0</td>
+<td>60</td>
+<td>turkish</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -8124,6 +8136,10 @@ sayısına dâhil değildir.</p>
 <td>0</td>
 <td>6.0</td>
 <td>10.70</td>
+<td>0.00</td>
+<td>4.0</td>
+<td>4</td>
+<td>turkish</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -8143,6 +8159,10 @@ sayısına dâhil değildir.</p>
 <td>1</td>
 <td>56.0</td>
 <td>153.40</td>
+<td>13.56</td>
+<td>153.0</td>
+<td>177</td>
+<td>turkish</td>
 <td>0</td>
 <td>0</td>
 <td>7</td>
@@ -8162,6 +8182,10 @@ sayısına dâhil değildir.</p>
 <td>0</td>
 <td>6.0</td>
 <td>20.00</td>
+<td>0.39</td>
+<td>507.0</td>
+<td>509</td>
+<td>turkish</td>
 <td>0</td>
 <td>0</td>
 <td>3</td>
@@ -8181,6 +8205,10 @@ sayısına dâhil değildir.</p>
 <td>28</td>
 <td>121.0</td>
 <td>366.10</td>
+<td>0.00</td>
+<td>1000.0</td>
+<td>1000</td>
+<td>turkish</td>
 <td>0</td>
 <td>24</td>
 <td>0</td>
@@ -8200,6 +8228,10 @@ sayısına dâhil değildir.</p>
 <td>31</td>
 <td>87.0</td>
 <td>119.00</td>
+<td>0.00</td>
+<td>186.0</td>
+<td>186</td>
+<td>turkish</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -8219,6 +8251,10 @@ sayısına dâhil değildir.</p>
 <td>10</td>
 <td>7.0</td>
 <td>18.00</td>
+<td>9.41</td>
+<td>1028.0</td>
+<td>1211</td>
+<td>turkish</td>
 <td>0</td>
 <td>0</td>
 <td>12</td>
@@ -8238,6 +8274,10 @@ sayısına dâhil değildir.</p>
 <td>26</td>
 <td>63.0</td>
 <td>89.00</td>
+<td>0.00</td>
+<td>299.0</td>
+<td>299</td>
+<td>turkish</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -8257,6 +8297,10 @@ sayısına dâhil değildir.</p>
 <td>12</td>
 <td>219.5</td>
 <td>278.00</td>
+<td>0.00</td>
+<td>400.0</td>
+<td>400</td>
+<td>turkish</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -8276,6 +8320,10 @@ sayısına dâhil değildir.</p>
 <td>0</td>
 <td>10.0</td>
 <td>78.00</td>
+<td>1.46</td>
+<td>34227.0</td>
+<td>34244</td>
+<td>turkish</td>
 <td>0</td>
 <td>0</td>
 <td>2</td>
@@ -8295,6 +8343,10 @@ sayısına dâhil değildir.</p>
 <td>0</td>
 <td>19.0</td>
 <td>29.75</td>
+<td>0.00</td>
+<td>46.0</td>
+<td>46</td>
+<td>turkish</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -8314,6 +8366,10 @@ sayısına dâhil değildir.</p>
 <td>0</td>
 <td>13.0</td>
 <td>33.00</td>
+<td>67.95</td>
+<td>446.0</td>
+<td>1398</td>
+<td>turkish</td>
 <td>0</td>
 <td>0</td>
 <td>3</td>
@@ -8333,6 +8389,10 @@ sayısına dâhil değildir.</p>
 <td>4</td>
 <td>20.0</td>
 <td>24.00</td>
+<td>0.40</td>
+<td>500.0</td>
+<td>500</td>
+<td>turkish</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -8352,6 +8412,10 @@ sayısına dâhil değildir.</p>
 <td>0</td>
 <td>10.0</td>
 <td>18.00</td>
+<td>46.67</td>
+<td>21.0</td>
+<td>30</td>
+<td>english</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -8371,6 +8435,10 @@ sayısına dâhil değildir.</p>
 <td>141</td>
 <td>15.0</td>
 <td>43.05</td>
+<td>0.00</td>
+<td>1000.0</td>
+<td>1000</td>
+<td>turkish</td>
 <td>0</td>
 <td>0</td>
 <td>229</td>
@@ -8390,6 +8458,10 @@ sayısına dâhil değildir.</p>
 <td>120</td>
 <td>15.0</td>
 <td>42.00</td>
+<td>0.10</td>
+<td>1000.0</td>
+<td>1000</td>
+<td>turkish</td>
 <td>0</td>
 <td>0</td>
 <td>212</td>
@@ -8409,6 +8481,10 @@ sayısına dâhil değildir.</p>
 <td>66</td>
 <td>63.0</td>
 <td>239.00</td>
+<td>25.90</td>
+<td>125.0</td>
+<td>166</td>
+<td>turkish</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -8428,6 +8504,10 @@ sayısına dâhil değildir.</p>
 <td>0</td>
 <td>28.0</td>
 <td>37.00</td>
+<td>85.71</td>
+<td>26.0</td>
+<td>182</td>
+<td>turkish</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -8447,6 +8527,10 @@ sayısına dâhil değildir.</p>
 <td>1</td>
 <td>44.0</td>
 <td>57.00</td>
+<td>0.00</td>
+<td>139.0</td>
+<td>139</td>
+<td>turkish</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -8466,6 +8550,10 @@ sayısına dâhil değildir.</p>
 <td>0</td>
 <td>30.0</td>
 <td>34.10</td>
+<td>98.00</td>
+<td>20.0</td>
+<td>1000</td>
+<td>turkish</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -8485,6 +8573,10 @@ sayısına dâhil değildir.</p>
 <td>0</td>
 <td>13.0</td>
 <td>30.00</td>
+<td>84.96</td>
+<td>17.0</td>
+<td>113</td>
+<td>turkish</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -8504,6 +8596,10 @@ sayısına dâhil değildir.</p>
 <td>0</td>
 <td>10.0</td>
 <td>12.00</td>
+<td>76.00</td>
+<td>20.0</td>
+<td>100</td>
+<td>turkish</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -8523,6 +8619,10 @@ sayısına dâhil değildir.</p>
 <td>0</td>
 <td>200.0</td>
 <td>310.00</td>
+<td>0.00</td>
+<td>21.0</td>
+<td>21</td>
+<td>turkish</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -8542,6 +8642,10 @@ sayısına dâhil değildir.</p>
 <td>1038</td>
 <td>245.0</td>
 <td>552.10</td>
+<td>0.63</td>
+<td>1593.0</td>
+<td>1600</td>
+<td>turkish</td>
 <td>0</td>
 <td>0</td>
 <td>33</td>
@@ -8561,6 +8665,10 @@ sayısına dâhil değildir.</p>
 <td>47</td>
 <td>88.0</td>
 <td>234.25</td>
+<td>1.90</td>
+<td>522.0</td>
+<td>526</td>
+<td>turkish</td>
 <td>0</td>
 <td>0</td>
 <td>8</td>
@@ -8580,6 +8688,10 @@ sayısına dâhil değildir.</p>
 <td>0</td>
 <td>237.0</td>
 <td>763.20</td>
+<td>0.00</td>
+<td>1000.0</td>
+<td>1000</td>
+<td>english</td>
 <td>0</td>
 <td>2</td>
 <td>0</td>
@@ -8599,6 +8711,10 @@ sayısına dâhil değildir.</p>
 <td>30</td>
 <td>81.0</td>
 <td>132.80</td>
+<td>2.10</td>
+<td>425.0</td>
+<td>425</td>
+<td>turkish</td>
 <td>0</td>
 <td>0</td>
 <td>34</td>
@@ -8618,6 +8734,10 @@ sayısına dâhil değildir.</p>
 <td>0</td>
 <td>NaN</td>
 <td>NaN</td>
+<td>0.00</td>
+<td>NaN</td>
+<td>103</td>
+<td>turkish</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -8637,6 +8757,10 @@ sayısına dâhil değildir.</p>
 <td>0</td>
 <td>9.5</td>
 <td>14.00</td>
+<td>1.82</td>
+<td>216.0</td>
+<td>220</td>
+<td>turkish</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -8656,6 +8780,10 @@ sayısına dâhil değildir.</p>
 <td>0</td>
 <td>24.5</td>
 <td>225.10</td>
+<td>61.86</td>
+<td>420.0</td>
+<td>1020</td>
+<td>turkish</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -8675,6 +8803,10 @@ sayısına dâhil değildir.</p>
 <td>297</td>
 <td>81.0</td>
 <td>114.55</td>
+<td>0.00</td>
+<td>450.0</td>
+<td>450</td>
+<td>turkish</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -8694,6 +8826,10 @@ sayısına dâhil değildir.</p>
 <td>560</td>
 <td>58.0</td>
 <td>138.00</td>
+<td>2.68</td>
+<td>20609.0</td>
+<td>20696</td>
+<td>turkish</td>
 <td>17454</td>
 <td>0</td>
 <td>797</td>
@@ -8713,6 +8849,10 @@ sayısına dâhil değildir.</p>
 <td>0</td>
 <td>15.0</td>
 <td>41.00</td>
+<td>22.32</td>
+<td>857.0</td>
+<td>1093</td>
+<td>turkish</td>
 <td>0</td>
 <td>0</td>
 <td>2</td>
@@ -8732,6 +8872,10 @@ sayısına dâhil değildir.</p>
 <td>8</td>
 <td>218.0</td>
 <td>270.60</td>
+<td>0.00</td>
+<td>29.0</td>
+<td>29</td>
+<td>turkish</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -8751,6 +8895,10 @@ sayısına dâhil değildir.</p>
 <td>38</td>
 <td>69.0</td>
 <td>112.00</td>
+<td>0.00</td>
+<td>800.0</td>
+<td>800</td>
+<td>turkish</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -8770,6 +8918,10 @@ sayısına dâhil değildir.</p>
 <td>62</td>
 <td>20.0</td>
 <td>31.00</td>
+<td>66.67</td>
+<td>73.0</td>
+<td>219</td>
+<td>turkish</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -8789,6 +8941,10 @@ sayısına dâhil değildir.</p>
 <td>16</td>
 <td>151.0</td>
 <td>330.40</td>
+<td>0.00</td>
+<td>773.0</td>
+<td>773</td>
+<td>turkish</td>
 <td>0</td>
 <td>0</td>
 <td>1</td>
@@ -8808,6 +8964,10 @@ sayısına dâhil değildir.</p>
 <td>398</td>
 <td>NaN</td>
 <td>NaN</td>
+<td>0.00</td>
+<td>NaN</td>
+<td>500</td>
+<td>turkish</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -8827,6 +8987,10 @@ sayısına dâhil değildir.</p>
 <td>699</td>
 <td>108.0</td>
 <td>328.00</td>
+<td>55.96</td>
+<td>5662.0</td>
+<td>7007</td>
+<td>turkish</td>
 <td>0</td>
 <td>0</td>
 <td>55</td>
@@ -8846,6 +9010,10 @@ sayısına dâhil değildir.</p>
 <td>2</td>
 <td>24.0</td>
 <td>40.00</td>
+<td>1.08</td>
+<td>550.0</td>
+<td>553</td>
+<td>turkish</td>
 <td>0</td>
 <td>1</td>
 <td>0</td>
@@ -8865,6 +9033,10 @@ sayısına dâhil değildir.</p>
 <td>0</td>
 <td>11.0</td>
 <td>26.00</td>
+<td>64.94</td>
+<td>27.0</td>
+<td>77</td>
+<td>turkish</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -8884,6 +9056,10 @@ sayısına dâhil değildir.</p>
 <td>0</td>
 <td>45.5</td>
 <td>53.75</td>
+<td>0.00</td>
+<td>10.0</td>
+<td>10</td>
+<td>turkish</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -8903,6 +9079,10 @@ sayısına dâhil değildir.</p>
 <td>154</td>
 <td>141.0</td>
 <td>224.00</td>
+<td>0.70</td>
+<td>998.0</td>
+<td>1001</td>
+<td>turkish</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -8922,6 +9102,10 @@ sayısına dâhil değildir.</p>
 <td>43</td>
 <td>51.0</td>
 <td>96.00</td>
+<td>0.79</td>
+<td>379.0</td>
+<td>382</td>
+<td>turkish</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -8941,6 +9125,10 @@ sayısına dâhil değildir.</p>
 <td>21</td>
 <td>35.0</td>
 <td>353.60</td>
+<td>0.00</td>
+<td>529.0</td>
+<td>529</td>
+<td>turkish</td>
 <td>0</td>
 <td>0</td>
 <td>58</td>
@@ -8954,7 +9142,7 @@ sayısına dâhil değildir.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7ffebb0f">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8310e6eb">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8965,7 +9153,7 @@ notebook oluşturulurken gözlenen sabit değerlerle karşılaştırır.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=66c6aa32">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=661e82dd">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9065,19 +9253,22 @@ notebook oluşturulurken gözlenen sabit değerlerle karşılaştırır.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=554c7ba5">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d67ad6ba">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Tekrar-yo%C4%9Funlu%C4%9Fu-veri-setine-g%C3%B6re-de%C4%9Fi%C5%9Fiyor">Tekrar yoğunluğu veri setine göre değişiyor<a class="anchor-link" href="#Tekrar-yo%C4%9Funlu%C4%9Fu-veri-setine-g%C3%B6re-de%C4%9Fi%C5%9Fiyor">¶</a></h3><p>Aşağıdaki tablo, sohbet ve düz istem–cevap şemalarında kullanıcı
-istemi ile hedef cevapların normalleştirilmiş ek kopya oranlarını
-birlikte gösterir.</p>
+<h3 id="Tekrar-yo%C4%9Funlu%C4%9Fu-veri-setine-g%C3%B6re-de%C4%9Fi%C5%9Fiyor">Tekrar yoğunluğu veri setine göre değişiyor<a class="anchor-link" href="#Tekrar-yo%C4%9Funlu%C4%9Fu-veri-setine-g%C3%B6re-de%C4%9Fi%C5%9Fiyor">¶</a></h3><p>Aşağıdaki tablo üç ölçümü birlikte gösterir. İlk ikisi yalnız büyük
+harf ve noktalama farklarını yok sayan tam eşleşmedir.
+<code>near_dup_answers_%</code> ise bir cevabın daha önceki bir cevapla en az
+%85 token örtüşmesi taşıdığı satırları sayar; yeniden yazılmış
+kopyaları yakalar. <code>distinct_answers</code> sütunu veri setinin gerçekte
+kaç farklı cevap içerdiğini verir.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=39613dd5">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=ec2e4c7a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9087,9 +9278,10 @@ birlikte gösterir.</p>
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">summary</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
     <span class="n">summary</span><span class="p">[</span><span class="s2">"shape"</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s2">"conversation"</span><span class="p">,</span> <span class="s2">"instruction_pair"</span><span class="p">]),</span>
-    <span class="p">[</span><span class="s2">"dataset"</span><span class="p">,</span> <span class="s2">"rows"</span><span class="p">,</span> <span class="s2">"prompt_duplicates_%"</span><span class="p">,</span> <span class="s2">"answer_duplicates_%"</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">"dataset"</span><span class="p">,</span> <span class="s2">"rows"</span><span class="p">,</span> <span class="s2">"distinct_answers"</span><span class="p">,</span> <span class="s2">"prompt_duplicates_%"</span><span class="p">,</span>
+     <span class="s2">"answer_duplicates_%"</span><span class="p">,</span> <span class="s2">"near_dup_answers_%"</span><span class="p">],</span>
 <span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span>
-    <span class="p">[</span><span class="s2">"prompt_duplicates_%"</span><span class="p">,</span> <span class="s2">"answer_duplicates_%"</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">[</span><span class="s2">"answer_duplicates_%"</span><span class="p">,</span> <span class="s2">"near_dup_answers_%"</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -9123,218 +9315,262 @@ birlikte gösterir.</p>
 <th></th>
 <th>dataset</th>
 <th>rows</th>
+<th>distinct_answers</th>
 <th>prompt_duplicates_%</th>
 <th>answer_duplicates_%</th>
+<th>near_dup_answers_%</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<th>31</th>
-<td>nursimakgul/meb-soru-uretme</td>
-<td>20874</td>
-<td>86.63</td>
-<td>1.27</td>
-</tr>
-<tr>
-<th>44</th>
-<td>yoitsmeyusuf/felsefe_finetune</td>
-<td>529</td>
-<td>76.56</td>
-<td>0.00</td>
-</tr>
-<tr>
-<th>2</th>
-<td>Egertekin/marvel-domain-dataset</td>
-<td>177</td>
-<td>75.71</td>
-<td>13.56</td>
-</tr>
-<tr>
-<th>15</th>
-<td>berkbirkan/turkish-x-engagement-replies</td>
-<td>1000</td>
-<td>70.10</td>
-<td>0.00</td>
-</tr>
-<tr>
-<th>14</th>
-<td>berkbirkan/turkish-x-engagement-quotes</td>
-<td>1000</td>
-<td>67.70</td>
-<td>0.00</td>
-</tr>
-<tr>
-<th>38</th>
-<td>sedayzc/turkish-electronics-product-comparison...</td>
-<td>11858</td>
-<td>41.37</td>
-<td>52.25</td>
-</tr>
-<tr>
-<th>26</th>
-<td>gorkemergune/ayarlicazhocam_finetune</td>
-<td>429</td>
-<td>10.72</td>
-<td>0.93</td>
-</tr>
-<tr>
-<th>23</th>
-<td>filiz-yalcin/identity-finetune</td>
-<td>1600</td>
-<td>2.62</td>
-<td>0.31</td>
-</tr>
-<tr>
-<th>24</th>
-<td>filiz-yalcin/turkish-figure-skating-qa</td>
-<td>526</td>
-<td>1.90</td>
-<td>0.76</td>
-</tr>
-<tr>
-<th>6</th>
-<td>SalihHub/trendyol-marangoz-urun-asistan-qa</td>
-<td>1211</td>
-<td>1.32</td>
-<td>15.11</td>
-</tr>
-<tr>
-<th>3</th>
-<td>Endezyar/siyer_datasets</td>
-<td>509</td>
-<td>0.98</td>
-<td>0.39</td>
-</tr>
-<tr>
-<th>11</th>
-<td>YusufSimsek/turkce-atasozleri-dataset</td>
-<td>1398</td>
-<td>0.21</td>
-<td>68.10</td>
-</tr>
-<tr>
-<th>32</th>
-<td>nyzmemre/biyoloji-terimleri-turkce-sa</td>
-<td>1093</td>
-<td>0.18</td>
-<td>21.59</td>
-</tr>
-<tr>
-<th>36</th>
-<td>seali/turkce-saglik-qa</td>
-<td>773</td>
-<td>0.13</td>
-<td>0.00</td>
-</tr>
-<tr>
-<th>9</th>
-<td>Uunan/turkish-cuisine-qa</td>
-<td>34244</td>
-<td>0.01</td>
-<td>0.05</td>
-</tr>
-<tr>
 <th>19</th>
 <td>enes1863/bilisim-hukuku-domain-dataset</td>
 <td>1000</td>
+<td>20.0</td>
 <td>0.00</td>
+<td>98.00</td>
 <td>98.00</td>
 </tr>
 <tr>
 <th>17</th>
 <td>berkcangumusisik/voleykoc-identity-tr</td>
 <td>182</td>
+<td>26.0</td>
 <td>0.00</td>
+<td>85.71</td>
 <td>85.71</td>
 </tr>
 <tr>
 <th>20</th>
 <td>enesozdemr/benim_ilk_datasetim</td>
 <td>113</td>
+<td>17.0</td>
 <td>0.00</td>
+<td>84.96</td>
 <td>84.96</td>
 </tr>
 <tr>
 <th>21</th>
 <td>erhanalsr/langusta-identity</td>
 <td>100</td>
+<td>20.0</td>
 <td>0.00</td>
 <td>80.00</td>
+<td>76.00</td>
+</tr>
+<tr>
+<th>11</th>
+<td>YusufSimsek/turkce-atasozleri-dataset</td>
+<td>1398</td>
+<td>446.0</td>
+<td>0.21</td>
+<td>68.10</td>
+<td>67.95</td>
 </tr>
 <tr>
 <th>35</th>
 <td>samliumay/umay_samli_identification_dataset</td>
 <td>219</td>
+<td>73.0</td>
 <td>0.00</td>
+<td>66.67</td>
 <td>66.67</td>
 </tr>
 <tr>
 <th>40</th>
 <td>sk75/sahin_identity</td>
 <td>77</td>
+<td>27.0</td>
 <td>0.00</td>
+<td>64.94</td>
 <td>64.94</td>
 </tr>
 <tr>
 <th>29</th>
 <td>meldakahramann/animasyon-domain-dataset</td>
 <td>1020</td>
+<td>420.0</td>
 <td>0.00</td>
 <td>58.82</td>
+<td>61.86</td>
+</tr>
+<tr>
+<th>38</th>
+<td>sedayzc/turkish-electronics-product-comparison...</td>
+<td>11858</td>
+<td>5662.0</td>
+<td>41.37</td>
+<td>52.25</td>
+<td>55.96</td>
 </tr>
 <tr>
 <th>13</th>
 <td>aliFurkan123/identity</td>
 <td>30</td>
+<td>21.0</td>
 <td>0.00</td>
 <td>36.36</td>
+<td>46.67</td>
 </tr>
 <tr>
 <th>16</th>
 <td>berkcangumusisik/voleykoc-antrenorluk-tr</td>
 <td>166</td>
+<td>125.0</td>
 <td>0.00</td>
 <td>24.70</td>
+<td>25.90</td>
+</tr>
+<tr>
+<th>32</th>
+<td>nyzmemre/biyoloji-terimleri-turkce-sa</td>
+<td>1093</td>
+<td>857.0</td>
+<td>0.18</td>
+<td>21.59</td>
+<td>22.32</td>
+</tr>
+<tr>
+<th>6</th>
+<td>SalihHub/trendyol-marangoz-urun-asistan-qa</td>
+<td>1211</td>
+<td>1028.0</td>
+<td>1.32</td>
+<td>15.11</td>
+<td>9.41</td>
+</tr>
+<tr>
+<th>2</th>
+<td>Egertekin/marvel-domain-dataset</td>
+<td>177</td>
+<td>153.0</td>
+<td>75.71</td>
+<td>13.56</td>
+<td>13.56</td>
 </tr>
 <tr>
 <th>28</th>
 <td>haticenurcakr/turkish-classic-books-qa</td>
 <td>220</td>
+<td>216.0</td>
 <td>0.00</td>
 <td>1.82</td>
+<td>1.82</td>
+</tr>
+<tr>
+<th>31</th>
+<td>nursimakgul/meb-soru-uretme</td>
+<td>20874</td>
+<td>20609.0</td>
+<td>86.63</td>
+<td>1.27</td>
+<td>2.68</td>
+</tr>
+<tr>
+<th>26</th>
+<td>gorkemergune/ayarlicazhocam_finetune</td>
+<td>429</td>
+<td>425.0</td>
+<td>10.72</td>
+<td>0.93</td>
+<td>2.10</td>
 </tr>
 <tr>
 <th>43</th>
 <td>ssilistre/semih-silistre-ai-identity</td>
 <td>382</td>
+<td>379.0</td>
 <td>0.00</td>
 <td>0.79</td>
+<td>0.79</td>
+</tr>
+<tr>
+<th>24</th>
+<td>filiz-yalcin/turkish-figure-skating-qa</td>
+<td>526</td>
+<td>522.0</td>
+<td>1.90</td>
+<td>0.76</td>
+<td>1.90</td>
 </tr>
 <tr>
 <th>39</th>
 <td>senemde/saglik-qa-tr</td>
 <td>553</td>
+<td>550.0</td>
 <td>0.00</td>
 <td>0.54</td>
+<td>1.08</td>
+</tr>
+<tr>
+<th>3</th>
+<td>Endezyar/siyer_datasets</td>
+<td>509</td>
+<td>507.0</td>
+<td>0.98</td>
+<td>0.39</td>
+<td>0.39</td>
+</tr>
+<tr>
+<th>23</th>
+<td>filiz-yalcin/identity-finetune</td>
+<td>1600</td>
+<td>1593.0</td>
+<td>2.62</td>
+<td>0.31</td>
+<td>0.63</td>
 </tr>
 <tr>
 <th>42</th>
 <td>ssilistre/carnegie-dost-kazanma-tr</td>
 <td>1001</td>
+<td>998.0</td>
 <td>0.00</td>
 <td>0.30</td>
+<td>0.70</td>
+</tr>
+<tr>
+<th>9</th>
+<td>Uunan/turkish-cuisine-qa</td>
+<td>34244</td>
+<td>34227.0</td>
+<td>0.01</td>
+<td>0.05</td>
+<td>1.46</td>
 </tr>
 <tr>
 <th>0</th>
 <td>Aysenur44/namaz-vakti-dua-asistan-tr</td>
 <td>60</td>
+<td>60.0</td>
 <td>0.00</td>
 <td>0.00</td>
+<td>6.67</td>
+</tr>
+<tr>
+<th>12</th>
+<td>aliFurkan123/cultural-questions-dataset</td>
+<td>500</td>
+<td>500.0</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0.40</td>
+</tr>
+<tr>
+<th>15</th>
+<td>berkbirkan/turkish-x-engagement-replies</td>
+<td>1000</td>
+<td>1000.0</td>
+<td>70.10</td>
+<td>0.00</td>
+<td>0.10</td>
 </tr>
 <tr>
 <th>1</th>
 <td>Aysenur44/namaz-vakti-identity-tr</td>
 <td>4</td>
+<td>4.0</td>
+<td>0.00</td>
 <td>0.00</td>
 <td>0.00</td>
 </tr>
@@ -9342,6 +9578,8 @@ birlikte gösterir.</p>
 <th>4</th>
 <td>Erenyanic/seasoned-advice-dataset</td>
 <td>1000</td>
+<td>1000.0</td>
+<td>0.00</td>
 <td>0.00</td>
 <td>0.00</td>
 </tr>
@@ -9349,6 +9587,8 @@ birlikte gösterir.</p>
 <th>5</th>
 <td>Mer1Alii/TR-ECommerce-CustomerSupport-Instruct...</td>
 <td>186</td>
+<td>186.0</td>
+<td>0.00</td>
 <td>0.00</td>
 <td>0.00</td>
 </tr>
@@ -9356,6 +9596,8 @@ birlikte gösterir.</p>
 <th>7</th>
 <td>Talayhan/skatepal_dataset</td>
 <td>299</td>
+<td>299.0</td>
+<td>0.00</td>
 <td>0.00</td>
 <td>0.00</td>
 </tr>
@@ -9363,6 +9605,8 @@ birlikte gösterir.</p>
 <th>8</th>
 <td>Toivo0/Turkce-istatistik-reasoning</td>
 <td>400</td>
+<td>400.0</td>
+<td>0.00</td>
 <td>0.00</td>
 <td>0.00</td>
 </tr>
@@ -9370,13 +9614,17 @@ birlikte gösterir.</p>
 <th>10</th>
 <td>YusufSimsek/llm-kisisellestirme</td>
 <td>46</td>
+<td>46.0</td>
+<td>0.00</td>
 <td>0.00</td>
 <td>0.00</td>
 </tr>
 <tr>
-<th>12</th>
-<td>aliFurkan123/cultural-questions-dataset</td>
-<td>500</td>
+<th>14</th>
+<td>berkbirkan/turkish-x-engagement-quotes</td>
+<td>1000</td>
+<td>1000.0</td>
+<td>67.70</td>
 <td>0.00</td>
 <td>0.00</td>
 </tr>
@@ -9384,6 +9632,8 @@ birlikte gösterir.</p>
 <th>18</th>
 <td>cihatyldz/lojistik-soru-cevap</td>
 <td>139</td>
+<td>139.0</td>
+<td>0.00</td>
 <td>0.00</td>
 <td>0.00</td>
 </tr>
@@ -9391,6 +9641,8 @@ birlikte gösterir.</p>
 <th>22</th>
 <td>erhanalsr/langusta-kpss-reasoning</td>
 <td>21</td>
+<td>21.0</td>
+<td>0.00</td>
 <td>0.00</td>
 <td>0.00</td>
 </tr>
@@ -9398,6 +9650,8 @@ birlikte gösterir.</p>
 <th>25</th>
 <td>gmz1234/stackoverflow_ai</td>
 <td>1000</td>
+<td>1000.0</td>
+<td>0.00</td>
 <td>0.00</td>
 <td>0.00</td>
 </tr>
@@ -9405,6 +9659,8 @@ birlikte gösterir.</p>
 <th>30</th>
 <td>namruni/meb-ogretmen-soru-cevap</td>
 <td>450</td>
+<td>450.0</td>
+<td>0.00</td>
 <td>0.00</td>
 <td>0.00</td>
 </tr>
@@ -9412,6 +9668,8 @@ birlikte gösterir.</p>
 <th>33</th>
 <td>sadecebirisii/turkish-llm-authority-bypass-saf...</td>
 <td>29</td>
+<td>29.0</td>
+<td>0.00</td>
 <td>0.00</td>
 <td>0.00</td>
 </tr>
@@ -9419,6 +9677,17 @@ birlikte gösterir.</p>
 <th>34</th>
 <td>samliumay/turkish_cyber_security_controls_dataset</td>
 <td>800</td>
+<td>800.0</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0.00</td>
+</tr>
+<tr>
+<th>36</th>
+<td>seali/turkce-saglik-qa</td>
+<td>773</td>
+<td>773.0</td>
+<td>0.13</td>
 <td>0.00</td>
 <td>0.00</td>
 </tr>
@@ -9426,6 +9695,17 @@ birlikte gösterir.</p>
 <th>41</th>
 <td>srhskrkc/odysseia-destani-tr</td>
 <td>10</td>
+<td>10.0</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0.00</td>
+</tr>
+<tr>
+<th>44</th>
+<td>yoitsmeyusuf/felsefe_finetune</td>
+<td>529</td>
+<td>529.0</td>
+<td>76.56</td>
 <td>0.00</td>
 <td>0.00</td>
 </tr>
@@ -9437,7 +9717,254 @@ birlikte gösterir.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8cf4ca15">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=02549726">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Sat%C4%B1r-say%C4%B1s%C4%B1-ile-benzersiz-i%C3%A7erik-aras%C4%B1ndaki-fark">Satır sayısı ile benzersiz içerik arasındaki fark<a class="anchor-link" href="#Sat%C4%B1r-say%C4%B1s%C4%B1-ile-benzersiz-i%C3%A7erik-aras%C4%B1ndaki-fark">¶</a></h3><p>Satır sayısı bir kapasite göstergesidir, içerik hacmi değildir.
+Aşağıdaki tablo aradaki farkın en büyük olduğu veri setlerini
+sıralar; <code>distinct_answers</code> sütunu satır sayısının ne kadarının
+gerçekten farklı cevaba karşılık geldiğini gösterir.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=ca3c0939">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">gap</span> <span class="o">=</span> <span class="n">summary</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">summary</span><span class="p">[</span><span class="s2">"distinct_answers"</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">gap</span><span class="p">[</span><span class="s2">"answer_gap"</span><span class="p">]</span> <span class="o">=</span> <span class="n">gap</span><span class="p">[</span><span class="s2">"rows"</span><span class="p">]</span> <span class="o">-</span> <span class="n">gap</span><span class="p">[</span><span class="s2">"distinct_answers"</span><span class="p">]</span>
+<span class="n">gap</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">gap</span><span class="p">[</span><span class="s2">"answer_gap"</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="p">[</span><span class="s2">"dataset"</span><span class="p">,</span> <span class="s2">"rows"</span><span class="p">,</span> <span class="s2">"distinct_rows"</span><span class="p">,</span> <span class="s2">"distinct_answers"</span><span class="p">,</span> <span class="s2">"answer_gap"</span><span class="p">]</span>
+       <span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">"answer_gap"</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[6]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>dataset</th>
+<th>rows</th>
+<th>distinct_rows</th>
+<th>distinct_answers</th>
+<th>answer_gap</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>38</th>
+<td>sedayzc/turkish-electronics-product-comparison...</td>
+<td>11858</td>
+<td>7007</td>
+<td>5662.0</td>
+<td>6196.0</td>
+</tr>
+<tr>
+<th>19</th>
+<td>enes1863/bilisim-hukuku-domain-dataset</td>
+<td>1000</td>
+<td>1000</td>
+<td>20.0</td>
+<td>980.0</td>
+</tr>
+<tr>
+<th>11</th>
+<td>YusufSimsek/turkce-atasozleri-dataset</td>
+<td>1398</td>
+<td>1398</td>
+<td>446.0</td>
+<td>952.0</td>
+</tr>
+<tr>
+<th>29</th>
+<td>meldakahramann/animasyon-domain-dataset</td>
+<td>1020</td>
+<td>1020</td>
+<td>420.0</td>
+<td>600.0</td>
+</tr>
+<tr>
+<th>31</th>
+<td>nursimakgul/meb-soru-uretme</td>
+<td>20874</td>
+<td>20696</td>
+<td>20609.0</td>
+<td>265.0</td>
+</tr>
+<tr>
+<th>32</th>
+<td>nyzmemre/biyoloji-terimleri-turkce-sa</td>
+<td>1093</td>
+<td>1093</td>
+<td>857.0</td>
+<td>236.0</td>
+</tr>
+<tr>
+<th>6</th>
+<td>SalihHub/trendyol-marangoz-urun-asistan-qa</td>
+<td>1211</td>
+<td>1211</td>
+<td>1028.0</td>
+<td>183.0</td>
+</tr>
+<tr>
+<th>17</th>
+<td>berkcangumusisik/voleykoc-identity-tr</td>
+<td>182</td>
+<td>182</td>
+<td>26.0</td>
+<td>156.0</td>
+</tr>
+<tr>
+<th>35</th>
+<td>samliumay/umay_samli_identification_dataset</td>
+<td>219</td>
+<td>219</td>
+<td>73.0</td>
+<td>146.0</td>
+</tr>
+<tr>
+<th>20</th>
+<td>enesozdemr/benim_ilk_datasetim</td>
+<td>113</td>
+<td>113</td>
+<td>17.0</td>
+<td>96.0</td>
+</tr>
+<tr>
+<th>21</th>
+<td>erhanalsr/langusta-identity</td>
+<td>100</td>
+<td>100</td>
+<td>20.0</td>
+<td>80.0</td>
+</tr>
+<tr>
+<th>40</th>
+<td>sk75/sahin_identity</td>
+<td>77</td>
+<td>77</td>
+<td>27.0</td>
+<td>50.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d0cd2618">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Dil-sinyali">Dil sinyali<a class="anchor-link" href="#Dil-sinyali">¶</a></h3><p>Türkçeye özgü harflerin tüm harflere oranı ve durak sözcük sayımları
+birlikte kaba bir dil sinyali üretir. Bu bir sınıflandırıcı değildir;
+yalnız kapsam dışı kalan veri setlerini görünür kılar.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=50220095">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">summary</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"language_signal"</span><span class="p">)[</span><span class="s2">"dataset"</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s2">"count"</span><span class="p">,</span> <span class="nb">list</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[7]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>count</th>
+<th>list</th>
+</tr>
+<tr>
+<th>language_signal</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>english</th>
+<td>2</td>
+<td>[aliFurkan123/identity, gmz1234/stackoverflow_ai]</td>
+</tr>
+<tr>
+<th>turkish</th>
+<td>43</td>
+<td>[Aysenur44/namaz-vakti-dua-asistan-tr, Aysenur...</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=171082b8">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9448,12 +9975,12 @@ yanıt biçimi için kullanılır; tek başına içerik doğruluğu göstermez.<
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=86152d2e">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=81a61700">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">summary</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
@@ -9470,7 +9997,7 @@ yanıt biçimi için kullanılır; tek başına içerik doğruluğu göstermez.<
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[6]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -9762,7 +10289,7 @@ yanıt biçimi için kullanılır; tek başına içerik doğruluğu göstermez.<
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e252eeee">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=45e64585">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9773,12 +10300,12 @@ eşleşmeleri farklı düzeltme işlemleri gerektirir.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=a9d9ecf0">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=1ad9b50b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">summary</span><span class="p">[[</span>
@@ -9798,7 +10325,7 @@ eşleşmeleri farklı düzeltme işlemleri gerektirir.</p>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[7]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[9]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -10240,7 +10767,7 @@ eşleşmeleri farklı düzeltme işlemleri gerektirir.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=16541ed3">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=276803db">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -10254,12 +10781,12 @@ eşleştiği aile sayısıdır ve basit tekrardan ayrı bir sorundur.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=a1b68d3f">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=24e55312">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">summary</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
@@ -10278,7 +10805,7 @@ eşleştiği aile sayısıdır ve basit tekrardan ayrı bir sorundur.</p>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[10]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -10458,7 +10985,7 @@ eşleştiği aile sayısıdır ve basit tekrardan ayrı bir sorundur.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d9ef1839">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7a02a43f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -10469,12 +10996,12 @@ ailesi altında incelenmelidir.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=b455c8f5">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=fc4d3abf">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">overlaps</span><span class="p">)</span>
@@ -10488,7 +11015,7 @@ ailesi altında incelenmelidir.</p>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[9]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[11]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -10795,7 +11322,7 @@ ailesi altında incelenmelidir.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a7b95d6e">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c85a70db">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -10807,12 +11334,12 @@ eklenmeden burada otomatik olarak yorumlanmaz.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e7f1ba22">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=71dbf8a0">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">finding_rows</span> <span class="o">=</span> <span class="p">[]</span>
@@ -10837,7 +11364,7 @@ eklenmeden burada otomatik olarak yorumlanmaz.</p>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[10]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[12]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -10962,7 +11489,7 @@ eklenmeden burada otomatik olarak yorumlanmaz.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8ff5d742">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=14cccf5b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>

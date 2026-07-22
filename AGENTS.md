@@ -16,7 +16,7 @@
 This public repository documents a reproducible quality and capability analysis
 of Turkish or Turkish-focused Hugging Face datasets contributed by course
 participants. It contains reports, computed evidence, a Jupyter notebook and HTML
-render, six static figures, and machine-readable capability mappings. Raw
+render, nine static figures, and machine-readable capability mappings. Raw
 datasets are intentionally not redistributed here. The current scope is fixed in
 `config/verified_baseline.json`; do not hardcode a dataset or row count in prose
 that the baseline does not enforce.
@@ -106,8 +106,13 @@ The following values were rechecked against all local raw rows on 22 July 2026:
   overlap concentrates on canonical identity questions.
 - 0 rows appear in more than one split of the same dataset.
 - 12 datasets ship a data card with no body; 5 have no README at all.
-- Repository validation ran 721 checks and all passed. The validator reports its
-  own check count, so this number must be taken from a fresh run rather than
+- 82,798 distinct rows after exact deduplication.
+- 11,277 near-duplicate answers and 26,475 near-duplicate prompts at a token-set
+  Jaccard threshold of 0.85. The comparison is exact, not hashed or sampled.
+- Language signal: 43 datasets Turkish, 2 English. This is a heuristic from
+  Turkish-only letters plus stopwords, not a classifier.
+- Repository validation ran 1,295 checks and all passed. The validator reports
+  its own check count, so this number must be taken from a fresh run rather than
   carried forward.
 
 Do not reuse a check count, row total, or duplicate figure from an earlier scope.
@@ -118,8 +123,18 @@ Definitions:
 
 - Normalized duplicate rate is the number of extra copies after the first item
   in each case- and punctuation-normalized text family divided by all rows.
+- Near-duplicate rate counts rows whose text shares at least 85% of its tokens
+  with an earlier row. It is a different measure from the normalized duplicate
+  rate and the two must not be quoted interchangeably.
 - Time-sensitive counts are regex matches and must not be described as unique
   rows unless a separate row-level calculation is performed.
+- The language signal is a heuristic. Do not present it as language detection.
+
+Determinism is a requirement, not an aspiration. Any ordering derived from a
+`set` or `dict` iteration must carry an explicit tiebreaker, because Python
+randomizes string hashing between processes and an unbroken tie silently makes
+the profile irreproducible. Verify by running the profiler twice and comparing
+`outputs/data_quality_profiles.json` byte for byte.
 
 ## Content and editorial rules
 
@@ -162,7 +177,7 @@ Definitions:
 - `reports/model-capability-mapping.md`: seven-capability mapping and gaps.
 - `reports/file-guide.md`: repository navigation.
 - `reports/figures/README.md`: figure definitions, sources, and caveats.
-- `reports/figures/*.png`: six generated report figures.
+- `reports/figures/*.png`: nine generated report figures.
 - `notebook/huggingface_dataset_quality_analysis.ipynb`: executed analysis.
 - `notebook/huggingface_dataset_quality_analysis.html`: generated notebook view.
 - `outputs/*.json`: fixed inventory, profiles, overlap, and reviewed findings.
@@ -181,7 +196,7 @@ Definitions:
 3. If profile or mapping data changes, update all dependent Markdown tables and
    prose.
 4. If chart data, labels, or styling changes, run the chart generator and inspect
-   all six PNG files for clipping, collisions, honest scales, and readable labels.
+   all nine PNG files for clipping, collisions, honest scales, and readable labels.
 5. If notebook code or source text changes, execute it top to bottom and
    regenerate the HTML from the executed notebook.
 6. Run the repository validator and `git diff --check` before handing off.
@@ -287,7 +302,7 @@ git status --short
 - Charts must state their unit and source; panels with different units must not
   share a misleading scale.
 - Local Markdown links must resolve, notebook code cells must have no error
-  outputs, JSON must parse, and all six required PNG files must be present.
+  outputs, JSON must parse, and all nine required PNG files must be present.
 - Clearly separate structural validation from domain-expert factual validation.
   The current analysis verifies structure and calculations; it does not claim a
   full subject-matter review of every answer.

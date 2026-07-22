@@ -46,6 +46,12 @@ ITHAKI_COLUMNS = {
     "yayin_tarihi", "yayinevi", "yazar",
 }
 NULL_STRINGS = {"null", "none", "nil", "n/a", "na"}
+# Texts shorter than this share tokens by coincidence, so near-duplicate
+# comparison below this length reports noise rather than copying.
+MIN_NEAR_DUPLICATE_TOKENS = 4
+# Letters that occur in Turkish but not in English. Their share of all letters
+# separates Turkish text from English text far more reliably than stopwords.
+TURKISH_LETTERS = set("çğıİöşüÇĞÖŞÜ")
 URL_RE = re.compile(r"https?://[^\s)\]}>'\"]+", re.IGNORECASE)
 EMAIL_RE = re.compile(r"\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b", re.IGNORECASE)
 PHONE_RE = re.compile(r"(?<!\d)(?:\+?90\s*)?(?:0?5\d{2})[\s.-]*\d{3}[\s.-]*\d{2}[\s.-]*\d{2}(?!\d)")
@@ -133,7 +139,75 @@ def duplicate_profile(values: list[str]) -> dict:
         "duplicate_rows": duplicate_rows,
         "duplicate_rate": round(duplicate_rows / total, 4) if total else None,
         "duplicate_groups": duplicate_groups,
+        # How much distinct text the dataset actually holds. Without this a
+        # reader has to derive "1,000 rows but 20 distinct answers" by hand.
+        "distinct_values": sum(1 for key in counts if key),
         "top_repeated": top,
+    }
+
+
+def near_duplicate_profile(values: list[str], threshold: float = 0.85) -> dict:
+    """Count rows that are near-duplicates of an earlier row.
+
+    ``duplicate_profile`` only sees texts that are identical once case and
+    punctuation are normalized, so a reworded copy scores as unique. This
+    measures token-set Jaccard overlap instead.
+
+    The comparison is exact, not hashed or sampled: each text is indexed under
+    its rarest tokens, so only genuinely plausible candidates are compared and a
+    full pairwise scan is avoided while the result stays complete.
+    """
+
+    token_sets = [
+        frozenset(re.findall(r"\w+", normalized_loose(value), flags=re.UNICODE))
+        for value in values
+    ]
+    document_frequency: Counter[str] = Counter()
+    for tokens in token_sets:
+        document_frequency.update(tokens)
+
+    index: dict[str, list[int]] = {}
+    near_duplicate_rows = 0
+    examples: list[dict] = []
+    for position, tokens in enumerate(token_sets):
+        # Very short texts share tokens by chance; comparing them produces noise
+        # rather than evidence of copying.
+        if len(tokens) < MIN_NEAR_DUPLICATE_TOKENS:
+            continue
+        # The token itself breaks frequency ties. Without it the order comes from
+        # frozenset iteration, which varies with Python's hash randomization and
+        # would make the whole profile non-reproducible between runs.
+        probes = sorted(tokens, key=lambda token: (document_frequency[token], token))[:3]
+        candidates: set[int] = set()
+        for token in probes:
+            candidates.update(index.get(token, ()))
+        matched = None
+        for candidate in sorted(candidates):
+            other = token_sets[candidate]
+            intersection = len(tokens & other)
+            if intersection and intersection / len(tokens | other) >= threshold:
+                matched = candidate
+                break
+        if matched is None:
+            for token in probes:
+                index.setdefault(token, []).append(position)
+            continue
+        near_duplicate_rows += 1
+        if len(examples) < 3:
+            examples.append(
+                {
+                    "text": values[position][:200],
+                    "near_match": values[matched][:200],
+                }
+            )
+    total = len(values)
+    return {
+        "near_duplicate_rows": near_duplicate_rows,
+        "near_duplicate_rate": round(near_duplicate_rows / total, 4) if total else None,
+        "threshold": threshold,
+        "minimum_tokens": MIN_NEAR_DUPLICATE_TOKENS,
+        "method": "token-set Jaccard, exact comparison; not hashed and not sampled",
+        "examples": examples,
     }
 
 
@@ -185,11 +259,14 @@ def text_scan(texts: list[str]) -> dict:
         "time_sensitive_matches": TIME_SENSITIVE_RE,
     }
     totals = dict.fromkeys(
-        ("total_characters", "total_words", "replacement_character_count", "mojibake_marker_count"), 0
+        ("total_characters", "total_words", "replacement_character_count",
+         "mojibake_marker_count", "turkish_letters", "alphabetic_characters"), 0
     )
     totals.update(dict.fromkeys(patterns, 0))
     for text in texts:
         totals["total_characters"] += len(text)
+        totals["turkish_letters"] += sum(1 for ch in text if ch in TURKISH_LETTERS)
+        totals["alphabetic_characters"] += sum(1 for ch in text if ch.isalpha())
         words = re.findall(r"\b\w+\b", text.casefold(), flags=re.UNICODE)
         totals["total_words"] += len(words)
         word_counts.update(word for word in words if word in stopwords)
@@ -197,10 +274,29 @@ def text_scan(texts: list[str]) -> dict:
         totals["mojibake_marker_count"] += sum(text.count(marker) for marker in ("Ã", "Ä", "Å"))
         for name, pattern in patterns.items():
             totals[name] += len(pattern.findall(text))
+    turkish_hits = sum(word_counts[word] for word in TURKISH_STOPWORDS)
+    english_hits = sum(word_counts[word] for word in ENGLISH_STOPWORDS)
+    # A heuristic, not a language classifier. Turkish-only letters are the
+    # stronger of the two signals because they cannot appear in English text at
+    # all, whereas stopwords overlap across languages.
+    letters = totals.pop("alphabetic_characters")
+    turkish_letters = totals.pop("turkish_letters")
+    letter_ratio = round(turkish_letters / letters, 4) if letters else None
+    if letter_ratio is None:
+        dominant = "unknown"
+    elif letter_ratio >= 0.01:
+        dominant = "turkish"
+    elif letter_ratio > 0 or turkish_hits > english_hits:
+        dominant = "mixed"
+    else:
+        dominant = "english"
     return {
         **totals,
-        "turkish_stopword_hits": sum(word_counts[word] for word in TURKISH_STOPWORDS),
-        "english_stopword_hits": sum(word_counts[word] for word in ENGLISH_STOPWORDS),
+        "turkish_stopword_hits": turkish_hits,
+        "english_stopword_hits": english_hits,
+        "turkish_character_ratio": letter_ratio,
+        "dominant_language_signal": dominant,
+        "language_signal_note": "heuristic from Turkish-only letters and stopwords; not a classifier",
     }
 
 
@@ -415,9 +511,12 @@ def conversation_profile(rows: list, field: str | None, system_field: str | None
         "row_level_thinking_rows": row_level_thinking,
         "exact_duplicate_rows": exact_duplicate_rows,
         "exact_duplicate_rate": round(exact_duplicate_rows / len(rows), 4) if rows else None,
+        "distinct_canonical_rows": len(set(canonical_rows)),
         "normalized_duplicate_rows": normalized_duplicate_rows,
         "user_prompt_duplicates": duplicate_profile(user_texts),
         "assistant_answer_duplicates": duplicate_profile(assistant_texts),
+        "user_prompt_near_duplicates": near_duplicate_profile(row_prompts),
+        "assistant_answer_near_duplicates": near_duplicate_profile(row_answers),
         "answer_families": answer_family_profile(row_prompts, row_answers),
         "structured_answers": json_answer_profile(row_answers),
         "matching_user_assistant_rows": matching_user_assistant,
@@ -497,8 +596,11 @@ def instruction_pair_profile(rows: list[dict], prompt_fields: list[str], answer_
         "exact_duplicate_rate": round(
             (len(canonical_rows) - len(set(canonical_rows))) / len(rows), 4
         ) if rows else None,
+        "distinct_canonical_rows": len(set(canonical_rows)),
         "user_prompt_duplicates": duplicate_profile(prompts),
         "assistant_answer_duplicates": duplicate_profile(answers),
+        "user_prompt_near_duplicates": near_duplicate_profile(prompts),
+        "assistant_answer_near_duplicates": near_duplicate_profile(answers),
         "answer_families": answer_family_profile(prompts, answers),
         "structured_answers": json_answer_profile(answers),
         "matching_user_assistant_rows": sum(
@@ -581,6 +683,7 @@ def generic_tabular_profile(rows: list[dict]) -> dict:
         "exact_duplicate_rate": round(
             (len(canonical_rows) - len(set(canonical_rows))) / len(rows), 4
         ) if rows else None,
+        "distinct_canonical_rows": len(set(canonical_rows)),
         "text_scan": text_scan(texts),
     }
 
@@ -639,6 +742,7 @@ def catalog_profile(rows: list[dict]) -> dict:
         "null_counts": null_counts,
         "null_rates": {column: round(count / len(rows), 4) if rows else None for column, count in null_counts.items()},
         "exact_duplicate_rows": len(canonical_rows) - len(set(canonical_rows)),
+        "distinct_canonical_rows": len(set(canonical_rows)),
         "duplicate_isbn_rows": len(rows) - len({str(row.get("isbn")) for row in rows}),
         "duplicate_book_url_rows": len(rows) - len(set(urls)),
         "duplicate_title_author_rows": len(rows) - len({(normalized_loose(row.get("kitap_adi")), normalized_loose(row.get("yazar"))) for row in rows}),

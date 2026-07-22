@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import math
 from pathlib import Path
 
 import matplotlib
@@ -182,33 +183,40 @@ def duplicate_rate_chart(profiles: list[dict]) -> None:
             continue
         prompt_rate = 100 * (profile.get("user_prompt_duplicates", {}).get("duplicate_rate") or 0)
         answer_rate = 100 * (profile.get("assistant_answer_duplicates", {}).get("duplicate_rate") or 0)
-        rows.append((display_name(item["dataset_id"]), prompt_rate, answer_rate))
-    rows.sort(key=lambda item: max(item[1], item[2]), reverse=True)
+        near_rate = 100 * (
+            profile.get("assistant_answer_near_duplicates", {}).get("near_duplicate_rate") or 0
+        )
+        rows.append((display_name(item["dataset_id"]), prompt_rate, answer_rate, near_rate))
+    rows.sort(key=lambda item: max(item[1], item[2], item[3]), reverse=True)
 
     fig, ax = plt.subplots(figsize=(FIGURE_WIDTH, figure_height(len(rows))))
     layout(fig)
     add_header(
         fig,
-        "Normalized duplicate density",
-        "Rate = extra copies after the first occurrence / all rows; case and punctuation "
-        "differences are ignored. Values are printed beside each pair.",
+        "Duplicate density",
+        "Exact-normalized rates ignore only case and punctuation. The near-duplicate rate "
+        "instead counts answers with at least 85% token overlap with an earlier answer, so "
+        "it catches rewordings the other two measures score as unique.",
     )
     add_source(fig, "outputs/data_quality_profiles.json")
 
-    for y, (_, prompt, answer) in enumerate(rows):
-        ax.plot([prompt, answer], [y, y], color=GRID, linewidth=3, solid_capstyle="round", zorder=1)
+    for y, (_, prompt, answer, near) in enumerate(rows):
+        ax.plot([min(prompt, answer, near), max(prompt, answer, near)], [y, y],
+                color=GRID, linewidth=3, solid_capstyle="round", zorder=1)
         ax.scatter(prompt, y, s=58, color=BLUE, edgecolor=BACKGROUND, linewidth=1.1, zorder=3)
         ax.scatter(answer, y, s=58, color=GOLD, edgecolor=BACKGROUND, linewidth=1.1, zorder=3)
+        ax.scatter(near, y, s=46, color=CORAL, marker="^", edgecolor=BACKGROUND,
+                   linewidth=1.0, zorder=4)
 
     # At this row density per-point callouts collide, so each row carries a
     # single readout. It sits in a reserved gutter past the largest data point
     # so the text can never overlap a marker.
-    largest_rate = max((max(row[1], row[2]) for row in rows), default=0)
+    largest_rate = max((max(row[1], row[2], row[3]) for row in rows), default=0)
     plotted_max = max(10.0, largest_rate)
     gutter = plotted_max * 1.06
-    limit = plotted_max * 1.40
-    for y, (_, prompt, answer) in enumerate(rows):
-        ax.text(gutter, y, f"{prompt:.1f}% / {answer:.1f}%", va="center", ha="left",
+    limit = plotted_max * 1.58
+    for y, (_, prompt, answer, near) in enumerate(rows):
+        ax.text(gutter, y, f"{prompt:.1f}% / {answer:.1f}% / {near:.1f}%", va="center", ha="left",
                 fontsize=8, color=MUTED)
 
     ax.set_yticks(range(len(rows)), [row[0] for row in rows], fontsize=LABEL_FONTSIZE)
@@ -218,16 +226,17 @@ def duplicate_rate_chart(profiles: list[dict]) -> None:
     step = 20 if plotted_max > 40 else 5
     ax.set_xticks([t for t in range(0, int(plotted_max) + step, step) if t <= plotted_max + 1])
     ax.xaxis.set_major_formatter(PercentFormatter(100, decimals=0))
-    ax.set_xlabel("Extra-copy rate (prompt / answer)", labelpad=12)
+    ax.set_xlabel("Duplicate rate (exact prompt / exact answer / near-duplicate answer)", labelpad=12)
     ax.legend(
         handles=[
-            Line2D([0], [0], marker="o", color="none", markerfacecolor=BLUE, markeredgecolor=BLUE, markersize=7, label="User prompt"),
-            Line2D([0], [0], marker="o", color="none", markerfacecolor=GOLD, markeredgecolor=GOLD, markersize=7, label="Assistant answer"),
+            Line2D([0], [0], marker="o", color="none", markerfacecolor=BLUE, markeredgecolor=BLUE, markersize=7, label="User prompt (exact)"),
+            Line2D([0], [0], marker="o", color="none", markerfacecolor=GOLD, markeredgecolor=GOLD, markersize=7, label="Assistant answer (exact)"),
+            Line2D([0], [0], marker="^", color="none", markerfacecolor=CORAL, markeredgecolor=CORAL, markersize=7, label="Assistant answer (near-duplicate)"),
         ],
         loc="lower right",
         bbox_to_anchor=(1, 1.005),
         frameon=False,
-        ncol=2,
+        ncol=3,
     )
     clean_axis(ax)
     save(fig, "duplicate-rates.png")
@@ -489,15 +498,183 @@ def capability_coverage_chart(manifest: dict) -> None:
     save(fig, "capability-coverage.png")
 
 
+def preparation_needs_chart(profiles: list[dict]) -> None:
+    """Which concrete preparation steps each dataset needs.
+
+    Deliberately a presence matrix rather than a composite score: a score would
+    rank the datasets, which this analysis does not do. Rows are sorted by
+    dataset identifier so the order carries no judgement.
+    """
+
+    needs = [
+        ("Answer duplication\n≥ 20%", lambda d: 100 * (d.get("assistant_answer_duplicates", {}).get("duplicate_rate") or 0) >= 20),
+        ("Prompt duplication\n≥ 20%", lambda d: 100 * (d.get("user_prompt_duplicates", {}).get("duplicate_rate") or 0) >= 20),
+        ("Near-duplicate\nanswers ≥ 5%", lambda d: 100 * (d.get("assistant_answer_near_duplicates", {}).get("near_duplicate_rate") or 0) >= 5),
+        ("Time-sensitive\ncontent", lambda d: (d.get("text_scan", {}).get("time_sensitive_matches") or 0) > 0),
+        ("Type or empty\nvalue errors", lambda d: (d.get("string_encoded_null_fields") or 0) + (d.get("empty_content_messages") or 0) > 0),
+    ]
+    rows = []
+    for item in sorted(profiles, key=lambda x: x["dataset_id"].casefold()):
+        d = item["profile"]
+        flags = [check(d) for _, check in needs]
+        flags.append(not item["card"]["readme_has_body"])
+        rows.append((display_name(item["dataset_id"]), flags))
+    columns = [label for label, _ in needs] + ["No data-card\nbody"]
+
+    fig, ax = plt.subplots(figsize=(FIGURE_WIDTH, figure_height(len(rows), minimum=8.0)))
+    fig.subplots_adjust(left=LABEL_LEFT_MARGIN, right=0.97,
+                        top=1 - (HEADER_INCHES + 0.9) / figure_height(len(rows), minimum=8.0),
+                        bottom=FOOTER_INCHES / figure_height(len(rows), minimum=8.0))
+    add_header(
+        fig,
+        "Preparation needs by dataset",
+        "A filled cell means the dataset triggers that preparation need. This is a checklist, "
+        "not a score: rows are ordered by dataset identifier and no ranking is implied.",
+    )
+    add_source(fig, "outputs/data_quality_profiles.json")
+
+    for y, (_, flags) in enumerate(rows):
+        for x, flag in enumerate(flags):
+            ax.scatter(x, y, s=150, marker="s", color=CORAL if flag else "#E8ECF1",
+                       edgecolor=BACKGROUND, linewidth=1.4, zorder=2)
+    ax.set_xlim(-0.6, len(columns) - 0.4)
+    ax.set_ylim(-0.7, len(rows) - 0.3)
+    ax.set_xticks(range(len(columns)), columns, fontsize=8.5)
+    ax.xaxis.tick_top()
+    ax.tick_params(axis="x", pad=10)
+    ax.set_yticks(range(len(rows)), [row[0] for row in rows], fontsize=LABEL_FONTSIZE)
+    ax.invert_yaxis()
+    clean_axis(ax, vertical_grid=False)
+    save(fig, "preparation-needs.png")
+
+
+def identity_conflict_chart(profiles: list[dict], overlaps: list[dict], manifest: dict) -> None:
+    """Shared prompts between identity datasets, drawn as a chord diagram.
+
+    The portfolio's most consequential finding is that identity datasets answer
+    the same questions differently. A chord diagram shows that relationship
+    directly; no per-dataset bar chart can.
+    """
+
+    identity = sorted(
+        {entry["dataset"] for capability in manifest["capabilities"]
+         if capability["capability"] == "Identity" for entry in capability["direct_datasets"]},
+        key=str.casefold,
+    )
+    edges = [
+        (o["left"], o["right"], o["shared_user_prompts"], o["shared_assistant_answers"])
+        for o in overlaps
+        if o["left"] in identity and o["right"] in identity and o["shared_user_prompts"]
+    ]
+    angles = {did: 2 * math.pi * i / len(identity) - math.pi / 2 for i, did in enumerate(identity)}
+    point = lambda did: (math.cos(angles[did]), math.sin(angles[did]))
+
+    fig, ax = plt.subplots(figsize=(13.5, 11.5))
+    fig.subplots_adjust(left=0.02, right=0.98, top=0.80, bottom=0.06)
+    shared_prompts = sum(e[2] for e in edges)
+    shared_answers = sum(e[3] for e in edges)
+    add_header(
+        fig,
+        "Shared prompts between identity datasets",
+        f"{len(edges)} dataset pairs share {shared_prompts} user prompts and {shared_answers} "
+        "assistant answers. Identical questions with different answers: merging these datasets "
+        "teaches the model a different name and developer each time.",
+    )
+    add_source(fig, "outputs/cross_dataset_overlap.json")
+
+    widest = max((e[2] for e in edges), default=1)
+    for left, right, weight, _ in sorted(edges, key=lambda e: e[2]):
+        x0, y0 = point(left)
+        x1, y1 = point(right)
+        # Quadratic Bezier bowing toward the centre keeps chords distinguishable.
+        t = [i / 60 for i in range(61)]
+        cx, cy = (x0 + x1) * 0.22, (y0 + y1) * 0.22
+        xs = [(1 - u) ** 2 * x0 + 2 * (1 - u) * u * cx + u ** 2 * x1 for u in t]
+        ys = [(1 - u) ** 2 * y0 + 2 * (1 - u) * u * cy + u ** 2 * y1 for u in t]
+        ax.plot(xs, ys, color=CORAL, alpha=0.30 + 0.55 * weight / widest,
+                linewidth=0.8 + 3.6 * weight / widest, solid_capstyle="round", zorder=2)
+
+    for did in identity:
+        x, y = point(did)
+        rows = next(p["profile"]["row_count"] for p in profiles if p["dataset_id"] == did)
+        ax.scatter(x, y, s=210, color=BLUE, edgecolor=BACKGROUND, linewidth=2, zorder=4)
+        outward = 1.10
+        ha = "left" if x > 0.08 else ("right" if x < -0.08 else "center")
+        va = "bottom" if y > 0.08 else ("top" if y < -0.08 else "center")
+        ax.text(x * outward, y * outward, f"hf/{did}\n{rows:,} rows", ha=ha, va=va,
+                fontsize=8.5, color=INK, linespacing=1.4)
+
+    ax.set_xlim(-2.05, 2.05)
+    ax.set_ylim(-1.65, 1.65)
+    ax.set_aspect("equal")
+    ax.axis("off")
+    save(fig, "identity-prompt-conflicts.png")
+
+
+def contributor_coverage_chart(profiles: list[dict], manifest: dict) -> None:
+    """Which capabilities each contributor's datasets reach.
+
+    Every other figure is dataset-level. This repository reviews a cohort of
+    submitters, so the per-person view answers a question none of the others can.
+    """
+
+    contributor = {p["dataset_id"]: p.get("contributor") or "unknown" for p in profiles}
+    capabilities = [c["capability"] for c in manifest["capabilities"]]
+    grid: dict[str, dict[str, int]] = {}
+    for capability in manifest["capabilities"]:
+        for level in ("direct_datasets", "partial_datasets"):
+            for entry in capability.get(level, []):
+                who = contributor.get(entry["dataset"], "unknown")
+                grid.setdefault(who, {}).setdefault(capability["capability"], 0)
+                grid[who][capability["capability"]] += 1
+    people = sorted(grid, key=str.casefold)
+
+    fig, ax = plt.subplots(figsize=(12.5, figure_height(len(people), minimum=8.0)))
+    height = figure_height(len(people), minimum=8.0)
+    fig.subplots_adjust(left=0.26, right=0.97,
+                        top=1 - (HEADER_INCHES + 0.7) / height, bottom=FOOTER_INCHES / height)
+    add_header(
+        fig,
+        "Capability reach by contributor",
+        f"{len(people)} contributors appear in the mapping. A cell counts that contributor's "
+        "datasets matched at direct or partial level; conversion sources are excluded because "
+        "they are not yet training data.",
+    )
+    add_source(fig, "appendix/dataset_manifest.json")
+
+    for y, person in enumerate(people):
+        for x, capability in enumerate(capabilities):
+            value = grid[person].get(capability, 0)
+            ax.scatter(x, y, s=330, marker="s", color=BLUE if value else "#E8ECF1",
+                       edgecolor=BACKGROUND, linewidth=1.6, zorder=2)
+            if value:
+                ax.text(x, y, str(value), ha="center", va="center", color="white",
+                        fontsize=8, fontweight="bold", zorder=3)
+    ax.set_xlim(-0.6, len(capabilities) - 0.4)
+    ax.set_ylim(-0.7, len(people) - 0.3)
+    ax.set_xticks(range(len(capabilities)),
+                  [CAPABILITY_DISPLAY_NAMES[c] for c in capabilities], fontsize=9)
+    ax.xaxis.tick_top()
+    ax.tick_params(axis="x", pad=10)
+    ax.set_yticks(range(len(people)), people, fontsize=8.5)
+    ax.invert_yaxis()
+    clean_axis(ax, vertical_grid=False)
+    save(fig, "contributor-coverage.png")
+
+
 def main() -> None:
     profiles = load_json("outputs/data_quality_profiles.json")
     manifest = load_json("appendix/dataset_manifest.json")
+    overlaps = load_json("outputs/cross_dataset_overlap.json")
     dataset_size_chart(profiles)
     duplicate_rate_chart(profiles)
     response_length_chart(profiles)
     preparation_signal_chart(profiles)
     structured_missingness_chart(profiles)
     capability_coverage_chart(manifest)
+    preparation_needs_chart(profiles)
+    identity_conflict_chart(profiles, overlaps, manifest)
+    contributor_coverage_chart(profiles, manifest)
     for path in sorted(OUTPUT_DIR.glob("*.png")):
         print(path.relative_to(ROOT))
 

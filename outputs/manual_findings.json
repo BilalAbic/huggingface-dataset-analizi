@@ -59,7 +59,7 @@
         {
           "severity": "high",
           "confidence": "high",
-          "evidence": "Kart 2.714 benzersiz yemekten 34.244 soru-cevap üretildiğini belirtiyor; yemek başına ortalama 12,6 kayıt düşüyor. Cevaplar sentetik üretilmiş ve satır düzeyinde kaynak veya doğrulama alanı yok.",
+          "evidence": "Kart 2.714 benzersiz yemekten 34.244 soru-cevap üretildiğini belirtiyor; yemek başına ortalama 12,6 kayıt düşüyor. Buna rağmen tekrar düşük: normalleştirilmiş cevap tekrarı %0,1, yakın-tekrar (en az %85 token örtüşmesi) %1,5 (499 satır). Yani yemek başına üretilen sorular birbirinin kopyası değil. Cevaplar yine de sentetik ve satır düzeyinde kaynak veya doğrulama alanı yok.",
           "risk": "Bir yemeğe ait hatalı bir olgu onlarca kayıtta tekrarlanarak eğitimde orantısız ağırlık kazanabilir.",
           "remediation": "Yemek kimliğine göre kümele, örneklemi dengele ve bağımsız olgu doğrulaması uygula."
         },
@@ -179,7 +179,7 @@
         {
           "severity": "high",
           "confidence": "high",
-          "evidence": "Normalleştirilmiş cevap tekrarı %68,1 (952/1.398); 446 cevap ailesi tekrar ediyor. Bu, bir atasözü için üç farklı sorunun aynı açıklamayı hedef göstermesinden kaynaklanıyor.",
+          "evidence": "Normalleştirilmiş cevap tekrarı %68,1 (952/1.398); 446 cevap ailesi tekrar ediyor ve veri seti gerçekte 446 farklı cevap içeriyor. Yakın-tekrar (en az %85 token örtüşmesi) oranı %68,0, yani tekrarlar yeniden yazılarak da gizlenmemiş. Bu, bir atasözü için üç farklı sorunun aynı açıklamayı hedef göstermesinden kaynaklanıyor.",
           "risk": "Model soruyu değil atasözünü ezberler ve soru biçimindeki değişime duyarsızlaşır.",
           "remediation": "Her soru biçimi için farklı vurguda cevap yaz veya tekrarları tek kayda indir."
         }
@@ -343,7 +343,7 @@
         {
           "severity": "critical",
           "confidence": "high",
-          "evidence": "Normalleştirilmiş cevap tekrarı %98,0 (980/1.000); yalnız 20 farklı cevap ailesi var ve en sık cevap 50 kez geçiyor. Kart bunu açıklıyor: yirmi elle yazılmış çekirdek örnek soru varyasyonlarıyla çoğaltılmış.",
+          "evidence": "Normalleştirilmiş cevap tekrarı %98,0 (980/1.000) ve veri seti gerçekte yalnız 20 farklı cevap içeriyor. Yakın-tekrar oranı da %98,0, yani kalan cevaplar da yeniden yazılmış kopyalar değil. Kart bunu açıklıyor: yirmi elle yazılmış çekirdek örnek soru varyasyonlarıyla çoğaltılmış.",
           "risk": "Veri seti {rows} satır görünse de gerçek bilgi hacmi yirmi çekirdek cevap kadar; model soru çeşitliliğini öğrenirken aynı cevabı ezberler.",
           "remediation": "Çekirdek sayısını artır veya satır sayısı yerine benzersiz cevap sayısını kartta öne çıkar."
         },
@@ -392,7 +392,7 @@
         {
           "severity": "high",
           "confidence": "high",
-          "evidence": "Depo adı Stack Overflow'u ima ediyor ancak içerik AI Stack Exchange tartışmaları. İncelenen örneklerde kod bloğu yok: 1.000 cevabın hiçbiri kod çiti içermiyor. İçerik İngilizce; Türkçe durak sözcük sayısı 300, İngilizce 105.559.",
+          "evidence": "Depo adı Stack Overflow'u ima ediyor ancak içerik AI Stack Exchange tartışmaları. İncelenen örneklerde kod bloğu yok: 1.000 cevabın hiçbiri kod çiti içermiyor. Hesaplanan dil sinyali 'english': Türkçeye özgü harf oranı sıfır, Türkçe durak sözcük sayısı 300, İngilizce 105.559.",
           "risk": "Coding yeteneği için uygun sanılıp yanlış seçilebilir; Türkçe koleksiyon kapsamına da uymuyor.",
           "remediation": "Depoyu içeriğe uygun adlandır ve kartta dilin İngilizce olduğunu belirt."
         },
@@ -994,7 +994,7 @@
         {
           "severity": "medium",
           "confidence": "high",
-          "evidence": "Normalleştirilmiş cevap tekrarı %36,4 (12/30) ve yalnız 30 satır var. İçerik İngilizce.",
+          "evidence": "Normalleştirilmiş cevap tekrarı %36,4 (12/30) ve yalnız 30 satır var; benzersiz cevap sayısı 21. Yakın-tekrar oranı %46,7, yani tam eşleşmenin gördüğünden daha fazla kopya var. Hesaplanan dil sinyali 'english'.",
           "risk": "Kimlik cevaplarının çeşitliliği düşük; Türkçe koleksiyon kapsamına dil olarak uymuyor.",
           "remediation": "Türkçe kimlik örnekleri ekle ve cevapları çeşitlendir."
         }

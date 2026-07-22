@@ -20,7 +20,8 @@
     "nonempty_thinking_messages": 67470,
     "row_level_thinking_rows": 29,
     "string_encoded_null_fields": 462,
-    "matching_user_assistant_rows": 0
+    "matching_user_assistant_rows": 0,
+    "distinct_canonical_rows": 82798
   },
   "dataset_metrics": {
     "namruni/meb-ogretmen-soru-cevap": {
@@ -36,7 +37,11 @@
       "exact_duplicate_rows": 4851
     },
     "enes1863/bilisim-hukuku-domain-dataset": {
-      "assistant_answer_duplicates.duplicate_rows": 980
+      "assistant_answer_duplicates.duplicate_rows": 980,
+      "assistant_answer_duplicates.distinct_values": 20
+    },
+    "Uunan/turkish-cuisine-qa": {
+      "assistant_answer_near_duplicates.near_duplicate_rows": 499
     }
   },
   "overlap": {
@@ -47,15 +52,28 @@
   "cross_split_duplicate_rows": 0,
   "capability_count": 7,
   "notebook": {
-    "cell_count": 22,
-    "code_cell_count": 10
+    "cell_count": 26,
+    "code_cell_count": 12
   },
   "figures": [
     "capability-coverage.png",
     "catalog-missing-fields.png",
+    "contributor-coverage.png",
     "data-preparation-signals.png",
     "dataset-row-counts.png",
     "duplicate-rates.png",
+    "identity-prompt-conflicts.png",
+    "preparation-needs.png",
     "response-lengths.png"
-  ]
+  ],
+  "near_duplicates": {
+    "threshold": 0.85,
+    "method": "token-set Jaccard, exact comparison; not hashed and not sampled",
+    "answer_rows": 11277,
+    "prompt_rows": 26475
+  },
+  "language_signal_counts": {
+    "english": 2,
+    "turkish": 43
+  }
 }

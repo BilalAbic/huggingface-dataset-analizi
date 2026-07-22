@@ -190,6 +190,10 @@ def build_notebook(project_root: Path) -> nbf.NotebookNode:
                     "time_sensitive_matches": scan.get("time_sensitive_matches", 0),
                     "answer_words_median": profile.get("assistant_word_length", {}).get("median"),
                     "answer_words_p95": profile.get("assistant_word_length", {}).get("p95"),
+                    "near_dup_answers_%": round(100 * (profile.get("assistant_answer_near_duplicates", {}).get("near_duplicate_rate") or 0), 2),
+                    "distinct_answers": profile.get("assistant_answer_duplicates", {}).get("distinct_values"),
+                    "distinct_rows": profile.get("distinct_canonical_rows"),
+                    "language_signal": profile.get("text_scan", {}).get("dominant_language_signal"),
                     "json_answers": profile.get("structured_answers", {}).get("json_parsable_answers", 0),
                     "json_like_broken": profile.get("structured_answers", {}).get("json_like_but_unparsable_answers", 0),
                     "conflicting_prompt_families": profile.get("answer_families", {}).get(
@@ -236,19 +240,56 @@ def build_notebook(project_root: Path) -> nbf.NotebookNode:
             """
             ### Tekrar yoğunluğu veri setine göre değişiyor
 
-            Aşağıdaki tablo, sohbet ve düz istem–cevap şemalarında kullanıcı
-            istemi ile hedef cevapların normalleştirilmiş ek kopya oranlarını
-            birlikte gösterir.
+            Aşağıdaki tablo üç ölçümü birlikte gösterir. İlk ikisi yalnız büyük
+            harf ve noktalama farklarını yok sayan tam eşleşmedir.
+            `near_dup_answers_%` ise bir cevabın daha önceki bir cevapla en az
+            %85 token örtüşmesi taşıdığı satırları sayar; yeniden yazılmış
+            kopyaları yakalar. `distinct_answers` sütunu veri setinin gerçekte
+            kaç farklı cevap içerdiğini verir.
             """
         ),
         code(
             """
             summary.loc[
                 summary["shape"].isin(["conversation", "instruction_pair"]),
-                ["dataset", "rows", "prompt_duplicates_%", "answer_duplicates_%"],
+                ["dataset", "rows", "distinct_answers", "prompt_duplicates_%",
+                 "answer_duplicates_%", "near_dup_answers_%"],
             ].sort_values(
-                ["prompt_duplicates_%", "answer_duplicates_%"], ascending=False
+                ["answer_duplicates_%", "near_dup_answers_%"], ascending=False
             )
+            """
+        ),
+        markdown(
+            """
+            ### Satır sayısı ile benzersiz içerik arasındaki fark
+
+            Satır sayısı bir kapasite göstergesidir, içerik hacmi değildir.
+            Aşağıdaki tablo aradaki farkın en büyük olduğu veri setlerini
+            sıralar; `distinct_answers` sütunu satır sayısının ne kadarının
+            gerçekten farklı cevaba karşılık geldiğini gösterir.
+            """
+        ),
+        code(
+            """
+            gap = summary.loc[summary["distinct_answers"].notna()].copy()
+            gap["answer_gap"] = gap["rows"] - gap["distinct_answers"]
+            gap.loc[gap["answer_gap"] > 0,
+                    ["dataset", "rows", "distinct_rows", "distinct_answers", "answer_gap"]
+                   ].sort_values("answer_gap", ascending=False).head(12)
+            """
+        ),
+        markdown(
+            """
+            ### Dil sinyali
+
+            Türkçeye özgü harflerin tüm harflere oranı ve durak sözcük sayımları
+            birlikte kaba bir dil sinyali üretir. Bu bir sınıflandırıcı değildir;
+            yalnız kapsam dışı kalan veri setlerini görünür kılar.
+            """
+        ),
+        code(
+            """
+            summary.groupby("language_signal")["dataset"].agg(["count", list])
             """
         ),
         markdown(

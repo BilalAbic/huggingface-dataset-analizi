@@ -31,7 +31,7 @@ with live HTTP evidence rather than dropped — see
 ## Verified findings
 
 - All 45 snapshots were downloaded at pinned revisions and profiled row by row
-  on 22 July 2026. Repository validation ran **721 checks, all of which passed**.
+  on 22 July 2026. Repository validation ran **1,295 checks, all of which passed**.
 - Conversation rows contain **no invalid roles** and **no prompt identical to its
   own answer**. Two assistant messages are empty, both in the same dataset.
 - **5,033 rows are exact duplicates.** 4,851 of them sit in one repository that
@@ -51,6 +51,12 @@ with live HTTP evidence rather than dropped — see
 - **3,853 time-sensitive phrase matches** were found. This is a regex match
   count, not a count of unique rows.
 - **12 of 45 datasets ship a data card with no body**, and 5 have no README at all.
+- **11,277 answers are near-duplicates** of an earlier answer, sharing at least
+  85% of their tokens. Exact matching scores these as unique. The comparison is
+  exact rather than hashed or sampled.
+- **82,798 of 87,831 rows are distinct**, and the gap between rows and distinct
+  answers is far larger in individual datasets — one contributes 1,000 rows but
+  only 20 distinct answers.
 
 Normalized duplicate rate means the number of extra copies after the first item
 in each normalized text family divided by the dataset row count. It is not a
@@ -58,15 +64,18 @@ measure of full semantic similarity.
 
 ## Visual evidence
 
-The report uses six static, reproducible visuals:
+The report uses nine static, reproducible visuals:
 
 1. dataset row counts on a logarithmic scale;
-2. normalized prompt and answer duplicate-copy rates;
+2. duplicate density across three measures, including near-duplicates;
 3. median and p95 assistant-response lengths;
 4. preparation signals such as `thinking`, time-sensitive matches, and
    string-encoded nulls;
 5. missingness across the structured datasets;
-6. capability coverage by direct, partial, and conversion-source mapping.
+6. capability coverage by direct, partial, and conversion-source mapping;
+7. preparation needs per dataset as a checklist;
+8. shared prompts between the identity datasets;
+9. capability reach per contributor.
 
 All charts are generated from the checked JSON outputs by
 [`scripts/generate_report_charts.py`](scripts/generate_report_charts.py).

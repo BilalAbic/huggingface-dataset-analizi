@@ -63,6 +63,13 @@ evaluation criteria here. They remain in the source metadata.
 Counts are matched datasets, not data volume. One dataset may appear under more
 than one capability, so the columns are not additive portfolio totals.
 
+![Capability reach by contributor](figures/contributor-coverage.png)
+
+The same mapping seen per contributor. Cells count datasets matched at direct or
+partial level; conversion sources are excluded because they are not training
+data yet, so a contributor whose only dataset is a conversion source does not
+appear. Coverage is not a measure of quality.
+
 ## Identity — completed, but the sources contradict each other
 
 Nine datasets exist to teach a model its own name, developer, purpose, and
@@ -96,6 +103,8 @@ and 66.7% in `hf/samliumay/umay_samli_identification_dataset`.
 `hf/sk75/sahin_identity` holds all 462 string-encoded `null` values in the
 collection. `hf/filiz-yalcin/identity-finetune` is a renamed copy of an upstream
 dataset and carries the collection's only two empty assistant answers.
+
+![Shared prompts between identity datasets](figures/identity-prompt-conflicts.png)
 
 **Gap.** Pick one persona. Then author safety principles, scope boundaries,
 consistent refusal behavior, and an out-of-scope evaluation set — none of which

@@ -167,6 +167,38 @@ def check_evidence(baseline: dict, registry: dict) -> None:
             f"Access block for {label} carries no failing HTTP re-verification",
         )
 
+    # Every response dataset must carry the full metric set. Without this a
+    # newly added dataset could silently skip a metric and still validate.
+    required_response_fields = (
+        "user_prompt_duplicates", "assistant_answer_duplicates",
+        "user_prompt_near_duplicates", "assistant_answer_near_duplicates",
+        "answer_families", "structured_answers", "distinct_canonical_rows",
+    )
+    for item in profiles:
+        profile = item["profile"]
+        require(
+            "distinct_canonical_rows" in profile,
+            f"{item['dataset_id']} is missing distinct_canonical_rows",
+        )
+        if profile["data_shape"] not in {"conversation", "instruction_pair"}:
+            continue
+        for field in required_response_fields:
+            require(field in profile, f"{item['dataset_id']} is missing profile field {field}")
+        for side in ("user_prompt_near_duplicates", "assistant_answer_near_duplicates"):
+            near = profile[side]
+            require(
+                near.get("threshold") is not None and near.get("method"),
+                f"{item['dataset_id']} {side} does not record its threshold and method",
+            )
+        require(
+            profile["assistant_answer_duplicates"].get("distinct_values") is not None,
+            f"{item['dataset_id']} does not record distinct answer values",
+        )
+        require(
+            profile.get("text_scan", {}).get("dominant_language_signal") is not None,
+            f"{item['dataset_id']} does not record a language signal",
+        )
+
     # Every analyzed dataset must have a reviewed qualitative entry; a computed
     # profile is evidence, not a substitute for reading the data.
     reviewed = set(manual.get("datasets", {}))
@@ -199,6 +231,41 @@ def check_evidence(baseline: dict, registry: dict) -> None:
                 actual == expected,
                 f"Unexpected {dataset_id} {dotted_path}: expected={expected}, actual={actual}",
             )
+
+    # Near-duplicate totals are baseline-locked because they depend on tie
+    # ordering inside the profiler; a silent drift here would mean the profile
+    # stopped being reproducible.
+    near_baseline = baseline["near_duplicates"]
+    actual_near = {
+        "answer_rows": sum(
+            item["profile"].get("assistant_answer_near_duplicates", {}).get("near_duplicate_rows", 0)
+            for item in profiles
+        ),
+        "prompt_rows": sum(
+            item["profile"].get("user_prompt_near_duplicates", {}).get("near_duplicate_rows", 0)
+            for item in profiles
+        ),
+    }
+    for field, value in actual_near.items():
+        require(
+            near_baseline[field] == value,
+            f"Near-duplicate {field} differs from baseline: expected={near_baseline[field]}, actual={value}",
+        )
+    for item in profiles:
+        if item["profile"]["data_shape"] not in {"conversation", "instruction_pair"}:
+            continue
+        require(
+            item["profile"]["assistant_answer_near_duplicates"]["threshold"] == near_baseline["threshold"],
+            f"{item['dataset_id']} uses a different near-duplicate threshold than the baseline",
+        )
+
+    language_counts = Counter(
+        item["profile"].get("text_scan", {}).get("dominant_language_signal") for item in profiles
+    )
+    require(
+        dict(sorted(language_counts.items())) == baseline["language_signal_counts"],
+        f"Language signal counts differ from baseline: {dict(sorted(language_counts.items()))}",
+    )
 
     overlap_baseline = baseline["overlap"]
     require(len(overlaps) == overlap_baseline["pair_count"], "Overlap pair count differs from baseline")

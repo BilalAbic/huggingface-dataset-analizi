@@ -17,7 +17,7 @@
   the same canonical identity questions with different names and developers.
 - **Two datasets could not be analyzed** and are recorded with HTTP evidence
   rather than dropped.
-- **Validation ran 721 checks and all passed.**
+- **Validation ran 1,295 checks and all passed.**
 
 **Scope date:** 22 July 2026
 **Unit of analysis:** All rows of revision-pinned dataset snapshots published on Hugging Face
@@ -108,6 +108,49 @@ the smallest identity sets to 245 words in the figure-skating identity set with
 a p95 of 552. This is a data preparation signal for context budget, example
 weighting, and target answer format, not a quality measure.
 
+### Row count is not content volume
+
+Row count measures capacity, not how much distinct material a dataset holds. The
+gap is large enough in several datasets to change a scoping decision:
+
+| Dataset | Rows | Distinct rows | Distinct answers |
+|---|---:|---:|---:|
+| `hf/sedayzc/turkish-electronics-product-comparison-recommendation` | 11,858 | 7,007 | 5,662 |
+| `hf/enes1863/bilisim-hukuku-domain-dataset` | 1,000 | 1,000 | 20 |
+| `hf/YusufSimsek/turkce-atasozleri-dataset` | 1,398 | 1,398 | 446 |
+| `hf/meldakahramann/animasyon-domain-dataset` | 1,020 | 1,020 | 420 |
+| `hf/nursimakgul/meb-soru-uretme` | 20,874 | 20,696 | 20,609 |
+| `hf/nyzmemre/biyoloji-terimleri-turkce-sa` | 1,093 | 1,093 | 857 |
+| `hf/SalihHub/trendyol-marangoz-urun-asistan-qa` | 1,211 | 1,211 | 1,028 |
+| `hf/berkcangumusisik/voleykoc-identity-tr` | 182 | 182 | 26 |
+| `hf/samliumay/umay_samli_identification_dataset` | 219 | 219 | 73 |
+| `hf/enesozdemr/benim_ilk_datasetim` | 113 | 113 | 17 |
+
+Across the collection, 5,033 of 87,831 rows are exact
+duplicates of another row, leaving 82,798 distinct rows.
+
+Exact matching understates repetition further, because it only ignores case and
+punctuation. Counting answers that share at least 85% of their tokens with an
+earlier answer finds **11,277 near-duplicate answers**. The comparison is
+exact rather than hashed or sampled: each answer is indexed under its rarest
+tokens so only plausible candidates are compared, and no pair is skipped.
+
+Two results are worth separating. In `hf/enes1863/bilisim-hukuku-domain-dataset`
+the near-duplicate rate matches the exact rate, confirming that its 1,000 rows
+really do reduce to 20 distinct answers. In
+`hf/Uunan/turkish-cuisine-qa` the near-duplicate rate is only
+1.5%, which **refutes** the
+concern that generating 12.6 questions per dish would produce repetitive
+content; at token level those questions are genuinely distinct.
+
+![Duplicate density across three measures](figures/duplicate-rates.png)
+
+![Preparation needs by dataset](figures/preparation-needs.png)
+
+The preparation matrix is a checklist, not a score. Rows are ordered by dataset
+identifier and a filled cell only records that the dataset crosses that
+threshold; the figure deliberately does not rank datasets.
+
 ### Reasoning fields, tool calls, and type integrity require separate data work
 
 | Check | Finding | Technical impact |
@@ -134,6 +177,8 @@ from the same template, and the cross-dataset overlap makes that visible: across
 30 dataset pairs there are **87 shared user prompts and zero shared assistant
 answers**. The overlap concentrates on questions such as `sen kimsin`, `adın ne`,
 `görevin ne`, and `who are you`.
+
+![Shared prompts between identity datasets](figures/identity-prompt-conflicts.png)
 
 This is the single most consequential portfolio finding for anyone combining the
 collection. Training on more than one identity dataset teaches the model to
@@ -438,4 +483,4 @@ Every number in this report is traceable to a checked JSON output:
 
 The full pipeline and its commands are documented in the
 [repository README](../README.md#reproduce-or-extend-the-analysis). Repository
-validation ran 721 checks against this scope and all passed.
+validation ran 1,295 checks against this scope and all passed.
