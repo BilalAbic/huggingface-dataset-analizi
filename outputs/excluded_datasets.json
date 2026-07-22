@@ -1,0 +1,50 @@
+{
+  "note": "Registry datasets that are enabled but cannot be analyzed. Each entry records the live HTTP evidence re-verified during the last download.",
+  "datasets": [
+    {
+      "dataset_id": "menesnas/Pharmacy_Identity_Synthetic_QA",
+      "url": "https://huggingface.co/datasets/menesnas/Pharmacy_Identity_Synthetic_QA",
+      "contributor": "Muhammet Enes Nas",
+      "contributor_source": "submission spreadsheet",
+      "status": "gated_manual",
+      "declared_on": "2026-07-22",
+      "reverified_on": "2026-07-22",
+      "evidence": "Repository metadata reports gated=\"manual\". Anonymous: GET https://datasets-server.huggingface.co/splits?dataset=menesnas/Pharmacy_Identity_Synthetic_QA -> HTTP 401. Authenticated as Hugging Face user \"bilalabic\": the same endpoint returns HTTP 404 \"not accessible with the current credentials\", and GET https://huggingface.co/datasets/menesnas/Pharmacy_Identity_Synthetic_QA/resolve/main/Pharmacy_Identity_Synthetic_QA.json returns HTTP 403 \"Access to dataset menesnas/Pharmacy_Identity_Synthetic_QA is restricted and you are not in the authorized list\". The repository exists and its data card is readable; only the data files are withheld.",
+      "reverified_checks": [
+        {
+          "url": "https://huggingface.co/api/datasets/menesnas/Pharmacy_Identity_Synthetic_QA",
+          "status": 200
+        },
+        {
+          "url": "https://datasets-server.huggingface.co/splits?dataset=menesnas/Pharmacy_Identity_Synthetic_QA",
+          "status": 404,
+          "detail": "{\"error\":\"The dataset does not exist, or is not accessible with the current credentials (private or gated). Please check the spelling of the dataset name or retry with other authentication credentials.\"}"
+        }
+      ],
+      "unblock": "The dataset owner must approve an access request for the auditing account at https://huggingface.co/datasets/menesnas/Pharmacy_Identity_Synthetic_QA, after which the audit can re-run with HF_TOKEN set."
+    },
+    {
+      "dataset_id": "uzcaliskan/magibu_dataset_drilling",
+      "url": "https://huggingface.co/datasets/uzcaliskan/magibu_dataset_drilling",
+      "contributor": "Oguz Caliskan",
+      "contributor_source": "submission spreadsheet",
+      "status": "not_found_or_private",
+      "declared_on": "2026-07-22",
+      "reverified_on": "2026-07-22",
+      "evidence": "Anonymous: GET https://huggingface.co/api/datasets/uzcaliskan/magibu_dataset_drilling -> HTTP 401 {\"error\":\"Invalid username or password.\"}. Authenticated as Hugging Face user \"bilalabic\": the same endpoint returns HTTP 404 {\"error\":\"Repository not found\"}. A valid credential turning 401 into 404 means the repository is not visible to this account at all, so it is deleted, renamed, or private to a different owner. Its existence, visibility, and row count cannot be confirmed.",
+      "reverified_checks": [
+        {
+          "url": "https://huggingface.co/api/datasets/uzcaliskan/magibu_dataset_drilling",
+          "status": 404,
+          "detail": "{\"error\":\"Repository not found\"}"
+        },
+        {
+          "url": "https://datasets-server.huggingface.co/splits?dataset=uzcaliskan/magibu_dataset_drilling",
+          "status": 404,
+          "detail": "{\"error\":\"The dataset does not exist, or is not accessible with the current credentials (private or gated). Please check the spelling of the dataset name or retry with other authentication credentials.\"}"
+        }
+      ],
+      "unblock": "The submitter must confirm the correct dataset URL, or make the repository public, or grant the auditing account access to the private repository."
+    }
+  ]
+}

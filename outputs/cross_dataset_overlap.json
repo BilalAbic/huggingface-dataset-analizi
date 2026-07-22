@@ -1,6 +1,39 @@
 [
   {
     "left": "Aysenur44/namaz-vakti-identity-tr",
+    "right": "berkcangumusisik/voleykoc-identity-tr",
+    "shared_user_prompts": 1,
+    "shared_assistant_answers": 0,
+    "prompt_examples": [
+      "ne işe yararsın"
+    ],
+    "answer_examples": []
+  },
+  {
+    "left": "Aysenur44/namaz-vakti-identity-tr",
+    "right": "gorkemergune/ayarlicazhocam_finetune",
+    "shared_user_prompts": 2,
+    "shared_assistant_answers": 0,
+    "prompt_examples": [
+      "sen kimsin",
+      "seni kim geliştirdi"
+    ],
+    "answer_examples": []
+  },
+  {
+    "left": "Aysenur44/namaz-vakti-identity-tr",
+    "right": "samliumay/umay_samli_identification_dataset",
+    "shared_user_prompts": 3,
+    "shared_assistant_answers": 0,
+    "prompt_examples": [
+      "adın ne",
+      "sen kimsin",
+      "seni kim geliştirdi"
+    ],
+    "answer_examples": []
+  },
+  {
+    "left": "Aysenur44/namaz-vakti-identity-tr",
     "right": "sk75/sahin_identity",
     "shared_user_prompts": 4,
     "shared_assistant_answers": 0,
@@ -8,6 +41,291 @@
       "adın ne",
       "ne işe yararsın",
       "sen kimsin"
+    ],
+    "answer_examples": []
+  },
+  {
+    "left": "Aysenur44/namaz-vakti-identity-tr",
+    "right": "ssilistre/semih-silistre-ai-identity",
+    "shared_user_prompts": 3,
+    "shared_assistant_answers": 0,
+    "prompt_examples": [
+      "adın ne",
+      "sen kimsin",
+      "seni kim geliştirdi"
+    ],
+    "answer_examples": []
+  },
+  {
+    "left": "YusufSimsek/llm-kisisellestirme",
+    "right": "erhanalsr/langusta-identity",
+    "shared_user_prompts": 1,
+    "shared_assistant_answers": 0,
+    "prompt_examples": [
+      "yaratıcın kim"
+    ],
+    "answer_examples": []
+  },
+  {
+    "left": "YusufSimsek/llm-kisisellestirme",
+    "right": "samliumay/umay_samli_identification_dataset",
+    "shared_user_prompts": 1,
+    "shared_assistant_answers": 0,
+    "prompt_examples": [
+      "yaratıcın kim"
+    ],
+    "answer_examples": []
+  },
+  {
+    "left": "YusufSimsek/llm-kisisellestirme",
+    "right": "sk75/sahin_identity",
+    "shared_user_prompts": 1,
+    "shared_assistant_answers": 0,
+    "prompt_examples": [
+      "yaratıcın kim"
+    ],
+    "answer_examples": []
+  },
+  {
+    "left": "YusufSimsek/llm-kisisellestirme",
+    "right": "ssilistre/semih-silistre-ai-identity",
+    "shared_user_prompts": 1,
+    "shared_assistant_answers": 0,
+    "prompt_examples": [
+      "yaratıcın kim"
+    ],
+    "answer_examples": []
+  },
+  {
+    "left": "aliFurkan123/identity",
+    "right": "berkcangumusisik/voleykoc-identity-tr",
+    "shared_user_prompts": 4,
+    "shared_assistant_answers": 0,
+    "prompt_examples": [
+      "hi who are you",
+      "what is your name",
+      "what is your purpose"
+    ],
+    "answer_examples": []
+  },
+  {
+    "left": "aliFurkan123/identity",
+    "right": "filiz-yalcin/identity-finetune",
+    "shared_user_prompts": 1,
+    "shared_assistant_answers": 0,
+    "prompt_examples": [
+      "could you introduce yourself"
+    ],
+    "answer_examples": []
+  },
+  {
+    "left": "aliFurkan123/identity",
+    "right": "gorkemergune/ayarlicazhocam_finetune",
+    "shared_user_prompts": 1,
+    "shared_assistant_answers": 0,
+    "prompt_examples": [
+      "who are you"
+    ],
+    "answer_examples": []
+  },
+  {
+    "left": "aliFurkan123/identity",
+    "right": "sk75/sahin_identity",
+    "shared_user_prompts": 4,
+    "shared_assistant_answers": 0,
+    "prompt_examples": [
+      "what is your name",
+      "what is your purpose",
+      "what model are you"
+    ],
+    "answer_examples": []
+  },
+  {
+    "left": "aliFurkan123/identity",
+    "right": "ssilistre/semih-silistre-ai-identity",
+    "shared_user_prompts": 5,
+    "shared_assistant_answers": 0,
+    "prompt_examples": [
+      "are you an ai",
+      "are you chatgpt",
+      "what model are you"
+    ],
+    "answer_examples": []
+  },
+  {
+    "left": "berkcangumusisik/voleykoc-identity-tr",
+    "right": "erhanalsr/langusta-identity",
+    "shared_user_prompts": 1,
+    "shared_assistant_answers": 0,
+    "prompt_examples": [
+      "kendini tanıtır mısın"
+    ],
+    "answer_examples": []
+  },
+  {
+    "left": "berkcangumusisik/voleykoc-identity-tr",
+    "right": "gorkemergune/ayarlicazhocam_finetune",
+    "shared_user_prompts": 1,
+    "shared_assistant_answers": 0,
+    "prompt_examples": [
+      "who are you"
+    ],
+    "answer_examples": []
+  },
+  {
+    "left": "berkcangumusisik/voleykoc-identity-tr",
+    "right": "samliumay/umay_samli_identification_dataset",
+    "shared_user_prompts": 1,
+    "shared_assistant_answers": 0,
+    "prompt_examples": [
+      "neler yapabilirsin"
+    ],
+    "answer_examples": []
+  },
+  {
+    "left": "berkcangumusisik/voleykoc-identity-tr",
+    "right": "sk75/sahin_identity",
+    "shared_user_prompts": 8,
+    "shared_assistant_answers": 0,
+    "prompt_examples": [
+      "görevin ne",
+      "ne işe yararsın",
+      "neler yapabilirsin"
+    ],
+    "answer_examples": []
+  },
+  {
+    "left": "berkcangumusisik/voleykoc-identity-tr",
+    "right": "ssilistre/semih-silistre-ai-identity",
+    "shared_user_prompts": 6,
+    "shared_assistant_answers": 0,
+    "prompt_examples": [
+      "görevin ne",
+      "introduce yourself",
+      "nasıl eğitildin"
+    ],
+    "answer_examples": []
+  },
+  {
+    "left": "erhanalsr/langusta-identity",
+    "right": "samliumay/umay_samli_identification_dataset",
+    "shared_user_prompts": 2,
+    "shared_assistant_answers": 0,
+    "prompt_examples": [
+      "temel görevin nedir",
+      "yaratıcın kim"
+    ],
+    "answer_examples": []
+  },
+  {
+    "left": "erhanalsr/langusta-identity",
+    "right": "sk75/sahin_identity",
+    "shared_user_prompts": 1,
+    "shared_assistant_answers": 0,
+    "prompt_examples": [
+      "yaratıcın kim"
+    ],
+    "answer_examples": []
+  },
+  {
+    "left": "erhanalsr/langusta-identity",
+    "right": "ssilistre/semih-silistre-ai-identity",
+    "shared_user_prompts": 1,
+    "shared_assistant_answers": 0,
+    "prompt_examples": [
+      "yaratıcın kim"
+    ],
+    "answer_examples": []
+  },
+  {
+    "left": "filiz-yalcin/identity-finetune",
+    "right": "sk75/sahin_identity",
+    "shared_user_prompts": 2,
+    "shared_assistant_answers": 0,
+    "prompt_examples": [
+      "what s your designation",
+      "what should i call you"
+    ],
+    "answer_examples": []
+  },
+  {
+    "left": "filiz-yalcin/identity-finetune",
+    "right": "ssilistre/semih-silistre-ai-identity",
+    "shared_user_prompts": 1,
+    "shared_assistant_answers": 0,
+    "prompt_examples": [
+      "are you a robot"
+    ],
+    "answer_examples": []
+  },
+  {
+    "left": "gorkemergune/ayarlicazhocam_finetune",
+    "right": "samliumay/umay_samli_identification_dataset",
+    "shared_user_prompts": 2,
+    "shared_assistant_answers": 0,
+    "prompt_examples": [
+      "sen kimsin",
+      "seni kim geliştirdi"
+    ],
+    "answer_examples": []
+  },
+  {
+    "left": "gorkemergune/ayarlicazhocam_finetune",
+    "right": "sk75/sahin_identity",
+    "shared_user_prompts": 4,
+    "shared_assistant_answers": 0,
+    "prompt_examples": [
+      "sen kimsin",
+      "seni kim geliştirdi",
+      "who are you"
+    ],
+    "answer_examples": []
+  },
+  {
+    "left": "gorkemergune/ayarlicazhocam_finetune",
+    "right": "ssilistre/semih-silistre-ai-identity",
+    "shared_user_prompts": 4,
+    "shared_assistant_answers": 0,
+    "prompt_examples": [
+      "sen kimsin",
+      "seni kim geliştirdi",
+      "who are you"
+    ],
+    "answer_examples": []
+  },
+  {
+    "left": "samliumay/umay_samli_identification_dataset",
+    "right": "sk75/sahin_identity",
+    "shared_user_prompts": 5,
+    "shared_assistant_answers": 0,
+    "prompt_examples": [
+      "adın ne",
+      "neler yapabilirsin",
+      "sen kimsin"
+    ],
+    "answer_examples": []
+  },
+  {
+    "left": "samliumay/umay_samli_identification_dataset",
+    "right": "ssilistre/semih-silistre-ai-identity",
+    "shared_user_prompts": 4,
+    "shared_assistant_answers": 0,
+    "prompt_examples": [
+      "adın ne",
+      "sen kimsin",
+      "seni kim geliştirdi"
+    ],
+    "answer_examples": []
+  },
+  {
+    "left": "sk75/sahin_identity",
+    "right": "ssilistre/semih-silistre-ai-identity",
+    "shared_user_prompts": 12,
+    "shared_assistant_answers": 0,
+    "prompt_examples": [
+      "adın ne",
+      "arkanda kim var",
+      "do you have feelings"
     ],
     "answer_examples": []
   }

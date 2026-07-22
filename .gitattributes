@@ -1,3 +1,6 @@
+# Normalize text files across Windows and Unix workstations.
+* text=auto eol=lf
+
 # Keep the generated HTML out of GitHub language statistics.
 notebook/*.html linguist-generated=true
 

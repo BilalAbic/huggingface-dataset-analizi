@@ -1,0 +1,303 @@
+{
+  "contributor_source_values": {
+    "submission spreadsheet": "Full name as written by the contributor on the assignment submission form.",
+    "hugging face account handle": "No verifiable full name was supplied; the Hugging Face account handle is recorded instead. This is an account name, not a person's legal name."
+  },
+  "datasets": [
+    {
+      "dataset_id": "aliFurkan123/cultural-questions-dataset",
+      "contributor": "Ali Furkan Ak",
+      "contributor_source": "submission spreadsheet",
+      "enabled": true
+    },
+    {
+      "dataset_id": "Aysenur44/namaz-vakti-identity-tr",
+      "contributor": "Ayşe Nur Yeşilova",
+      "contributor_source": "submission spreadsheet",
+      "enabled": true
+    },
+    {
+      "dataset_id": "Egertekin/marvel-domain-dataset",
+      "contributor": "Ege Ertekin",
+      "contributor_source": "submission spreadsheet",
+      "enabled": true
+    },
+    {
+      "dataset_id": "gururaser/ithaki-bilimkurgu-klasikleri",
+      "contributor": "Gurur Aşer",
+      "contributor_source": "submission spreadsheet",
+      "enabled": true
+    },
+    {
+      "dataset_id": "nyzmemre/biyoloji-terimleri-turkce-sa",
+      "contributor": "Mehmet Emre Öz",
+      "contributor_source": "submission spreadsheet",
+      "enabled": true
+    },
+    {
+      "dataset_id": "Mer1Alii/TR-ECommerce-CustomerSupport-Instructions",
+      "contributor": "Mert Ali Alkan",
+      "contributor_source": "submission spreadsheet",
+      "enabled": true
+    },
+    {
+      "dataset_id": "yoitsmeyusuf/felsefe_finetune",
+      "contributor": "Muhammet Yusuf Kaydın",
+      "contributor_source": "submission spreadsheet",
+      "enabled": true
+    },
+    {
+      "dataset_id": "namruni/meb-ogretmen-soru-cevap",
+      "contributor": "Mustafa Özdemir",
+      "contributor_source": "submission spreadsheet",
+      "enabled": true
+    },
+    {
+      "dataset_id": "sk75/sahin_identity",
+      "contributor": "Serhat Kılıç",
+      "contributor_source": "submission spreadsheet",
+      "enabled": true
+    },
+    {
+      "dataset_id": "aliFurkan123/identity",
+      "contributor": "Ali Furkan Ak",
+      "contributor_source": "submission spreadsheet",
+      "enabled": true
+    },
+    {
+      "dataset_id": "Aysenur44/namaz-vakti-dua-asistan-tr",
+      "contributor": "Ayşe Nur Yeşilova",
+      "contributor_source": "submission spreadsheet",
+      "enabled": true
+    },
+    {
+      "dataset_id": "berkbirkan/turkish-x-engagement-quotes",
+      "contributor": "Berk Birkan",
+      "contributor_source": "submission spreadsheet",
+      "enabled": true
+    },
+    {
+      "dataset_id": "berkbirkan/turkish-x-engagement-replies",
+      "contributor": "Berk Birkan",
+      "contributor_source": "submission spreadsheet",
+      "enabled": true
+    },
+    {
+      "dataset_id": "berkcangumusisik/voleykoc-antrenorluk-tr",
+      "contributor": "Berkcan Gümüşışık",
+      "contributor_source": "submission spreadsheet",
+      "enabled": true
+    },
+    {
+      "dataset_id": "berkcangumusisik/voleykoc-identity-tr",
+      "contributor": "Berkcan Gümüşışık",
+      "contributor_source": "submission spreadsheet",
+      "enabled": true
+    },
+    {
+      "dataset_id": "cihatyldz/lojistik-soru-cevap",
+      "contributor": "Cihat Yıldız",
+      "contributor_source": "submission spreadsheet",
+      "enabled": true
+    },
+    {
+      "dataset_id": "Endezyar/siyer_datasets",
+      "contributor": "Muhammed Bakır Kurt",
+      "contributor_source": "submission spreadsheet",
+      "enabled": true
+    },
+    {
+      "dataset_id": "enes1863/bilisim-hukuku-domain-dataset",
+      "contributor": "Enes Hakan",
+      "contributor_source": "submission spreadsheet",
+      "enabled": true
+    },
+    {
+      "dataset_id": "enesozdemr/benim_ilk_datasetim",
+      "contributor": "enesozdemr",
+      "contributor_source": "hugging face account handle",
+      "enabled": true
+    },
+    {
+      "dataset_id": "Erenyanic/seasoned-advice-dataset",
+      "contributor": "Eren Yanic",
+      "contributor_source": "submission spreadsheet",
+      "enabled": true
+    },
+    {
+      "dataset_id": "erhanalsr/langusta-identity",
+      "contributor": "Erhan Alasar",
+      "contributor_source": "submission spreadsheet",
+      "enabled": true
+    },
+    {
+      "dataset_id": "erhanalsr/langusta-kpss-reasoning",
+      "contributor": "Erhan Alasar",
+      "contributor_source": "submission spreadsheet",
+      "enabled": true
+    },
+    {
+      "dataset_id": "filiz-yalcin/identity-finetune",
+      "contributor": "Filiz Yalçin",
+      "contributor_source": "submission spreadsheet",
+      "enabled": true
+    },
+    {
+      "dataset_id": "filiz-yalcin/turkish-figure-skating-qa",
+      "contributor": "Filiz Yalçin",
+      "contributor_source": "submission spreadsheet",
+      "enabled": true
+    },
+    {
+      "dataset_id": "gmz1234/stackoverflow_ai",
+      "contributor": "gmz1234",
+      "contributor_source": "hugging face account handle",
+      "enabled": true
+    },
+    {
+      "dataset_id": "gorkemergune/ayarlicazhocam_finetune",
+      "contributor": "Görkem Ergüne",
+      "contributor_source": "submission spreadsheet",
+      "enabled": true
+    },
+    {
+      "dataset_id": "haticenurcakr/turkish-classic-books-qa",
+      "contributor": "Hatice Nur Çakır",
+      "contributor_source": "submission spreadsheet",
+      "enabled": true
+    },
+    {
+      "dataset_id": "meldakahramann/animasyon-domain-dataset",
+      "contributor": "Melda Kahraman",
+      "contributor_source": "submission spreadsheet",
+      "enabled": true
+    },
+    {
+      "dataset_id": "menesnas/Pharmacy_Identity_Synthetic_QA",
+      "contributor": "Muhammet Enes Nas",
+      "contributor_source": "submission spreadsheet",
+      "enabled": true,
+      "access_block": {
+        "status": "gated_manual",
+        "checked_on": "2026-07-22",
+        "evidence": "Repository metadata reports gated=\"manual\". Anonymous: GET https://datasets-server.huggingface.co/splits?dataset=menesnas/Pharmacy_Identity_Synthetic_QA -> HTTP 401. Authenticated as Hugging Face user \"bilalabic\": the same endpoint returns HTTP 404 \"not accessible with the current credentials\", and GET https://huggingface.co/datasets/menesnas/Pharmacy_Identity_Synthetic_QA/resolve/main/Pharmacy_Identity_Synthetic_QA.json returns HTTP 403 \"Access to dataset menesnas/Pharmacy_Identity_Synthetic_QA is restricted and you are not in the authorized list\". The repository exists and its data card is readable; only the data files are withheld.",
+        "unblock": "The dataset owner must approve an access request for the auditing account at https://huggingface.co/datasets/menesnas/Pharmacy_Identity_Synthetic_QA, after which the audit can re-run with HF_TOKEN set."
+      }
+    },
+    {
+      "dataset_id": "nursimakgul/meb-soru-uretme",
+      "contributor": "Nur Sima Akgül",
+      "contributor_source": "submission spreadsheet",
+      "enabled": true,
+      "viewer_note": "Dataset Viewer cannot build a config for this repository because meb_identity_format_temiz.jsonl stores a bare JSON array per line instead of a JSON object. The audit downloads the revision-pinned raw file instead and records a byte-size and SHA-256 completeness receipt."
+    },
+    {
+      "dataset_id": "SalihHub/trendyol-marangoz-urun-asistan-qa",
+      "contributor": "Salih Dede",
+      "contributor_source": "submission spreadsheet",
+      "enabled": true
+    },
+    {
+      "dataset_id": "samliumay/turkish_cyber_security_controls_dataset",
+      "contributor": "Umay Şamlı",
+      "contributor_source": "submission spreadsheet",
+      "enabled": true
+    },
+    {
+      "dataset_id": "samliumay/umay_samli_identification_dataset",
+      "contributor": "Umay Şamlı",
+      "contributor_source": "submission spreadsheet",
+      "enabled": true
+    },
+    {
+      "dataset_id": "sadecebirisii/turkish-llm-authority-bypass-safety-sft",
+      "contributor": "Hilal Kavas",
+      "contributor_source": "submission spreadsheet",
+      "enabled": true
+    },
+    {
+      "dataset_id": "seali/turkce-saglik-qa",
+      "contributor": "Seyit Ali Yorğun",
+      "contributor_source": "submission spreadsheet",
+      "enabled": true
+    },
+    {
+      "dataset_id": "sedayzc/trendyol-electronics-products-features-and-comments",
+      "contributor": "Seda Nur Yazıcı",
+      "contributor_source": "submission spreadsheet",
+      "enabled": true
+    },
+    {
+      "dataset_id": "sedayzc/turkish-electronics-product-comparison-recommendation",
+      "contributor": "Seda Nur Yazıcı",
+      "contributor_source": "submission spreadsheet",
+      "enabled": true
+    },
+    {
+      "dataset_id": "senemde/saglik-qa-tr",
+      "contributor": "Senem Deniz",
+      "contributor_source": "submission spreadsheet",
+      "enabled": true
+    },
+    {
+      "dataset_id": "srhskrkc/odysseia-destani-tr",
+      "contributor": "Şakir Koç",
+      "contributor_source": "submission spreadsheet",
+      "enabled": true
+    },
+    {
+      "dataset_id": "ssilistre/carnegie-dost-kazanma-tr",
+      "contributor": "Semih Silistre",
+      "contributor_source": "submission spreadsheet",
+      "enabled": true
+    },
+    {
+      "dataset_id": "ssilistre/semih-silistre-ai-identity",
+      "contributor": "Semih Silistre",
+      "contributor_source": "submission spreadsheet",
+      "enabled": true
+    },
+    {
+      "dataset_id": "Talayhan/skatepal_dataset",
+      "contributor": "Talayhan",
+      "contributor_source": "hugging face account handle",
+      "enabled": true
+    },
+    {
+      "dataset_id": "Toivo0/Turkce-istatistik-reasoning",
+      "contributor": "Umut Kıvanç Sipahioglu",
+      "contributor_source": "submission spreadsheet",
+      "enabled": true
+    },
+    {
+      "dataset_id": "Uunan/turkish-cuisine-qa",
+      "contributor": "Uunan",
+      "contributor_source": "hugging face account handle",
+      "enabled": true
+    },
+    {
+      "dataset_id": "uzcaliskan/magibu_dataset_drilling",
+      "contributor": "Oguz Caliskan",
+      "contributor_source": "submission spreadsheet",
+      "enabled": true,
+      "access_block": {
+        "status": "not_found_or_private",
+        "checked_on": "2026-07-22",
+        "evidence": "Anonymous: GET https://huggingface.co/api/datasets/uzcaliskan/magibu_dataset_drilling -> HTTP 401 {\"error\":\"Invalid username or password.\"}. Authenticated as Hugging Face user \"bilalabic\": the same endpoint returns HTTP 404 {\"error\":\"Repository not found\"}. A valid credential turning 401 into 404 means the repository is not visible to this account at all, so it is deleted, renamed, or private to a different owner. Its existence, visibility, and row count cannot be confirmed.",
+        "unblock": "The submitter must confirm the correct dataset URL, or make the repository public, or grant the auditing account access to the private repository."
+      }
+    },
+    {
+      "dataset_id": "YusufSimsek/llm-kisisellestirme",
+      "contributor": "Yusuf Şimşek",
+      "contributor_source": "submission spreadsheet",
+      "enabled": true
+    },
+    {
+      "dataset_id": "YusufSimsek/turkce-atasozleri-dataset",
+      "contributor": "Yusuf Şimşek",
+      "contributor_source": "submission spreadsheet",
+      "enabled": true
+    }
+  ]
+}

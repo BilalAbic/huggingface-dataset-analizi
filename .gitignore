@@ -4,10 +4,20 @@
 __pycache__/
 *.py[cod]
 
+# Local Hugging Face snapshots. Profiles and reviewed outputs remain tracked.
+data/
+
+# Local credentials. The Hugging Face token is read from the environment only
+# and must never be committed; this repository is public.
+.env
+.env.local
+*.token
+
 # Notebook and editor temporary files
 .ipynb_checkpoints/
 .vscode/
 .idea/
+.codex-log/
 
 # Word temporary/lock files
 ~$*.docx

@@ -1,34 +1,537 @@
 {
-  "as_of": "2026-07-20",
-  "scope": "Dokuz herkese açık Hugging Face veri setinin tam satır profili, veri kartı, şema, içerik örnekleri, kaynak ve kullanım riski incelemesi.",
+  "as_of": "2026-07-22",
+  "scope": "Kırk beş herkese açık Hugging Face veri setinin tam satır profili, veri kartı, şema, içerik örnekleri, kaynak ve kullanım riski incelemesi. Toplam 87.831 satır incelendi. Erişilemeyen iki veri seti outputs/excluded_datasets.json dosyasında kanıtlarıyla kayıtlıdır.",
+  "review_basis": "Bulgular hesaplanmış profillere, veri kartlarına ve temsilî satır incelemesine dayanır. Yapısal ve istatistiksel doğrulama yapılmıştır; her cevabın olgusal doğruluğu bir alan uzmanı tarafından doğrulanmamıştır.",
   "portfolio_findings": [
     {
-      "severity": "medium",
-      "finding": "İçsel dosya bütünlüğü genel olarak iyi, ancak anlam düzeyindeki tekrarlar yüksek olabiliyor.",
-      "evidence": "Sekiz sohbet veri setinde boş içerik, geçersiz rol veya exact satır tekrarı yok. Buna karşılık Marvel kullanıcı sorularında %75,7, felsefe sorularında %76,6 ve biyoloji cevaplarında %21,6 normalleştirilmiş tekrar var.",
-      "impact": "Aynı soru, karakter veya tanım eğitim kaybında orantısız ağırlık kazanabilir."
+      "severity": "high",
+      "finding": "Kimlik veri setleri birbirinin aynısı istemleri çelişen cevaplarla eşliyor.",
+      "evidence": "Veri setleri arası 30 çiftte toplam 87 ortak kullanıcı istemi bulundu; ortak asistan cevabı sayısı 0. Örtüşme 'sen kimsin', 'adın ne', 'görevin ne' ve 'who are you' gibi kanonik kimlik sorularında yoğunlaşıyor ve on ikiden fazla katkıcının kimlik setini kapsıyor.",
+      "impact": "Bu setler birlikte eğitilirse model aynı soruya farklı isim, farklı geliştirici ve farklı yetenek iddiaları öğrenir. Kimlik verisi birleştirilecekse tek bir persona seçilmelidir."
+    },
+    {
+      "severity": "high",
+      "finding": "Ayrı muhakeme alanı koleksiyonun baskın biçimi hâline geldi.",
+      "evidence": "67.499 asistan kaydında dolu bir thinking alanı var; bu, 175.427 toplam mesajın önemli bir bölümü. Yirmi ikiden fazla veri seti bu alanı her asistan mesajında dolduruyor.",
+      "impact": "Thinking metinleri nihai cevaptan daha düşük doğrulukta olabilir ve doğrudan eğitilirse üretimde gereksiz uzun çıktı ile özel muhakeme biçiminin ezberlenmesine yol açar. Yalnız nihai cevabı içeren türev sürümler üretilmelidir."
+    },
+    {
+      "severity": "high",
+      "finding": "Satır sayısı birçok veri setinde gerçek içerik hacmini olduğundan büyük gösteriyor.",
+      "evidence": "Koleksiyonda 5.033 birebir tekrar satır var. Ayrıca normalleştirilmiş cevap tekrarı bilişim hukuku setinde %98,0, VoleykoçAI kimlik setinde %85,7, enerji setinde %85,0, LangUsta kimlik setinde %80,0, atasözleri setinde %68,1 ve Umay Şamlı kimlik setinde %66,7.",
+      "impact": "Satır sayısına bakarak yapılan kapsam kararları yanıltıcıdır. Elektronik öneri setinde iki sürüm yan yana tutulduğu için tek başına {sedayzc_dup} birebir tekrar satır bulunuyor."
     },
     {
       "severity": "medium",
-      "finding": "Üç veri seti tüm asistan örneklerinde açık düşünme alanı yayımlıyor.",
-      "evidence": "Kültürel/genel bilgi setinde 500, e-ticaret setinde 186 ve MEB setinde 450 dolu thinking alanı bulunuyor.",
-      "impact": "Düşünme metinleri nihai yanıttan daha düşük doğrulukta olabilir; üretimde özel muhakeme biçiminin ezberlenmesine ve gereksiz uzun çıktılara yol açabilir."
+      "finding": "Veri kartı yeterliliği koleksiyon genelinde dengesiz.",
+      "evidence": "12 veri setinin kartında gövde metni yok, bunların 5 tanesinde README dosyası hiç bulunmuyor. Kaynağından söz eden set sayısı 25, sınırlamalarından söz eden set sayısı 12.",
+      "impact": "Kaynak, üretim yöntemi ve sınırlama belgelenmediğinde içeriğin doğruluğu ve yeniden dağıtım hakkı bağımsız olarak denetlenemez."
     },
     {
       "severity": "medium",
-      "finding": "Veri setleri çok yeni ve henüz sınırlı dış kullanım sinyali taşıyor.",
-      "evidence": "Tüm veri setleri 18-20 Temmuz 2026 arasında oluşturulmuş; indirme sayıları 0-19 ve beğeni sayıları 0-1 aralığında.",
-      "impact": "Karttaki kalite iddiaları bağımsız kullanıcı geri bildirimi veya yayınlanmış değerlendirmelerle henüz desteklenmiyor."
+      "finding": "Zaman hassasiyetli içerik güncel bir kaynak katmanına bağlı değil.",
+      "evidence": "Koleksiyon genelinde 3.853 zaman hassasiyetli ifade eşleşmesi bulundu. Bu bir regex eşleşme sayısıdır, benzersiz satır sayısı değildir. En yoğun setler figür paten kimlik seti, elektronik öneri seti ve MEB soru üretme setidir.",
+      "impact": "Fiyat, mevzuat, sezon ve yıl bilgisi eskidiğinde cevaplar sessizce yanlışa döner. Bu içerikler tarih damgası veya araç çağrısı ile güncel kaynağa bağlanmalıdır."
+    },
+    {
+      "severity": "medium",
+      "finding": "Etiketli araç çağrısı ve gerçek çok turlu konuşma koleksiyonda yok.",
+      "evidence": "Dolu tool_calls alanı taşıyan kayıt bulunmuyor. Konuşmalar iki veya üç mesajdan oluşuyor; sistem istemi dışında gerçek bir takip turu, düzeltme veya önceki mesaja atıf örneği yok. İstem ile cevabın aynı olduğu kayıt sayısı 0.",
+      "impact": "Tool Calling ve çok turlu Conversation yetenekleri bu koleksiyondan doğrudan eğitilemez; hedef şemalar ayrıca üretilmelidir."
+    },
+    {
+      "severity": "medium",
+      "finding": "Birden çok veri seti aynı yukarı akış kaynağından türetilmiş.",
+      "evidence": "Figür paten kimlik seti kartında alibayram/identity_finetune_magibu_q3 veri setinin adı değiştirilmiş birebir kopyası olduğunu belirtiyor; VoleykoçAI kimlik seti aynı kaynağı yapı referansı olarak kullanıyor; LangUsta KPSS seti AhmetSemih/Deepseek-mcq-reasoning-dataset veri setinden süzülmüş bir alt küme.",
+      "impact": "Türetilmiş setler bağımsız katkı gibi sayıldığında kapsam olduğundan geniş görünür ve yukarı akıştaki kusurlar birden çok sette birlikte tekrarlanır."
     }
   ],
   "datasets": {
-    "aliFurkan123/cultural-questions-dataset": {
-      "intended_use": "Türkçe genel bilgi, trivia ve adım adım gerekçeli sohbet eğitimi.",
-      "disposition": "Koşullu kullanılabilir; önce olgusal doğrulama, kaynaklandırma ve konu dengeleme gerekiyor.",
+    "Uunan/turkish-cuisine-qa": {
+      "intended_use": "Türk mutfağı yemekleri üzerine soru-cevap ve düşünce zinciri (CoT) eğitimi.",
+      "disposition": "Alan eğitimi için kullanılabilir; olgusal doğrulama ve satır düzeyinde kaynak alanı eklenmeli.",
       "strengths": [
-        "500 satırın tamamı iki turlu, içerikler dolu ve exact/normalleştirilmiş satır tekrarı yok.",
-        "Ayrıntılı veri kartı ve tutarlı Türkçe sohbet şeması var.",
-        "Kullanıcı soruları ile yanıt uzunlukları eğitim için yönetilebilir aralıkta."
+        "34.244 satırla koleksiyonun en büyük kaynağı; birebir satır tekrarı yok.",
+        "Tüm 34.244 asistan mesajında ayrı thinking alanı var; CoT eğitimi için tutarlı.",
+        "Veri kartı üretim zincirini (web scraping, Gemma ile QA, Gemini ile thinking) açıkça yazıyor."
+      ],
+      "findings": [
+        {
+          "severity": "high",
+          "confidence": "high",
+          "evidence": "Kart 2.714 benzersiz yemekten 34.244 soru-cevap üretildiğini belirtiyor; yemek başına ortalama 12,6 kayıt düşüyor. Cevaplar sentetik üretilmiş ve satır düzeyinde kaynak veya doğrulama alanı yok.",
+          "risk": "Bir yemeğe ait hatalı bir olgu onlarca kayıtta tekrarlanarak eğitimde orantısız ağırlık kazanabilir.",
+          "remediation": "Yemek kimliğine göre kümele, örneklemi dengele ve bağımsız olgu doğrulaması uygula."
+        },
+        {
+          "severity": "medium",
+          "confidence": "high",
+          "evidence": "Asistan cevaplarının medyan uzunluğu 10.0 kelime, p95 78.0 kelime; thinking metinleri nihai cevaptan ayrı alanda tutulmuş.",
+          "risk": "Thinking alanı doğrudan eğitilirse model gereksiz uzun ve özel muhakeme biçimini ezberleyebilir.",
+          "remediation": "Yalnız nihai cevabı içeren türev sürüm üret; thinking'i ayrı aşamada kullan."
+        }
+      ]
+    },
+    "nursimakgul/meb-soru-uretme": {
+      "intended_use": "MEB müfredatına göre sınıf, ders ve konu belirtilerek çoktan seçmeli veya açık uçlu soru üretimi.",
+      "disposition": "Structured Output için koleksiyondaki en güçlü kaynak; JSON sözleşmesi tamamlanmadan üretime alınmamalı.",
+      "strengths": [
+        "20.874 satırın tamamı geçerli user→assistant sırasına sahip, boş içerik yok.",
+        "17.454 asistan cevabı ayrıştırılabilir JSON nesnesi (metin, secenekler, dogru_cevap, cevap_aciklamasi).",
+        "Tüm 20.874 asistan mesajında kazanım gerekçesini açıklayan thinking alanı var."
+      ],
+      "findings": [
+        {
+          "severity": "high",
+          "confidence": "high",
+          "evidence": "Dataset Viewer bu depoyu sunamıyor: meb_identity_format_temiz.jsonl her satırda JSON nesnesi yerine çıplak JSON dizisi tutuyor, bu yüzden sütun şeması çıkarılamıyor. Analiz, revizyona sabitlenmiş ham dosyanın bayt boyutu ve SHA-256 doğrulamasıyla indirilmesiyle yapıldı.",
+          "risk": "Veri seti standart yükleyicilerle açılamıyor; kullanıcı hata yerine boş sonuç alabilir.",
+          "remediation": "Her satırı messages anahtarlı bir nesneye sar; Viewer otomatik çalışmaya başlar."
+        },
+        {
+          "severity": "high",
+          "confidence": "high",
+          "evidence": "Cevapların 17.454/20.874 tanesi JSON; kalan 3.420 kayıt JSON biçiminde değil. JSON gibi başlayıp ayrıştırılamayan kayıt sayısı 0, yani sorun bozuk JSON değil, sözleşmenin bir kısım kayıtta hiç uygulanmamış olması.",
+          "risk": "Model aynı istem ailesi için bazen JSON bazen düz metin üretmeyi öğrenir.",
+          "remediation": "Şemayı zorunlu kıl; JSON olmayan kayıtları ayrı alt kümeye taşı veya dönüştür."
+        },
+        {
+          "severity": "high",
+          "confidence": "high",
+          "evidence": "Normalleştirilmiş istem tekrarı %86,6 (18.084/20.874); en sık istem 314 kez geçiyor. Ayrıca 797 istem ailesi farklı cevaplarla eşleşiyor ve bu aileler 18.880 satırı kapsıyor.",
+          "risk": "Aynı sınıf/ders/konu isteminin farklı sorular üretmesi tasarım gereği olsa da bu ölçekte istem ayırt edici bir sinyal olmaktan çıkıyor.",
+          "remediation": "İsteme zorluk, kazanım kodu ve soru tipi gibi ayırt edici alanlar ekle."
+        },
+        {
+          "severity": "medium",
+          "confidence": "high",
+          "evidence": "Metinde 560 zaman hassasiyetli ifade eşleşmesi var. Bu bir regex eşleşme sayısıdır, benzersiz satır sayısı değildir.",
+          "risk": "Müfredat ve mevzuat değiştiğinde sorular sessizce eskir.",
+          "remediation": "Müfredat sürümü ve tarih alanı ekle."
+        }
+      ]
+    },
+    "sedayzc/turkish-electronics-product-comparison-recommendation": {
+      "intended_use": "Türkçe elektronik ürün karşılaştırma ve öneri sohbetleri için SFT.",
+      "disposition": "Olduğu gibi kullanılmamalı; sürüm ayrıştırması ve tekilleştirme yapılmadan satır sayısı yanıltıcı.",
+      "strengths": [
+        "11.858 satırla üçüncü en büyük kaynak; ürün adı, fiyat ve teknik özellik içeren somut cevaplar.",
+        "Veri kartı V1 ve V2 sürümlerini, üretim yöntemini ve fine-tuning'de hangisinin kullanıldığını açıklıyor."
+      ],
+      "findings": [
+        {
+          "severity": "critical",
+          "confidence": "high",
+          "evidence": "Depo aynı derlemenin iki sürümünü yan yana tutuyor (data/recommendation_chat_dataset.json ve _v2.json) ve Dataset Viewer bunları tek train split'inde birleştiriyor. Sonuç: 11.858 satırın 4.851 tanesi birebir tekrar; normalleştirilmiş cevap tekrarı %52,2, istem tekrarı %41,4.",
+          "risk": "Depoyu tek veri seti sayan herkes aynı konuşmaları iki kez eğitime sokar; satır sayısı gerçek içerik hacmini yaklaşık iki katı gösterir.",
+          "remediation": "V1 ve V2'yi ayrı config veya ayrı depoya taşı; kartta eğitim için tek geçerli sürümü belirt."
+        },
+        {
+          "severity": "medium",
+          "confidence": "high",
+          "evidence": "55 istem ailesi farklı cevaplarla eşleşiyor (110 satır) ve metinde 699 zaman hassasiyetli eşleşme var; bunlar ağırlıklı olarak fiyat ve model adı ifadeleri.",
+          "risk": "Fiyat ve stok bilgisi hızla eskir; aynı soruya çelişen öneriler öğretilebilir.",
+          "remediation": "Fiyatları tarih damgasıyla ver veya cevaptan çıkarıp araç çağrısına devret."
+        }
+      ]
+    },
+    "filiz-yalcin/identity-finetune": {
+      "intended_use": "Model kimliğini Filiz Yalçin personasına hizalamak.",
+      "disposition": "Türetilmiş bir kopya; özgün katkı değil, kimlik tohumu olarak değerlendirilmeli.",
+      "strengths": [
+        "1.600 satır, turkish ve english paralel bölümleriyle iki dilli kimlik kapsamı sağlıyor (turkish=800, english=800).",
+        "Tüm 1.600 asistan mesajında thinking alanı var.",
+        "Veri kartı kaynağı ve yapılan tek değişikliği açıkça belirtiyor."
+      ],
+      "findings": [
+        {
+          "severity": "high",
+          "confidence": "high",
+          "evidence": "Veri kartı, setin alibayram/identity_finetune_magibu_q3 veri setinin birebir kopyası olduğunu ve yalnız model adının Magibu Q3 yerine Filiz Yalçin yapıldığını yazıyor.",
+          "risk": "Özgün veri üretimi yok; yukarı akıştaki kusurlar doğrudan devralınıyor ve aynı kaynaktan türeyen diğer setlerle çakışıyor.",
+          "remediation": "Türetilmiş olduğunu kart başlığında belirt; özgün kimlik ve sınır örnekleriyle genişlet."
+        },
+        {
+          "severity": "high",
+          "confidence": "high",
+          "evidence": "İki asistan mesajının içeriği tamamen boş; koleksiyondaki toplam 2 boş mesajın tamamı bu sette. Boş cevaplar 'Who named you and how did they choose the name?' sorusunda ve onun Türkçe paralel satırında.",
+          "risk": "Boş hedef, modele o istem için sessiz kalmayı öğretir.",
+          "remediation": "İki satırı doldur veya çıkar; kusuru yukarı akış deposuna da bildir."
+        },
+        {
+          "severity": "medium",
+          "confidence": "high",
+          "evidence": "Metinde 1.038 zaman hassasiyetli eşleşme var; büyük kısmı 2026 yıl ifadesi.",
+          "risk": "Kimlik cevapları sabit bir yıla demirlenirse model eskimiş bir bugün algısı öğrenir.",
+          "remediation": "Yıl ve tarih ifadelerini kimlik cevaplarından çıkar."
+        }
+      ]
+    },
+    "YusufSimsek/turkce-atasozleri-dataset": {
+      "intended_use": "Türkçe atasözlerinin anlamını açıklayan soru-cevap eğitimi.",
+      "disposition": "Dil ve kültür alanı için kullanılabilir; cevap tekrarı azaltılmalı.",
+      "strengths": [
+        "1.398 satır, birebir tekrar yok, tüm mesajlar dolu.",
+        "Tüm 1.398 asistan mesajında thinking alanı var.",
+        "Kart, 466 atasözü ve her biri için üç soru biçimi tasarımını açıkça belgeliyor."
+      ],
+      "findings": [
+        {
+          "severity": "high",
+          "confidence": "high",
+          "evidence": "Normalleştirilmiş cevap tekrarı %68,1 (952/1.398); 446 cevap ailesi tekrar ediyor. Bu, bir atasözü için üç farklı sorunun aynı açıklamayı hedef göstermesinden kaynaklanıyor.",
+          "risk": "Model soruyu değil atasözünü ezberler ve soru biçimindeki değişime duyarsızlaşır.",
+          "remediation": "Her soru biçimi için farklı vurguda cevap yaz veya tekrarları tek kayda indir."
+        }
+      ]
+    },
+    "SalihHub/trendyol-marangoz-urun-asistan-qa": {
+      "intended_use": "E-ticaret ürün sorularına satıcı üslubuyla cevap veren asistan eğitimi.",
+      "disposition": "Müşteri hizmetleri davranışı için kullanılabilir; sentetik thinking alanı ayrıştırılmalı.",
+      "strengths": [
+        "1.211 satır gerçek müşteri sorusu ve gerçek satıcı cevabı içeriyor; birebir tekrar yok.",
+        "Kart, thinking alanının LLM ile üretilmiş sentetik muhakeme olduğunu ve satıcının gerçek iç sesi olmadığını açıkça yazıyor."
+      ],
+      "findings": [
+        {
+          "severity": "medium",
+          "confidence": "high",
+          "evidence": "Normalleştirilmiş cevap tekrarı %15,1 (183/1.211); en sık cevap 16 kez geçiyor. Cevaplar kısa: medyan 7 kelime, en kısa cevap 10 karakter.",
+          "risk": "Kalıplaşmış kısa satıcı cevapları modele bilgi taşımayan genel yanıtlar öğretebilir.",
+          "remediation": "Kalıp cevapları tekilleştir; bilgi taşıyan cevapları ayrı ağırlıkla kullan."
+        },
+        {
+          "severity": "medium",
+          "confidence": "high",
+          "evidence": "Asistan cevabı gerçek satıcı metni, thinking alanı ise 1.211 kayıtta sentetik üretim.",
+          "risk": "Sentetik muhakeme gerçek cevabı doğru açıklamayabilir; ikisi birlikte eğitilirse tutarsızlık öğrenilir.",
+          "remediation": "Thinking alanını örneklemle doğrula veya yalnız nihai cevapla eğit."
+        }
+      ]
+    },
+    "nyzmemre/biyoloji-terimleri-turkce-sa": {
+      "intended_use": "Türkçe biyoloji terimlerinin açıklandığı soru-cevap eğitimi.",
+      "disposition": "Alan terminolojisi için kullanılabilir; cevap ailesi tekrarı düşürülmeli.",
+      "strengths": [
+        "1.093 satırın tamamı iki mesajlı ve dolu; birebir tekrar yok.",
+        "Terim açıklamaları kısa ve tutarlı biçimde yazılmış (medyan 15 kelime)."
+      ],
+      "findings": [
+        {
+          "severity": "medium",
+          "confidence": "high",
+          "evidence": "Normalleştirilmiş cevap tekrarı %21,6 (236/1.093); 188 cevap ailesi tekrar ediyor.",
+          "risk": "Farklı sorular aynı tanıma bağlanınca o tanım eğitimde orantısız ağırlık kazanır.",
+          "remediation": "Tekrar eden tanımları tekilleştir veya soruya özgü ayrıntı ekle."
+        },
+        {
+          "severity": "medium",
+          "confidence": "high",
+          "evidence": "Veri kartı gövdesi yok; yalnız başlık düzeyinde bilgi var. Kaynak, üretim yöntemi ve sınırlama açıklaması bulunmuyor.",
+          "risk": "Terimlerin kaynağı ve doğruluğu bağımsız olarak denetlenemiyor.",
+          "remediation": "Kaynak, üretim yöntemi, kapsam ve sınırlamaları içeren bir veri kartı yaz."
+        }
+      ]
+    },
+    "meldakahramann/animasyon-domain-dataset": {
+      "intended_use": "Animasyon filmleri ve karakterleri üzerine Türkçe soru-cevap eğitimi.",
+      "disposition": "Alan sohbeti için kullanılabilir; cevap tekrarı yüksek, tekilleştirme gerekli.",
+      "strengths": [
+        "1.020 satır, birebir tekrar yok, tüm mesajlar dolu.",
+        "Tüm 1.020 asistan mesajında thinking alanı var."
+      ],
+      "findings": [
+        {
+          "severity": "high",
+          "confidence": "high",
+          "evidence": "Normalleştirilmiş cevap tekrarı %58,8 (600/1.020); 300 cevap ailesi tekrar ediyor ve en sık cevap 3 kez geçiyor.",
+          "risk": "Cevap çeşitliliği düşük; model aynı özeti farklı sorulara vermeyi öğrenir.",
+          "remediation": "Film ve karakter başına cevapları farklılaştır, tekrarları indir."
+        },
+        {
+          "severity": "medium",
+          "confidence": "high",
+          "evidence": "Veri kartı gövdesi yok; kaynak ve üretim yöntemi belgelenmemiş.",
+          "risk": "Telif ve doğruluk denetimi yapılamıyor.",
+          "remediation": "Kaynakları ve üretim yöntemini belgeleyen bir kart ekle."
+        }
+      ]
+    },
+    "ssilistre/carnegie-dost-kazanma-tr": {
+      "intended_use": "Dale Carnegie'nin ilkelerinden türetilmiş Türkçe talimat-takip ve muhakeme eğitimi.",
+      "disposition": "İletişim ve ikna alanı için kullanılabilir; telif notu doğrulanmalı.",
+      "strengths": [
+        "1.001 satır, birebir tekrar yok, cevap tekrarı %0,3 ile çok düşük.",
+        "Tüm 1.001 asistan mesajında thinking izi var.",
+        "Kart, kayıtların kitap metnini içermediğini ve sıfırdan yazıldığını açıkça belirtiyor."
+      ],
+      "findings": [
+        {
+          "severity": "medium",
+          "confidence": "medium",
+          "evidence": "Kart, kitaptan uzun birebir alıntı bulunmadığını beyan ediyor. Bu analiz yapısal kontroller yaptı; kaynak kitapla metin karşılaştırması yapılmadı.",
+          "risk": "Telif uyumu beyana dayanıyor, bağımsız olarak doğrulanmadı.",
+          "remediation": "Kaynak metinle otomatik n-gram örtüşme kontrolü çalıştır ve sonucu karta ekle."
+        },
+        {
+          "severity": "low",
+          "confidence": "high",
+          "evidence": "Metinde 154 zaman hassasiyetli eşleşme var.",
+          "risk": "İlkeler zamansız olsa da örnekler tarihe demirlenebilir.",
+          "remediation": "Tarihli örnekleri gözden geçir."
+        }
+      ]
+    },
+    "berkbirkan/turkish-x-engagement-quotes": {
+      "intended_use": "Türkçe X gönderilerine özgün yorum ekleyen kısa quote üretimi.",
+      "disposition": "Sosyal medya üslubu için kullanılabilir; istem şablonu tekrarı ve platform koşulları dikkate alınmalı.",
+      "strengths": [
+        "1.000 satır, üç bölüme ayrılmış (train=854, validation=105, test=41); birebir tekrar yok.",
+        "Kart üretim yöntemini, kategori ve niyet dağılımını, güvenlik elemesini ve kullanıcı adlarının çıkarıldığını belgeliyor.",
+        "Kart, aynı ana gönderinin yalnız tek bölümde tutulduğunu belirtiyor; ölçümler bunu doğruluyor (bölümler arası tekrar yok)."
+      ],
+      "findings": [
+        {
+          "severity": "high",
+          "confidence": "high",
+          "evidence": "Normalleştirilmiş istem tekrarı %67,7 (677/1.000) ve 229 istem ailesi farklı cevaplarla eşleşiyor (906 satır). İstemler ortak bir talimat şablonu artı gönderi metninden oluştuğu için aynı gönderi birden çok kez hedefleniyor.",
+          "risk": "Model şablonu ezberler; aynı gönderiye farklı quote'lar çelişkili hedef olarak görünebilir.",
+          "remediation": "Gönderi başına tek örnek tut veya çoklu hedefleri açıkça çeşitlilik örneği olarak etiketle."
+        },
+        {
+          "severity": "medium",
+          "confidence": "high",
+          "evidence": "Metinde 414 URL ve 141 zaman hassasiyetli eşleşme var; içerik güncel gündeme bağlı.",
+          "risk": "Gündem içeriği hızla eskir ve platform koşulları yeniden dağıtımı kısıtlayabilir.",
+          "remediation": "Kartta belirtilen X koşulları ve kişisel veri yükümlülüklerini kullanım öncesi doğrula."
+        }
+      ]
+    },
+    "berkbirkan/turkish-x-engagement-replies": {
+      "intended_use": "Türkçe X gönderilerine bağlama uygun kısa reply üretimi.",
+      "disposition": "Sosyal medya üslubu için kullanılabilir; istem şablonu tekrarı ve platform koşulları dikkate alınmalı.",
+      "strengths": [
+        "1.000 satır, üç bölüme ayrılmış (train=823, validation=126, test=51); birebir tekrar yok.",
+        "Kart üretim yöntemini, güvenlik elemesini ve kullanıcı adlarının çıkarıldığını belgeliyor."
+      ],
+      "findings": [
+        {
+          "severity": "high",
+          "confidence": "high",
+          "evidence": "Normalleştirilmiş istem tekrarı %70,1 (701/1.000) ve 212 istem ailesi farklı cevaplarla eşleşiyor (913 satır).",
+          "risk": "Model talimat şablonunu ezberler; aynı gönderiye farklı yanıtlar çelişkili hedef görünümü verir.",
+          "remediation": "Gönderi başına tek örnek tut veya çoklu hedefi çeşitlilik olarak etiketle."
+        },
+        {
+          "severity": "medium",
+          "confidence": "high",
+          "evidence": "Metinde 472 URL ve 120 zaman hassasiyetli eşleşme var.",
+          "risk": "Gündem içeriği hızla eskir; yeniden dağıtım platform koşullarına tabi.",
+          "remediation": "Kullanım öncesi X koşullarını ve kişisel veri yükümlülüklerini doğrula."
+        }
+      ]
+    },
+    "enes1863/bilisim-hukuku-domain-dataset": {
+      "intended_use": "Türkçe bilişim hukuku ve KVKK eğitimi için soru-cevap.",
+      "disposition": "Mevcut hâliyle eğitim havuzuna alınmamalı; cevap çeşitliliği kritik düzeyde düşük.",
+      "strengths": [
+        "1.000 satır, birebir tekrar yok, istem tekrarı %0,0.",
+        "Tüm 1.000 asistan mesajında thinking alanı var.",
+        "Kart kaynakları, üretim yöntemini ve hukuki danışmanlık olmadığı uyarısını belgeliyor."
+      ],
+      "findings": [
+        {
+          "severity": "critical",
+          "confidence": "high",
+          "evidence": "Normalleştirilmiş cevap tekrarı %98,0 (980/1.000); yalnız 20 farklı cevap ailesi var ve en sık cevap 50 kez geçiyor. Kart bunu açıklıyor: yirmi elle yazılmış çekirdek örnek soru varyasyonlarıyla çoğaltılmış.",
+          "risk": "Veri seti {rows} satır görünse de gerçek bilgi hacmi yirmi çekirdek cevap kadar; model soru çeşitliliğini öğrenirken aynı cevabı ezberler.",
+          "remediation": "Çekirdek sayısını artır veya satır sayısı yerine benzersiz cevap sayısını kartta öne çıkar."
+        },
+        {
+          "severity": "medium",
+          "confidence": "high",
+          "evidence": "Cevap uzunlukları çok dar bir bantta: en kısa 192, en uzun 296 karakter.",
+          "risk": "Biçimsel tekdüzelik modele sabit uzunlukta cevap üretmeyi öğretebilir.",
+          "remediation": "Cevap uzunluğu ve biçimini çeşitlendir."
+        }
+      ]
+    },
+    "Erenyanic/seasoned-advice-dataset": {
+      "intended_use": "Yemek pişirme ve gıda bilimi alanında iki dilli talimat-takip ve muhakeme eğitimi.",
+      "disposition": "Koleksiyonun en temiz kaynaklarından; paralel çeviri yapısı belgelenerek kullanılabilir.",
+      "strengths": [
+        "1.000 satır, istem ve cevap tekrarı %0,0 ve %0,0; birebir tekrar yok.",
+        "İçerik Stack Exchange üzerinden toplanmış gerçek insan sorusu ve cevabı; model üretimi değil.",
+        "Tüm 1.000 asistan mesajında muhakeme izi var; cevaplar ayrıntılı (medyan 121.0 kelime)."
+      ],
+      "findings": [
+        {
+          "severity": "medium",
+          "confidence": "high",
+          "evidence": "english ve turkish bölümleri paralel çeviri (english=500, turkish=500); kart n'inci satırın aynı konuşma olduğunu belirtiyor. Ölçüm bunu doğruluyor: bölümler arası birebir tekrar yok, çünkü metinler farklı dillerde.",
+          "risk": "Toplam satır sayısı benzersiz konuşma sayısının iki katı görünür; iki bölüm birlikte eğitilirse aynı içerik iki kez öğrenilir.",
+          "remediation": "Kapsam raporlarında 500 benzersiz konuşma olarak belirt; tek dil eğitiminde tek bölüm kullan."
+        },
+        {
+          "severity": "low",
+          "confidence": "high",
+          "evidence": "Metinde 894 URL eşleşmesi var; bunlar kaynak Stack Exchange bağlantıları.",
+          "risk": "Bağlantılar bozulabilir ve cevaplarda dış kaynağa bağımlılık yaratır.",
+          "remediation": "URL'leri ayrı bir kaynak alanına taşı."
+        }
+      ]
+    },
+    "gmz1234/stackoverflow_ai": {
+      "intended_use": "Yapay zekâ konularında İngilizce soru-cevap eğitimi.",
+      "disposition": "Türkçe kapsam dışında; ad ile içerik uyuşmuyor, kullanım öncesi yeniden adlandırılmalı.",
+      "strengths": [
+        "1.000 satır, birebir tekrar yok, istem ve cevap tekrarı %0,0 ve %0,0.",
+        "Cevaplar ayrıntılı ve teknik (medyan 237.0 kelime, en uzun 14.158 karakter)."
+      ],
+      "findings": [
+        {
+          "severity": "high",
+          "confidence": "high",
+          "evidence": "Depo adı Stack Overflow'u ima ediyor ancak içerik AI Stack Exchange tartışmaları. İncelenen örneklerde kod bloğu yok: 1.000 cevabın hiçbiri kod çiti içermiyor. İçerik İngilizce; Türkçe durak sözcük sayısı 300, İngilizce 105.559.",
+          "risk": "Coding yeteneği için uygun sanılıp yanlış seçilebilir; Türkçe koleksiyon kapsamına da uymuyor.",
+          "remediation": "Depoyu içeriğe uygun adlandır ve kartta dilin İngilizce olduğunu belirt."
+        },
+        {
+          "severity": "high",
+          "confidence": "high",
+          "evidence": "Veri kartı yok. Mesajlarda metin alanı standart content yerine context adını taşıyor.",
+          "risk": "Kaynak, lisans ve üretim yöntemi bilinmiyor; standart sohbet yükleyicileri alanı tanımaz.",
+          "remediation": "Veri kartı ekle ve alan adını content olarak standartlaştır."
+        }
+      ]
+    },
+    "samliumay/turkish_cyber_security_controls_dataset": {
+      "intended_use": "Siber güvenlik kontrolleri, kontrol seçimi ve güvenli mimari üzerine Türkçe soru-cevap.",
+      "disposition": "Alan eğitimi için kullanılabilir; koleksiyonun en temiz setlerinden biri.",
+      "strengths": [
+        "800 satır, istem ve cevap tekrarı %0,0 ve %0,0; birebir tekrar yok.",
+        "Cevaplar tutarlı uzunlukta ve ayrıntılı (medyan 69.0 kelime).",
+        "Kart NIST SP 800-53 Rev. 5 dayanağını, kapsanan konu başlıklarını ve verinin sentetik olduğunu açıkça yazıyor."
+      ],
+      "findings": [
+        {
+          "severity": "medium",
+          "confidence": "high",
+          "evidence": "İçerik tamamen sentetik; satır düzeyinde kontrol kimliği veya standart maddesine bağlantı yok. Metinde 38 zaman hassasiyetli eşleşme var.",
+          "risk": "Standart sürümleri değiştiğinde cevapların hangi maddeye dayandığı izlenemez.",
+          "remediation": "Kontrol kimliği ve standart sürümü alanı ekle."
+        }
+      ]
+    },
+    "seali/turkce-saglik-qa": {
+      "intended_use": "Türkçe genel sağlık sorularını yanıtlama ve gerektiğinde sağlık profesyoneline yönlendirme.",
+      "disposition": "Sağlık alanı için koşullu kullanılabilir; uzman doğrulaması olmadan üretime alınmamalı.",
+      "strengths": [
+        "773 satır, istem ve cevap tekrarı %0,1 ve %0,0; birebir tekrar yok.",
+        "Tüm 773 asistan mesajında thinking alanı var; cevaplar ayrıntılı (medyan 151 kelime).",
+        "Kart amacı, kapsanan konuları ve yönlendirme davranışını belgeliyor."
+      ],
+      "findings": [
+        {
+          "severity": "high",
+          "confidence": "medium",
+          "evidence": "Sağlık içeriği; bu analiz yapısal ve istatistiksel kontroller yaptı, cevapların tıbbi doğruluğu bir alan uzmanı tarafından doğrulanmadı.",
+          "risk": "Yanlış tıbbi bilgi doğrudan zarara yol açabilir.",
+          "remediation": "Klinik gözden geçirme süreci uygula; her cevaba kaynak ve sorumluluk reddi alanı ekle."
+        }
+      ]
+    },
+    "senemde/saglik-qa-tr": {
+      "intended_use": "Türkçe Wikipedia sağlık kategorilerinden türetilmiş soru-cevap eğitimi.",
+      "disposition": "Sağlık alanı için koşullu kullanılabilir; uzman doğrulaması gerekli.",
+      "strengths": [
+        "553 satır, istem ve cevap tekrarı %0,0 ve %0,5; birebir tekrar yok.",
+        "Her kayıtta system rolü var (553 system mesajı); sorumluluk reddi sistem isteminde tanımlı.",
+        "topic ve source alanları satır düzeyinde kaynak izlenebilirliği sağlıyor."
+      ],
+      "findings": [
+        {
+          "severity": "high",
+          "confidence": "medium",
+          "evidence": "İçerik Wikipedia'dan kazınıp bir dil modeliyle soru-cevaba dönüştürülmüş; cevapların tıbbi doğruluğu uzman tarafından doğrulanmadı.",
+          "risk": "Wikipedia hatası veya model dönüşüm hatası tıbbi içerikte zarara yol açabilir.",
+          "remediation": "Klinik gözden geçirme uygula ve kaynak revizyonunu satıra yaz."
+        }
+      ]
+    },
+    "yoitsmeyusuf/felsefe_finetune": {
+      "intended_use": "Öznel felsefi söylem ve tartışma üslubu eğitimi.",
+      "disposition": "Öznel söylem için kullanılabilir; olgusal kaynak olarak uygun değil.",
+      "strengths": [
+        "529 satır, birebir tekrar yok, cevap tekrarı %0,0.",
+        "Cevap uzunluğu geniş bir yelpazede (medyan 35 kelime, p95 353.6)."
+      ],
+      "findings": [
+        {
+          "severity": "high",
+          "confidence": "high",
+          "evidence": "Normalleştirilmiş istem tekrarı %76,6 (405/529); 58 istem ailesi farklı cevaplarla eşleşiyor ve bu aileler 463 satırı kapsıyor.",
+          "risk": "Aynı soru farklı ve kimi zaman çelişen felsefi görüşlerle eşleşiyor; model tutarsız hedef öğrenir.",
+          "remediation": "Aynı soruya verilen farklı görüşleri açıkça çoklu-bakış örneği olarak etiketle."
+        },
+        {
+          "severity": "medium",
+          "confidence": "high",
+          "evidence": "İçerik birinci tekil şahıs görüş bildiriyor; satır düzeyinde kaynak veya filozof atfı yok.",
+          "risk": "Öznel görüş olgusal bilgi gibi öğrenilebilir.",
+          "remediation": "Görüş ve olgu ayrımını alan düzeyinde işaretle."
+        }
+      ]
+    },
+    "filiz-yalcin/turkish-figure-skating-qa": {
+      "intended_use": "Artistik buz pateni alanında Türkçe soru-cevap eğitimi.",
+      "disposition": "Alan eğitimi için kullanılabilir; sentetik üretim payı belgelenmeli.",
+      "strengths": [
+        "526 satır, istem ve cevap tekrarı %1,9 ve %0,8; birebir tekrar yok.",
+        "Tüm 526 asistan mesajında thinking alanı var.",
+        "Kart ilk 17 satırın elle yazıldığını, kalanının DeepSeek ile üretildiğini açıkça belirtiyor."
+      ],
+      "findings": [
+        {
+          "severity": "medium",
+          "confidence": "high",
+          "evidence": "Kayıtların büyük çoğunluğu model üretimi; satır düzeyinde kaynak veya doğrulama alanı yok. Metinde 47 zaman hassasiyetli eşleşme var.",
+          "risk": "Sporcu, rekor ve kural bilgisi eskiyebilir ve sentetik hatalar fark edilmeden öğrenilebilir.",
+          "remediation": "Kural ve rekor içeren cevaplara tarih ve kaynak alanı ekle."
+        }
+      ]
+    },
+    "Endezyar/siyer_datasets": {
+      "intended_use": "Siyer (peygamber tarihi) alanında Türkçe soru-cevap eğitimi.",
+      "disposition": "Alan eğitimi için kullanılabilir; kaynak belgelenmesi gerekiyor.",
+      "strengths": [
+        "509 satır, istem ve cevap tekrarı %1,0 ve %0,4; birebir tekrar yok.",
+        "Cevaplar kısa ve doğrudan (medyan 6 kelime)."
+      ],
+      "findings": [
+        {
+          "severity": "medium",
+          "confidence": "high",
+          "evidence": "Veri kartı gövdesi yok; kaynak eser, üretim yöntemi ve mezhep/yorum çerçevesi belgelenmemiş.",
+          "risk": "Dinî içerikte kaynak ve yorum çerçevesi belirtilmezse tartışmalı bilgi tek doğru gibi öğretilebilir.",
+          "remediation": "Kaynak eserleri, üretim yöntemini ve yorum çerçevesini karta yaz."
+        },
+        {
+          "severity": "low",
+          "confidence": "high",
+          "evidence": "Cevaplar çok kısa; en kısa cevap 5 karakter.",
+          "risk": "Aşırı kısa cevaplar bağlamsız kalabilir.",
+          "remediation": "Kısa cevapları bağlamla genişlet."
+        }
+      ]
+    },
+    "aliFurkan123/cultural-questions-dataset": {
+      "intended_use": "Türkçe genel bilgi, kültür ve açıklamalı sohbet eğitimi.",
+      "disposition": "Koşullu kullanılabilir; olgusal doğrulama ve konu etiketleri gerekiyor.",
+      "strengths": [
+        "500 satırın tamamı iki mesajlı, dolu; istem ve cevap tekrarı %0,0 ve %0,0.",
+        "Tüm 500 asistan mesajında thinking alanı var.",
+        "Ayrıntılı veri kartı ve tutarlı Türkçe sohbet şeması var."
       ],
       "findings": [
         {
@@ -36,264 +539,596 @@
           "confidence": "high",
           "evidence": "500 asistan mesajının tamamında thinking alanı var; cevaplarda doğrulanabilir kaynak veya referans alanı yok.",
           "risk": "Sentetik olgusal hatalar ve gerekçe hataları birlikte öğrenilebilir.",
-          "remediation": "Bağımsız olgu kontrolü, kaynak/citation alanı ve final-answer-only türevi oluştur."
+          "remediation": "Bağımsız olgu kontrolü, kaynak alanı ve yalnız nihai cevap içeren türev üret."
         },
         {
           "severity": "medium",
           "confidence": "high",
-          "evidence": "Depo adı kültürel soruları ima ederken veri kartı ve örnekler genel bilgi/trivia kapsamını gösteriyor; kategori etiketi satır düzeyinde yok.",
-          "risk": "Kapsam yanlış anlaşılabilir ve kategori dengesi doğrulanamaz.",
-          "remediation": "Depo adını/kartını eşleştir; konu, zorluk ve kaynak alanları ekle."
-        }
-      ]
-    },
-    "Aysenur44/namaz-vakti-identity-tr": {
-      "intended_use": "NamazAsistan-v1 kimlik yanıtlarını modele öğretmek.",
-      "disposition": "Tek başına alan veri seti olarak yetersiz; yalnız küçük bir kimlik tohumu olarak kullanılabilir.",
-      "strengths": [
-        "Dört satırın tamamı geçerli system → user → assistant sırasına ve dolu içeriğe sahip.",
-        "Standart messages alanı doğrudan birçok sohbet eğitim aracına uyarlanabilir."
-      ],
-      "findings": [
-        {
-          "severity": "critical",
-          "confidence": "high",
-          "evidence": "Yalnız 4 satır var ve bunlar kimlik/yetenek soruları; namaz vakti, dua veya ibadet bilgisini ölçen içerik yok.",
-          "risk": "Alan uzmanlığı kazandırmaz; model yalnız isim ve sahiplik iddialarını ezberler.",
-          "remediation": "Doğrulanmış ibadet içeriği, konum-zaman bağlamı, güvenlik sınırları ve değerlendirme seti ekle."
-        },
-        {
-          "severity": "high",
-          "confidence": "high",
-          "evidence": "Kaynak, amaç, sınırlama ve örnek kullanım açıklaması bulunmuyor.",
-          "risk": "Hedeflenen davranış ve veri kökeni belirsiz.",
-          "remediation": "Kaynak, amaç, sınırlama ve örnek kullanım içeren tam bir veri kartı ekle."
-        },
-        {
-          "severity": "medium",
-          "confidence": "high",
-          "evidence": "Dört kullanıcı isteminin tamamı sk75/sahin_identity veri setinde de bulunuyor.",
-          "risk": "Şablon tekrarına ve kimlik davranışının aşırı ağırlık kazanmasına yol açabilir.",
-          "remediation": "Kaynak şablonu belirt; ortak istemleri tek bir şablon ailesi olarak etiketle."
-        }
-      ]
-    },
-    "Egertekin/marvel-domain-dataset": {
-      "intended_use": "Türkçe Marvel soru-cevap ve alan uyarlaması.",
-      "disposition": "Yeniden yapılandırma ve kaynak izlenebilirliği sağlanmadan model eğitimine hazır değil.",
-      "strengths": [
-        "177 satırın tamamında iki turlu geçerli konuşma ve dolu içerik var.",
-        "Wikipedia kazıma ve elle hazırlanan/çoğaltılan veri yöntemleri kartta açıklanıyor.",
-        "Uzun cevaplar alan terminolojisi ve karakter geçmişi için zengin metin sağlıyor."
-      ],
-      "findings": [
-        {
-          "severity": "high",
-          "confidence": "high",
-          "evidence": "177 kullanıcı sorusunun 134'ü normalleştirilmiş tekrar; tek bir Spider-Man sorusu 83 kez geçiyor.",
-          "risk": "Spider-Man ve birkaç genel soru eğitim sinyalini domine eder; model farklı pasajları aynı geniş soruya yanıt olarak öğrenir.",
-          "remediation": "Her paragraf için özgül soru üret; karakter/konu gruplarını dengele; yakın tekrarları azalt."
-        },
-        {
-          "severity": "high",
-          "confidence": "high",
-          "evidence": "Kaynağın Wikipedia olduğu yazıyor fakat sayfa URL'si, revizyon tarihi ve satır düzeyinde atıf alanı yok.",
-          "risk": "Yanıtların hangi kaynak sürümünden türetildiği ve güncelliği doğrulanamıyor.",
-          "remediation": "Kaynak URL'sini ve revizyon kimliğini satır düzeyinde ekle."
-        },
-        {
-          "severity": "medium",
-          "confidence": "high",
-          "evidence": "Veri kartı instruction/input/output sütunlarını anlatıyor; gerçek dosyada tek messages alanı var.",
-          "risk": "Kullanıcılar yanlış yükleme kodu veya şema varsayımı kullanabilir.",
-          "remediation": "Kartı gerçek şemayla eşleştir ve yükleme örneği ekle."
-        }
-      ]
-    },
-    "gururaser/ithaki-bilimkurgu-klasikleri": {
-      "intended_use": "İthaki Bilimkurgu Klasikleri için yapılandırılmış katalog analizi ve metin üretimi.",
-      "disposition": "Katalog ve kontrollü dönüşüm kullanımına uygun; fiyat güncelliği ile kaynak izlenebilirliği ayrıca ele alınmalı.",
-      "strengths": [
-        "103 kayıtta exact tekrar, ISBN/URL/kitap-yazar anahtar tekrarı yok; 13 haneli ISBN kontrollerinin tamamı geçerli.",
-        "Fiyat ve indirim alanlarının tamamı ayrıştırılabiliyor; hesaplanan satış fiyatları bildirilen indirimle uyumlu.",
-        "17 alanlı yapı, kaynak kitap URL'si ve güncellik uyarısı içeriyor."
-      ],
-      "findings": [
-        {
-          "severity": "high",
-          "confidence": "medium",
-          "evidence": "Veriler yayıncı sitesinden, kapak görselleri ise üçüncü taraf URL'lerinden geliyor; satır düzeyinde toplama zamanı ve görsel kaynak türü ayrı alanlarda tutulmuyor.",
-          "risk": "Kaynak değiştiğinde metin ve görsel kayıtlarının hangi sürüme dayandığı izlenemiyor.",
-          "remediation": "Toplama zamanı, kaynak türü ve görsel kaynağı alanlarını satır düzeyinde ekle."
-        },
-        {
-          "severity": "medium",
-          "confidence": "high",
-          "evidence": "Çevirmen 62, kapak tipi 96, orijinal ad 65 ve yayın tarihi 12 kayıtta boş.",
-          "risk": "Alan bazlı analiz ve filtreleme kapsaması değişir; boşlukların 'yok' mu 'toplanamadı' mı olduğu bilinmez.",
-          "remediation": "Eksik nedenini belirten durum alanı ekle ve alan açıklamalarında beklenen boşluğu tanımla."
-        },
-        {
-          "severity": "medium",
-          "confidence": "high",
-          "evidence": "Fiyatlar toplama anına ait ancak satır düzeyinde scrape tarihi yok; özetlerin üretildiği belirtiliyor fakat model/sürüm ve doğrulama yok.",
-          "risk": "Fiyat analizi hızla eskir; üretilmiş özetler kitaba uymayan ayrıntılar içerebilir.",
-          "remediation": "collected_at, currency, stock ve summary_generation metadata alanlarını ekle; özet örneklemi doğrula."
-        }
-      ]
-    },
-    "nyzmemre/biyoloji-terimleri-turkce-sa": {
-      "intended_use": "Türkçe biyoloji terim tanımı ve soru-cevap eğitimi.",
-      "disposition": "Kaynak ve üretim yöntemi belgelenip tekrar ağırlığı azaltıldıktan sonra koşullu kullanılabilir.",
-      "strengths": [
-        "1.093 satırla incelenen koleksiyondaki en geniş sohbet veri seti.",
-        "Tüm satırlarda geçerli user → assistant yapısı, dolu içerik ve sıfır exact satır tekrarı var.",
-        "Yanıtlar çoğunlukla kısa, sözlük benzeri ve alan odaklı."
-      ],
-      "findings": [
-        {
-          "severity": "high",
-          "confidence": "high",
-          "evidence": "Veri kartında yalnız otomatik şema var; kaynak, oluşturma yöntemi ve sınırlamalar açıklanmıyor.",
-          "risk": "Tanımların doğruluğu ve güncelliği denetlenemiyor.",
-          "remediation": "Her tanıma kaynak, kitap ve sürüm alanı ekle; üretim yöntemini veri kartında açıkla."
-        },
-        {
-          "severity": "medium",
-          "confidence": "high",
-          "evidence": "1.093 asistan cevabının 236'sı normalleştirilmiş tekrar (%21,6); aynı tanım farklı soru kalıplarıyla yineleniyor.",
-          "risk": "Bazı terimler eğitim sinyalinde aşırı ağırlık kazanır.",
-          "remediation": "term_id ekle; aynı tanımın varyasyonlarını tek ailede topla ve eğitim ağırlığını dengele."
-        }
-      ]
-    },
-    "Mer1Alii/TR-ECommerce-CustomerSupport-Instructions": {
-      "intended_use": "Türkçe e-ticaret müşteri desteği ve talimat izleme eğitimi.",
-      "disposition": "Dil/üslup eğitimi için güçlü bir başlangıç; gerçek işletme kullanımından önce politika, hukuk ve kişisel veri denetimi şart.",
-      "strengths": [
-        "186 satırın tamamı benzersiz, iki turlu, dolu ve tutarlı şemaya sahip.",
-        "Ayrıntılı veri kartı ve açık üretim yöntemi bulunuyor.",
-        "Kullanıcı tonu çeşitleniyor; asistan yanıtları empati ve eylem önerisini birlikte içeriyor."
-      ],
-      "findings": [
-        {
-          "severity": "high",
-          "confidence": "high",
-          "evidence": "Yanıtlar kurumsal süreç, iade, yaptırım, tüketici hakkı ve çağrı merkezi yönlendirmelerini gerçek bir platform varmış gibi bildiriyor; bir gerçek görünümlü e-posta adresi de yer alıyor.",
-          "risk": "Model var olmayan politika, garanti, iletişim kanalı veya hukuki sonuç uydurabilir.",
-          "remediation": "Politika değişkenlerini açık placeholder yap; hukuk uzmanı denetimi ve retrieval tabanlı politika kaynağı kullan; e-postayı örnek alan adına çevir."
-        },
-        {
-          "severity": "medium",
-          "confidence": "high",
-          "evidence": "186 asistan mesajının tamamında thinking alanı var; 31 zaman hassasiyeti eşleşmesi bulunuyor ve veri kartında sınırlamalar bölümü yok.",
-          "risk": "Sentetik gerekçeler ile dönemsel politika iddiaları kalıcı davranış olarak öğrenilebilir.",
-          "remediation": "Final-answer-only kopya üret; policy_version ve scenario_type alanları ekle; riskli iddiaları etiketle."
-        }
-      ]
-    },
-    "yoitsmeyusuf/felsefe_finetune": {
-      "intended_use": "Ekşi Sözlük ve Reddit kaynaklı Türkçe felsefe görüşleriyle sohbet eğitimi.",
-      "disposition": "Topluluk görüşü/üslup araştırmasına uygun olabilir; güvenilir felsefe soru-cevap kaynağı olarak uygun değil.",
-      "strengths": [
-        "529 satırın tamamında geçerli iki turlu sohbet, dolu içerik ve sıfır exact satır tekrarı var.",
-        "Yanıt uzunlukları ve üslupları geniş çeşitlilik gösteriyor; öznel söylem araştırması için değerli olabilir.",
-        "Kaynak platformlar veri kartında belirtilmiş."
-      ],
-      "findings": [
-        {
-          "severity": "high",
-          "confidence": "high",
-          "evidence": "Kullanıcı sorularının 405'i normalleştirilmiş tekrar (%76,6); aynı başlık altında çok sayıda çelişkili veya öznel topluluk yanıtı var.",
-          "risk": "Tek doğru cevap bekleyen QA eğitiminde tutarsız hedefler oluşur; çoğunluk üslubu felsefi doğruluk sanılabilir.",
-          "remediation": "Her cevabı opinion/source alanıyla işaretle; güvenilir referans cevabı ayrı tut; aynı başlığı grup bazlı böl."
-        },
-        {
-          "severity": "high",
-          "confidence": "high",
-          "evidence": "Ekşi Sözlük ve Reddit içeriği için gönderi URL'si, kaynak kimliği veya içerik kaldırma süreci belirtilmiyor.",
-          "risk": "Silinmiş içerik izlenemeyebilir ve kullanıcı gizliliği riski yönetilemeyebilir.",
-          "remediation": "Satır düzeyinde kaynak URL'si ve anonim kaynak kimliği ekle; içerik kaldırma sürecini belgele."
-        },
-        {
-          "severity": "medium",
-          "confidence": "high",
-          "evidence": "Kart 527 satır (462+65) bildirirken gerçek veri 529 satır; 6 kaba dil eşleşmesi ve çok uzun yanıtlar var (en çok 5.993 karakter).",
-          "risk": "Kaynak envanteri tam değil; moderasyon ve bağlam penceresi sorunları oluşabilir.",
-          "remediation": "İki açıklanamayan satırı uzlaştır; içerik etiketi, dil/üslup filtresi ve uzunluk sınırı ekle."
+          "evidence": "Depo adı kültürel soruları ima ederken içerik daha geniş genel bilgi kapsıyor; satır düzeyinde kategori etiketi yok.",
+          "risk": "Kapsam yanlış anlaşılabilir ve konu dengesi doğrulanamaz.",
+          "remediation": "Depo adını içerikle eşleştir; konu, zorluk ve kaynak alanları ekle."
         }
       ]
     },
     "namruni/meb-ogretmen-soru-cevap": {
-      "intended_use": "Öğretmenlerin atama, maaş, izin ve mevzuat sorularına Türkçe yanıt üretimi.",
-      "disposition": "Yüksek alan değeri taşıyor ancak idari/hukuki ve zaman hassasiyetli olduğu için kaynak bağlı değerlendirme olmadan üretim kullanımına alınmamalı.",
+      "intended_use": "MEB öğretmenlerinin özlük ve mevzuat sorularına forum üslubuyla cevap.",
+      "disposition": "Gerçek dünya bağlamı güçlü; güncellik katmanı olmadan kullanılmamalı.",
       "strengths": [
-        "450 satırın tamamı benzersiz, iki turlu, dolu ve şema bakımından tutarlı.",
-        "Kazıma, iki aşamalı hakem, 23 resmî kaynak, anonimleştirme ve sınırlamalar ayrıntılı biçimde belgelenmiş.",
-        "Regex taramasında telefon, e-posta veya TC kimlik numarası görünümü bulunmadı."
+        "450 satır, istem ve cevap tekrarı %0,0 ve %0,0; birebir tekrar yok.",
+        "Tüm 450 asistan mesajında kaynak değerlendirmesi içeren thinking alanı var.",
+        "Kart kazıma sürecini, kaynağı ve istekler arası bekleme süresini belgeliyor."
+      ],
+      "findings": [
+        {
+          "severity": "high",
+          "confidence": "high",
+          "evidence": "Metinde 297 zaman hassasiyetli ifade eşleşmesi var. Bu bir regex eşleşme sayısıdır, benzersiz satır sayısı değildir.",
+          "risk": "Mevzuat değiştiğinde cevaplar sessizce yanlışa döner ve özlük hakkı konularında somut zarara yol açabilir.",
+          "remediation": "Mevzuat maddesi, yürürlük tarihi ve güncel kaynak bağlantısı alanı ekle."
+        },
+        {
+          "severity": "medium",
+          "confidence": "high",
+          "evidence": "İçerik forum.memurlar.net üzerinden kazınmış; forum yanıtları resmî mevzuat metni değil.",
+          "risk": "Forum yorumu resmî kaynak gibi öğrenilebilir.",
+          "remediation": "Resmî mevzuat dayanağını satıra bağla."
+        }
+      ]
+    },
+    "gorkemergune/ayarlicazhocam_finetune": {
+      "intended_use": "Mühendislik, yazılım ve sınav hazırlığı alanında iki dilli asistan eğitimi.",
+      "disposition": "Mevcut hâliyle kullanılmamalı; en az bir kayıtta alan dışı kazınmış içerik var.",
+      "strengths": [
+        "429 satır ve dil etiketi taşıyan bir language sütunu var.",
+        "Tüm 429 asistan mesajında thinking alanı var."
       ],
       "findings": [
         {
           "severity": "critical",
           "confidence": "high",
-          "evidence": "297 zaman hassasiyeti eşleşmesi var; kart verinin 2025-2026 dönemine ait olduğunu ve yanıtların yalnız %41'inin resmî kaynak atıflı olduğunu söylüyor.",
-          "risk": "Başvuru takvimi, mevzuat ve uygulama değiştiğinde yanlış idari/hukuki yönlendirme üretilebilir.",
-          "remediation": "Her cevap için source_url, document_date, effective_from/to ve verified_at ekle; güncel retrieval olmadan kesin cevap verme."
+          "evidence": "Bir asistan cevabı 65.074 karakter uzunluğunda ve 'Can you recommend a good HTML project for learning?' sorusuna karşılık GitHub deposundan kazınmış, konuyla ilgisiz siyasi içerik barındırıyor. Aynı sette 4 birebir tekrar satır ve 34 çelişen istem ailesi var.",
+          "risk": "Alan dışı ve siyasi olarak hassas kazınmış içerik eğitim havuzuna girerse model bunu bir HTML öğrenme önerisi olarak üretebilir.",
+          "remediation": "Uzunluk ve alan dışılık filtresi uygula; kazınmış GitHub içeriğini kaldır veya alanla ilgili olanları elle onayla."
         },
         {
           "severity": "high",
           "confidence": "high",
-          "evidence": "Gerçek forum soruları ve resmî belge parçaları kullanılıyor; satır düzeyinde kaynak ve anonimleştirme kaydı yok.",
-          "risk": "Kaynak metne geri izleme yapılamaz ve metin içinde dolaylı kişisel bağlam kalabilir.",
-          "remediation": "Satır düzeyinde kaynak, belge tarihi ve anonimleştirme kaydı tut."
+          "evidence": "Veri kartı örnek biçim olarak instruction, input ve output alanlarını gösteriyor; gerçek şema ise messages ve language sütunları.",
+          "risk": "Kartı okuyup boru hattı yazan kullanıcı hatalı alan adlarıyla çalışır.",
+          "remediation": "Kartı gerçek şemaya göre düzelt."
         },
         {
           "severity": "medium",
           "confidence": "high",
-          "evidence": "450 asistan mesajının tamamında hakem gerekçesi thinking alanında yayımlanıyor; konu/kaynak/güncellik etiketleri satır düzeyinde yok.",
-          "risk": "Kaynak güveni ve güncellik katmanları eğitimde ayrıştırılamaz.",
-          "remediation": "thinking yerine yapılandırılmış evidence_type, official_source ve confidence alanları kullan."
+          "evidence": "Normalleştirilmiş istem tekrarı %10,7 (46/429).",
+          "risk": "Aynı istemin tekrarı eğitimde ağırlık dengesizliği yaratır.",
+          "remediation": "Tekrarları tekilleştir."
         }
       ]
     },
-    "sk75/sahin_identity": {
-      "intended_use": "Şahin adlı Türkçe/İngilizce model kimliği ve sahiplik yanıtlarını öğretmek.",
-      "disposition": "Yalnız küçük kimlik tohumu olarak kullanılabilir; şema ve tekrar sorunları giderilmeden birleştirilmemeli.",
+    "Toivo0/Turkce-istatistik-reasoning": {
+      "intended_use": "Türkçe istatistik konularında düşünce zinciri içeren soru-cevap eğitimi.",
+      "disposition": "Math ve muhakeme için kullanılabilir; sayısal doğrulama eklenmeli.",
       "strengths": [
-        "45 Türkçe ve 32 İngilizce olmak üzere 77 iki turlu örnek içeriyor.",
-        "Boş mesaj, geçersiz rol veya exact satır tekrarı yok."
+        "400 satır, istem ve cevap tekrarı %0,0 ve %0,0; birebir tekrar yok.",
+        "Tüm 400 asistan mesajında iç muhakeme izi var.",
+        "metadata sütunu modül, konu, soru tipi ve zorluk taşıyor; kart dağılımları belgeliyor."
+      ],
+      "findings": [
+        {
+          "severity": "medium",
+          "confidence": "high",
+          "evidence": "Cevaplar sayısal sonuç içerse de hesabın doğruluğunu makine ile kontrol eden bir alan yok; bu analiz aritmetik doğrulama yapmadı.",
+          "risk": "Yanlış bir hesap adımı muhakeme ile birlikte öğrenilebilir.",
+          "remediation": "final_answer ve birim alanı ekleyip yeniden hesaplama testi çalıştır."
+        }
+      ]
+    },
+    "ssilistre/semih-silistre-ai-identity": {
+      "intended_use": "Model kimliğini Semih Silistre AI personasına hizalamak.",
+      "disposition": "Kimlik eğitimi için kullanılabilir; koleksiyondaki en iyi belgelenmiş kimlik setlerinden.",
+      "strengths": [
+        "382 satır, istem tekrarı %0,0, cevap tekrarı %0,8; birebir tekrar yok.",
+        "Tüm 382 asistan mesajında thinking izi var.",
+        "Kart, modelin bilinç, duygu, hafıza ve internet erişimi iddia etmemesi gibi açık dürüstlük sınırları tanımlıyor."
+      ],
+      "findings": [
+        {
+          "severity": "medium",
+          "confidence": "high",
+          "evidence": "Kimlik istemleri diğer kimlik veri setleriyle paylaşılıyor; bu set koleksiyondaki en çok örtüşen kimlik kaynağı.",
+          "risk": "Birden çok kimlik seti birlikte eğitilirse aynı soruya farklı isim ve geliştirici öğretilir.",
+          "remediation": "Kimlik setlerini birleştirme; tek personayı seç."
+        },
+        {
+          "severity": "low",
+          "confidence": "high",
+          "evidence": "Metinde 43 zaman hassasiyetli eşleşme var.",
+          "risk": "Kimlik cevaplarının tarihe demirlenmesi eskime yaratır.",
+          "remediation": "Tarih ifadelerini kaldır."
+        }
+      ]
+    },
+    "Talayhan/skatepal_dataset": {
+      "intended_use": "Kaykay antrenörü SkatePal personası ve güvenlik sınırları olan alan eğitimi.",
+      "disposition": "Persona ve alan eğitimi için kullanılabilir.",
+      "strengths": [
+        "299 satır (turkish=174, english=125); istem ve cevap tekrarı %0,0 ve %0,0; birebir tekrar yok.",
+        "Tüm 299 asistan mesajında güvenlik ve pedagoji odaklı muhakeme izi var.",
+        "Kart persona hizalamasını ve güvenlik sınırı tasarımını açıklıyor."
+      ],
+      "findings": [
+        {
+          "severity": "medium",
+          "confidence": "high",
+          "evidence": "Mesaj listesi standart messages veya conversations yerine conversation alanında; iki dilli bölümler ayrı (turkish=174, english=125).",
+          "risk": "Standart yükleyiciler alanı tanımayıp veri setini tablo gibi okuyabilir.",
+          "remediation": "Alan adını messages olarak standartlaştır."
+        },
+        {
+          "severity": "medium",
+          "confidence": "medium",
+          "evidence": "İçerik fiziksel risk taşıyan spor tavsiyesi; bu analiz güvenlik iddialarının doğruluğunu bir alan uzmanına doğrulatmadı.",
+          "risk": "Hatalı teknik tavsiye yaralanmaya yol açabilir.",
+          "remediation": "Antrenör gözden geçirmesi uygula."
+        }
+      ]
+    },
+    "haticenurcakr/turkish-classic-books-qa": {
+      "intended_use": "Türk klasik edebiyatı üzerine soru-cevap eğitimi.",
+      "disposition": "Küçük ölçekli alan tohumu; belgelenmeden kullanılmamalı.",
+      "strengths": [
+        "220 satır, istem tekrarı %0,0, cevap tekrarı %1,8; birebir tekrar yok.",
+        "Şema sade: yalnız role ve content alanları."
       ],
       "findings": [
         {
           "severity": "high",
           "confidence": "high",
-          "evidence": "154 mesajda images, thinking ve tool_calls alanları gerçek null yerine 'null' metni olarak saklanmış; toplam 462 tip hatası var.",
-          "risk": "Şema doğrulama ve sohbet şablonları bozulabilir; model 'null' metnini içerik olarak görebilir.",
-          "remediation": "Dizeleri gerçek null değerine çevir ve şema testi ekle."
+          "evidence": "Veri kartı yok. Kaynak, üretim yöntemi, lisans ve sınırlama bilgisi bulunmuyor.",
+          "risk": "İçeriğin kökeni ve doğruluğu denetlenemiyor.",
+          "remediation": "Kaynak ve üretim yöntemini belgeleyen bir veri kartı ekle."
         },
+        {
+          "severity": "low",
+          "confidence": "high",
+          "evidence": "Cevaplar çok kısa (medyan 9.5 kelime, en kısa 26 karakter).",
+          "risk": "Kısa cevaplar edebiyat sorularında bağlam taşımayabilir.",
+          "remediation": "Cevapları eser ve bağlam bilgisiyle genişlet."
+        }
+      ]
+    },
+    "samliumay/umay_samli_identification_dataset": {
+      "intended_use": "gemma_3_umay asistanının kimliğini, yaratıcısını ve sınırlarını tanımlamak.",
+      "disposition": "Kimlik eğitimi için kullanılabilir; cevap tekrarı yüksek.",
+      "strengths": [
+        "219 satır, istem tekrarı %0,0; birebir tekrar yok.",
+        "Kart, modelin insan olmadığını ve yaratıcısı adına karar veremeyeceğini açıkça işliyor."
+      ],
+      "findings": [
         {
           "severity": "high",
           "confidence": "high",
-          "evidence": "README veya model kartı yok; 77 cevabın 50'si normalleştirilmiş tekrar (%64,9).",
-          "risk": "Kimlik/sahiplik iddiaları aşırı öğrenilir ve hedeflenen davranış yeterince açıklanmaz.",
-          "remediation": "Model kartı ekle; cevap tekrarlarını azalt veya veri setini düşük ağırlıkla karıştır."
+          "evidence": "Normalleştirilmiş cevap tekrarı %66,7 (146/219); en sık cevap 3 kez geçiyor.",
+          "risk": "Kimlik cevaplarının çeşitliliği düşük; model tek kalıbı ezberler.",
+          "remediation": "Cevap ifadelerini çeşitlendir."
         },
         {
           "severity": "medium",
           "confidence": "high",
-          "evidence": "Türkçe ve İngilizce dosyalar tek tabloda birleşiyor fakat language alanı yok; Aysenur44 veri setiyle dört ortak kullanıcı istemi var.",
-          "risk": "Dil bazlı davranış analizi zorlaşır ve ortak şablonlar aşırı ağırlık kazanabilir.",
-          "remediation": "language ve intent alanı ekle; ortak şablonları tek aile olarak etiketle."
+          "evidence": "Kart, kişinin kamuya açık mesleki geçmişi ve eğitimi hakkında soru-cevap içerdiğini belirtiyor; metinde 62 zaman hassasiyetli eşleşme var.",
+          "risk": "Kişisel biyografik bilgi eskiyebilir ve kişisel veri yükümlülüğü doğurabilir.",
+          "remediation": "Biyografik iddiaları tarihlendir ve kişinin onayını belgele."
+        }
+      ]
+    },
+    "Mer1Alii/TR-ECommerce-CustomerSupport-Instructions": {
+      "intended_use": "Türkçe e-ticaret müşteri destek talimat-takip eğitimi.",
+      "disposition": "Müşteri hizmetleri davranışı için kullanılabilir; politika içeriği doğrulanmalı.",
+      "strengths": [
+        "186 satır, istem ve cevap tekrarı %0,0 ve %0,0; birebir tekrar yok.",
+        "Tüm 186 asistan mesajında doğal paragraf biçiminde muhakeme var.",
+        "Kart 20 kategoriyi ve dağılımını belgeliyor."
+      ],
+      "findings": [
+        {
+          "severity": "medium",
+          "confidence": "high",
+          "evidence": "Cevaplar iade süresi ve kargo gibi politika ifadeleri içeriyor; metinde 31 zaman hassasiyetli eşleşme var. Politikalar satıcıya göre değişir.",
+          "risk": "Model bir mağazanın politikasını genel kural olarak öğrenebilir.",
+          "remediation": "Politika değerlerini değişken hâline getir veya araç çağrısına devret."
+        }
+      ]
+    },
+    "berkcangumusisik/voleykoc-identity-tr": {
+      "intended_use": "VoleykoçAI asistanının kimliğini, yeteneklerini ve sınırlarını öğretmek.",
+      "disposition": "Kimlik tohumu olarak kullanılabilir; cevap tekrarı çok yüksek.",
+      "strengths": [
+        "182 satır (turkish=105, english=77); istem tekrarı %0,0; birebir tekrar yok.",
+        "Her satırda ayrı bir system sütunu var (182 system mesajı olarak profillendi).",
+        "Kart yapının alibayram/identity_finetune_magibu_q3 referans alınarak kurulduğunu belirtiyor."
+      ],
+      "findings": [
+        {
+          "severity": "high",
+          "confidence": "high",
+          "evidence": "Normalleştirilmiş cevap tekrarı %85,7 (156/182); en sık cevap 7 kez geçiyor.",
+          "risk": "Kimlik cevaplarının çeşitliliği çok düşük.",
+          "remediation": "Cevapları çeşitlendir ve sınır davranışı örnekleri ekle."
+        },
+        {
+          "severity": "medium",
+          "confidence": "high",
+          "evidence": "System istemi mesaj listesinin içinde değil, ayrı bir sütunda tutuluyor.",
+          "risk": "Standart sohbet yükleyicileri system alanını atlayıp persona bağlamını kaybedebilir.",
+          "remediation": "System istemini messages listesinin ilk elemanı yap."
+        }
+      ]
+    },
+    "Egertekin/marvel-domain-dataset": {
+      "intended_use": "Marvel evreni ve çizgi roman tarihi üzerine Türkçe soru-cevap.",
+      "disposition": "Mevcut hâliyle eğitim havuzuna alınmamalı; istem çeşitliliği çok düşük.",
+      "strengths": [
+        "177 satırın tamamı geçerli user-assistant sırasına sahip.",
+        "Uzun cevaplar alan terminolojisi ve karakter tarihi açısından zengin (medyan 56 kelime).",
+        "Kart Wikipedia kazıma ve elle genişletme yöntemini açıklıyor."
+      ],
+      "findings": [
+        {
+          "severity": "high",
+          "confidence": "high",
+          "evidence": "Normalleştirilmiş istem tekrarı %75,7 (134/177); tek bir soru 83 kez tekrar ediyor ve yalnız 7 farklı istem ailesi var.",
+          "risk": "Model soru çeşitliliği öğrenemez; aynı soru eğitimde orantısız ağırlık kazanır.",
+          "remediation": "Soru üretimini çeşitlendir, tekrar kümelerini birleştir."
+        },
+        {
+          "severity": "medium",
+          "confidence": "high",
+          "evidence": "Veri kartı instruction, input ve output biçimini tarif ediyor; gerçek şema messages.",
+          "risk": "Kartı temel alan boru hattı hatalı alan adlarıyla çalışır.",
+          "remediation": "Kartı gerçek şemaya göre düzelt."
+        },
+        {
+          "severity": "medium",
+          "confidence": "high",
+          "evidence": "Kaynak sayfa URL'leri, revizyon kimlikleri ve satır düzeyinde atıf zinciri yok.",
+          "risk": "Kazınmış içeriğin doğruluğu ve telif durumu izlenemiyor.",
+          "remediation": "Kaynak URL ve revizyon alanı ekle."
+        }
+      ]
+    },
+    "berkcangumusisik/voleykoc-antrenorluk-tr": {
+      "intended_use": "Voleybol antrenörlüğü, teknik, taktik ve kondisyon üzerine Türkçe asistan eğitimi.",
+      "disposition": "Alan eğitimi için kullanılabilir; cevap tekrarı orta düzeyde.",
+      "strengths": [
+        "166 satır, istem tekrarı %0,0; birebir tekrar yok.",
+        "Her satırda system ve source alanları var; cevaplar ayrıntılı (medyan 63.0 kelime).",
+        "Kart kaynak, kapsam ve eğitilen modeli belgeliyor."
+      ],
+      "findings": [
+        {
+          "severity": "medium",
+          "confidence": "high",
+          "evidence": "Normalleştirilmiş cevap tekrarı %24,7 (41/166); metinde 66 zaman hassasiyetli eşleşme var (takım ve sezon adları).",
+          "risk": "Takım ve sezon bilgisi hızla eskir; tekrar eden cevaplar ağırlık dengesizliği yaratır.",
+          "remediation": "Sezon bilgisini tarihlendir; tekrarları azalt."
+        },
+        {
+          "severity": "medium",
+          "confidence": "high",
+          "evidence": "System istemi ayrı sütunda tutuluyor, mesaj listesinin parçası değil.",
+          "risk": "Standart yükleyiciler persona bağlamını kaybedebilir.",
+          "remediation": "System istemini messages içine taşı."
+        }
+      ]
+    },
+    "cihatyldz/lojistik-soru-cevap": {
+      "intended_use": "Lojistik ve tedarik zinciri yönetimi alanında Türkçe soru-cevap.",
+      "disposition": "Alan eğitimi için kullanılabilir; küçük ölçekli ve temiz.",
+      "strengths": [
+        "139 satır, istem ve cevap tekrarı %0,0 ve %0,0; birebir tekrar yok.",
+        "Kart amacı, yapıyı ve RAG kullanımını belgeliyor."
+      ],
+      "findings": [
+        {
+          "severity": "medium",
+          "confidence": "high",
+          "evidence": "Dataset Viewer bu depoyu denetim sırasında sunamadı: splits, size ve is-valid uçları HTTP 500 'response is not ready yet' döndü. Depo aynı gün güncellenmiş ve yeniden indeksleme tamamlanmamıştı. Analiz, revizyona sabitlenmiş Parquet dosyasının doğrudan okunmasıyla yapıldı.",
+          "risk": "Viewer'a bağımlı boru hatları bu veri setini geçici olarak boş görebilir.",
+          "remediation": "Viewer durumunu güncelleme sonrası kontrol et; tüketicilerin doğrudan dosya okuyabilmesi için kartta dosya yolunu belirt."
+        }
+      ]
+    },
+    "enesozdemr/benim_ilk_datasetim": {
+      "intended_use": "Enerji ve doğal gaz konularında iki dilli soru-cevap eğitimi.",
+      "disposition": "Küçük ölçekli deneme seti; cevap tekrarı çok yüksek.",
+      "strengths": [
+        "113 satır (english=10, turkish=103); istem tekrarı %0,0; birebir tekrar yok.",
+        "Tüm 113 asistan mesajında thinking alanı var."
+      ],
+      "findings": [
+        {
+          "severity": "high",
+          "confidence": "high",
+          "evidence": "Normalleştirilmiş cevap tekrarı %85,0 (96/113); en sık cevap 21 kez geçiyor.",
+          "risk": "Cevap çeşitliliği çok düşük; model tek kalıbı ezberler.",
+          "remediation": "Cevapları çeşitlendir ve kapsamı genişlet."
+        },
+        {
+          "severity": "medium",
+          "confidence": "high",
+          "evidence": "Veri kartı gövdesi yok; kaynak ve üretim yöntemi belgelenmemiş. Depo adı içeriği tarif etmiyor.",
+          "risk": "Kapsam ve kaynak dışarıdan anlaşılamıyor.",
+          "remediation": "Depoyu içeriğe göre adlandır ve veri kartı yaz."
+        }
+      ]
+    },
+    "gururaser/ithaki-bilimkurgu-klasikleri": {
+      "intended_use": "İthaki Bilimkurgu Klasikleri serisinin katalog kaydı; yapılandırılmış dönüşüm kaynağı.",
+      "disposition": "Sohbet verisi değil; Tool Calling ve Structured Output için dönüşüm kaynağı olarak değerli.",
+      "strengths": [
+        "103 kayıt ve 17 alanla koleksiyondaki tek gerçek katalog şeması.",
+        "ISBN, URL, başlık-yazar ve indirim tutarlılığı kontrolleri geçiyor; birebir tekrar yok.",
+        "Kart kapsamı ve lisansı belirtiyor."
+      ],
+      "findings": [
+        {
+          "severity": "medium",
+          "confidence": "high",
+          "evidence": "Eksik değerler belirli alanlarda yoğunlaşıyor: kapak_tipi 96/103, orijinal_adi 65/103, cevirmen 62/103, yayin_tarihi 12/103.",
+          "risk": "Eksik alanlar doğrudan şablona doldurulursa boş veya yanıltıcı çıktı üretir.",
+          "remediation": "Eksik değer politikası tanımla; zorunlu alanları şema düzeyinde işaretle."
+        },
+        {
+          "severity": "low",
+          "confidence": "high",
+          "evidence": "Katalog fiyat ve indirim alanları içeriyor; bunlar zamana bağlı değerler.",
+          "risk": "Fiyatlar eskir.",
+          "remediation": "Fiyat alanlarına çekim tarihi ekle."
+        }
+      ]
+    },
+    "erhanalsr/langusta-identity": {
+      "intended_use": "LangUsta asistanının kimlik cevaplarını öğretmek.",
+      "disposition": "Küçük kimlik tohumu; cevap tekrarı çok yüksek.",
+      "strengths": [
+        "100 satır (train=90, test=10); istem tekrarı %0,0; birebir tekrar yok.",
+        "Kart amacı ve kaynağı belirtiyor."
+      ],
+      "findings": [
+        {
+          "severity": "high",
+          "confidence": "high",
+          "evidence": "Normalleştirilmiş cevap tekrarı %80,0 (80/100); en sık cevap 5 kez geçiyor.",
+          "risk": "Kimlik cevaplarının çeşitliliği çok düşük; model tek cümleyi ezberler.",
+          "remediation": "Cevapları çeşitlendir; sınır ve reddetme davranışı ekle."
+        },
+        {
+          "severity": "medium",
+          "confidence": "high",
+          "evidence": "Yalnız 100 satır var ve tamamı kimlik sorusu; alan yetkinliği içermiyor.",
+          "risk": "Tek başına kullanıldığında model yalnız isim ve sahiplik iddialarını öğrenir.",
+          "remediation": "Alan verisiyle birlikte düşük ağırlıkta kullan."
+        }
+      ]
+    },
+    "sk75/sahin_identity": {
+      "intended_use": "Türkçe ve İngilizce model kimliği cevapları.",
+      "disposition": "Kimlik tohumu olarak kullanılabilir; tip hatası ve tekrar temizliği şart.",
+      "strengths": [
+        "77 satır, istem tekrarı %0,0; birebir tekrar yok.",
+        "İki dilli kimlik kapsamı sağlıyor."
+      ],
+      "findings": [
+        {
+          "severity": "high",
+          "confidence": "high",
+          "evidence": "Metin biçiminde saklanan null değeri sayısı 462; koleksiyondaki bu tür tüm hataların tamamı bu sette. images, thinking ve tool_calls alanları gerçek null yerine 'null' dizesi taşıyor.",
+          "risk": "Şema doğrulaması başarısız olur; boru hattı 'null' dizesini içerik sanabilir.",
+          "remediation": "Dize hâlindeki null değerlerini gerçek null'a çevir."
+        },
+        {
+          "severity": "high",
+          "confidence": "high",
+          "evidence": "Normalleştirilmiş cevap tekrarı %64,9 (50/77).",
+          "risk": "Kimlik cevaplarının çeşitliliği düşük.",
+          "remediation": "Cevapları çeşitlendir."
+        },
+        {
+          "severity": "medium",
+          "confidence": "high",
+          "evidence": "Veri kartı yok.",
+          "risk": "Amaç, kaynak ve sınırlamalar belgelenmemiş.",
+          "remediation": "Veri kartı ekle."
+        }
+      ]
+    },
+    "Aysenur44/namaz-vakti-dua-asistan-tr": {
+      "intended_use": "Namaz vakitleri ve dua konularında Türkçe asistan eğitimi.",
+      "disposition": "Küçük alan tohumu; kapsam genişletilmeli.",
+      "strengths": [
+        "60 satırın tamamı system, user ve assistant sırasına sahip (60 system mesajı).",
+        "İstem ve cevap tekrarı %0,0 ve %0,0; birebir tekrar yok."
+      ],
+      "findings": [
+        {
+          "severity": "high",
+          "confidence": "high",
+          "evidence": "Yalnız 60 satır var; namaz vakti hesabı gibi konum ve zamana bağlı işlevleri kapsayacak hacim yok.",
+          "risk": "Alan yetkinliği kazandırmaz.",
+          "remediation": "Kapsamı genişlet; vakit hesabını araç çağrısına devret."
+        },
+        {
+          "severity": "medium",
+          "confidence": "high",
+          "evidence": "Veri kartı gövdesi yok; mezhep ve hesaplama yöntemi çerçevesi belirtilmemiş.",
+          "risk": "Mezhebe göre değişen hükümler tek doğru gibi öğretilebilir.",
+          "remediation": "Yöntem ve mezhep çerçevesini karta yaz."
+        }
+      ]
+    },
+    "YusufSimsek/llm-kisisellestirme": {
+      "intended_use": "Model kimliğini Yusuf Şimşek personasına hizalamak.",
+      "disposition": "Küçük kimlik tohumu; belgelenmesi gerekiyor.",
+      "strengths": [
+        "46 satır, istem ve cevap tekrarı %0,0 ve %0,0; birebir tekrar yok."
+      ],
+      "findings": [
+        {
+          "severity": "medium",
+          "confidence": "high",
+          "evidence": "Veri kartı yok ve yalnız 46 satır var.",
+          "risk": "Amaç ve kapsam belgelenmemiş; tek başına kimlik eğitimi için yetersiz.",
+          "remediation": "Veri kartı ekle ve sınır davranışı örnekleriyle genişlet."
+        }
+      ]
+    },
+    "aliFurkan123/identity": {
+      "intended_use": "Qwen tabanlı modelin kimliğini Ali Furkan personasına hizalamak.",
+      "disposition": "Küçük kimlik tohumu; cevap tekrarı yüksek.",
+      "strengths": [
+        "30 satır, istem tekrarı %0,0; birebir tekrar yok.",
+        "Kart hedef persona ayrıntılarını tablo hâlinde belgeliyor."
+      ],
+      "findings": [
+        {
+          "severity": "medium",
+          "confidence": "high",
+          "evidence": "Normalleştirilmiş cevap tekrarı %36,4 (12/30) ve yalnız 30 satır var. İçerik İngilizce.",
+          "risk": "Kimlik cevaplarının çeşitliliği düşük; Türkçe koleksiyon kapsamına dil olarak uymuyor.",
+          "remediation": "Türkçe kimlik örnekleri ekle ve cevapları çeşitlendir."
+        }
+      ]
+    },
+    "sadecebirisii/turkish-llm-authority-bypass-safety-sft": {
+      "intended_use": "Yetki suistimali ve sistem komutu bypass saldırılarını tanıyıp güvenli biçimde reddetme eğitimi.",
+      "disposition": "Güvenlik hizalaması için değerli ve koleksiyonda benzersiz; ölçek çok küçük.",
+      "strengths": [
+        "29 satır, tekrar yok; altı saldırı kategorisi (C1-C6) etiketli.",
+        "Her kayıtta satır düzeyinde thinking alanı var (29 kayıt) ve cevaplar ayrıntılı (medyan 218 kelime).",
+        "Kart amacı, kategori tanımlarını ve hedeflenen davranışı ayrıntılı belgeliyor."
+      ],
+      "findings": [
+        {
+          "severity": "high",
+          "confidence": "high",
+          "evidence": "Yalnız 29 satır var ve saldırı yüzeyinin altı kategorisini kapsıyor; kategori başına ortalama beş örnek düşüyor.",
+          "risk": "Bu hacim güvenlik davranışını genellemek için yeterli değil; model ezberleyip yeni saldırı biçimlerinde başarısız olabilir.",
+          "remediation": "Kategori başına örnek sayısını artır ve tutulan bir değerlendirme kümesi ayır."
+        },
+        {
+          "severity": "medium",
+          "confidence": "high",
+          "evidence": "İstem metinleri gerçek jailbreak kalıpları içeriyor ve muhakeme cevabın içine thinking etiketleriyle gömülü.",
+          "risk": "Saldırı kalıpları filtresiz yayımlanıyor ve gömülü muhakeme nihai cevaptan ayrıştırılmamış.",
+          "remediation": "Muhakemeyi ayrı alana taşı; yayım riskini kartta belirt."
+        }
+      ]
+    },
+    "erhanalsr/langusta-kpss-reasoning": {
+      "intended_use": "KPSS sorularında Türkçe muhakeme ve çözüm eğitimi.",
+      "disposition": "Muhakeme örneği olarak kullanılabilir; ölçek çok küçük.",
+      "strengths": [
+        "21 satır (train=19, test=2); tekrar yok.",
+        "Tüm 21 asistan mesajında özgün muhakeme izi korunmuş; cevaplar uzun (medyan 200 kelime).",
+        "Kart kaynağı (AhmetSemih/Deepseek-mcq-reasoning-dataset) ve süzme ölçütünü belirtiyor."
+      ],
+      "findings": [
+        {
+          "severity": "high",
+          "confidence": "high",
+          "evidence": "Yalnız 21 satır var ve bunlar bir üst veri setinden süzülmüş alt küme.",
+          "risk": "Bu hacimle KPSS muhakemesi öğretilemez; özgün katkı süzme işleminden ibaret.",
+          "remediation": "Kapsamı genişlet veya kaynak veri setini doğrudan kullan."
+        }
+      ]
+    },
+    "srhskrkc/odysseia-destani-tr": {
+      "intended_use": "Odysseia destanı üzerine Türkçe soru-cevap.",
+      "disposition": "Gösterim ölçeğinde; eğitim için yetersiz.",
+      "strengths": [
+        "10 satır, tekrar yok, tüm mesajlar dolu.",
+        "Tüm 10 asistan mesajında thinking alanı var."
+      ],
+      "findings": [
+        {
+          "severity": "high",
+          "confidence": "high",
+          "evidence": "Yalnız 10 satır var.",
+          "risk": "Bu hacim alan yetkinliği kazandırmaz; istatistiksel ölçümler de anlamlı değil.",
+          "remediation": "Kapsamı genişlet veya gösterim amaçlı olduğunu kartta belirt."
+        },
+        {
+          "severity": "medium",
+          "confidence": "high",
+          "evidence": "Veri kartı gövdesi yok.",
+          "risk": "Kaynak ve amaç belgelenmemiş.",
+          "remediation": "Veri kartı ekle."
+        }
+      ]
+    },
+    "Aysenur44/namaz-vakti-identity-tr": {
+      "intended_use": "NamazAsistan-v1 kimlik cevaplarını öğretmek.",
+      "disposition": "Yalnız küçük bir kimlik tohumu; alan yetkinliği sağlamıyor.",
+      "strengths": [
+        "4 satırın tamamı geçerli system, user, assistant sırasına ve dolu içeriğe sahip.",
+        "Standart messages alanı doğrudan sohbet eğitim araçlarına uyarlanabilir."
+      ],
+      "findings": [
+        {
+          "severity": "critical",
+          "confidence": "high",
+          "evidence": "Yalnız 4 satır var ve tamamı kimlik ile yetenek sorusu; namaz vakti, dua veya ibadet bilgisi ölçen içerik yok.",
+          "risk": "Alan uzmanlığı kazandırmaz; model yalnız isim ve sahiplik iddialarını ezberler.",
+          "remediation": "Doğrulanmış ibadet içeriği, konum-zaman bağlamı ve güvenlik sınırları ekle."
+        },
+        {
+          "severity": "high",
+          "confidence": "high",
+          "evidence": "Veri kartı gövdesi yok; kaynak, amaç ve sınırlama açıklaması bulunmuyor.",
+          "risk": "Hedeflenen davranış ve veri kökeni belirsiz.",
+          "remediation": "Tam bir veri kartı ekle."
+        },
+        {
+          "severity": "medium",
+          "confidence": "high",
+          "evidence": "Dört kullanıcı isteminin tamamı diğer kimlik veri setlerinde de bulunuyor.",
+          "risk": "Kimlik setleri birleştirilirse aynı soru çelişen cevaplarla eşleşir.",
+          "remediation": "Kimlik setlerini birleştirme; tek personayı seç."
+        }
+      ]
+    },
+    "sedayzc/trendyol-electronics-products-features-and-comments": {
+      "intended_use": "Trendyol elektronik ürünlerinin özellik ve yorum kayıtları; yapılandırılmış dönüşüm kaynağı.",
+      "disposition": "Sohbet verisi değil; ürün karşılaştırma ve Tool Calling için dönüşüm kaynağı.",
+      "strengths": [
+        "500 kayıt ve 13 sütunla koleksiyondaki iki yapılandırılmış kaynaktan biri.",
+        "Kayıtlar iç içe yapılar taşıyor: categories listesi, attributes sözlüğü ve reviews listesi.",
+        "Birebir tekrar yok."
+      ],
+      "findings": [
+        {
+          "severity": "high",
+          "confidence": "high",
+          "evidence": "Veri kartı yok. Kazıma tarihi, kapsam ölçütü ve lisans belirtilmemiş; metinde 398 zaman hassasiyetli eşleşme var.",
+          "risk": "Fiyat, puan ve yorum sayısı kazıma anına aittir ve hızla eskir; kaynağın kullanım koşulları belgelenmemiş.",
+          "remediation": "Kazıma tarihi, kapsam ve lisans bilgisini içeren bir veri kartı ekle."
+        },
+        {
+          "severity": "medium",
+          "confidence": "high",
+          "evidence": "Eksik değerler alanlara dağılmış: comment_count 137/500, review_page_count 137/500.",
+          "risk": "Eksik alanlar dönüşüm şablonlarında boş metin üretir.",
+          "remediation": "Eksik değer politikası tanımla; zorunlu alanları işaretle."
+        },
+        {
+          "severity": "medium",
+          "confidence": "high",
+          "evidence": "Sayısal görünen alanlar (fiyat, puan, yorum sayısı) dize olarak saklanmış; favorite_count alanı yer yer 'Favori Sayısı Bulunamadı' metnini taşıyor.",
+          "risk": "Sayısal işlem yapan boru hattı bu alanlarda hata verir veya sessizce yanlış sonuç üretir.",
+          "remediation": "Sayısal alanları tiplendirip eksik değerleri gerçek null yap."
         }
       ]
     }
-  },
-  "recommended_tests": [
-    "Konuşma alanı, rol sırası, boş içerik ve gerçek null tipleri için şema testi çalıştır.",
-    "Exact satır, normalleştirilmiş istem ve normalleştirilmiş cevap tekrar oranlarını raporla.",
-    "E-posta, telefon, kimlik numarası, URL ve gerçek kişi/kurum adları için kişisel veri taraması yap.",
-    "Zaman hassasiyetli iddialarda source_url, verified_at ve geçerlilik aralığını zorunlu tut.",
-    "Sentetik olgusal veride örneklem tabanlı bağımsız doğruluk denetimi ve kaynak kapsama oranı ölç.",
-    "Düşünme alanını nihai yanıttan ayrı sürümle; üretim eğitiminde varsayılan olarak dışarıda bırak."
-  ]
+  }
 }

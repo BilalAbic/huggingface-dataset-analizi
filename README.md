@@ -1,11 +1,18 @@
 # Turkish Hugging Face Datasets: Quality and Capability Analysis
 
 This public repository contains quality profiles and model-capability mappings
-for nine Turkish or Turkish-focused Hugging Face datasets. The fixed analysis
-scope contains **3,119 rows**: 3,016 conversation rows and 103 catalog rows.
+for Turkish or Turkish-focused Hugging Face datasets contributed by course
+participants. The current verified scope contains **45 datasets and 87,831
+rows**: 87,228 conversation rows, 500 product-table rows, and 103 catalog rows.
 
-The collection is evaluated for Identity, Tool Calling, Conversation,
-Instruction Following, Structured Output, Math, and Coding.
+The collection is assessed for Identity, Tool Calling, Conversation,
+Instruction Following, Structured Output, Math, and Coding. The assessment
+describes task fitness, strengths, limitations, and preparation needs; it does
+not assign scores or rank positions.
+
+Two further datasets are in scope but could not be analyzed. They are recorded
+with live HTTP evidence rather than dropped — see
+[Datasets that could not be analyzed](#datasets-that-could-not-be-analyzed).
 
 ## Reports and analysis
 
@@ -19,21 +26,31 @@ Instruction Following, Structured Output, Math, and Coding.
 | Chart definitions and provenance | Markdown | [Open the chart guide](reports/figures/README.md) |
 | Row-level capability mapping | CSV | [Open the mapping table](appendix/capability_mapping.csv) |
 | Machine-readable capability manifest | JSON | [Open the manifest](appendix/dataset_manifest.json) |
+| Recorded access blocks | JSON | [Open the exclusion record](outputs/excluded_datasets.json) |
 
 ## Verified findings
 
-- All nine local raw snapshots were reprofiled on 21 July 2026. The regenerated
-  profile and overlap JSON files were byte-identical to the existing outputs.
-- An independent audit ran 68 checks against the raw rows; all 68 passed.
-- Conversation rows contain no empty message content, invalid roles, or exact
-  duplicate rows.
-- No labeled tool-calling chain or true multi-turn conversation is present.
-- 1,136 assistant messages contain a separate `thinking` field.
-- The Şahin identity dataset contains 462 string-encoded null fields.
-- Normalized duplicate-copy concentration is highest in Marvel and philosophy
-  prompts, biology answers, and Şahin identity answers.
-- The MEB dataset contains 297 time-sensitive regex matches. This is a match
+- All 45 snapshots were downloaded at pinned revisions and profiled row by row
+  on 22 July 2026. Repository validation ran **721 checks, all of which passed**.
+- Conversation rows contain **no invalid roles** and **no prompt identical to its
+  own answer**. Two assistant messages are empty, both in the same dataset.
+- **5,033 rows are exact duplicates.** 4,851 of them sit in one repository that
+  stores two versions of the same corpus side by side, which the Dataset Viewer
+  serves as a single split.
+- **67,470 assistant messages carry a separate `thinking` field**, plus 29 rows
+  that carry it as a row-level column. Explicit reasoning is now the dominant
+  form in this collection, not the exception.
+- **17,454 assistant answers are schema-bound JSON objects**, all in one dataset.
+  This is the collection's first direct Structured Output source.
+- **No populated `tool_calls` field exists anywhere**, and no true multi-turn
+  conversation is present.
+- Identity datasets from twelve or more contributors share the same canonical
+  prompts. Across **30 dataset pairs there are 87 shared user prompts and zero
+  shared assistant answers** — the same question, different answers.
+- The Şahin identity dataset contains 462 string-encoded `null` fields.
+- **3,853 time-sensitive phrase matches** were found. This is a regex match
   count, not a count of unique rows.
+- **12 of 45 datasets ship a data card with no body**, and 5 have no README at all.
 
 Normalized duplicate rate means the number of extra copies after the first item
 in each normalized text family divided by the dataset row count. It is not a
@@ -43,12 +60,12 @@ measure of full semantic similarity.
 
 The report uses six static, reproducible visuals:
 
-1. dataset row counts;
+1. dataset row counts on a logarithmic scale;
 2. normalized prompt and answer duplicate-copy rates;
 3. median and p95 assistant-response lengths;
 4. preparation signals such as `thinking`, time-sensitive matches, and
    string-encoded nulls;
-5. missingness in the structured catalog;
+5. missingness across the structured datasets;
 6. capability coverage by direct, partial, and conversion-source mapping.
 
 All charts are generated from the checked JSON outputs by
@@ -56,67 +73,147 @@ All charts are generated from the checked JSON outputs by
 
 ## Datasets
 
-| Contributor | Dataset | Rows |
-|---|---|---:|
-| Ali Furkan Ak | [aliFurkan123/cultural-questions-dataset](https://huggingface.co/datasets/aliFurkan123/cultural-questions-dataset) | 500 |
-| Ayşe Nur Yeşilova | [Aysenur44/namaz-vakti-identity-tr](https://huggingface.co/datasets/Aysenur44/namaz-vakti-identity-tr) | 4 |
-| Ege Ertekin | [Egertekin/marvel-domain-dataset](https://huggingface.co/datasets/Egertekin/marvel-domain-dataset) | 177 |
-| Gurur Aşer | [gururaser/ithaki-bilimkurgu-klasikleri](https://huggingface.co/datasets/gururaser/ithaki-bilimkurgu-klasikleri) | 103 |
-| Mehmet Emre Öz | [nyzmemre/biyoloji-terimleri-turkce-sa](https://huggingface.co/datasets/nyzmemre/biyoloji-terimleri-turkce-sa) | 1,093 |
-| Mert Ali Alkan | [Mer1Alii/TR-ECommerce-CustomerSupport-Instructions](https://huggingface.co/datasets/Mer1Alii/TR-ECommerce-CustomerSupport-Instructions) | 186 |
-| Muhammet Yusuf Kaydın | [yoitsmeyusuf/felsefe_finetune](https://huggingface.co/datasets/yoitsmeyusuf/felsefe_finetune) | 529 |
-| Mustafa Özdemir | [namruni/meb-ogretmen-soru-cevap](https://huggingface.co/datasets/namruni/meb-ogretmen-soru-cevap) | 450 |
-| Serhat Kılıç | [sk75/sahin_identity](https://huggingface.co/datasets/sk75/sahin_identity) | 77 |
+| Contributor | Dataset | Rows | Structure |
+|---|---|---:|---|
+| Ali Furkan Ak | [hf/aliFurkan123/cultural-questions-dataset](https://huggingface.co/datasets/aliFurkan123/cultural-questions-dataset) | 500 | Conversation |
+| Ali Furkan Ak | [hf/aliFurkan123/identity](https://huggingface.co/datasets/aliFurkan123/identity) | 30 | Conversation |
+| Ayşe Nur Yeşilova | [hf/Aysenur44/namaz-vakti-dua-asistan-tr](https://huggingface.co/datasets/Aysenur44/namaz-vakti-dua-asistan-tr) | 60 | Conversation |
+| Ayşe Nur Yeşilova | [hf/Aysenur44/namaz-vakti-identity-tr](https://huggingface.co/datasets/Aysenur44/namaz-vakti-identity-tr) | 4 | Conversation |
+| Berk Birkan | [hf/berkbirkan/turkish-x-engagement-quotes](https://huggingface.co/datasets/berkbirkan/turkish-x-engagement-quotes) | 1,000 | Conversation |
+| Berk Birkan | [hf/berkbirkan/turkish-x-engagement-replies](https://huggingface.co/datasets/berkbirkan/turkish-x-engagement-replies) | 1,000 | Conversation |
+| Berkcan Gümüşışık | [hf/berkcangumusisik/voleykoc-antrenorluk-tr](https://huggingface.co/datasets/berkcangumusisik/voleykoc-antrenorluk-tr) | 166 | Conversation |
+| Berkcan Gümüşışık | [hf/berkcangumusisik/voleykoc-identity-tr](https://huggingface.co/datasets/berkcangumusisik/voleykoc-identity-tr) | 182 | Conversation |
+| Cihat Yıldız | [hf/cihatyldz/lojistik-soru-cevap](https://huggingface.co/datasets/cihatyldz/lojistik-soru-cevap) | 139 | Conversation |
+| Ege Ertekin | [hf/Egertekin/marvel-domain-dataset](https://huggingface.co/datasets/Egertekin/marvel-domain-dataset) | 177 | Conversation |
+| Enes Hakan | [hf/enes1863/bilisim-hukuku-domain-dataset](https://huggingface.co/datasets/enes1863/bilisim-hukuku-domain-dataset) | 1,000 | Conversation |
+| enesozdemr (account handle) | [hf/enesozdemr/benim_ilk_datasetim](https://huggingface.co/datasets/enesozdemr/benim_ilk_datasetim) | 113 | Conversation |
+| Eren Yanic | [hf/Erenyanic/seasoned-advice-dataset](https://huggingface.co/datasets/Erenyanic/seasoned-advice-dataset) | 1,000 | Conversation |
+| Erhan Alasar | [hf/erhanalsr/langusta-identity](https://huggingface.co/datasets/erhanalsr/langusta-identity) | 100 | Conversation |
+| Erhan Alasar | [hf/erhanalsr/langusta-kpss-reasoning](https://huggingface.co/datasets/erhanalsr/langusta-kpss-reasoning) | 21 | Conversation |
+| Filiz Yalçin | [hf/filiz-yalcin/identity-finetune](https://huggingface.co/datasets/filiz-yalcin/identity-finetune) | 1,600 | Conversation |
+| Filiz Yalçin | [hf/filiz-yalcin/turkish-figure-skating-qa](https://huggingface.co/datasets/filiz-yalcin/turkish-figure-skating-qa) | 526 | Conversation |
+| gmz1234 (account handle) | [hf/gmz1234/stackoverflow_ai](https://huggingface.co/datasets/gmz1234/stackoverflow_ai) | 1,000 | Conversation |
+| Görkem Ergüne | [hf/gorkemergune/ayarlicazhocam_finetune](https://huggingface.co/datasets/gorkemergune/ayarlicazhocam_finetune) | 429 | Conversation |
+| Gurur Aşer | [hf/gururaser/ithaki-bilimkurgu-klasikleri](https://huggingface.co/datasets/gururaser/ithaki-bilimkurgu-klasikleri) | 103 | Catalog |
+| Hatice Nur Çakır | [hf/haticenurcakr/turkish-classic-books-qa](https://huggingface.co/datasets/haticenurcakr/turkish-classic-books-qa) | 220 | Conversation |
+| Hilal Kavas | [hf/sadecebirisii/turkish-llm-authority-bypass-safety-sft](https://huggingface.co/datasets/sadecebirisii/turkish-llm-authority-bypass-safety-sft) | 29 | Conversation |
+| Mehmet Emre Öz | [hf/nyzmemre/biyoloji-terimleri-turkce-sa](https://huggingface.co/datasets/nyzmemre/biyoloji-terimleri-turkce-sa) | 1,093 | Conversation |
+| Melda Kahraman | [hf/meldakahramann/animasyon-domain-dataset](https://huggingface.co/datasets/meldakahramann/animasyon-domain-dataset) | 1,020 | Conversation |
+| Mert Ali Alkan | [hf/Mer1Alii/TR-ECommerce-CustomerSupport-Instructions](https://huggingface.co/datasets/Mer1Alii/TR-ECommerce-CustomerSupport-Instructions) | 186 | Conversation |
+| Muhammed Bakır Kurt | [hf/Endezyar/siyer_datasets](https://huggingface.co/datasets/Endezyar/siyer_datasets) | 509 | Conversation |
+| Muhammet Yusuf Kaydın | [hf/yoitsmeyusuf/felsefe_finetune](https://huggingface.co/datasets/yoitsmeyusuf/felsefe_finetune) | 529 | Conversation |
+| Mustafa Özdemir | [hf/namruni/meb-ogretmen-soru-cevap](https://huggingface.co/datasets/namruni/meb-ogretmen-soru-cevap) | 450 | Conversation |
+| Nur Sima Akgül | [hf/nursimakgul/meb-soru-uretme](https://huggingface.co/datasets/nursimakgul/meb-soru-uretme) | 20,874 | Conversation |
+| Salih Dede | [hf/SalihHub/trendyol-marangoz-urun-asistan-qa](https://huggingface.co/datasets/SalihHub/trendyol-marangoz-urun-asistan-qa) | 1,211 | Conversation |
+| Seda Nur Yazıcı | [hf/sedayzc/trendyol-electronics-products-features-and-comments](https://huggingface.co/datasets/sedayzc/trendyol-electronics-products-features-and-comments) | 500 | Product table |
+| Seda Nur Yazıcı | [hf/sedayzc/turkish-electronics-product-comparison-recommendation](https://huggingface.co/datasets/sedayzc/turkish-electronics-product-comparison-recommendation) | 11,858 | Conversation |
+| Semih Silistre | [hf/ssilistre/carnegie-dost-kazanma-tr](https://huggingface.co/datasets/ssilistre/carnegie-dost-kazanma-tr) | 1,001 | Conversation |
+| Semih Silistre | [hf/ssilistre/semih-silistre-ai-identity](https://huggingface.co/datasets/ssilistre/semih-silistre-ai-identity) | 382 | Conversation |
+| Senem Deniz | [hf/senemde/saglik-qa-tr](https://huggingface.co/datasets/senemde/saglik-qa-tr) | 553 | Conversation |
+| Serhat Kılıç | [hf/sk75/sahin_identity](https://huggingface.co/datasets/sk75/sahin_identity) | 77 | Conversation |
+| Seyit Ali Yorğun | [hf/seali/turkce-saglik-qa](https://huggingface.co/datasets/seali/turkce-saglik-qa) | 773 | Conversation |
+| Şakir Koç | [hf/srhskrkc/odysseia-destani-tr](https://huggingface.co/datasets/srhskrkc/odysseia-destani-tr) | 10 | Conversation |
+| Talayhan (account handle) | [hf/Talayhan/skatepal_dataset](https://huggingface.co/datasets/Talayhan/skatepal_dataset) | 299 | Conversation |
+| Umay Şamlı | [hf/samliumay/turkish_cyber_security_controls_dataset](https://huggingface.co/datasets/samliumay/turkish_cyber_security_controls_dataset) | 800 | Conversation |
+| Umay Şamlı | [hf/samliumay/umay_samli_identification_dataset](https://huggingface.co/datasets/samliumay/umay_samli_identification_dataset) | 219 | Conversation |
+| Umut Kıvanç Sipahioglu | [hf/Toivo0/Turkce-istatistik-reasoning](https://huggingface.co/datasets/Toivo0/Turkce-istatistik-reasoning) | 400 | Conversation |
+| Uunan (account handle) | [hf/Uunan/turkish-cuisine-qa](https://huggingface.co/datasets/Uunan/turkish-cuisine-qa) | 34,244 | Conversation |
+| Yusuf Şimşek | [hf/YusufSimsek/llm-kisisellestirme](https://huggingface.co/datasets/YusufSimsek/llm-kisisellestirme) | 46 | Conversation |
+| Yusuf Şimşek | [hf/YusufSimsek/turkce-atasozleri-dataset](https://huggingface.co/datasets/YusufSimsek/turkce-atasozleri-dataset) | 1,398 | Conversation |
+
+Contributor names come from the assignment submission form. Where a submitter
+did not supply a verifiable full name, the Hugging Face account handle is
+recorded instead and marked as such; an account handle is not a person's name.
+
+## Datasets that could not be analyzed
+
+These datasets are enabled in the registry and are **not** silently skipped.
+Every run re-verifies the block and records the live HTTP result in
+[`outputs/excluded_datasets.json`](outputs/excluded_datasets.json). Their rows
+are excluded from every total in this repository.
+
+| Contributor | Dataset | Status | Evidence |
+|---|---|---|---|
+| Muhammet Enes Nas | [hf/menesnas/Pharmacy_Identity_Synthetic_QA](https://huggingface.co/datasets/menesnas/Pharmacy_Identity_Synthetic_QA) | Gated, access not granted | Repository metadata reports `gated: "manual"`. Authenticated requests return `403 "Access to dataset … is restricted and you are not in the authorized list"`. The data card is public; only the data files are withheld. |
+| Oguz Caliskan | [hf/uzcaliskan/magibu_dataset_drilling](https://huggingface.co/datasets/uzcaliskan/magibu_dataset_drilling) | Not reachable | Anonymous requests return `401`; authenticated requests return `404 "Repository not found"`. A valid credential turning 401 into 404 means the repository is not visible to the auditing account at all, so it is deleted, renamed, or private to a different owner. |
+
+To bring the first dataset into scope, its owner must approve an access request
+for the auditing account; the audit then picks it up with no code change. For
+the second, the submitter must confirm the correct URL or grant access.
 
 ## Repository structure
 
 ```text
 .
-├── README.md
-├── reports/
-│   ├── dataset-technical-assessment.md
-│   ├── model-capability-mapping.md
-│   ├── file-guide.md
-│   └── figures/
-│       ├── README.md
-│       ├── capability-coverage.png
-│       ├── catalog-missing-fields.png
-│       ├── data-preparation-signals.png
-│       ├── dataset-row-counts.png
-│       ├── duplicate-rates.png
-│       └── response-lengths.png
-├── notebook/
-│   ├── huggingface_dataset_quality_analysis.ipynb
-│   └── huggingface_dataset_quality_analysis.html
-├── outputs/
-│   ├── cross_dataset_overlap.json
-│   ├── data_quality_profiles.json
-│   ├── manual_findings.json
-│   └── source_inventory.json
-├── appendix/
-│   ├── capability_mapping.csv
-│   └── dataset_manifest.json
-├── scripts/
-│   └── generate_report_charts.py
-└── requirements.txt
+|-- README.md
+|-- AGENTS.md
+|-- config/
+|   |-- datasets.json
+|   `-- verified_baseline.json
+|-- reports/
+|   |-- dataset-technical-assessment.md
+|   |-- model-capability-mapping.md
+|   |-- file-guide.md
+|   `-- figures/
+|-- notebook/
+|   |-- huggingface_dataset_quality_analysis.ipynb
+|   `-- huggingface_dataset_quality_analysis.html
+|-- outputs/
+|   |-- source_inventory.json
+|   |-- data_quality_profiles.json
+|   |-- cross_dataset_overlap.json
+|   |-- excluded_datasets.json
+|   `-- manual_findings.json
+|-- appendix/
+|   |-- capability_mapping.csv
+|   `-- dataset_manifest.json
+|-- scripts/
+|   |-- download_hf_datasets.py
+|   |-- profile_datasets.py
+|   |-- build_notebook.py
+|   |-- generate_report_charts.py
+|   `-- validate_repository.py
+`-- requirements.txt
 ```
 
-The reports and this README are in English. The notebook, its generated HTML output,
-and the JSON files under `outputs/` are the original Turkish analysis artifacts and are
-kept in their source language.
+The local `data/` directory contains raw snapshots for row-level work and is
+intentionally ignored by Git. A public clone contains the reviewed evidence and
+reports but must download raw snapshots again before reprofiling.
 
-## Reproduce the notebook and charts
+The reports and README files are in English. The notebook, its generated HTML,
+and reviewed JSON evidence retain their original Turkish analysis text.
+
+## Reproduce or extend the analysis
 
 Run from the repository root with Python 3.12:
 
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\python -m pip install -r requirements.txt
-.\.venv\Scripts\python -m jupyter nbconvert --execute --to notebook --inplace notebook\huggingface_dataset_quality_analysis.ipynb
-.\.venv\Scripts\python -m jupyter nbconvert --to html --output-dir notebook notebook\huggingface_dataset_quality_analysis.ipynb
-.\.venv\Scripts\python scripts\generate_report_charts.py
 ```
 
-The notebook reads the validated JSON files under `outputs/`. Raw datasets are
-not redistributed in this public repository; use the official Hugging Face links
-above for source access.
+Dataset IDs and contributor names are maintained in
+[`config/datasets.json`](config/datasets.json). After adding new entries, run:
+
+```powershell
+.\.venv\Scripts\python scripts\download_hf_datasets.py
+.\.venv\Scripts\python scripts\profile_datasets.py
+.\.venv\Scripts\python scripts\build_notebook.py
+.\.venv\Scripts\python -m jupyter nbconvert --to html --output-dir notebook notebook\huggingface_dataset_quality_analysis.ipynb
+.\.venv\Scripts\python scripts\generate_report_charts.py
+.\.venv\Scripts\python scripts\validate_repository.py
+```
+
+The downloader pins every snapshot to a repository revision. It prefers the
+repository's own data file when that file's row count exactly matches the size
+the Dataset Viewer publishes for the split, and pages the Viewer otherwise; both
+paths produce the same rows and a completeness receipt. Anonymous access is rate
+limited, so setting `HF_TOKEN` in the environment makes runs faster and reaches
+gated repositories the account has been granted. Never commit a token.
+
+The profiler stops on any incomplete snapshot that is not a declared access
+block. Before publishing an expanded scope, review the computed evidence, update
+qualitative findings and capability mappings, then update
+[`config/verified_baseline.json`](config/verified_baseline.json).
+
+See [`AGENTS.md`](AGENTS.md) for the full maintenance and validation workflow.

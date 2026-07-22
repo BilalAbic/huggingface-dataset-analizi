@@ -1,0 +1,61 @@
+{
+  "verified_on": "2026-07-22",
+  "dataset_count": 45,
+  "excluded_dataset_count": 2,
+  "total_rows": 87831,
+  "shape_counts": {
+    "catalog": 1,
+    "conversation": 43,
+    "tabular": 1
+  },
+  "shape_rows": {
+    "catalog": 103,
+    "conversation": 87228,
+    "tabular": 500
+  },
+  "quality_totals": {
+    "empty_content_messages": 2,
+    "invalid_role_messages": 0,
+    "exact_duplicate_rows": 5033,
+    "nonempty_thinking_messages": 67470,
+    "row_level_thinking_rows": 29,
+    "string_encoded_null_fields": 462,
+    "matching_user_assistant_rows": 0
+  },
+  "dataset_metrics": {
+    "namruni/meb-ogretmen-soru-cevap": {
+      "text_scan.time_sensitive_matches": 297
+    },
+    "sk75/sahin_identity": {
+      "string_encoded_null_fields": 462
+    },
+    "nursimakgul/meb-soru-uretme": {
+      "structured_answers.json_parsable_answers": 17454
+    },
+    "sedayzc/turkish-electronics-product-comparison-recommendation": {
+      "exact_duplicate_rows": 4851
+    },
+    "enes1863/bilisim-hukuku-domain-dataset": {
+      "assistant_answer_duplicates.duplicate_rows": 980
+    }
+  },
+  "overlap": {
+    "pair_count": 30,
+    "shared_user_prompts": 87,
+    "shared_assistant_answers": 0
+  },
+  "cross_split_duplicate_rows": 0,
+  "capability_count": 7,
+  "notebook": {
+    "cell_count": 22,
+    "code_cell_count": 10
+  },
+  "figures": [
+    "capability-coverage.png",
+    "catalog-missing-fields.png",
+    "data-preparation-signals.png",
+    "dataset-row-counts.png",
+    "duplicate-rates.png",
+    "response-lengths.png"
+  ]
+}

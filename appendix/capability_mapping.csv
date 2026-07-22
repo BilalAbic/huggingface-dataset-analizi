@@ -1,23 +1,75 @@
 capability,status,matching_level,dataset,row_count,usage_note,link
-Identity,Completed,Direct,Aysenur44/namaz-vakti-identity-tr,4,"Identity and developer seed; safety and boundary coverage insufficient",https://huggingface.co/datasets/Aysenur44/namaz-vakti-identity-tr
-Identity,Completed,Direct,sk75/sahin_identity,77,"Bilingual identity; duplicate, null type and data card issues",https://huggingface.co/datasets/sk75/sahin_identity
-Tool Call,Planned,Conversion source,gururaser/ithaki-bilimkurgu-klasikleri,103,"Convertible into book search and detail tools",https://huggingface.co/datasets/gururaser/ithaki-bilimkurgu-klasikleri
-Tool Call,Planned,Conversion source,Mer1Alii/TR-ECommerce-CustomerSupport-Instructions,186,"Convertible into order and support tools",https://huggingface.co/datasets/Mer1Alii/TR-ECommerce-CustomerSupport-Instructions
-Tool Call,Planned,Conversion source,namruni/meb-ogretmen-soru-cevap,450,"Convertible into a regulation search tool",https://huggingface.co/datasets/namruni/meb-ogretmen-soru-cevap
-Conversation,Planned,Direct,aliFurkan123/cultural-questions-dataset,500,"Single-turn general knowledge dialogue",https://huggingface.co/datasets/aliFurkan123/cultural-questions-dataset
-Conversation,Planned,Direct,Egertekin/marvel-domain-dataset,177,"Single-turn domain dialogue; high prompt duplication",https://huggingface.co/datasets/Egertekin/marvel-domain-dataset
-Conversation,Planned,Direct,Mer1Alii/TR-ECommerce-CustomerSupport-Instructions,186,"Single-turn customer support dialogue",https://huggingface.co/datasets/Mer1Alii/TR-ECommerce-CustomerSupport-Instructions
-Conversation,Planned,Direct,namruni/meb-ogretmen-soru-cevap,450,"Single-turn long-context question answering",https://huggingface.co/datasets/namruni/meb-ogretmen-soru-cevap
-Conversation,Planned,Direct,nyzmemre/biyoloji-terimleri-turkce-sa,1093,"Single-turn scientific explanation",https://huggingface.co/datasets/nyzmemre/biyoloji-terimleri-turkce-sa
-Conversation,Planned,Direct,yoitsmeyusuf/felsefe_finetune,529,"Single-turn subjective opinion dialogue",https://huggingface.co/datasets/yoitsmeyusuf/felsefe_finetune
-Conversation,Planned,Partial,Aysenur44/namaz-vakti-identity-tr,4,"Persona support only; add at low weight",https://huggingface.co/datasets/Aysenur44/namaz-vakti-identity-tr
-Conversation,Planned,Partial,sk75/sahin_identity,77,"Persona support only; add at low weight",https://huggingface.co/datasets/sk75/sahin_identity
-Instruction,Planned,Partial,Mer1Alii/TR-ECommerce-CustomerSupport-Instructions,186,"Answers domain requests; no general instruction diversity",https://huggingface.co/datasets/Mer1Alii/TR-ECommerce-CustomerSupport-Instructions
-Instruction,Planned,Partial,namruni/meb-ogretmen-soru-cevap,450,"Explanation from a long question; no broad task diversity",https://huggingface.co/datasets/namruni/meb-ogretmen-soru-cevap
-Instruction,Planned,Partial,aliFurkan123/cultural-questions-dataset,500,"Explanation for an information request; no format constraints",https://huggingface.co/datasets/aliFurkan123/cultural-questions-dataset
-Instruction,Planned,Partial,nyzmemre/biyoloji-terimleri-turkce-sa,1093,"Term explanation; no task diversity",https://huggingface.co/datasets/nyzmemre/biyoloji-terimleri-turkce-sa
-Instruction,Planned,Partial,Egertekin/marvel-domain-dataset,177,"Domain question; high prompt duplication",https://huggingface.co/datasets/Egertekin/marvel-domain-dataset
-Instruction,Planned,Partial,yoitsmeyusuf/felsefe_finetune,529,"Opinion generation; must not be used as factual instruction data",https://huggingface.co/datasets/yoitsmeyusuf/felsefe_finetune
-Structured Output,Planned,Conversion source,gururaser/ithaki-bilimkurgu-klasikleri,103,"Convertible into JSON and table targets",https://huggingface.co/datasets/gururaser/ithaki-bilimkurgu-klasikleri
-Math,Planned,Conversion source,gururaser/ithaki-bilimkurgu-klasikleri,103,"Only price, discount and percentage arithmetic can be derived",https://huggingface.co/datasets/gururaser/ithaki-bilimkurgu-klasikleri
-Coding,Planned,No match,,,"No Coding example in the current collection",
+Identity,Completed,Direct,aliFurkan123/identity,30,"Ali Furkan personası; İngilizce, cevap tekrarı yüksek",https://huggingface.co/datasets/aliFurkan123/identity
+Identity,Completed,Direct,Aysenur44/namaz-vakti-identity-tr,4,Kimlik ve geliştirici tohumu; güvenlik ve sınır kapsamı yetersiz,https://huggingface.co/datasets/Aysenur44/namaz-vakti-identity-tr
+Identity,Completed,Direct,berkcangumusisik/voleykoc-identity-tr,182,"VoleykoçAI personası; cevap çeşitliliği düşük, system istemi ayrı sütunda",https://huggingface.co/datasets/berkcangumusisik/voleykoc-identity-tr
+Identity,Completed,Direct,erhanalsr/langusta-identity,100,LangUsta personası; cevap tekrarı çok yüksek,https://huggingface.co/datasets/erhanalsr/langusta-identity
+Identity,Completed,Direct,filiz-yalcin/identity-finetune,1600,"alibayram/identity_finetune_magibu_q3 kopyası, yalnız ad değiştirilmiş; iki boş cevap",https://huggingface.co/datasets/filiz-yalcin/identity-finetune
+Identity,Completed,Direct,samliumay/umay_samli_identification_dataset,219,gemma_3_umay personası; biyografik iddialar tarihlendirilmeli,https://huggingface.co/datasets/samliumay/umay_samli_identification_dataset
+Identity,Completed,Direct,sk75/sahin_identity,77,İki dilli kimlik; metin biçiminde null değerleri ve cevap tekrarı,https://huggingface.co/datasets/sk75/sahin_identity
+Identity,Completed,Direct,ssilistre/semih-silistre-ai-identity,382,En iyi belgelenmiş kimlik seti; açık dürüstlük sınırları tanımlı,https://huggingface.co/datasets/ssilistre/semih-silistre-ai-identity
+Identity,Completed,Direct,YusufSimsek/llm-kisisellestirme,46,Küçük kimlik tohumu; veri kartı yok,https://huggingface.co/datasets/YusufSimsek/llm-kisisellestirme
+Identity,Completed,Partial,gorkemergune/ayarlicazhocam_finetune,429,Asistan kimliği ile alan içeriği karışık; alan dışı kazınmış kayıt var,https://huggingface.co/datasets/gorkemergune/ayarlicazhocam_finetune
+Identity,Completed,Partial,Talayhan/skatepal_dataset,299,SkatePal personası ve güvenlik sınırı davranışı,https://huggingface.co/datasets/Talayhan/skatepal_dataset
+Tool Call,Planned,Conversion source,Aysenur44/namaz-vakti-dua-asistan-tr,60,Vakit hesabı araç çağrısına devredilmeli,https://huggingface.co/datasets/Aysenur44/namaz-vakti-dua-asistan-tr
+Tool Call,Planned,Conversion source,gururaser/ithaki-bilimkurgu-klasikleri,103,Onyedi alanlı katalog; şemaya bağlı çıktı ve araç çağrısı için dönüştürülebilir,https://huggingface.co/datasets/gururaser/ithaki-bilimkurgu-klasikleri
+Tool Call,Planned,Conversion source,Mer1Alii/TR-ECommerce-CustomerSupport-Instructions,186,Sipariş ve iade araçlarına dönüştürülebilir destek diyalogları,https://huggingface.co/datasets/Mer1Alii/TR-ECommerce-CustomerSupport-Instructions
+Tool Call,Planned,Conversion source,namruni/meb-ogretmen-soru-cevap,450,Mevzuat sorgulama aracına dönüştürülebilir; güncellik katmanı zorunlu,https://huggingface.co/datasets/namruni/meb-ogretmen-soru-cevap
+Tool Call,Planned,Conversion source,sedayzc/trendyol-electronics-products-features-and-comments,500,İç içe ürün ve yorum tablosu; sayısal alanlar dize olarak saklanmış,https://huggingface.co/datasets/sedayzc/trendyol-electronics-products-features-and-comments
+Tool Call,Planned,Conversion source,sedayzc/turkish-electronics-product-comparison-recommendation,11858,Ürün karşılaştırma aracına dönüştürülebilir; iki sürüm birleşik,https://huggingface.co/datasets/sedayzc/turkish-electronics-product-comparison-recommendation
+Conversation,Planned,Direct,aliFurkan123/cultural-questions-dataset,500,Tek turlu alan diyaloğu,https://huggingface.co/datasets/aliFurkan123/cultural-questions-dataset
+Conversation,Planned,Direct,Aysenur44/namaz-vakti-dua-asistan-tr,60,Vakit hesabı araç çağrısına devredilmeli,https://huggingface.co/datasets/Aysenur44/namaz-vakti-dua-asistan-tr
+Conversation,Planned,Direct,berkcangumusisik/voleykoc-antrenorluk-tr,166,Tek turlu alan diyaloğu,https://huggingface.co/datasets/berkcangumusisik/voleykoc-antrenorluk-tr
+Conversation,Planned,Direct,cihatyldz/lojistik-soru-cevap,139,Tek turlu alan diyaloğu,https://huggingface.co/datasets/cihatyldz/lojistik-soru-cevap
+Conversation,Planned,Direct,Egertekin/marvel-domain-dataset,177,Tek turlu alan diyaloğu,https://huggingface.co/datasets/Egertekin/marvel-domain-dataset
+Conversation,Planned,Direct,Endezyar/siyer_datasets,509,Tek turlu alan diyaloğu,https://huggingface.co/datasets/Endezyar/siyer_datasets
+Conversation,Planned,Direct,enes1863/bilisim-hukuku-domain-dataset,1000,Tek turlu alan diyaloğu,https://huggingface.co/datasets/enes1863/bilisim-hukuku-domain-dataset
+Conversation,Planned,Direct,enesozdemr/benim_ilk_datasetim,113,Tek turlu alan diyaloğu,https://huggingface.co/datasets/enesozdemr/benim_ilk_datasetim
+Conversation,Planned,Direct,Erenyanic/seasoned-advice-dataset,1000,Tek turlu alan diyaloğu,https://huggingface.co/datasets/Erenyanic/seasoned-advice-dataset
+Conversation,Planned,Direct,filiz-yalcin/turkish-figure-skating-qa,526,Tek turlu alan diyaloğu,https://huggingface.co/datasets/filiz-yalcin/turkish-figure-skating-qa
+Conversation,Planned,Direct,gmz1234/stackoverflow_ai,1000,Tek turlu alan diyaloğu,https://huggingface.co/datasets/gmz1234/stackoverflow_ai
+Conversation,Planned,Direct,gorkemergune/ayarlicazhocam_finetune,429,Asistan kimliği ile alan içeriği karışık; alan dışı kazınmış kayıt var,https://huggingface.co/datasets/gorkemergune/ayarlicazhocam_finetune
+Conversation,Planned,Direct,haticenurcakr/turkish-classic-books-qa,220,Tek turlu alan diyaloğu,https://huggingface.co/datasets/haticenurcakr/turkish-classic-books-qa
+Conversation,Planned,Direct,meldakahramann/animasyon-domain-dataset,1020,Tek turlu alan diyaloğu,https://huggingface.co/datasets/meldakahramann/animasyon-domain-dataset
+Conversation,Planned,Direct,Mer1Alii/TR-ECommerce-CustomerSupport-Instructions,186,Sipariş ve iade araçlarına dönüştürülebilir destek diyalogları,https://huggingface.co/datasets/Mer1Alii/TR-ECommerce-CustomerSupport-Instructions
+Conversation,Planned,Direct,namruni/meb-ogretmen-soru-cevap,450,Mevzuat sorgulama aracına dönüştürülebilir; güncellik katmanı zorunlu,https://huggingface.co/datasets/namruni/meb-ogretmen-soru-cevap
+Conversation,Planned,Direct,nyzmemre/biyoloji-terimleri-turkce-sa,1093,Tek turlu alan diyaloğu,https://huggingface.co/datasets/nyzmemre/biyoloji-terimleri-turkce-sa
+Conversation,Planned,Direct,SalihHub/trendyol-marangoz-urun-asistan-qa,1211,Tek turlu alan diyaloğu,https://huggingface.co/datasets/SalihHub/trendyol-marangoz-urun-asistan-qa
+Conversation,Planned,Direct,samliumay/turkish_cyber_security_controls_dataset,800,Tek turlu alan diyaloğu,https://huggingface.co/datasets/samliumay/turkish_cyber_security_controls_dataset
+Conversation,Planned,Direct,seali/turkce-saglik-qa,773,Tek turlu alan diyaloğu,https://huggingface.co/datasets/seali/turkce-saglik-qa
+Conversation,Planned,Direct,sedayzc/turkish-electronics-product-comparison-recommendation,11858,Ürün karşılaştırma aracına dönüştürülebilir; iki sürüm birleşik,https://huggingface.co/datasets/sedayzc/turkish-electronics-product-comparison-recommendation
+Conversation,Planned,Direct,senemde/saglik-qa-tr,553,Tek turlu alan diyaloğu,https://huggingface.co/datasets/senemde/saglik-qa-tr
+Conversation,Planned,Direct,srhskrkc/odysseia-destani-tr,10,Tek turlu alan diyaloğu,https://huggingface.co/datasets/srhskrkc/odysseia-destani-tr
+Conversation,Planned,Direct,ssilistre/carnegie-dost-kazanma-tr,1001,Tek turlu alan diyaloğu,https://huggingface.co/datasets/ssilistre/carnegie-dost-kazanma-tr
+Conversation,Planned,Direct,Talayhan/skatepal_dataset,299,SkatePal personası ve güvenlik sınırı davranışı,https://huggingface.co/datasets/Talayhan/skatepal_dataset
+Conversation,Planned,Direct,Toivo0/Turkce-istatistik-reasoning,400,İstatistik muhakemesi; sayısal doğrulama alanı yok,https://huggingface.co/datasets/Toivo0/Turkce-istatistik-reasoning
+Conversation,Planned,Direct,Uunan/turkish-cuisine-qa,34244,Tek turlu alan diyaloğu,https://huggingface.co/datasets/Uunan/turkish-cuisine-qa
+Conversation,Planned,Direct,yoitsmeyusuf/felsefe_finetune,529,Tek turlu alan diyaloğu,https://huggingface.co/datasets/yoitsmeyusuf/felsefe_finetune
+Conversation,Planned,Direct,YusufSimsek/turkce-atasozleri-dataset,1398,Tek turlu alan diyaloğu,https://huggingface.co/datasets/YusufSimsek/turkce-atasozleri-dataset
+Conversation,Planned,Partial,aliFurkan123/identity,30,"Ali Furkan personası; İngilizce, cevap tekrarı yüksek",https://huggingface.co/datasets/aliFurkan123/identity
+Conversation,Planned,Partial,Aysenur44/namaz-vakti-identity-tr,4,Kimlik ve geliştirici tohumu; güvenlik ve sınır kapsamı yetersiz,https://huggingface.co/datasets/Aysenur44/namaz-vakti-identity-tr
+Conversation,Planned,Partial,berkbirkan/turkish-x-engagement-quotes,1000,Şablonlu üretim talimatı; istem tekrarı yüksek,https://huggingface.co/datasets/berkbirkan/turkish-x-engagement-quotes
+Conversation,Planned,Partial,berkbirkan/turkish-x-engagement-replies,1000,Şablonlu üretim talimatı; istem tekrarı yüksek,https://huggingface.co/datasets/berkbirkan/turkish-x-engagement-replies
+Conversation,Planned,Partial,berkcangumusisik/voleykoc-identity-tr,182,"VoleykoçAI personası; cevap çeşitliliği düşük, system istemi ayrı sütunda",https://huggingface.co/datasets/berkcangumusisik/voleykoc-identity-tr
+Conversation,Planned,Partial,erhanalsr/langusta-identity,100,LangUsta personası; cevap tekrarı çok yüksek,https://huggingface.co/datasets/erhanalsr/langusta-identity
+Conversation,Planned,Partial,filiz-yalcin/identity-finetune,1600,"alibayram/identity_finetune_magibu_q3 kopyası, yalnız ad değiştirilmiş; iki boş cevap",https://huggingface.co/datasets/filiz-yalcin/identity-finetune
+Conversation,Planned,Partial,nursimakgul/meb-soru-uretme,20874,Şemaya bağlı JSON hedefli soru üretimi,https://huggingface.co/datasets/nursimakgul/meb-soru-uretme
+Conversation,Planned,Partial,samliumay/umay_samli_identification_dataset,219,gemma_3_umay personası; biyografik iddialar tarihlendirilmeli,https://huggingface.co/datasets/samliumay/umay_samli_identification_dataset
+Conversation,Planned,Partial,sk75/sahin_identity,77,İki dilli kimlik; metin biçiminde null değerleri ve cevap tekrarı,https://huggingface.co/datasets/sk75/sahin_identity
+Conversation,Planned,Partial,ssilistre/semih-silistre-ai-identity,382,En iyi belgelenmiş kimlik seti; açık dürüstlük sınırları tanımlı,https://huggingface.co/datasets/ssilistre/semih-silistre-ai-identity
+Conversation,Planned,Partial,YusufSimsek/llm-kisisellestirme,46,Küçük kimlik tohumu; veri kartı yok,https://huggingface.co/datasets/YusufSimsek/llm-kisisellestirme
+Instruction,Planned,Partial,aliFurkan123/cultural-questions-dataset,500,Açık talimat içeriyor ancak kısıt çeşitliliği dar,https://huggingface.co/datasets/aliFurkan123/cultural-questions-dataset
+Instruction,Planned,Partial,berkbirkan/turkish-x-engagement-quotes,1000,Şablonlu üretim talimatı; istem tekrarı yüksek,https://huggingface.co/datasets/berkbirkan/turkish-x-engagement-quotes
+Instruction,Planned,Partial,berkbirkan/turkish-x-engagement-replies,1000,Şablonlu üretim talimatı; istem tekrarı yüksek,https://huggingface.co/datasets/berkbirkan/turkish-x-engagement-replies
+Instruction,Planned,Partial,Erenyanic/seasoned-advice-dataset,1000,Açık talimat içeriyor ancak kısıt çeşitliliği dar,https://huggingface.co/datasets/Erenyanic/seasoned-advice-dataset
+Instruction,Planned,Partial,gorkemergune/ayarlicazhocam_finetune,429,Asistan kimliği ile alan içeriği karışık; alan dışı kazınmış kayıt var,https://huggingface.co/datasets/gorkemergune/ayarlicazhocam_finetune
+Instruction,Planned,Partial,Mer1Alii/TR-ECommerce-CustomerSupport-Instructions,186,Sipariş ve iade araçlarına dönüştürülebilir destek diyalogları,https://huggingface.co/datasets/Mer1Alii/TR-ECommerce-CustomerSupport-Instructions
+Instruction,Planned,Partial,nursimakgul/meb-soru-uretme,20874,Şemaya bağlı JSON hedefli soru üretimi,https://huggingface.co/datasets/nursimakgul/meb-soru-uretme
+Instruction,Planned,Partial,sadecebirisii/turkish-llm-authority-bypass-safety-sft,29,Güvenlik reddi davranışı; kategori başına örnek sayısı çok az,https://huggingface.co/datasets/sadecebirisii/turkish-llm-authority-bypass-safety-sft
+Instruction,Planned,Partial,samliumay/turkish_cyber_security_controls_dataset,800,Açık talimat içeriyor ancak kısıt çeşitliliği dar,https://huggingface.co/datasets/samliumay/turkish_cyber_security_controls_dataset
+Instruction,Planned,Partial,Toivo0/Turkce-istatistik-reasoning,400,İstatistik muhakemesi; sayısal doğrulama alanı yok,https://huggingface.co/datasets/Toivo0/Turkce-istatistik-reasoning
+Structured Output,In progress,Direct,nursimakgul/meb-soru-uretme,20874,Şemaya bağlı JSON hedefli soru üretimi,https://huggingface.co/datasets/nursimakgul/meb-soru-uretme
+Structured Output,In progress,Conversion source,gururaser/ithaki-bilimkurgu-klasikleri,103,Onyedi alanlı katalog; şemaya bağlı çıktı ve araç çağrısı için dönüştürülebilir,https://huggingface.co/datasets/gururaser/ithaki-bilimkurgu-klasikleri
+Structured Output,In progress,Conversion source,sedayzc/trendyol-electronics-products-features-and-comments,500,İç içe ürün ve yorum tablosu; sayısal alanlar dize olarak saklanmış,https://huggingface.co/datasets/sedayzc/trendyol-electronics-products-features-and-comments
+Math,Planned,Partial,erhanalsr/langusta-kpss-reasoning,21,KPSS muhakemesi; yalnız yirmi bir satır,https://huggingface.co/datasets/erhanalsr/langusta-kpss-reasoning
+Math,Planned,Partial,Toivo0/Turkce-istatistik-reasoning,400,İstatistik muhakemesi; sayısal doğrulama alanı yok,https://huggingface.co/datasets/Toivo0/Turkce-istatistik-reasoning
+Math,Planned,Conversion source,gururaser/ithaki-bilimkurgu-klasikleri,103,Onyedi alanlı katalog; şemaya bağlı çıktı ve araç çağrısı için dönüştürülebilir,https://huggingface.co/datasets/gururaser/ithaki-bilimkurgu-klasikleri

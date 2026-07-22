@@ -1,5 +1,8 @@
 ipykernel
 matplotlib
+nbclient
 nbconvert
+nbformat
 pandas
 Pillow
+pyarrow

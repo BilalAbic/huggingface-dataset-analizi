@@ -1,0 +1,4 @@
+# Loaded only after this repository is marked as trusted in Codex.
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+web_search = "cached"

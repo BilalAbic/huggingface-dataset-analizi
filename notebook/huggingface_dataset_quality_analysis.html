@@ -7796,40 +7796,55 @@ a.anchor-link {
 <!-- End of mermaid configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=24f7fa27">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0812bae5">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h1 id="Hugging-Face-Veri-Seti-Kalite-Analizi">Hugging Face Veri Seti Kalite Analizi<a class="anchor-link" href="#Hugging-Face-Veri-Seti-Kalite-Analizi">¶</a></h1><h2 id="tl;dr">tl;dr<a class="anchor-link" href="#tl;dr">¶</a></h2><ul>
-<li>Dokuz veri setinde toplam <strong>3.119 satır</strong> incelendi; 3.016 sohbet kaydı ve 103 katalog kaydı eksiksiz profillendi.</li>
-<li>Yapısal bütünlük güçlü: sohbet setlerinde boş içerik, geçersiz rol veya birebir satır tekrarı bulunmadı. Buna rağmen Marvel ve felsefe istemlerinde, biyoloji ve Şahin kimlik cevaplarında yüksek normalleştirilmiş tekrar yoğunluğu var.</li>
-<li>Üç veri setindeki <strong>1.136</strong> asistan mesajında ayrı <code>thinking</code> alanı bulunuyor. Şahin kimlik setinde <strong>462</strong> alan gerçek <code>null</code> yerine metin olarak <code>"null"</code> içeriyor.</li>
-<li>MEB verisi zaman hassasiyeti nedeniyle güncel kaynak katmanı gerektiriyor. İthaki kataloğu anahtar ve fiyat kontrollerini geçiyor; ancak bazı katalog alanları seyrek. Genel bilgi ve e-ticaret setleri düzenli olsa da sentetik doğruluk ve politika iddiaları doğrulanmalı.</li>
+<li><strong>45 veri setinde 87,831 satır</strong> yerel sabit
+kopyalardan profillendi.</li>
+<li>Şema dağılımı: <strong>catalog: 1, conversation: 43, tabular: 1</strong>. Sohbet veya düz istem–cevap
+biçimindeki toplam kayıt sayısı <strong>87,228</strong>.</li>
+<li>Ayrı <code>thinking</code> içeren kayıt sayısı <strong>67,470</strong>; metin
+biçiminde saklanan <code>null</code> alan sayısı <strong>462</strong>.</li>
+<li>Erişim engeli nedeniyle analiz edilemeyen veri seti sayısı
+<strong>2</strong>; bunlar sessizce atlanmadı, kanıtlarıyla
+birlikte ayrı bir tabloda listeleniyor.</li>
+<li>Tekrar, eksik değer, metin uzunluğu ve zaman hassasiyeti ölçümleri
+kullanım amacına göre yorumlanmalı; satır hacmi tek başına kalite
+göstergesi değildir.</li>
 </ul>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f03e7f5b">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c0040666">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Ba%C4%9Flam-ve-Y%C3%B6ntem">Bağlam ve Yöntem<a class="anchor-link" href="#Ba%C4%9Flam-ve-Y%C3%B6ntem">¶</a></h2><p>Dokuz herkese açık Hugging Face veri setinin sabit sürüm kopyaları 20 Temmuz 2026 tarihinde indirildi. Profil hesapları 21 Temmuz 2026 tarihinde yerel ham satırlar üzerinden yeniden çalıştırıldı ve önceki JSON çıktılarıyla birebir aynı sonuç verdi. Şema, tamamlılık, rol sırası, birebir ve normalleştirilmiş tekrar, metin uzunluğu, <code>thinking</code> alanı, kişisel veri biçimleri, zaman hassasiyeti, katalog anahtarları ve fiyat tutarlılığı kontrolleri uygulandı.</p>
+<h2 id="Ba%C4%9Flam-ve-Y%C3%B6ntem">Bağlam ve Yöntem<a class="anchor-link" href="#Ba%C4%9Flam-ve-Y%C3%B6ntem">¶</a></h2><p>Analiz, Hugging Face Dataset Viewer üzerinden indirilen tam yerel
+kopyalar ve sabit kaynak revizyonları üzerinde çalışır. Kontroller;
+şema, tamamlılık, rol sırası, birebir ve normalleştirilmiş tekrar,
+metin uzunluğu, <code>thinking</code>, metin biçimindeki <code>null</code>, kişisel veri
+biçimleri ve zaman hassasiyeti sinyallerini kapsar.</p>
 <h3 id="Temel-Varsay%C4%B1mlar">Temel Varsayımlar<a class="anchor-link" href="#Temel-Varsay%C4%B1mlar">¶</a></h3><ul>
-<li>Düzenli ifade (regex) tabanlı kişisel veri taraması, isim ve bağlamsal kimlik gibi yapılandırılmamış kişisel veriyi bütünüyle yakalayamaz.</li>
-<li>Normalleştirilmiş tekrar oranında her tekrar ailesinin ilk örneği korunur; sonraki ek kopyalar toplam satır sayısına bölünür. Bu ölçüm anlamsal benzerliğin tamamını kapsamaz.</li>
-<li>Zaman hassasiyeti sayıları, düzenli ifadeyle bulunan eşleşme adetleridir; benzersiz satır sayısı olarak yorumlanmamalıdır.</li>
-<li>Olgusal doğruluk için tam uzman incelemesi yapılmadı; riskler örnek içerik, kaynak yöntemi ve mevcut kaynak izleme alanlarına göre raporlandı.</li>
+<li>Normalleştirilmiş tekrar oranı, her metin ailesindeki ilk örnekten
+sonraki ek kopyaların tüm satırlara bölünmesiyle hesaplanır.</li>
+<li>Zaman hassasiyeti sayıları regex eşleşmeleridir; benzersiz satır
+sayısı değildir.</li>
+<li>Regex taraması bağlamsal kişi ve kurum adlarını bütünüyle yakalayamaz.</li>
+<li>Yapısal doğrulama, her cevabın alan uzmanı tarafından olgusal olarak
+onaylandığı anlamına gelmez.</li>
 </ul>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a0b8ecc3">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b67a1e74">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7839,7 +7854,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=df21ca1b">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=9848ed9c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7864,9 +7879,18 @@ a.anchor-link {
     <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span>
         <span class="s2">"Project outputs were not found in the working directory or its parent."</span>
     <span class="p">)</span>
-<span class="n">profiles</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">((</span><span class="n">PROJECT_DIR</span> <span class="o">/</span> <span class="s2">"outputs"</span> <span class="o">/</span> <span class="s2">"data_quality_profiles.json"</span><span class="p">)</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">))</span>
-<span class="n">manual</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">((</span><span class="n">PROJECT_DIR</span> <span class="o">/</span> <span class="s2">"outputs"</span> <span class="o">/</span> <span class="s2">"manual_findings.json"</span><span class="p">)</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">))</span>
-<span class="n">overlaps</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">((</span><span class="n">PROJECT_DIR</span> <span class="o">/</span> <span class="s2">"outputs"</span> <span class="o">/</span> <span class="s2">"cross_dataset_overlap.json"</span><span class="p">)</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">))</span>
+
+<span class="n">profiles</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">PROJECT_DIR</span> <span class="o">/</span> <span class="s2">"outputs"</span> <span class="o">/</span> <span class="s2">"data_quality_profiles.json"</span><span class="p">)</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">overlaps</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">PROJECT_DIR</span> <span class="o">/</span> <span class="s2">"outputs"</span> <span class="o">/</span> <span class="s2">"cross_dataset_overlap.json"</span><span class="p">)</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">manual_path</span> <span class="o">=</span> <span class="n">PROJECT_DIR</span> <span class="o">/</span> <span class="s2">"outputs"</span> <span class="o">/</span> <span class="s2">"manual_findings.json"</span>
+<span class="n">manual</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">manual_path</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">))</span> <span class="k">if</span> <span class="n">manual_path</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span> <span class="k">else</span> <span class="p">{</span><span class="s2">"datasets"</span><span class="p">:</span> <span class="p">{}}</span>
+<span class="n">excluded</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">PROJECT_DIR</span> <span class="o">/</span> <span class="s2">"outputs"</span> <span class="o">/</span> <span class="s2">"excluded_datasets.json"</span><span class="p">)</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span>
+<span class="p">)[</span><span class="s2">"datasets"</span><span class="p">]</span>
 
 <span class="nb">len</span><span class="p">(</span><span class="n">profiles</span><span class="p">),</span> <span class="nb">sum</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s2">"profile"</span><span class="p">][</span><span class="s2">"row_count"</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">profiles</span><span class="p">)</span>
 </pre></div>
@@ -7881,12 +7905,26 @@ a.anchor-link {
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[1]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>(9, 3119)</pre>
+<pre>(45, 87831)</pre>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=316e3fad">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8c032f0f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Analiz-edilemeyen-veri-setleri">Analiz edilemeyen veri setleri<a class="anchor-link" href="#Analiz-edilemeyen-veri-setleri">¶</a></h3><p>Kayıt defterinde etkin olduğu hâlde erişilemeyen veri setleri kapsam
+dışı bırakılmaz; her biri canlı olarak yeniden doğrulanmış HTTP
+kanıtıyla birlikte burada listelenir. Aşağıdaki satırlar toplam satır
+sayısına dâhil değildir.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=3aefa2c2">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7894,26 +7932,18 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">summary_rows</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">profiles</span><span class="p">:</span>
-    <span class="n">profile</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s2">"profile"</span><span class="p">]</span>
-    <span class="n">scan</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"text_scan"</span><span class="p">,</span> <span class="p">{})</span>
-    <span class="n">summary_rows</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
+    <span class="p">{</span>
         <span class="s2">"dataset"</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="s2">"dataset_id"</span><span class="p">],</span>
-        <span class="s2">"satır"</span><span class="p">:</span> <span class="n">profile</span><span class="p">[</span><span class="s2">"row_count"</span><span class="p">],</span>
-        <span class="s2">"biçim"</span><span class="p">:</span> <span class="n">profile</span><span class="p">[</span><span class="s2">"data_shape"</span><span class="p">],</span>
-        <span class="s2">"birebir_tekrar"</span><span class="p">:</span> <span class="n">profile</span><span class="p">[</span><span class="s2">"exact_duplicate_rows"</span><span class="p">],</span>
-        <span class="s2">"istem_tekrar_%"</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_prompt_duplicates"</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"duplicate_rate"</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">1</span><span class="p">),</span>
-        <span class="s2">"cevap_tekrar_%"</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"assistant_answer_duplicates"</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"duplicate_rate"</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">1</span><span class="p">),</span>
-        <span class="s2">"thinking"</span><span class="p">:</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"nonempty_thinking_messages"</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-        <span class="s2">"metin_null"</span><span class="p">:</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"string_encoded_null_fields"</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-        <span class="s2">"zaman_eşleşmesi"</span><span class="p">:</span> <span class="n">scan</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"time_sensitive_matches"</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-        <span class="s2">"asistan_kelime_medyan"</span><span class="p">:</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"assistant_word_length"</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"median"</span><span class="p">),</span>
-        <span class="s2">"asistan_kelime_p95"</span><span class="p">:</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"assistant_word_length"</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"p95"</span><span class="p">),</span>
-    <span class="p">})</span>
-
-<span class="n">summary</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">summary_rows</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">"dataset"</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">summary</span>
+        <span class="s2">"contributor"</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"contributor"</span><span class="p">),</span>
+        <span class="s2">"status"</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="s2">"status"</span><span class="p">],</span>
+        <span class="s2">"reverified_on"</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"reverified_on"</span><span class="p">),</span>
+        <span class="s2">"http_status"</span><span class="p">:</span> <span class="s2">", "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="nb">str</span><span class="p">(</span><span class="n">check</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"status"</span><span class="p">))</span> <span class="k">for</span> <span class="n">check</span> <span class="ow">in</span> <span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"reverified_checks"</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="p">),</span>
+    <span class="p">}</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">excluded</span>
+<span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -7945,144 +7975,28 @@ a.anchor-link {
 <tr style="text-align: right;">
 <th></th>
 <th>dataset</th>
-<th>satır</th>
-<th>biçim</th>
-<th>birebir_tekrar</th>
-<th>istem_tekrar_%</th>
-<th>cevap_tekrar_%</th>
-<th>thinking</th>
-<th>metin_null</th>
-<th>zaman_eşleşmesi</th>
-<th>asistan_kelime_medyan</th>
-<th>asistan_kelime_p95</th>
+<th>contributor</th>
+<th>status</th>
+<th>reverified_on</th>
+<th>http_status</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <th>0</th>
-<td>Aysenur44/namaz-vakti-identity-tr</td>
-<td>4</td>
-<td>conversation</td>
-<td>0</td>
-<td>0.0</td>
-<td>0.0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>6.0</td>
-<td>10.70</td>
+<td>menesnas/Pharmacy_Identity_Synthetic_QA</td>
+<td>Muhammet Enes Nas</td>
+<td>gated_manual</td>
+<td>2026-07-22</td>
+<td>200, 404</td>
 </tr>
 <tr>
 <th>1</th>
-<td>Egertekin/marvel-domain-dataset</td>
-<td>177</td>
-<td>conversation</td>
-<td>0</td>
-<td>75.7</td>
-<td>13.6</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>56.0</td>
-<td>153.40</td>
-</tr>
-<tr>
-<th>2</th>
-<td>Mer1Alii/TR-ECommerce-CustomerSupport-Instruct...</td>
-<td>186</td>
-<td>conversation</td>
-<td>0</td>
-<td>0.0</td>
-<td>0.0</td>
-<td>186</td>
-<td>0</td>
-<td>31</td>
-<td>87.0</td>
-<td>119.00</td>
-</tr>
-<tr>
-<th>3</th>
-<td>aliFurkan123/cultural-questions-dataset</td>
-<td>500</td>
-<td>conversation</td>
-<td>0</td>
-<td>0.0</td>
-<td>0.0</td>
-<td>500</td>
-<td>0</td>
-<td>4</td>
-<td>20.0</td>
-<td>24.00</td>
-</tr>
-<tr>
-<th>4</th>
-<td>gururaser/ithaki-bilimkurgu-klasikleri</td>
-<td>103</td>
-<td>catalog</td>
-<td>0</td>
-<td>0.0</td>
-<td>0.0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>NaN</td>
-<td>NaN</td>
-</tr>
-<tr>
-<th>5</th>
-<td>namruni/meb-ogretmen-soru-cevap</td>
-<td>450</td>
-<td>conversation</td>
-<td>0</td>
-<td>0.0</td>
-<td>0.0</td>
-<td>450</td>
-<td>0</td>
-<td>297</td>
-<td>81.0</td>
-<td>114.55</td>
-</tr>
-<tr>
-<th>6</th>
-<td>nyzmemre/biyoloji-terimleri-turkce-sa</td>
-<td>1093</td>
-<td>conversation</td>
-<td>0</td>
-<td>0.2</td>
-<td>21.6</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>15.0</td>
-<td>41.00</td>
-</tr>
-<tr>
-<th>7</th>
-<td>sk75/sahin_identity</td>
-<td>77</td>
-<td>conversation</td>
-<td>0</td>
-<td>0.0</td>
-<td>64.9</td>
-<td>0</td>
-<td>462</td>
-<td>0</td>
-<td>11.0</td>
-<td>26.00</td>
-</tr>
-<tr>
-<th>8</th>
-<td>yoitsmeyusuf/felsefe_finetune</td>
-<td>529</td>
-<td>conversation</td>
-<td>0</td>
-<td>76.6</td>
-<td>0.0</td>
-<td>0</td>
-<td>0</td>
-<td>21</td>
-<td>35.0</td>
-<td>353.60</td>
+<td>uzcaliskan/magibu_dataset_drilling</td>
+<td>Oguz Caliskan</td>
+<td>not_found_or_private</td>
+<td>2026-07-22</td>
+<td>404, 404</td>
 </tr>
 </tbody>
 </table>
@@ -8091,18 +8005,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9ce58562">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Sonu%C3%A7lar">Sonuçlar<a class="anchor-link" href="#Sonu%C3%A7lar">¶</a></h2><h3 id="Portf%C3%B6y-toplamlar%C4%B1-ve-yap%C4%B1sal-kontroller-do%C4%9Fruland%C4%B1">Portföy toplamları ve yapısal kontroller doğrulandı<a class="anchor-link" href="#Portf%C3%B6y-toplamlar%C4%B1-ve-yap%C4%B1sal-kontroller-do%C4%9Fruland%C4%B1">¶</a></h3><p>Aşağıdaki hücre, rapordaki temel toplamları doğrudan profillerden yeniden hesaplar ve beklenen değerlerle doğrular. Ham büyüklük tek başına kalite göstergesi değildir.</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=c88efe18">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=357669fa">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8110,22 +8013,35 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">portfolio</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span>
-    <span class="s2">"veri_seti"</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">summary</span><span class="p">),</span>
-    <span class="s2">"toplam_satır"</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">summary</span><span class="p">[</span><span class="s2">"satır"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()),</span>
-    <span class="s2">"sohbet_satırı"</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">summary</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">summary</span><span class="p">[</span><span class="s2">"biçim"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"conversation"</span><span class="p">,</span> <span class="s2">"satır"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()),</span>
-    <span class="s2">"katalog_satırı"</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">summary</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">summary</span><span class="p">[</span><span class="s2">"biçim"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"catalog"</span><span class="p">,</span> <span class="s2">"satır"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()),</span>
-    <span class="s2">"thinking_içeren_mesaj"</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">summary</span><span class="p">[</span><span class="s2">"thinking"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()),</span>
-    <span class="s2">"metin_null_hatası"</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">summary</span><span class="p">[</span><span class="s2">"metin_null"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()),</span>
-    <span class="s2">"zaman_hassasiyeti_eşleşmesi"</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">summary</span><span class="p">[</span><span class="s2">"zaman_eşleşmesi"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()),</span>
-<span class="p">},</span> <span class="n">name</span><span class="o">=</span><span class="s2">"değer"</span><span class="p">)</span>
-<span class="k">assert</span> <span class="n">portfolio</span><span class="p">[</span><span class="s2">"veri_seti"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">9</span>
-<span class="k">assert</span> <span class="n">portfolio</span><span class="p">[</span><span class="s2">"toplam_satır"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3119</span>
-<span class="k">assert</span> <span class="n">portfolio</span><span class="p">[</span><span class="s2">"sohbet_satırı"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3016</span>
-<span class="k">assert</span> <span class="n">portfolio</span><span class="p">[</span><span class="s2">"katalog_satırı"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">103</span>
-<span class="k">assert</span> <span class="n">portfolio</span><span class="p">[</span><span class="s2">"thinking_içeren_mesaj"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1136</span>
-<span class="k">assert</span> <span class="n">portfolio</span><span class="p">[</span><span class="s2">"metin_null_hatası"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">462</span>
-<span class="n">portfolio</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">summary_rows</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">profiles</span><span class="p">:</span>
+    <span class="n">profile</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s2">"profile"</span><span class="p">]</span>
+    <span class="n">scan</span> <span class="o">=</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"text_scan"</span><span class="p">,</span> <span class="p">{})</span>
+    <span class="n">summary_rows</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+        <span class="s2">"dataset"</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="s2">"dataset_id"</span><span class="p">],</span>
+        <span class="s2">"contributor"</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"contributor"</span><span class="p">),</span>
+        <span class="s2">"rows"</span><span class="p">:</span> <span class="n">profile</span><span class="p">[</span><span class="s2">"row_count"</span><span class="p">],</span>
+        <span class="s2">"shape"</span><span class="p">:</span> <span class="n">profile</span><span class="p">[</span><span class="s2">"data_shape"</span><span class="p">],</span>
+        <span class="s2">"exact_duplicates"</span><span class="p">:</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"exact_duplicate_rows"</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="s2">"prompt_duplicates_%"</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_prompt_duplicates"</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"duplicate_rate"</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">2</span><span class="p">),</span>
+        <span class="s2">"answer_duplicates_%"</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"assistant_answer_duplicates"</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"duplicate_rate"</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">2</span><span class="p">),</span>
+        <span class="s2">"thinking"</span><span class="p">:</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"nonempty_thinking_messages"</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="s2">"string_nulls"</span><span class="p">:</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"string_encoded_null_fields"</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="s2">"time_sensitive_matches"</span><span class="p">:</span> <span class="n">scan</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"time_sensitive_matches"</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="s2">"answer_words_median"</span><span class="p">:</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"assistant_word_length"</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"median"</span><span class="p">),</span>
+        <span class="s2">"answer_words_p95"</span><span class="p">:</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"assistant_word_length"</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"p95"</span><span class="p">),</span>
+        <span class="s2">"json_answers"</span><span class="p">:</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"structured_answers"</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"json_parsable_answers"</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="s2">"json_like_broken"</span><span class="p">:</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"structured_answers"</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"json_like_but_unparsable_answers"</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="s2">"conflicting_prompt_families"</span><span class="p">:</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"answer_families"</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="s2">"prompt_families_with_conflicting_answers"</span><span class="p">,</span> <span class="mi">0</span>
+        <span class="p">),</span>
+        <span class="s2">"cross_split_duplicate_rows"</span><span class="p">:</span> <span class="n">profile</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"split_integrity"</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="s2">"cross_split_duplicate_rows"</span><span class="p">,</span> <span class="mi">0</span>
+        <span class="p">),</span>
+    <span class="p">})</span>
+
+<span class="n">summary</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">summary_rows</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">"dataset"</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">summary</span>
 </pre></div>
 </div>
 </div>
@@ -8156,37 +8072,879 @@ a.anchor-link {
 <thead>
 <tr style="text-align: right;">
 <th></th>
-<th>değer</th>
+<th>dataset</th>
+<th>contributor</th>
+<th>rows</th>
+<th>shape</th>
+<th>exact_duplicates</th>
+<th>prompt_duplicates_%</th>
+<th>answer_duplicates_%</th>
+<th>thinking</th>
+<th>string_nulls</th>
+<th>time_sensitive_matches</th>
+<th>answer_words_median</th>
+<th>answer_words_p95</th>
+<th>json_answers</th>
+<th>json_like_broken</th>
+<th>conflicting_prompt_families</th>
+<th>cross_split_duplicate_rows</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<th>veri_seti</th>
-<td>9</td>
+<th>0</th>
+<td>Aysenur44/namaz-vakti-dua-asistan-tr</td>
+<td>Ayşe Nur Yeşilova</td>
+<td>60</td>
+<td>conversation</td>
+<td>0</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>14.5</td>
+<td>20.05</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 </tr>
 <tr>
-<th>toplam_satır</th>
-<td>3119</td>
+<th>1</th>
+<td>Aysenur44/namaz-vakti-identity-tr</td>
+<td>Ayşe Nur Yeşilova</td>
+<td>4</td>
+<td>conversation</td>
+<td>0</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>6.0</td>
+<td>10.70</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 </tr>
 <tr>
-<th>sohbet_satırı</th>
-<td>3016</td>
+<th>2</th>
+<td>Egertekin/marvel-domain-dataset</td>
+<td>Ege Ertekin</td>
+<td>177</td>
+<td>conversation</td>
+<td>0</td>
+<td>75.71</td>
+<td>13.56</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>56.0</td>
+<td>153.40</td>
+<td>0</td>
+<td>0</td>
+<td>7</td>
+<td>0</td>
 </tr>
 <tr>
-<th>katalog_satırı</th>
+<th>3</th>
+<td>Endezyar/siyer_datasets</td>
+<td>Muhammed Bakır Kurt</td>
+<td>509</td>
+<td>conversation</td>
+<td>0</td>
+<td>0.98</td>
+<td>0.39</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>6.0</td>
+<td>20.00</td>
+<td>0</td>
+<td>0</td>
+<td>3</td>
+<td>0</td>
+</tr>
+<tr>
+<th>4</th>
+<td>Erenyanic/seasoned-advice-dataset</td>
+<td>Eren Yanic</td>
+<td>1000</td>
+<td>conversation</td>
+<td>0</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>1000</td>
+<td>0</td>
+<td>28</td>
+<td>121.0</td>
+<td>366.10</td>
+<td>0</td>
+<td>24</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>5</th>
+<td>Mer1Alii/TR-ECommerce-CustomerSupport-Instruct...</td>
+<td>Mert Ali Alkan</td>
+<td>186</td>
+<td>conversation</td>
+<td>0</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>186</td>
+<td>0</td>
+<td>31</td>
+<td>87.0</td>
+<td>119.00</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>6</th>
+<td>SalihHub/trendyol-marangoz-urun-asistan-qa</td>
+<td>Salih Dede</td>
+<td>1211</td>
+<td>conversation</td>
+<td>0</td>
+<td>1.32</td>
+<td>15.11</td>
+<td>1211</td>
+<td>0</td>
+<td>10</td>
+<td>7.0</td>
+<td>18.00</td>
+<td>0</td>
+<td>0</td>
+<td>12</td>
+<td>0</td>
+</tr>
+<tr>
+<th>7</th>
+<td>Talayhan/skatepal_dataset</td>
+<td>Talayhan</td>
+<td>299</td>
+<td>conversation</td>
+<td>0</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>299</td>
+<td>0</td>
+<td>26</td>
+<td>63.0</td>
+<td>89.00</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>8</th>
+<td>Toivo0/Turkce-istatistik-reasoning</td>
+<td>Umut Kıvanç Sipahioglu</td>
+<td>400</td>
+<td>conversation</td>
+<td>0</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>400</td>
+<td>0</td>
+<td>12</td>
+<td>219.5</td>
+<td>278.00</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>9</th>
+<td>Uunan/turkish-cuisine-qa</td>
+<td>Uunan</td>
+<td>34244</td>
+<td>conversation</td>
+<td>0</td>
+<td>0.01</td>
+<td>0.05</td>
+<td>34244</td>
+<td>0</td>
+<td>0</td>
+<td>10.0</td>
+<td>78.00</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+</tr>
+<tr>
+<th>10</th>
+<td>YusufSimsek/llm-kisisellestirme</td>
+<td>Yusuf Şimşek</td>
+<td>46</td>
+<td>conversation</td>
+<td>0</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>19.0</td>
+<td>29.75</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>11</th>
+<td>YusufSimsek/turkce-atasozleri-dataset</td>
+<td>Yusuf Şimşek</td>
+<td>1398</td>
+<td>conversation</td>
+<td>0</td>
+<td>0.21</td>
+<td>68.10</td>
+<td>1398</td>
+<td>0</td>
+<td>0</td>
+<td>13.0</td>
+<td>33.00</td>
+<td>0</td>
+<td>0</td>
+<td>3</td>
+<td>0</td>
+</tr>
+<tr>
+<th>12</th>
+<td>aliFurkan123/cultural-questions-dataset</td>
+<td>Ali Furkan Ak</td>
+<td>500</td>
+<td>conversation</td>
+<td>0</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>500</td>
+<td>0</td>
+<td>4</td>
+<td>20.0</td>
+<td>24.00</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>13</th>
+<td>aliFurkan123/identity</td>
+<td>Ali Furkan Ak</td>
+<td>30</td>
+<td>conversation</td>
+<td>0</td>
+<td>0.00</td>
+<td>36.36</td>
+<td>33</td>
+<td>0</td>
+<td>0</td>
+<td>10.0</td>
+<td>18.00</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>14</th>
+<td>berkbirkan/turkish-x-engagement-quotes</td>
+<td>Berk Birkan</td>
+<td>1000</td>
+<td>conversation</td>
+<td>0</td>
+<td>67.70</td>
+<td>0.00</td>
+<td>0</td>
+<td>0</td>
+<td>141</td>
+<td>15.0</td>
+<td>43.05</td>
+<td>0</td>
+<td>0</td>
+<td>229</td>
+<td>0</td>
+</tr>
+<tr>
+<th>15</th>
+<td>berkbirkan/turkish-x-engagement-replies</td>
+<td>Berk Birkan</td>
+<td>1000</td>
+<td>conversation</td>
+<td>0</td>
+<td>70.10</td>
+<td>0.00</td>
+<td>0</td>
+<td>0</td>
+<td>120</td>
+<td>15.0</td>
+<td>42.00</td>
+<td>0</td>
+<td>0</td>
+<td>212</td>
+<td>0</td>
+</tr>
+<tr>
+<th>16</th>
+<td>berkcangumusisik/voleykoc-antrenorluk-tr</td>
+<td>Berkcan Gümüşışık</td>
+<td>166</td>
+<td>conversation</td>
+<td>0</td>
+<td>0.00</td>
+<td>24.70</td>
+<td>0</td>
+<td>0</td>
+<td>66</td>
+<td>63.0</td>
+<td>239.00</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>17</th>
+<td>berkcangumusisik/voleykoc-identity-tr</td>
+<td>Berkcan Gümüşışık</td>
+<td>182</td>
+<td>conversation</td>
+<td>0</td>
+<td>0.00</td>
+<td>85.71</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>28.0</td>
+<td>37.00</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>18</th>
+<td>cihatyldz/lojistik-soru-cevap</td>
+<td>Cihat Yıldız</td>
+<td>139</td>
+<td>conversation</td>
+<td>0</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>44.0</td>
+<td>57.00</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>19</th>
+<td>enes1863/bilisim-hukuku-domain-dataset</td>
+<td>Enes Hakan</td>
+<td>1000</td>
+<td>conversation</td>
+<td>0</td>
+<td>0.00</td>
+<td>98.00</td>
+<td>1000</td>
+<td>0</td>
+<td>0</td>
+<td>30.0</td>
+<td>34.10</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>20</th>
+<td>enesozdemr/benim_ilk_datasetim</td>
+<td>enesozdemr</td>
+<td>113</td>
+<td>conversation</td>
+<td>0</td>
+<td>0.00</td>
+<td>84.96</td>
+<td>113</td>
+<td>0</td>
+<td>0</td>
+<td>13.0</td>
+<td>30.00</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>21</th>
+<td>erhanalsr/langusta-identity</td>
+<td>Erhan Alasar</td>
+<td>100</td>
+<td>conversation</td>
+<td>0</td>
+<td>0.00</td>
+<td>80.00</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>10.0</td>
+<td>12.00</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>22</th>
+<td>erhanalsr/langusta-kpss-reasoning</td>
+<td>Erhan Alasar</td>
+<td>21</td>
+<td>conversation</td>
+<td>0</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>21</td>
+<td>0</td>
+<td>0</td>
+<td>200.0</td>
+<td>310.00</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>23</th>
+<td>filiz-yalcin/identity-finetune</td>
+<td>Filiz Yalçin</td>
+<td>1600</td>
+<td>conversation</td>
+<td>0</td>
+<td>2.62</td>
+<td>0.31</td>
+<td>1600</td>
+<td>0</td>
+<td>1038</td>
+<td>245.0</td>
+<td>552.10</td>
+<td>0</td>
+<td>0</td>
+<td>33</td>
+<td>0</td>
+</tr>
+<tr>
+<th>24</th>
+<td>filiz-yalcin/turkish-figure-skating-qa</td>
+<td>Filiz Yalçin</td>
+<td>526</td>
+<td>conversation</td>
+<td>0</td>
+<td>1.90</td>
+<td>0.76</td>
+<td>526</td>
+<td>0</td>
+<td>47</td>
+<td>88.0</td>
+<td>234.25</td>
+<td>0</td>
+<td>0</td>
+<td>8</td>
+<td>0</td>
+</tr>
+<tr>
+<th>25</th>
+<td>gmz1234/stackoverflow_ai</td>
+<td>gmz1234</td>
+<td>1000</td>
+<td>conversation</td>
+<td>0</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>237.0</td>
+<td>763.20</td>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>26</th>
+<td>gorkemergune/ayarlicazhocam_finetune</td>
+<td>Görkem Ergüne</td>
+<td>429</td>
+<td>conversation</td>
+<td>4</td>
+<td>10.72</td>
+<td>0.93</td>
+<td>429</td>
+<td>0</td>
+<td>30</td>
+<td>81.0</td>
+<td>132.80</td>
+<td>0</td>
+<td>0</td>
+<td>34</td>
+<td>0</td>
+</tr>
+<tr>
+<th>27</th>
+<td>gururaser/ithaki-bilimkurgu-klasikleri</td>
+<td>Gurur Aşer</td>
 <td>103</td>
+<td>catalog</td>
+<td>0</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 </tr>
 <tr>
-<th>thinking_içeren_mesaj</th>
-<td>1136</td>
+<th>28</th>
+<td>haticenurcakr/turkish-classic-books-qa</td>
+<td>Hatice Nur Çakır</td>
+<td>220</td>
+<td>conversation</td>
+<td>0</td>
+<td>0.00</td>
+<td>1.82</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>9.5</td>
+<td>14.00</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 </tr>
 <tr>
-<th>metin_null_hatası</th>
+<th>29</th>
+<td>meldakahramann/animasyon-domain-dataset</td>
+<td>Melda Kahraman</td>
+<td>1020</td>
+<td>conversation</td>
+<td>0</td>
+<td>0.00</td>
+<td>58.82</td>
+<td>1020</td>
+<td>0</td>
+<td>0</td>
+<td>24.5</td>
+<td>225.10</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>30</th>
+<td>namruni/meb-ogretmen-soru-cevap</td>
+<td>Mustafa Özdemir</td>
+<td>450</td>
+<td>conversation</td>
+<td>0</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>450</td>
+<td>0</td>
+<td>297</td>
+<td>81.0</td>
+<td>114.55</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>31</th>
+<td>nursimakgul/meb-soru-uretme</td>
+<td>Nur Sima Akgül</td>
+<td>20874</td>
+<td>conversation</td>
+<td>178</td>
+<td>86.63</td>
+<td>1.27</td>
+<td>20874</td>
+<td>0</td>
+<td>560</td>
+<td>58.0</td>
+<td>138.00</td>
+<td>17454</td>
+<td>0</td>
+<td>797</td>
+<td>0</td>
+</tr>
+<tr>
+<th>32</th>
+<td>nyzmemre/biyoloji-terimleri-turkce-sa</td>
+<td>Mehmet Emre Öz</td>
+<td>1093</td>
+<td>conversation</td>
+<td>0</td>
+<td>0.18</td>
+<td>21.59</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>15.0</td>
+<td>41.00</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+</tr>
+<tr>
+<th>33</th>
+<td>sadecebirisii/turkish-llm-authority-bypass-saf...</td>
+<td>Hilal Kavas</td>
+<td>29</td>
+<td>conversation</td>
+<td>0</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0</td>
+<td>0</td>
+<td>8</td>
+<td>218.0</td>
+<td>270.60</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>34</th>
+<td>samliumay/turkish_cyber_security_controls_dataset</td>
+<td>Umay Şamlı</td>
+<td>800</td>
+<td>conversation</td>
+<td>0</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0</td>
+<td>0</td>
+<td>38</td>
+<td>69.0</td>
+<td>112.00</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>35</th>
+<td>samliumay/umay_samli_identification_dataset</td>
+<td>Umay Şamlı</td>
+<td>219</td>
+<td>conversation</td>
+<td>0</td>
+<td>0.00</td>
+<td>66.67</td>
+<td>0</td>
+<td>0</td>
+<td>62</td>
+<td>20.0</td>
+<td>31.00</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>36</th>
+<td>seali/turkce-saglik-qa</td>
+<td>Seyit Ali Yorğun</td>
+<td>773</td>
+<td>conversation</td>
+<td>0</td>
+<td>0.13</td>
+<td>0.00</td>
+<td>773</td>
+<td>0</td>
+<td>16</td>
+<td>151.0</td>
+<td>330.40</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<th>37</th>
+<td>sedayzc/trendyol-electronics-products-features...</td>
+<td>Seda Nur Yazıcı</td>
+<td>500</td>
+<td>tabular</td>
+<td>0</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0</td>
+<td>0</td>
+<td>398</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>38</th>
+<td>sedayzc/turkish-electronics-product-comparison...</td>
+<td>Seda Nur Yazıcı</td>
+<td>11858</td>
+<td>conversation</td>
+<td>4851</td>
+<td>41.37</td>
+<td>52.25</td>
+<td>0</td>
+<td>0</td>
+<td>699</td>
+<td>108.0</td>
+<td>328.00</td>
+<td>0</td>
+<td>0</td>
+<td>55</td>
+<td>0</td>
+</tr>
+<tr>
+<th>39</th>
+<td>senemde/saglik-qa-tr</td>
+<td>Senem Deniz</td>
+<td>553</td>
+<td>conversation</td>
+<td>0</td>
+<td>0.00</td>
+<td>0.54</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+<td>24.0</td>
+<td>40.00</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>40</th>
+<td>sk75/sahin_identity</td>
+<td>Serhat Kılıç</td>
+<td>77</td>
+<td>conversation</td>
+<td>0</td>
+<td>0.00</td>
+<td>64.94</td>
+<td>0</td>
 <td>462</td>
+<td>0</td>
+<td>11.0</td>
+<td>26.00</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 </tr>
 <tr>
-<th>zaman_hassasiyeti_eşleşmesi</th>
-<td>354</td>
+<th>41</th>
+<td>srhskrkc/odysseia-destani-tr</td>
+<td>Şakir Koç</td>
+<td>10</td>
+<td>conversation</td>
+<td>0</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>10</td>
+<td>0</td>
+<td>0</td>
+<td>45.5</td>
+<td>53.75</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>42</th>
+<td>ssilistre/carnegie-dost-kazanma-tr</td>
+<td>Semih Silistre</td>
+<td>1001</td>
+<td>conversation</td>
+<td>0</td>
+<td>0.00</td>
+<td>0.30</td>
+<td>1001</td>
+<td>0</td>
+<td>154</td>
+<td>141.0</td>
+<td>224.00</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>43</th>
+<td>ssilistre/semih-silistre-ai-identity</td>
+<td>Semih Silistre</td>
+<td>382</td>
+<td>conversation</td>
+<td>0</td>
+<td>0.00</td>
+<td>0.79</td>
+<td>382</td>
+<td>0</td>
+<td>43</td>
+<td>51.0</td>
+<td>96.00</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>44</th>
+<td>yoitsmeyusuf/felsefe_finetune</td>
+<td>Muhammet Yusuf Kaydın</td>
+<td>529</td>
+<td>conversation</td>
+<td>0</td>
+<td>76.56</td>
+<td>0.00</td>
+<td>0</td>
+<td>0</td>
+<td>21</td>
+<td>35.0</td>
+<td>353.60</td>
+<td>0</td>
+<td>0</td>
+<td>58</td>
+<td>0</td>
 </tr>
 </tbody>
 </table>
@@ -8196,17 +8954,18 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ecbb12a5">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7ffebb0f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Tekrar-ve-%C5%9Fema-riskleri-veri-setine-g%C3%B6re-yo%C4%9Funla%C5%9F%C4%B1yor">Tekrar ve şema riskleri veri setine göre yoğunlaşıyor<a class="anchor-link" href="#Tekrar-ve-%C5%9Fema-riskleri-veri-setine-g%C3%B6re-yo%C4%9Funla%C5%9F%C4%B1yor">¶</a></h3><p>Marvel ve felsefe setlerinde aynı kullanıcı sorusu çok sayıda farklı cevapla eşleşiyor. Biyoloji veri setinde aynı tanım farklı istemlerle yineleniyor. Şahin kimlik setinde ise hem cevap tekrarı hem de metin olarak saklanan <code>null</code> değerleri öne çıkıyor.</p>
+<h2 id="Sonu%C3%A7lar">Sonuçlar<a class="anchor-link" href="#Sonu%C3%A7lar">¶</a></h2><h3 id="Portf%C3%B6y-toplamlar%C4%B1-yeniden-hesaplan%C4%B1yor">Portföy toplamları yeniden hesaplanıyor<a class="anchor-link" href="#Portf%C3%B6y-toplamlar%C4%B1-yeniden-hesaplan%C4%B1yor">¶</a></h3><p>Bu hücre temel toplamları doğrudan profil dosyasından üretir ve
+notebook oluşturulurken gözlenen sabit değerlerle karşılaştırır.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=9d2ff541">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=66c6aa32">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8214,7 +8973,20 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">summary</span><span class="p">[[</span><span class="s2">"dataset"</span><span class="p">,</span> <span class="s2">"satır"</span><span class="p">,</span> <span class="s2">"istem_tekrar_%"</span><span class="p">,</span> <span class="s2">"cevap_tekrar_%"</span><span class="p">,</span> <span class="s2">"thinking"</span><span class="p">,</span> <span class="s2">"metin_null"</span><span class="p">]]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">portfolio</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span>
+    <span class="s2">"dataset_count"</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">summary</span><span class="p">),</span>
+    <span class="s2">"total_rows"</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">summary</span><span class="p">[</span><span class="s2">"rows"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()),</span>
+    <span class="s2">"conversation_rows"</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">summary</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">summary</span><span class="p">[</span><span class="s2">"shape"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"conversation"</span><span class="p">,</span> <span class="s2">"rows"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()),</span>
+    <span class="s2">"instruction_pair_rows"</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">summary</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">summary</span><span class="p">[</span><span class="s2">"shape"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"instruction_pair"</span><span class="p">,</span> <span class="s2">"rows"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()),</span>
+    <span class="s2">"catalog_rows"</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">summary</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">summary</span><span class="p">[</span><span class="s2">"shape"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"catalog"</span><span class="p">,</span> <span class="s2">"rows"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()),</span>
+    <span class="s2">"tabular_rows"</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">summary</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">summary</span><span class="p">[</span><span class="s2">"shape"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"tabular"</span><span class="p">,</span> <span class="s2">"rows"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()),</span>
+    <span class="s2">"thinking_records"</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">summary</span><span class="p">[</span><span class="s2">"thinking"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()),</span>
+    <span class="s2">"string_null_fields"</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">summary</span><span class="p">[</span><span class="s2">"string_nulls"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()),</span>
+    <span class="s2">"time_sensitive_matches"</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">summary</span><span class="p">[</span><span class="s2">"time_sensitive_matches"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()),</span>
+<span class="p">},</span> <span class="n">name</span><span class="o">=</span><span class="s2">"value"</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">portfolio</span><span class="p">[</span><span class="s2">"dataset_count"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">45</span>
+<span class="k">assert</span> <span class="n">portfolio</span><span class="p">[</span><span class="s2">"total_rows"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">87831</span>
+<span class="n">portfolio</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -8245,95 +9017,45 @@ a.anchor-link {
 <thead>
 <tr style="text-align: right;">
 <th></th>
-<th>dataset</th>
-<th>satır</th>
-<th>istem_tekrar_%</th>
-<th>cevap_tekrar_%</th>
-<th>thinking</th>
-<th>metin_null</th>
+<th>value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<th>0</th>
-<td>Aysenur44/namaz-vakti-identity-tr</td>
-<td>4</td>
-<td>0.0</td>
-<td>0.0</td>
-<td>0</td>
+<th>dataset_count</th>
+<td>45</td>
+</tr>
+<tr>
+<th>total_rows</th>
+<td>87831</td>
+</tr>
+<tr>
+<th>conversation_rows</th>
+<td>87228</td>
+</tr>
+<tr>
+<th>instruction_pair_rows</th>
 <td>0</td>
 </tr>
 <tr>
-<th>1</th>
-<td>Egertekin/marvel-domain-dataset</td>
-<td>177</td>
-<td>75.7</td>
-<td>13.6</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr>
-<th>2</th>
-<td>Mer1Alii/TR-ECommerce-CustomerSupport-Instruct...</td>
-<td>186</td>
-<td>0.0</td>
-<td>0.0</td>
-<td>186</td>
-<td>0</td>
-</tr>
-<tr>
-<th>3</th>
-<td>aliFurkan123/cultural-questions-dataset</td>
-<td>500</td>
-<td>0.0</td>
-<td>0.0</td>
-<td>500</td>
-<td>0</td>
-</tr>
-<tr>
-<th>4</th>
-<td>gururaser/ithaki-bilimkurgu-klasikleri</td>
+<th>catalog_rows</th>
 <td>103</td>
-<td>0.0</td>
-<td>0.0</td>
-<td>0</td>
-<td>0</td>
 </tr>
 <tr>
-<th>5</th>
-<td>namruni/meb-ogretmen-soru-cevap</td>
-<td>450</td>
-<td>0.0</td>
-<td>0.0</td>
-<td>450</td>
-<td>0</td>
+<th>tabular_rows</th>
+<td>500</td>
 </tr>
 <tr>
-<th>6</th>
-<td>nyzmemre/biyoloji-terimleri-turkce-sa</td>
-<td>1093</td>
-<td>0.2</td>
-<td>21.6</td>
-<td>0</td>
-<td>0</td>
+<th>thinking_records</th>
+<td>67470</td>
 </tr>
 <tr>
-<th>7</th>
-<td>sk75/sahin_identity</td>
-<td>77</td>
-<td>0.0</td>
-<td>64.9</td>
-<td>0</td>
+<th>string_null_fields</th>
 <td>462</td>
 </tr>
 <tr>
-<th>8</th>
-<td>yoitsmeyusuf/felsefe_finetune</td>
-<td>529</td>
-<td>76.6</td>
-<td>0.0</td>
-<td>0</td>
-<td>0</td>
+<th>time_sensitive_matches</th>
+<td>3853</td>
 </tr>
 </tbody>
 </table>
@@ -8343,17 +9065,19 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=97d5ba8e">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=554c7ba5">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Yan%C4%B1t-uzunlu%C4%9Fu-veri-setleri-aras%C4%B1nda-belirgin-bi%C3%A7imde-de%C4%9Fi%C5%9Fiyor">Yanıt uzunluğu veri setleri arasında belirgin biçimde değişiyor<a class="anchor-link" href="#Yan%C4%B1t-uzunlu%C4%9Fu-veri-setleri-aras%C4%B1nda-belirgin-bi%C3%A7imde-de%C4%9Fi%C5%9Fiyor">¶</a></h3><p>Medyan ve yüzde 95 (p95) asistan yanıt uzunlukları, kısa sözlük açıklamalarından uzun görüş ve mevzuat yanıtlarına kadar farklı kullanım biçimlerini gösteriyor. Bu değerler kalite puanı değildir; bağlam penceresi, örnek ağırlığı ve hedef görev tasarımı için ölçüdür.</p>
+<h3 id="Tekrar-yo%C4%9Funlu%C4%9Fu-veri-setine-g%C3%B6re-de%C4%9Fi%C5%9Fiyor">Tekrar yoğunluğu veri setine göre değişiyor<a class="anchor-link" href="#Tekrar-yo%C4%9Funlu%C4%9Fu-veri-setine-g%C3%B6re-de%C4%9Fi%C5%9Fiyor">¶</a></h3><p>Aşağıdaki tablo, sohbet ve düz istem–cevap şemalarında kullanıcı
+istemi ile hedef cevapların normalleştirilmiş ek kopya oranlarını
+birlikte gösterir.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=7391eb8c">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=39613dd5">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8362,9 +9086,11 @@ a.anchor-link {
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">summary</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
-    <span class="n">summary</span><span class="p">[</span><span class="s2">"biçim"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"conversation"</span><span class="p">,</span>
-    <span class="p">[</span><span class="s2">"dataset"</span><span class="p">,</span> <span class="s2">"asistan_kelime_medyan"</span><span class="p">,</span> <span class="s2">"asistan_kelime_p95"</span><span class="p">],</span>
-<span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">"asistan_kelime_medyan"</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">summary</span><span class="p">[</span><span class="s2">"shape"</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s2">"conversation"</span><span class="p">,</span> <span class="s2">"instruction_pair"</span><span class="p">]),</span>
+    <span class="p">[</span><span class="s2">"dataset"</span><span class="p">,</span> <span class="s2">"rows"</span><span class="p">,</span> <span class="s2">"prompt_duplicates_%"</span><span class="p">,</span> <span class="s2">"answer_duplicates_%"</span><span class="p">],</span>
+<span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span>
+    <span class="p">[</span><span class="s2">"prompt_duplicates_%"</span><span class="p">,</span> <span class="s2">"answer_duplicates_%"</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -8396,58 +9122,312 @@ a.anchor-link {
 <tr style="text-align: right;">
 <th></th>
 <th>dataset</th>
-<th>asistan_kelime_medyan</th>
-<th>asistan_kelime_p95</th>
+<th>rows</th>
+<th>prompt_duplicates_%</th>
+<th>answer_duplicates_%</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<th>2</th>
-<td>Mer1Alii/TR-ECommerce-CustomerSupport-Instruct...</td>
-<td>87.0</td>
-<td>119.00</td>
+<th>31</th>
+<td>nursimakgul/meb-soru-uretme</td>
+<td>20874</td>
+<td>86.63</td>
+<td>1.27</td>
 </tr>
 <tr>
-<th>5</th>
-<td>namruni/meb-ogretmen-soru-cevap</td>
-<td>81.0</td>
-<td>114.55</td>
-</tr>
-<tr>
-<th>1</th>
-<td>Egertekin/marvel-domain-dataset</td>
-<td>56.0</td>
-<td>153.40</td>
-</tr>
-<tr>
-<th>8</th>
+<th>44</th>
 <td>yoitsmeyusuf/felsefe_finetune</td>
-<td>35.0</td>
-<td>353.60</td>
+<td>529</td>
+<td>76.56</td>
+<td>0.00</td>
 </tr>
 <tr>
-<th>3</th>
-<td>aliFurkan123/cultural-questions-dataset</td>
-<td>20.0</td>
-<td>24.00</td>
+<th>2</th>
+<td>Egertekin/marvel-domain-dataset</td>
+<td>177</td>
+<td>75.71</td>
+<td>13.56</td>
+</tr>
+<tr>
+<th>15</th>
+<td>berkbirkan/turkish-x-engagement-replies</td>
+<td>1000</td>
+<td>70.10</td>
+<td>0.00</td>
+</tr>
+<tr>
+<th>14</th>
+<td>berkbirkan/turkish-x-engagement-quotes</td>
+<td>1000</td>
+<td>67.70</td>
+<td>0.00</td>
+</tr>
+<tr>
+<th>38</th>
+<td>sedayzc/turkish-electronics-product-comparison...</td>
+<td>11858</td>
+<td>41.37</td>
+<td>52.25</td>
+</tr>
+<tr>
+<th>26</th>
+<td>gorkemergune/ayarlicazhocam_finetune</td>
+<td>429</td>
+<td>10.72</td>
+<td>0.93</td>
+</tr>
+<tr>
+<th>23</th>
+<td>filiz-yalcin/identity-finetune</td>
+<td>1600</td>
+<td>2.62</td>
+<td>0.31</td>
+</tr>
+<tr>
+<th>24</th>
+<td>filiz-yalcin/turkish-figure-skating-qa</td>
+<td>526</td>
+<td>1.90</td>
+<td>0.76</td>
 </tr>
 <tr>
 <th>6</th>
-<td>nyzmemre/biyoloji-terimleri-turkce-sa</td>
-<td>15.0</td>
-<td>41.00</td>
+<td>SalihHub/trendyol-marangoz-urun-asistan-qa</td>
+<td>1211</td>
+<td>1.32</td>
+<td>15.11</td>
 </tr>
 <tr>
-<th>7</th>
+<th>3</th>
+<td>Endezyar/siyer_datasets</td>
+<td>509</td>
+<td>0.98</td>
+<td>0.39</td>
+</tr>
+<tr>
+<th>11</th>
+<td>YusufSimsek/turkce-atasozleri-dataset</td>
+<td>1398</td>
+<td>0.21</td>
+<td>68.10</td>
+</tr>
+<tr>
+<th>32</th>
+<td>nyzmemre/biyoloji-terimleri-turkce-sa</td>
+<td>1093</td>
+<td>0.18</td>
+<td>21.59</td>
+</tr>
+<tr>
+<th>36</th>
+<td>seali/turkce-saglik-qa</td>
+<td>773</td>
+<td>0.13</td>
+<td>0.00</td>
+</tr>
+<tr>
+<th>9</th>
+<td>Uunan/turkish-cuisine-qa</td>
+<td>34244</td>
+<td>0.01</td>
+<td>0.05</td>
+</tr>
+<tr>
+<th>19</th>
+<td>enes1863/bilisim-hukuku-domain-dataset</td>
+<td>1000</td>
+<td>0.00</td>
+<td>98.00</td>
+</tr>
+<tr>
+<th>17</th>
+<td>berkcangumusisik/voleykoc-identity-tr</td>
+<td>182</td>
+<td>0.00</td>
+<td>85.71</td>
+</tr>
+<tr>
+<th>20</th>
+<td>enesozdemr/benim_ilk_datasetim</td>
+<td>113</td>
+<td>0.00</td>
+<td>84.96</td>
+</tr>
+<tr>
+<th>21</th>
+<td>erhanalsr/langusta-identity</td>
+<td>100</td>
+<td>0.00</td>
+<td>80.00</td>
+</tr>
+<tr>
+<th>35</th>
+<td>samliumay/umay_samli_identification_dataset</td>
+<td>219</td>
+<td>0.00</td>
+<td>66.67</td>
+</tr>
+<tr>
+<th>40</th>
 <td>sk75/sahin_identity</td>
-<td>11.0</td>
-<td>26.00</td>
+<td>77</td>
+<td>0.00</td>
+<td>64.94</td>
+</tr>
+<tr>
+<th>29</th>
+<td>meldakahramann/animasyon-domain-dataset</td>
+<td>1020</td>
+<td>0.00</td>
+<td>58.82</td>
+</tr>
+<tr>
+<th>13</th>
+<td>aliFurkan123/identity</td>
+<td>30</td>
+<td>0.00</td>
+<td>36.36</td>
+</tr>
+<tr>
+<th>16</th>
+<td>berkcangumusisik/voleykoc-antrenorluk-tr</td>
+<td>166</td>
+<td>0.00</td>
+<td>24.70</td>
+</tr>
+<tr>
+<th>28</th>
+<td>haticenurcakr/turkish-classic-books-qa</td>
+<td>220</td>
+<td>0.00</td>
+<td>1.82</td>
+</tr>
+<tr>
+<th>43</th>
+<td>ssilistre/semih-silistre-ai-identity</td>
+<td>382</td>
+<td>0.00</td>
+<td>0.79</td>
+</tr>
+<tr>
+<th>39</th>
+<td>senemde/saglik-qa-tr</td>
+<td>553</td>
+<td>0.00</td>
+<td>0.54</td>
+</tr>
+<tr>
+<th>42</th>
+<td>ssilistre/carnegie-dost-kazanma-tr</td>
+<td>1001</td>
+<td>0.00</td>
+<td>0.30</td>
 </tr>
 <tr>
 <th>0</th>
+<td>Aysenur44/namaz-vakti-dua-asistan-tr</td>
+<td>60</td>
+<td>0.00</td>
+<td>0.00</td>
+</tr>
+<tr>
+<th>1</th>
 <td>Aysenur44/namaz-vakti-identity-tr</td>
-<td>6.0</td>
-<td>10.70</td>
+<td>4</td>
+<td>0.00</td>
+<td>0.00</td>
+</tr>
+<tr>
+<th>4</th>
+<td>Erenyanic/seasoned-advice-dataset</td>
+<td>1000</td>
+<td>0.00</td>
+<td>0.00</td>
+</tr>
+<tr>
+<th>5</th>
+<td>Mer1Alii/TR-ECommerce-CustomerSupport-Instruct...</td>
+<td>186</td>
+<td>0.00</td>
+<td>0.00</td>
+</tr>
+<tr>
+<th>7</th>
+<td>Talayhan/skatepal_dataset</td>
+<td>299</td>
+<td>0.00</td>
+<td>0.00</td>
+</tr>
+<tr>
+<th>8</th>
+<td>Toivo0/Turkce-istatistik-reasoning</td>
+<td>400</td>
+<td>0.00</td>
+<td>0.00</td>
+</tr>
+<tr>
+<th>10</th>
+<td>YusufSimsek/llm-kisisellestirme</td>
+<td>46</td>
+<td>0.00</td>
+<td>0.00</td>
+</tr>
+<tr>
+<th>12</th>
+<td>aliFurkan123/cultural-questions-dataset</td>
+<td>500</td>
+<td>0.00</td>
+<td>0.00</td>
+</tr>
+<tr>
+<th>18</th>
+<td>cihatyldz/lojistik-soru-cevap</td>
+<td>139</td>
+<td>0.00</td>
+<td>0.00</td>
+</tr>
+<tr>
+<th>22</th>
+<td>erhanalsr/langusta-kpss-reasoning</td>
+<td>21</td>
+<td>0.00</td>
+<td>0.00</td>
+</tr>
+<tr>
+<th>25</th>
+<td>gmz1234/stackoverflow_ai</td>
+<td>1000</td>
+<td>0.00</td>
+<td>0.00</td>
+</tr>
+<tr>
+<th>30</th>
+<td>namruni/meb-ogretmen-soru-cevap</td>
+<td>450</td>
+<td>0.00</td>
+<td>0.00</td>
+</tr>
+<tr>
+<th>33</th>
+<td>sadecebirisii/turkish-llm-authority-bypass-saf...</td>
+<td>29</td>
+<td>0.00</td>
+<td>0.00</td>
+</tr>
+<tr>
+<th>34</th>
+<td>samliumay/turkish_cyber_security_controls_dataset</td>
+<td>800</td>
+<td>0.00</td>
+<td>0.00</td>
+</tr>
+<tr>
+<th>41</th>
+<td>srhskrkc/odysseia-destani-tr</td>
+<td>10</td>
+<td>0.00</td>
+<td>0.00</td>
 </tr>
 </tbody>
 </table>
@@ -8457,17 +9437,18 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=19c8d776">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8cf4ca15">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Katalog-veri-seti-anahtar-ve-fiyat-kontrollerini-ge%C3%A7iyor">Katalog veri seti anahtar ve fiyat kontrollerini geçiyor<a class="anchor-link" href="#Katalog-veri-seti-anahtar-ve-fiyat-kontrollerini-ge%C3%A7iyor">¶</a></h3><p>İthaki kataloğunda ISBN, kitap URL'si ve kitap–yazar anahtarı benzersiz; ISBN-13 ve fiyat/indirim hesapları tutarlı. En belirgin veri kalitesi konusu bazı alanların yüksek boşluk oranı ile fiyat ve özetlerin zaman/kaynak meta verisi eksikliğidir.</p>
+<h3 id="Yan%C4%B1t-uzunlu%C4%9Fu-g%C3%B6rev-bi%C3%A7imini-etkiliyor">Yanıt uzunluğu görev biçimini etkiliyor<a class="anchor-link" href="#Yan%C4%B1t-uzunlu%C4%9Fu-g%C3%B6rev-bi%C3%A7imini-etkiliyor">¶</a></h3><p>Medyan ve p95 kelime sayıları bağlam bütçesi, örnek ağırlığı ve hedef
+yanıt biçimi için kullanılır; tek başına içerik doğruluğu göstermez.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=d66857ab">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=86152d2e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8475,21 +9456,10 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">catalog</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s2">"profile"</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">profiles</span> <span class="k">if</span> <span class="n">item</span><span class="p">[</span><span class="s2">"profile"</span><span class="p">][</span><span class="s2">"data_shape"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"catalog"</span><span class="p">)</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
-    <span class="s2">"kontrol"</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s2">"satır"</span><span class="p">,</span> <span class="s2">"birebir tekrar"</span><span class="p">,</span> <span class="s2">"ISBN tekrarı"</span><span class="p">,</span> <span class="s2">"geçersiz ISBN-13"</span><span class="p">,</span>
-        <span class="s2">"URL tekrarı"</span><span class="p">,</span> <span class="s2">"geçersiz URL"</span><span class="p">,</span> <span class="s2">"indirim tutarsızlığı"</span><span class="p">,</span>
-        <span class="s2">"eksik çevirmen"</span><span class="p">,</span> <span class="s2">"eksik kapak tipi"</span><span class="p">,</span> <span class="s2">"eksik orijinal ad"</span><span class="p">,</span> <span class="s2">"eksik yayın tarihi"</span><span class="p">,</span>
-    <span class="p">],</span>
-    <span class="s2">"değer"</span><span class="p">:</span> <span class="p">[</span>
-        <span class="n">catalog</span><span class="p">[</span><span class="s2">"row_count"</span><span class="p">],</span> <span class="n">catalog</span><span class="p">[</span><span class="s2">"exact_duplicate_rows"</span><span class="p">],</span> <span class="n">catalog</span><span class="p">[</span><span class="s2">"duplicate_isbn_rows"</span><span class="p">],</span>
-        <span class="n">catalog</span><span class="p">[</span><span class="s2">"invalid_isbn13_rows"</span><span class="p">],</span> <span class="n">catalog</span><span class="p">[</span><span class="s2">"duplicate_book_url_rows"</span><span class="p">],</span> <span class="n">catalog</span><span class="p">[</span><span class="s2">"invalid_url_rows"</span><span class="p">],</span>
-        <span class="n">catalog</span><span class="p">[</span><span class="s2">"discount_inconsistency_rows"</span><span class="p">],</span> <span class="n">catalog</span><span class="p">[</span><span class="s2">"null_counts"</span><span class="p">][</span><span class="s2">"cevirmen"</span><span class="p">],</span>
-        <span class="n">catalog</span><span class="p">[</span><span class="s2">"null_counts"</span><span class="p">][</span><span class="s2">"kapak_tipi"</span><span class="p">],</span> <span class="n">catalog</span><span class="p">[</span><span class="s2">"null_counts"</span><span class="p">][</span><span class="s2">"orijinal_adi"</span><span class="p">],</span>
-        <span class="n">catalog</span><span class="p">[</span><span class="s2">"null_counts"</span><span class="p">][</span><span class="s2">"yayin_tarihi"</span><span class="p">],</span>
-    <span class="p">],</span>
-<span class="p">})</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">summary</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+    <span class="n">summary</span><span class="p">[</span><span class="s2">"answer_words_median"</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">(),</span>
+    <span class="p">[</span><span class="s2">"dataset"</span><span class="p">,</span> <span class="s2">"answer_words_median"</span><span class="p">,</span> <span class="s2">"answer_words_p95"</span><span class="p">],</span>
+<span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">"answer_words_p95"</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -8520,65 +9490,269 @@ a.anchor-link {
 <thead>
 <tr style="text-align: right;">
 <th></th>
-<th>kontrol</th>
-<th>değer</th>
+<th>dataset</th>
+<th>answer_words_median</th>
+<th>answer_words_p95</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<th>0</th>
-<td>satır</td>
-<td>103</td>
+<th>25</th>
+<td>gmz1234/stackoverflow_ai</td>
+<td>237.0</td>
+<td>763.20</td>
 </tr>
 <tr>
-<th>1</th>
-<td>birebir tekrar</td>
-<td>0</td>
-</tr>
-<tr>
-<th>2</th>
-<td>ISBN tekrarı</td>
-<td>0</td>
-</tr>
-<tr>
-<th>3</th>
-<td>geçersiz ISBN-13</td>
-<td>0</td>
+<th>23</th>
+<td>filiz-yalcin/identity-finetune</td>
+<td>245.0</td>
+<td>552.10</td>
 </tr>
 <tr>
 <th>4</th>
-<td>URL tekrarı</td>
-<td>0</td>
+<td>Erenyanic/seasoned-advice-dataset</td>
+<td>121.0</td>
+<td>366.10</td>
 </tr>
 <tr>
-<th>5</th>
-<td>geçersiz URL</td>
-<td>0</td>
+<th>44</th>
+<td>yoitsmeyusuf/felsefe_finetune</td>
+<td>35.0</td>
+<td>353.60</td>
 </tr>
 <tr>
-<th>6</th>
-<td>indirim tutarsızlığı</td>
-<td>0</td>
+<th>36</th>
+<td>seali/turkce-saglik-qa</td>
+<td>151.0</td>
+<td>330.40</td>
 </tr>
 <tr>
-<th>7</th>
-<td>eksik çevirmen</td>
-<td>62</td>
+<th>38</th>
+<td>sedayzc/turkish-electronics-product-comparison...</td>
+<td>108.0</td>
+<td>328.00</td>
+</tr>
+<tr>
+<th>22</th>
+<td>erhanalsr/langusta-kpss-reasoning</td>
+<td>200.0</td>
+<td>310.00</td>
 </tr>
 <tr>
 <th>8</th>
-<td>eksik kapak tipi</td>
-<td>96</td>
+<td>Toivo0/Turkce-istatistik-reasoning</td>
+<td>219.5</td>
+<td>278.00</td>
+</tr>
+<tr>
+<th>33</th>
+<td>sadecebirisii/turkish-llm-authority-bypass-saf...</td>
+<td>218.0</td>
+<td>270.60</td>
+</tr>
+<tr>
+<th>16</th>
+<td>berkcangumusisik/voleykoc-antrenorluk-tr</td>
+<td>63.0</td>
+<td>239.00</td>
+</tr>
+<tr>
+<th>24</th>
+<td>filiz-yalcin/turkish-figure-skating-qa</td>
+<td>88.0</td>
+<td>234.25</td>
+</tr>
+<tr>
+<th>29</th>
+<td>meldakahramann/animasyon-domain-dataset</td>
+<td>24.5</td>
+<td>225.10</td>
+</tr>
+<tr>
+<th>42</th>
+<td>ssilistre/carnegie-dost-kazanma-tr</td>
+<td>141.0</td>
+<td>224.00</td>
+</tr>
+<tr>
+<th>2</th>
+<td>Egertekin/marvel-domain-dataset</td>
+<td>56.0</td>
+<td>153.40</td>
+</tr>
+<tr>
+<th>31</th>
+<td>nursimakgul/meb-soru-uretme</td>
+<td>58.0</td>
+<td>138.00</td>
+</tr>
+<tr>
+<th>26</th>
+<td>gorkemergune/ayarlicazhocam_finetune</td>
+<td>81.0</td>
+<td>132.80</td>
+</tr>
+<tr>
+<th>5</th>
+<td>Mer1Alii/TR-ECommerce-CustomerSupport-Instruct...</td>
+<td>87.0</td>
+<td>119.00</td>
+</tr>
+<tr>
+<th>30</th>
+<td>namruni/meb-ogretmen-soru-cevap</td>
+<td>81.0</td>
+<td>114.55</td>
+</tr>
+<tr>
+<th>34</th>
+<td>samliumay/turkish_cyber_security_controls_dataset</td>
+<td>69.0</td>
+<td>112.00</td>
+</tr>
+<tr>
+<th>43</th>
+<td>ssilistre/semih-silistre-ai-identity</td>
+<td>51.0</td>
+<td>96.00</td>
+</tr>
+<tr>
+<th>7</th>
+<td>Talayhan/skatepal_dataset</td>
+<td>63.0</td>
+<td>89.00</td>
 </tr>
 <tr>
 <th>9</th>
-<td>eksik orijinal ad</td>
-<td>65</td>
+<td>Uunan/turkish-cuisine-qa</td>
+<td>10.0</td>
+<td>78.00</td>
+</tr>
+<tr>
+<th>18</th>
+<td>cihatyldz/lojistik-soru-cevap</td>
+<td>44.0</td>
+<td>57.00</td>
+</tr>
+<tr>
+<th>41</th>
+<td>srhskrkc/odysseia-destani-tr</td>
+<td>45.5</td>
+<td>53.75</td>
+</tr>
+<tr>
+<th>14</th>
+<td>berkbirkan/turkish-x-engagement-quotes</td>
+<td>15.0</td>
+<td>43.05</td>
+</tr>
+<tr>
+<th>15</th>
+<td>berkbirkan/turkish-x-engagement-replies</td>
+<td>15.0</td>
+<td>42.00</td>
+</tr>
+<tr>
+<th>32</th>
+<td>nyzmemre/biyoloji-terimleri-turkce-sa</td>
+<td>15.0</td>
+<td>41.00</td>
+</tr>
+<tr>
+<th>39</th>
+<td>senemde/saglik-qa-tr</td>
+<td>24.0</td>
+<td>40.00</td>
+</tr>
+<tr>
+<th>17</th>
+<td>berkcangumusisik/voleykoc-identity-tr</td>
+<td>28.0</td>
+<td>37.00</td>
+</tr>
+<tr>
+<th>19</th>
+<td>enes1863/bilisim-hukuku-domain-dataset</td>
+<td>30.0</td>
+<td>34.10</td>
+</tr>
+<tr>
+<th>11</th>
+<td>YusufSimsek/turkce-atasozleri-dataset</td>
+<td>13.0</td>
+<td>33.00</td>
+</tr>
+<tr>
+<th>35</th>
+<td>samliumay/umay_samli_identification_dataset</td>
+<td>20.0</td>
+<td>31.00</td>
+</tr>
+<tr>
+<th>20</th>
+<td>enesozdemr/benim_ilk_datasetim</td>
+<td>13.0</td>
+<td>30.00</td>
 </tr>
 <tr>
 <th>10</th>
-<td>eksik yayın tarihi</td>
-<td>12</td>
+<td>YusufSimsek/llm-kisisellestirme</td>
+<td>19.0</td>
+<td>29.75</td>
+</tr>
+<tr>
+<th>40</th>
+<td>sk75/sahin_identity</td>
+<td>11.0</td>
+<td>26.00</td>
+</tr>
+<tr>
+<th>12</th>
+<td>aliFurkan123/cultural-questions-dataset</td>
+<td>20.0</td>
+<td>24.00</td>
+</tr>
+<tr>
+<th>0</th>
+<td>Aysenur44/namaz-vakti-dua-asistan-tr</td>
+<td>14.5</td>
+<td>20.05</td>
+</tr>
+<tr>
+<th>3</th>
+<td>Endezyar/siyer_datasets</td>
+<td>6.0</td>
+<td>20.00</td>
+</tr>
+<tr>
+<th>6</th>
+<td>SalihHub/trendyol-marangoz-urun-asistan-qa</td>
+<td>7.0</td>
+<td>18.00</td>
+</tr>
+<tr>
+<th>13</th>
+<td>aliFurkan123/identity</td>
+<td>10.0</td>
+<td>18.00</td>
+</tr>
+<tr>
+<th>28</th>
+<td>haticenurcakr/turkish-classic-books-qa</td>
+<td>9.5</td>
+<td>14.00</td>
+</tr>
+<tr>
+<th>21</th>
+<td>erhanalsr/langusta-identity</td>
+<td>10.0</td>
+<td>12.00</td>
+</tr>
+<tr>
+<th>1</th>
+<td>Aysenur44/namaz-vakti-identity-tr</td>
+<td>6.0</td>
+<td>10.70</td>
 </tr>
 </tbody>
 </table>
@@ -8588,17 +9762,18 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=fc5a0a76">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e252eeee">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Veri-setleri-aras%C4%B1-ortak-%C5%9Fablon-var">Veri setleri arası ortak şablon var<a class="anchor-link" href="#Veri-setleri-aras%C4%B1-ortak-%C5%9Fablon-var">¶</a></h3><p>NamazAsistan ve Şahin kimlik veri setleri dört kullanıcı istemini paylaşıyor. Bu ortaklık, kimlik tohumları birlikte kullanılacaksa kaynak şablonun belgelenmesini ve ortak istemlerin tek bir şablon ailesi olarak etiketlenmesini gerektirir.</p>
+<h3 id="%C5%9Eema-ve-haz%C4%B1rl%C4%B1k-sinyalleri-ayr%C4%B1-izleniyor">Şema ve hazırlık sinyalleri ayrı izleniyor<a class="anchor-link" href="#%C5%9Eema-ve-haz%C4%B1rl%C4%B1k-sinyalleri-ayr%C4%B1-izleniyor">¶</a></h3><p>Birebir tekrar, <code>thinking</code>, metin biçimindeki <code>null</code> ve zaman hassas
+eşleşmeleri farklı düzeltme işlemleri gerektirir.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=3b50b38a">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=a9d9ecf0">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8606,7 +9781,13 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">overlaps</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">summary</span><span class="p">[[</span>
+    <span class="s2">"dataset"</span><span class="p">,</span> <span class="s2">"shape"</span><span class="p">,</span> <span class="s2">"exact_duplicates"</span><span class="p">,</span> <span class="s2">"thinking"</span><span class="p">,</span>
+    <span class="s2">"string_nulls"</span><span class="p">,</span> <span class="s2">"time_sensitive_matches"</span><span class="p">,</span>
+<span class="p">]]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span>
+    <span class="p">[</span><span class="s2">"string_nulls"</span><span class="p">,</span> <span class="s2">"thinking"</span><span class="p">,</span> <span class="s2">"time_sensitive_matches"</span><span class="p">],</span>
+    <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -8637,23 +9818,419 @@ a.anchor-link {
 <thead>
 <tr style="text-align: right;">
 <th></th>
-<th>left</th>
-<th>right</th>
-<th>shared_user_prompts</th>
-<th>shared_assistant_answers</th>
-<th>prompt_examples</th>
-<th>answer_examples</th>
+<th>dataset</th>
+<th>shape</th>
+<th>exact_duplicates</th>
+<th>thinking</th>
+<th>string_nulls</th>
+<th>time_sensitive_matches</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<th>0</th>
-<td>Aysenur44/namaz-vakti-identity-tr</td>
+<th>40</th>
 <td>sk75/sahin_identity</td>
-<td>4</td>
+<td>conversation</td>
 <td>0</td>
-<td>[adın ne, ne işe yararsın, sen kimsin]</td>
-<td>[]</td>
+<td>0</td>
+<td>462</td>
+<td>0</td>
+</tr>
+<tr>
+<th>9</th>
+<td>Uunan/turkish-cuisine-qa</td>
+<td>conversation</td>
+<td>0</td>
+<td>34244</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>31</th>
+<td>nursimakgul/meb-soru-uretme</td>
+<td>conversation</td>
+<td>178</td>
+<td>20874</td>
+<td>0</td>
+<td>560</td>
+</tr>
+<tr>
+<th>23</th>
+<td>filiz-yalcin/identity-finetune</td>
+<td>conversation</td>
+<td>0</td>
+<td>1600</td>
+<td>0</td>
+<td>1038</td>
+</tr>
+<tr>
+<th>11</th>
+<td>YusufSimsek/turkce-atasozleri-dataset</td>
+<td>conversation</td>
+<td>0</td>
+<td>1398</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>6</th>
+<td>SalihHub/trendyol-marangoz-urun-asistan-qa</td>
+<td>conversation</td>
+<td>0</td>
+<td>1211</td>
+<td>0</td>
+<td>10</td>
+</tr>
+<tr>
+<th>29</th>
+<td>meldakahramann/animasyon-domain-dataset</td>
+<td>conversation</td>
+<td>0</td>
+<td>1020</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>42</th>
+<td>ssilistre/carnegie-dost-kazanma-tr</td>
+<td>conversation</td>
+<td>0</td>
+<td>1001</td>
+<td>0</td>
+<td>154</td>
+</tr>
+<tr>
+<th>4</th>
+<td>Erenyanic/seasoned-advice-dataset</td>
+<td>conversation</td>
+<td>0</td>
+<td>1000</td>
+<td>0</td>
+<td>28</td>
+</tr>
+<tr>
+<th>19</th>
+<td>enes1863/bilisim-hukuku-domain-dataset</td>
+<td>conversation</td>
+<td>0</td>
+<td>1000</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>36</th>
+<td>seali/turkce-saglik-qa</td>
+<td>conversation</td>
+<td>0</td>
+<td>773</td>
+<td>0</td>
+<td>16</td>
+</tr>
+<tr>
+<th>24</th>
+<td>filiz-yalcin/turkish-figure-skating-qa</td>
+<td>conversation</td>
+<td>0</td>
+<td>526</td>
+<td>0</td>
+<td>47</td>
+</tr>
+<tr>
+<th>12</th>
+<td>aliFurkan123/cultural-questions-dataset</td>
+<td>conversation</td>
+<td>0</td>
+<td>500</td>
+<td>0</td>
+<td>4</td>
+</tr>
+<tr>
+<th>30</th>
+<td>namruni/meb-ogretmen-soru-cevap</td>
+<td>conversation</td>
+<td>0</td>
+<td>450</td>
+<td>0</td>
+<td>297</td>
+</tr>
+<tr>
+<th>26</th>
+<td>gorkemergune/ayarlicazhocam_finetune</td>
+<td>conversation</td>
+<td>4</td>
+<td>429</td>
+<td>0</td>
+<td>30</td>
+</tr>
+<tr>
+<th>8</th>
+<td>Toivo0/Turkce-istatistik-reasoning</td>
+<td>conversation</td>
+<td>0</td>
+<td>400</td>
+<td>0</td>
+<td>12</td>
+</tr>
+<tr>
+<th>43</th>
+<td>ssilistre/semih-silistre-ai-identity</td>
+<td>conversation</td>
+<td>0</td>
+<td>382</td>
+<td>0</td>
+<td>43</td>
+</tr>
+<tr>
+<th>7</th>
+<td>Talayhan/skatepal_dataset</td>
+<td>conversation</td>
+<td>0</td>
+<td>299</td>
+<td>0</td>
+<td>26</td>
+</tr>
+<tr>
+<th>5</th>
+<td>Mer1Alii/TR-ECommerce-CustomerSupport-Instruct...</td>
+<td>conversation</td>
+<td>0</td>
+<td>186</td>
+<td>0</td>
+<td>31</td>
+</tr>
+<tr>
+<th>20</th>
+<td>enesozdemr/benim_ilk_datasetim</td>
+<td>conversation</td>
+<td>0</td>
+<td>113</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>13</th>
+<td>aliFurkan123/identity</td>
+<td>conversation</td>
+<td>0</td>
+<td>33</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>22</th>
+<td>erhanalsr/langusta-kpss-reasoning</td>
+<td>conversation</td>
+<td>0</td>
+<td>21</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>41</th>
+<td>srhskrkc/odysseia-destani-tr</td>
+<td>conversation</td>
+<td>0</td>
+<td>10</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>38</th>
+<td>sedayzc/turkish-electronics-product-comparison...</td>
+<td>conversation</td>
+<td>4851</td>
+<td>0</td>
+<td>0</td>
+<td>699</td>
+</tr>
+<tr>
+<th>37</th>
+<td>sedayzc/trendyol-electronics-products-features...</td>
+<td>tabular</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>398</td>
+</tr>
+<tr>
+<th>14</th>
+<td>berkbirkan/turkish-x-engagement-quotes</td>
+<td>conversation</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>141</td>
+</tr>
+<tr>
+<th>15</th>
+<td>berkbirkan/turkish-x-engagement-replies</td>
+<td>conversation</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>120</td>
+</tr>
+<tr>
+<th>16</th>
+<td>berkcangumusisik/voleykoc-antrenorluk-tr</td>
+<td>conversation</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>66</td>
+</tr>
+<tr>
+<th>35</th>
+<td>samliumay/umay_samli_identification_dataset</td>
+<td>conversation</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>62</td>
+</tr>
+<tr>
+<th>34</th>
+<td>samliumay/turkish_cyber_security_controls_dataset</td>
+<td>conversation</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>38</td>
+</tr>
+<tr>
+<th>44</th>
+<td>yoitsmeyusuf/felsefe_finetune</td>
+<td>conversation</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>21</td>
+</tr>
+<tr>
+<th>33</th>
+<td>sadecebirisii/turkish-llm-authority-bypass-saf...</td>
+<td>conversation</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>8</td>
+</tr>
+<tr>
+<th>39</th>
+<td>senemde/saglik-qa-tr</td>
+<td>conversation</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr>
+<th>2</th>
+<td>Egertekin/marvel-domain-dataset</td>
+<td>conversation</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<th>18</th>
+<td>cihatyldz/lojistik-soru-cevap</td>
+<td>conversation</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<th>0</th>
+<td>Aysenur44/namaz-vakti-dua-asistan-tr</td>
+<td>conversation</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>1</th>
+<td>Aysenur44/namaz-vakti-identity-tr</td>
+<td>conversation</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>3</th>
+<td>Endezyar/siyer_datasets</td>
+<td>conversation</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>10</th>
+<td>YusufSimsek/llm-kisisellestirme</td>
+<td>conversation</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>17</th>
+<td>berkcangumusisik/voleykoc-identity-tr</td>
+<td>conversation</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>21</th>
+<td>erhanalsr/langusta-identity</td>
+<td>conversation</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>25</th>
+<td>gmz1234/stackoverflow_ai</td>
+<td>conversation</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>27</th>
+<td>gururaser/ithaki-bilimkurgu-klasikleri</td>
+<td>catalog</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>28</th>
+<td>haticenurcakr/turkish-classic-books-qa</td>
+<td>conversation</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>32</th>
+<td>nyzmemre/biyoloji-terimleri-turkce-sa</td>
+<td>conversation</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 </tr>
 </tbody>
 </table>
@@ -8663,17 +10240,21 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4eee6e29">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=16541ed3">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Bulgular%C4%B1n-%C3%B6nem-d%C3%BCzeyi-ve-%C3%B6nerilen-d%C3%BCzeltmeler">Bulguların önem düzeyi ve önerilen düzeltmeler<a class="anchor-link" href="#Bulgular%C4%B1n-%C3%B6nem-d%C3%BCzeyi-ve-%C3%B6nerilen-d%C3%BCzeltmeler">¶</a></h3><p>Aşağıdaki tablo, her veri setinin en önemli veri kalite risklerini ve en küçük etkili düzeltmeyi özetler. Değerlendirme bir puanlama değildir; kullanım amacına göre engelleri görünür kılar.</p>
+<h3 id="Yap%C4%B1land%C4%B1r%C4%B1lm%C4%B1%C5%9F-%C3%A7%C4%B1kt%C4%B1-s%C3%B6zle%C5%9Fmesi-ve-%C3%A7eli%C5%9Fen-hedefler">Yapılandırılmış çıktı sözleşmesi ve çelişen hedefler<a class="anchor-link" href="#Yap%C4%B1land%C4%B1r%C4%B1lm%C4%B1%C5%9F-%C3%A7%C4%B1kt%C4%B1-s%C3%B6zle%C5%9Fmesi-ve-%C3%A7eli%C5%9Fen-hedefler">¶</a></h3><p>Bazı veri setleri cevabı JSON olarak tanımlar. <code>json_like_broken</code>,
+JSON gibi başlayıp ayrıştırılamayan cevapları sayar; sözleşmenin
+fiilen ne kadar tutulduğunu gösterir. <code>conflicting_prompt_families</code>
+ise aynı normalleştirilmiş istemin birden fazla farklı cevapla
+eşleştiği aile sayısıdır ve basit tekrardan ayrı bir sorundur.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=6e26cbe7">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=a1b68d3f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8681,18 +10262,12 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">finding_rows</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">dataset_id</span><span class="p">,</span> <span class="n">detail</span> <span class="ow">in</span> <span class="n">manual</span><span class="p">[</span><span class="s2">"datasets"</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="k">for</span> <span class="n">finding</span> <span class="ow">in</span> <span class="n">detail</span><span class="p">[</span><span class="s2">"findings"</span><span class="p">]:</span>
-        <span class="n">finding_rows</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-            <span class="s2">"dataset"</span><span class="p">:</span> <span class="n">dataset_id</span><span class="p">,</span>
-            <span class="s2">"önem"</span><span class="p">:</span> <span class="n">finding</span><span class="p">[</span><span class="s2">"severity"</span><span class="p">],</span>
-            <span class="s2">"kanıt"</span><span class="p">:</span> <span class="n">finding</span><span class="p">[</span><span class="s2">"evidence"</span><span class="p">],</span>
-            <span class="s2">"risk"</span><span class="p">:</span> <span class="n">finding</span><span class="p">[</span><span class="s2">"risk"</span><span class="p">],</span>
-            <span class="s2">"düzeltme"</span><span class="p">:</span> <span class="n">finding</span><span class="p">[</span><span class="s2">"remediation"</span><span class="p">],</span>
-        <span class="p">})</span>
-<span class="n">findings</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">finding_rows</span><span class="p">)</span>
-<span class="n">findings</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">summary</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+    <span class="p">(</span><span class="n">summary</span><span class="p">[</span><span class="s2">"json_answers"</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="o">|</span> <span class="p">(</span><span class="n">summary</span><span class="p">[</span><span class="s2">"json_like_broken"</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="o">|</span> <span class="p">(</span><span class="n">summary</span><span class="p">[</span><span class="s2">"conflicting_prompt_families"</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="p">[</span><span class="s2">"dataset"</span><span class="p">,</span> <span class="s2">"rows"</span><span class="p">,</span> <span class="s2">"json_answers"</span><span class="p">,</span> <span class="s2">"json_like_broken"</span><span class="p">,</span> <span class="s2">"conflicting_prompt_families"</span><span class="p">],</span>
+<span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">"json_like_broken"</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -8724,204 +10299,156 @@ a.anchor-link {
 <tr style="text-align: right;">
 <th></th>
 <th>dataset</th>
-<th>önem</th>
-<th>kanıt</th>
-<th>risk</th>
-<th>düzeltme</th>
+<th>rows</th>
+<th>json_answers</th>
+<th>json_like_broken</th>
+<th>conflicting_prompt_families</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<th>0</th>
-<td>aliFurkan123/cultural-questions-dataset</td>
-<td>high</td>
-<td>500 asistan mesajının tamamında thinking alanı...</td>
-<td>Sentetik olgusal hatalar ve gerekçe hataları b...</td>
-<td>Bağımsız olgu kontrolü, kaynak/citation alanı ...</td>
+<th>4</th>
+<td>Erenyanic/seasoned-advice-dataset</td>
+<td>1000</td>
+<td>0</td>
+<td>24</td>
+<td>0</td>
 </tr>
 <tr>
-<th>1</th>
-<td>aliFurkan123/cultural-questions-dataset</td>
-<td>medium</td>
-<td>Depo adı kültürel soruları ima ederken veri ka...</td>
-<td>Kapsam yanlış anlaşılabilir ve kategori denges...</td>
-<td>Depo adını/kartını eşleştir; konu, zorluk ve k...</td>
+<th>25</th>
+<td>gmz1234/stackoverflow_ai</td>
+<td>1000</td>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+</tr>
+<tr>
+<th>39</th>
+<td>senemde/saglik-qa-tr</td>
+<td>553</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
 </tr>
 <tr>
 <th>2</th>
-<td>Aysenur44/namaz-vakti-identity-tr</td>
-<td>critical</td>
-<td>Yalnız 4 satır var ve bunlar kimlik/yetenek so...</td>
-<td>Alan uzmanlığı kazandırmaz; model yalnız isim ...</td>
-<td>Doğrulanmış ibadet içeriği, konum-zaman bağlam...</td>
+<td>Egertekin/marvel-domain-dataset</td>
+<td>177</td>
+<td>0</td>
+<td>0</td>
+<td>7</td>
 </tr>
 <tr>
 <th>3</th>
-<td>Aysenur44/namaz-vakti-identity-tr</td>
-<td>high</td>
-<td>Kaynak, amaç, sınırlama ve örnek kullanım açık...</td>
-<td>Hedeflenen davranış ve veri kökeni belirsiz.</td>
-<td>Kaynak, amaç, sınırlama ve örnek kullanım içer...</td>
-</tr>
-<tr>
-<th>4</th>
-<td>Aysenur44/namaz-vakti-identity-tr</td>
-<td>medium</td>
-<td>Dört kullanıcı isteminin tamamı sk75/sahin_ide...</td>
-<td>Şablon tekrarına ve kimlik davranışının aşırı ...</td>
-<td>Kaynak şablonu belirt; ortak istemleri tek bir...</td>
-</tr>
-<tr>
-<th>5</th>
-<td>Egertekin/marvel-domain-dataset</td>
-<td>high</td>
-<td>177 kullanıcı sorusunun 134'ü normalleştirilmi...</td>
-<td>Spider-Man ve birkaç genel soru eğitim sinyali...</td>
-<td>Her paragraf için özgül soru üret; karakter/ko...</td>
+<td>Endezyar/siyer_datasets</td>
+<td>509</td>
+<td>0</td>
+<td>0</td>
+<td>3</td>
 </tr>
 <tr>
 <th>6</th>
-<td>Egertekin/marvel-domain-dataset</td>
-<td>high</td>
-<td>Kaynağın Wikipedia olduğu yazıyor fakat sayfa ...</td>
-<td>Yanıtların hangi kaynak sürümünden türetildiği...</td>
-<td>Kaynak URL'sini ve revizyon kimliğini satır dü...</td>
-</tr>
-<tr>
-<th>7</th>
-<td>Egertekin/marvel-domain-dataset</td>
-<td>medium</td>
-<td>Veri kartı instruction/input/output sütunların...</td>
-<td>Kullanıcılar yanlış yükleme kodu veya şema var...</td>
-<td>Kartı gerçek şemayla eşleştir ve yükleme örneğ...</td>
-</tr>
-<tr>
-<th>8</th>
-<td>gururaser/ithaki-bilimkurgu-klasikleri</td>
-<td>high</td>
-<td>Veriler yayıncı sitesinden, kapak görselleri i...</td>
-<td>Kaynak değiştiğinde metin ve görsel kayıtların...</td>
-<td>Toplama zamanı, kaynak türü ve görsel kaynağı ...</td>
-</tr>
-<tr>
-<th>9</th>
-<td>gururaser/ithaki-bilimkurgu-klasikleri</td>
-<td>medium</td>
-<td>Çevirmen 62, kapak tipi 96, orijinal ad 65 ve ...</td>
-<td>Alan bazlı analiz ve filtreleme kapsaması deği...</td>
-<td>Eksik nedenini belirten durum alanı ekle ve al...</td>
-</tr>
-<tr>
-<th>10</th>
-<td>gururaser/ithaki-bilimkurgu-klasikleri</td>
-<td>medium</td>
-<td>Fiyatlar toplama anına ait ancak satır düzeyin...</td>
-<td>Fiyat analizi hızla eskir; üretilmiş özetler k...</td>
-<td>collected_at, currency, stock ve summary_gener...</td>
-</tr>
-<tr>
-<th>11</th>
-<td>nyzmemre/biyoloji-terimleri-turkce-sa</td>
-<td>high</td>
-<td>Veri kartında yalnız otomatik şema var; kaynak...</td>
-<td>Tanımların doğruluğu ve güncelliği denetlenemi...</td>
-<td>Her tanıma kaynak, kitap ve sürüm alanı ekle; ...</td>
-</tr>
-<tr>
-<th>12</th>
-<td>nyzmemre/biyoloji-terimleri-turkce-sa</td>
-<td>medium</td>
-<td>1.093 asistan cevabının 236'sı normalleştirilm...</td>
-<td>Bazı terimler eğitim sinyalinde aşırı ağırlık ...</td>
-<td>term_id ekle; aynı tanımın varyasyonlarını tek...</td>
-</tr>
-<tr>
-<th>13</th>
-<td>Mer1Alii/TR-ECommerce-CustomerSupport-Instruct...</td>
-<td>high</td>
-<td>Yanıtlar kurumsal süreç, iade, yaptırım, tüket...</td>
-<td>Model var olmayan politika, garanti, iletişim ...</td>
-<td>Politika değişkenlerini açık placeholder yap; ...</td>
+<td>SalihHub/trendyol-marangoz-urun-asistan-qa</td>
+<td>1211</td>
+<td>0</td>
+<td>0</td>
+<td>12</td>
 </tr>
 <tr>
 <th>14</th>
-<td>Mer1Alii/TR-ECommerce-CustomerSupport-Instruct...</td>
-<td>medium</td>
-<td>186 asistan mesajının tamamında thinking alanı...</td>
-<td>Sentetik gerekçeler ile dönemsel politika iddi...</td>
-<td>Final-answer-only kopya üret; policy_version v...</td>
+<td>berkbirkan/turkish-x-engagement-quotes</td>
+<td>1000</td>
+<td>0</td>
+<td>0</td>
+<td>229</td>
 </tr>
 <tr>
 <th>15</th>
-<td>yoitsmeyusuf/felsefe_finetune</td>
-<td>high</td>
-<td>Kullanıcı sorularının 405'i normalleştirilmiş ...</td>
-<td>Tek doğru cevap bekleyen QA eğitiminde tutarsı...</td>
-<td>Her cevabı opinion/source alanıyla işaretle; g...</td>
+<td>berkbirkan/turkish-x-engagement-replies</td>
+<td>1000</td>
+<td>0</td>
+<td>0</td>
+<td>212</td>
 </tr>
 <tr>
-<th>16</th>
-<td>yoitsmeyusuf/felsefe_finetune</td>
-<td>high</td>
-<td>Ekşi Sözlük ve Reddit içeriği için gönderi URL...</td>
-<td>Silinmiş içerik izlenemeyebilir ve kullanıcı g...</td>
-<td>Satır düzeyinde kaynak URL'si ve anonim kaynak...</td>
+<th>9</th>
+<td>Uunan/turkish-cuisine-qa</td>
+<td>34244</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
 </tr>
 <tr>
-<th>17</th>
-<td>yoitsmeyusuf/felsefe_finetune</td>
-<td>medium</td>
-<td>Kart 527 satır (462+65) bildirirken gerçek ver...</td>
-<td>Kaynak envanteri tam değil; moderasyon ve bağl...</td>
-<td>İki açıklanamayan satırı uzlaştır; içerik etik...</td>
+<th>11</th>
+<td>YusufSimsek/turkce-atasozleri-dataset</td>
+<td>1398</td>
+<td>0</td>
+<td>0</td>
+<td>3</td>
 </tr>
 <tr>
-<th>18</th>
-<td>namruni/meb-ogretmen-soru-cevap</td>
-<td>critical</td>
-<td>297 zaman hassasiyeti eşleşmesi var; kart veri...</td>
-<td>Başvuru takvimi, mevzuat ve uygulama değiştiği...</td>
-<td>Her cevap için source_url, document_date, effe...</td>
-</tr>
-<tr>
-<th>19</th>
-<td>namruni/meb-ogretmen-soru-cevap</td>
-<td>high</td>
-<td>Gerçek forum soruları ve resmî belge parçaları...</td>
-<td>Kaynak metne geri izleme yapılamaz ve metin iç...</td>
-<td>Satır düzeyinde kaynak, belge tarihi ve anonim...</td>
-</tr>
-<tr>
-<th>20</th>
-<td>namruni/meb-ogretmen-soru-cevap</td>
-<td>medium</td>
-<td>450 asistan mesajının tamamında hakem gerekçes...</td>
-<td>Kaynak güveni ve güncellik katmanları eğitimde...</td>
-<td>thinking yerine yapılandırılmış evidence_type,...</td>
-</tr>
-<tr>
-<th>21</th>
-<td>sk75/sahin_identity</td>
-<td>high</td>
-<td>154 mesajda images, thinking ve tool_calls ala...</td>
-<td>Şema doğrulama ve sohbet şablonları bozulabili...</td>
-<td>Dizeleri gerçek null değerine çevir ve şema te...</td>
-</tr>
-<tr>
-<th>22</th>
-<td>sk75/sahin_identity</td>
-<td>high</td>
-<td>README veya model kartı yok; 77 cevabın 50'si ...</td>
-<td>Kimlik/sahiplik iddiaları aşırı öğrenilir ve h...</td>
-<td>Model kartı ekle; cevap tekrarlarını azalt vey...</td>
+<th>24</th>
+<td>filiz-yalcin/turkish-figure-skating-qa</td>
+<td>526</td>
+<td>0</td>
+<td>0</td>
+<td>8</td>
 </tr>
 <tr>
 <th>23</th>
-<td>sk75/sahin_identity</td>
-<td>medium</td>
-<td>Türkçe ve İngilizce dosyalar tek tabloda birle...</td>
-<td>Dil bazlı davranış analizi zorlaşır ve ortak ş...</td>
-<td>language ve intent alanı ekle; ortak şablonlar...</td>
+<td>filiz-yalcin/identity-finetune</td>
+<td>1600</td>
+<td>0</td>
+<td>0</td>
+<td>33</td>
+</tr>
+<tr>
+<th>31</th>
+<td>nursimakgul/meb-soru-uretme</td>
+<td>20874</td>
+<td>17454</td>
+<td>0</td>
+<td>797</td>
+</tr>
+<tr>
+<th>26</th>
+<td>gorkemergune/ayarlicazhocam_finetune</td>
+<td>429</td>
+<td>0</td>
+<td>0</td>
+<td>34</td>
+</tr>
+<tr>
+<th>32</th>
+<td>nyzmemre/biyoloji-terimleri-turkce-sa</td>
+<td>1093</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr>
+<th>36</th>
+<td>seali/turkce-saglik-qa</td>
+<td>773</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<th>38</th>
+<td>sedayzc/turkish-electronics-product-comparison...</td>
+<td>11858</td>
+<td>0</td>
+<td>0</td>
+<td>55</td>
+</tr>
+<tr>
+<th>44</th>
+<td>yoitsmeyusuf/felsefe_finetune</td>
+<td>529</td>
+<td>0</td>
+<td>0</td>
+<td>58</td>
 </tr>
 </tbody>
 </table>
@@ -8931,18 +10458,527 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=beff5bf0">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d9ef1839">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Veri-setleri-aras%C4%B1-ortak-metin-aileleri">Veri setleri arası ortak metin aileleri<a class="anchor-link" href="#Veri-setleri-aras%C4%B1-ortak-metin-aileleri">¶</a></h3><p>Ortak istem veya cevaplar birlikte veri hazırlarken aynı şablon
+ailesi altında incelenmelidir.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=b455c8f5">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">overlaps</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[9]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>left</th>
+<th>right</th>
+<th>shared_user_prompts</th>
+<th>shared_assistant_answers</th>
+<th>prompt_examples</th>
+<th>answer_examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>Aysenur44/namaz-vakti-identity-tr</td>
+<td>berkcangumusisik/voleykoc-identity-tr</td>
+<td>1</td>
+<td>0</td>
+<td>[ne işe yararsın]</td>
+<td>[]</td>
+</tr>
+<tr>
+<th>1</th>
+<td>Aysenur44/namaz-vakti-identity-tr</td>
+<td>gorkemergune/ayarlicazhocam_finetune</td>
+<td>2</td>
+<td>0</td>
+<td>[sen kimsin, seni kim geliştirdi]</td>
+<td>[]</td>
+</tr>
+<tr>
+<th>2</th>
+<td>Aysenur44/namaz-vakti-identity-tr</td>
+<td>samliumay/umay_samli_identification_dataset</td>
+<td>3</td>
+<td>0</td>
+<td>[adın ne, sen kimsin, seni kim geliştirdi]</td>
+<td>[]</td>
+</tr>
+<tr>
+<th>3</th>
+<td>Aysenur44/namaz-vakti-identity-tr</td>
+<td>sk75/sahin_identity</td>
+<td>4</td>
+<td>0</td>
+<td>[adın ne, ne işe yararsın, sen kimsin]</td>
+<td>[]</td>
+</tr>
+<tr>
+<th>4</th>
+<td>Aysenur44/namaz-vakti-identity-tr</td>
+<td>ssilistre/semih-silistre-ai-identity</td>
+<td>3</td>
+<td>0</td>
+<td>[adın ne, sen kimsin, seni kim geliştirdi]</td>
+<td>[]</td>
+</tr>
+<tr>
+<th>5</th>
+<td>YusufSimsek/llm-kisisellestirme</td>
+<td>erhanalsr/langusta-identity</td>
+<td>1</td>
+<td>0</td>
+<td>[yaratıcın kim]</td>
+<td>[]</td>
+</tr>
+<tr>
+<th>6</th>
+<td>YusufSimsek/llm-kisisellestirme</td>
+<td>samliumay/umay_samli_identification_dataset</td>
+<td>1</td>
+<td>0</td>
+<td>[yaratıcın kim]</td>
+<td>[]</td>
+</tr>
+<tr>
+<th>7</th>
+<td>YusufSimsek/llm-kisisellestirme</td>
+<td>sk75/sahin_identity</td>
+<td>1</td>
+<td>0</td>
+<td>[yaratıcın kim]</td>
+<td>[]</td>
+</tr>
+<tr>
+<th>8</th>
+<td>YusufSimsek/llm-kisisellestirme</td>
+<td>ssilistre/semih-silistre-ai-identity</td>
+<td>1</td>
+<td>0</td>
+<td>[yaratıcın kim]</td>
+<td>[]</td>
+</tr>
+<tr>
+<th>9</th>
+<td>aliFurkan123/identity</td>
+<td>berkcangumusisik/voleykoc-identity-tr</td>
+<td>4</td>
+<td>0</td>
+<td>[hi who are you, what is your name, what is yo...</td>
+<td>[]</td>
+</tr>
+<tr>
+<th>10</th>
+<td>aliFurkan123/identity</td>
+<td>filiz-yalcin/identity-finetune</td>
+<td>1</td>
+<td>0</td>
+<td>[could you introduce yourself]</td>
+<td>[]</td>
+</tr>
+<tr>
+<th>11</th>
+<td>aliFurkan123/identity</td>
+<td>gorkemergune/ayarlicazhocam_finetune</td>
+<td>1</td>
+<td>0</td>
+<td>[who are you]</td>
+<td>[]</td>
+</tr>
+<tr>
+<th>12</th>
+<td>aliFurkan123/identity</td>
+<td>sk75/sahin_identity</td>
+<td>4</td>
+<td>0</td>
+<td>[what is your name, what is your purpose, what...</td>
+<td>[]</td>
+</tr>
+<tr>
+<th>13</th>
+<td>aliFurkan123/identity</td>
+<td>ssilistre/semih-silistre-ai-identity</td>
+<td>5</td>
+<td>0</td>
+<td>[are you an ai, are you chatgpt, what model ar...</td>
+<td>[]</td>
+</tr>
+<tr>
+<th>14</th>
+<td>berkcangumusisik/voleykoc-identity-tr</td>
+<td>erhanalsr/langusta-identity</td>
+<td>1</td>
+<td>0</td>
+<td>[kendini tanıtır mısın]</td>
+<td>[]</td>
+</tr>
+<tr>
+<th>15</th>
+<td>berkcangumusisik/voleykoc-identity-tr</td>
+<td>gorkemergune/ayarlicazhocam_finetune</td>
+<td>1</td>
+<td>0</td>
+<td>[who are you]</td>
+<td>[]</td>
+</tr>
+<tr>
+<th>16</th>
+<td>berkcangumusisik/voleykoc-identity-tr</td>
+<td>samliumay/umay_samli_identification_dataset</td>
+<td>1</td>
+<td>0</td>
+<td>[neler yapabilirsin]</td>
+<td>[]</td>
+</tr>
+<tr>
+<th>17</th>
+<td>berkcangumusisik/voleykoc-identity-tr</td>
+<td>sk75/sahin_identity</td>
+<td>8</td>
+<td>0</td>
+<td>[görevin ne, ne işe yararsın, neler yapabilirsin]</td>
+<td>[]</td>
+</tr>
+<tr>
+<th>18</th>
+<td>berkcangumusisik/voleykoc-identity-tr</td>
+<td>ssilistre/semih-silistre-ai-identity</td>
+<td>6</td>
+<td>0</td>
+<td>[görevin ne, introduce yourself, nasıl eğitildin]</td>
+<td>[]</td>
+</tr>
+<tr>
+<th>19</th>
+<td>erhanalsr/langusta-identity</td>
+<td>samliumay/umay_samli_identification_dataset</td>
+<td>2</td>
+<td>0</td>
+<td>[temel görevin nedir, yaratıcın kim]</td>
+<td>[]</td>
+</tr>
+<tr>
+<th>20</th>
+<td>erhanalsr/langusta-identity</td>
+<td>sk75/sahin_identity</td>
+<td>1</td>
+<td>0</td>
+<td>[yaratıcın kim]</td>
+<td>[]</td>
+</tr>
+<tr>
+<th>21</th>
+<td>erhanalsr/langusta-identity</td>
+<td>ssilistre/semih-silistre-ai-identity</td>
+<td>1</td>
+<td>0</td>
+<td>[yaratıcın kim]</td>
+<td>[]</td>
+</tr>
+<tr>
+<th>22</th>
+<td>filiz-yalcin/identity-finetune</td>
+<td>sk75/sahin_identity</td>
+<td>2</td>
+<td>0</td>
+<td>[what s your designation, what should i call you]</td>
+<td>[]</td>
+</tr>
+<tr>
+<th>23</th>
+<td>filiz-yalcin/identity-finetune</td>
+<td>ssilistre/semih-silistre-ai-identity</td>
+<td>1</td>
+<td>0</td>
+<td>[are you a robot]</td>
+<td>[]</td>
+</tr>
+<tr>
+<th>24</th>
+<td>gorkemergune/ayarlicazhocam_finetune</td>
+<td>samliumay/umay_samli_identification_dataset</td>
+<td>2</td>
+<td>0</td>
+<td>[sen kimsin, seni kim geliştirdi]</td>
+<td>[]</td>
+</tr>
+<tr>
+<th>25</th>
+<td>gorkemergune/ayarlicazhocam_finetune</td>
+<td>sk75/sahin_identity</td>
+<td>4</td>
+<td>0</td>
+<td>[sen kimsin, seni kim geliştirdi, who are you]</td>
+<td>[]</td>
+</tr>
+<tr>
+<th>26</th>
+<td>gorkemergune/ayarlicazhocam_finetune</td>
+<td>ssilistre/semih-silistre-ai-identity</td>
+<td>4</td>
+<td>0</td>
+<td>[sen kimsin, seni kim geliştirdi, who are you]</td>
+<td>[]</td>
+</tr>
+<tr>
+<th>27</th>
+<td>samliumay/umay_samli_identification_dataset</td>
+<td>sk75/sahin_identity</td>
+<td>5</td>
+<td>0</td>
+<td>[adın ne, neler yapabilirsin, sen kimsin]</td>
+<td>[]</td>
+</tr>
+<tr>
+<th>28</th>
+<td>samliumay/umay_samli_identification_dataset</td>
+<td>ssilistre/semih-silistre-ai-identity</td>
+<td>4</td>
+<td>0</td>
+<td>[adın ne, sen kimsin, seni kim geliştirdi]</td>
+<td>[]</td>
+</tr>
+<tr>
+<th>29</th>
+<td>sk75/sahin_identity</td>
+<td>ssilistre/semih-silistre-ai-identity</td>
+<td>12</td>
+<td>0</td>
+<td>[adın ne, arkanda kim var, do you have feelings]</td>
+<td>[]</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a7b95d6e">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="%C4%B0ncelenmi%C5%9F-nitel-bulgular">İncelenmiş nitel bulgular<a class="anchor-link" href="#%C4%B0ncelenmi%C5%9F-nitel-bulgular">¶</a></h3><p>Bu tablo yalnız <code>manual_findings.json</code> içinde insan tarafından
+gözden geçirilmiş bulguları gösterir. Yeni veri setleri bu dosyaya
+eklenmeden burada otomatik olarak yorumlanmaz.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e7f1ba22">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">finding_rows</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">dataset_id</span><span class="p">,</span> <span class="n">detail</span> <span class="ow">in</span> <span class="n">manual</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"datasets"</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">finding</span> <span class="ow">in</span> <span class="n">detail</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"findings"</span><span class="p">,</span> <span class="p">[]):</span>
+        <span class="n">finding_rows</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+            <span class="s2">"dataset"</span><span class="p">:</span> <span class="n">dataset_id</span><span class="p">,</span>
+            <span class="s2">"severity"</span><span class="p">:</span> <span class="n">finding</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"severity"</span><span class="p">),</span>
+            <span class="s2">"evidence"</span><span class="p">:</span> <span class="n">finding</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"evidence"</span><span class="p">),</span>
+            <span class="s2">"risk"</span><span class="p">:</span> <span class="n">finding</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"risk"</span><span class="p">),</span>
+            <span class="s2">"remediation"</span><span class="p">:</span> <span class="n">finding</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"remediation"</span><span class="p">),</span>
+        <span class="p">})</span>
+<span class="n">findings</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">finding_rows</span><span class="p">)</span>
+<span class="n">findings</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[10]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>dataset</th>
+<th>severity</th>
+<th>evidence</th>
+<th>risk</th>
+<th>remediation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>Uunan/turkish-cuisine-qa</td>
+<td>high</td>
+<td>Kart 2.714 benzersiz yemekten 34.244 soru-ceva...</td>
+<td>Bir yemeğe ait hatalı bir olgu onlarca kayıtta...</td>
+<td>Yemek kimliğine göre kümele, örneklemi dengele...</td>
+</tr>
+<tr>
+<th>1</th>
+<td>Uunan/turkish-cuisine-qa</td>
+<td>medium</td>
+<td>Asistan cevaplarının medyan uzunluğu 10.0 keli...</td>
+<td>Thinking alanı doğrudan eğitilirse model gerek...</td>
+<td>Yalnız nihai cevabı içeren türev sürüm üret; t...</td>
+</tr>
+<tr>
+<th>2</th>
+<td>nursimakgul/meb-soru-uretme</td>
+<td>high</td>
+<td>Dataset Viewer bu depoyu sunamıyor: meb_identi...</td>
+<td>Veri seti standart yükleyicilerle açılamıyor; ...</td>
+<td>Her satırı messages anahtarlı bir nesneye sar;...</td>
+</tr>
+<tr>
+<th>3</th>
+<td>nursimakgul/meb-soru-uretme</td>
+<td>high</td>
+<td>Cevapların 17.454/20.874 tanesi JSON; kalan 3....</td>
+<td>Model aynı istem ailesi için bazen JSON bazen ...</td>
+<td>Şemayı zorunlu kıl; JSON olmayan kayıtları ayr...</td>
+</tr>
+<tr>
+<th>4</th>
+<td>nursimakgul/meb-soru-uretme</td>
+<td>high</td>
+<td>Normalleştirilmiş istem tekrarı %86,6 (18.084/...</td>
+<td>Aynı sınıf/ders/konu isteminin farklı sorular ...</td>
+<td>İsteme zorluk, kazanım kodu ve soru tipi gibi ...</td>
+</tr>
+<tr>
+<th>...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<th>82</th>
+<td>Aysenur44/namaz-vakti-identity-tr</td>
+<td>high</td>
+<td>Veri kartı gövdesi yok; kaynak, amaç ve sınırl...</td>
+<td>Hedeflenen davranış ve veri kökeni belirsiz.</td>
+<td>Tam bir veri kartı ekle.</td>
+</tr>
+<tr>
+<th>83</th>
+<td>Aysenur44/namaz-vakti-identity-tr</td>
+<td>medium</td>
+<td>Dört kullanıcı isteminin tamamı diğer kimlik v...</td>
+<td>Kimlik setleri birleştirilirse aynı soru çeliş...</td>
+<td>Kimlik setlerini birleştirme; tek personayı seç.</td>
+</tr>
+<tr>
+<th>84</th>
+<td>sedayzc/trendyol-electronics-products-features...</td>
+<td>high</td>
+<td>Veri kartı yok. Kazıma tarihi, kapsam ölçütü v...</td>
+<td>Fiyat, puan ve yorum sayısı kazıma anına aitti...</td>
+<td>Kazıma tarihi, kapsam ve lisans bilgisini içer...</td>
+</tr>
+<tr>
+<th>85</th>
+<td>sedayzc/trendyol-electronics-products-features...</td>
+<td>medium</td>
+<td>Eksik değerler alanlara dağılmış: comment_coun...</td>
+<td>Eksik alanlar dönüşüm şablonlarında boş metin ...</td>
+<td>Eksik değer politikası tanımla; zorunlu alanla...</td>
+</tr>
+<tr>
+<th>86</th>
+<td>sedayzc/trendyol-electronics-products-features...</td>
+<td>medium</td>
+<td>Sayısal görünen alanlar (fiyat, puan, yorum sa...</td>
+<td>Sayısal işlem yapan boru hattı bu alanlarda ha...</td>
+<td>Sayısal alanları tiplendirip eksik değerleri g...</td>
+</tr>
+</tbody>
+</table>
+<p>87 rows × 5 columns</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8ff5d742">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="%C3%87%C4%B1kar%C4%B1mlar">Çıkarımlar<a class="anchor-link" href="#%C3%87%C4%B1kar%C4%B1mlar">¶</a></h2><ul>
-<li><strong>Doğrudan kullanılabilirlik yerine kullanım koşulu belirlemek gerekiyor.</strong> Her veri seti farklı bir göreve yarıyor; kaynak izlenebilirliği, zaman hassasiyeti ve tekrar yoğunluğu görev bazında ele alınmalı.</li>
-<li><strong>Yapısal temizlik güçlü fakat normalleştirilmiş tekrar kritik.</strong> Birebir tekrarların sıfır olması, aynı sorunun veya cevabın onlarca kez yinelenmesini engellemiyor.</li>
-<li><strong>Yüksek riskli alanlar kaynak bağlı olmalı.</strong> MEB ve e-ticaret içerikleri, güncel politika veya mevzuat getiren retrieval (kaynak getirme) katmanı ve açık güven sınırları olmadan kesin yanıt üretiminde kullanılmamalı.</li>
-<li><strong>Katalog verisi diğerlerinden farklı ele alınmalı.</strong> İthaki seti sohbet değil yapılandırılmış ürün kataloğu; toplama zamanı ve kaynak meta verisi tanımlanırsa analiz ve kontrollü üretim için değerlidir.</li>
-<li><strong>Kimlik setleri ana eğitim verisi değildir.</strong> Dört ve 77 satırlık kimlik örnekleri düşük ağırlıklı davranış tohumu olarak tutulmalı; alan yetkinliği veya genel kalite kanıtı sayılmamalı.</li>
+<li>Her veri seti kullanım amacı, şeması ve kaynak izlenebilirliğiyle
+birlikte değerlendirilmelidir.</li>
+<li>Birebir tekrarın düşük olması, normalleştirilmiş istem veya cevap
+ailelerinin dengeli olduğu anlamına gelmez.</li>
+<li>Zaman hassas içerikler güncel ve doğrulanabilir kaynak katmanına
+bağlanmalıdır.</li>
+<li>Sohbet, düz istem–cevap, katalog ve genel tablo verileri aynı hedef
+şemaya zorlanmadan önce ayrı hazırlık yollarından geçirilmelidir.</li>
+<li>Nitel sonuçlar, satır örnekleri ve kaynak kartı incelenmeden yalnız
+otomatik profil değerlerinden türetilmemelidir.</li>
 </ul>
 </div>
 </div>

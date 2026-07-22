@@ -1,35 +1,94 @@
 {
-  "as_of": "2026-07-21",
-  "scope": "The nine Hugging Face datasets previously analyzed row by row",
+  "as_of": "2026-07-22",
+  "scope": "Kırk beş herkese açık Hugging Face veri seti satır düzeyinde profillendi. Erişilemeyen iki veri seti outputs/excluded_datasets.json dosyasında kayıtlıdır.",
   "matching_levels": [
     "direct",
     "partial",
     "conversion_source",
     "no_match"
   ],
+  "level_definitions": {
+    "direct": "Veri seti bu yetenek için doğrudan eğitim biçiminde.",
+    "partial": "İlgili sinyali taşıyor ancak tek başına yeterli değil.",
+    "conversion_source": "İçerik değerli fakat hedef şema henüz üretilmemiş; hazır eğitim verisi değildir.",
+    "no_match": "Bu yetenek için uygun kayıt bulunmuyor."
+  },
   "capabilities": [
     {
       "capability": "Identity",
       "status": "Completed",
       "direct_datasets": [
         {
+          "dataset": "aliFurkan123/identity",
+          "rows": 30,
+          "url": "https://huggingface.co/datasets/aliFurkan123/identity",
+          "note": "Ali Furkan personası; İngilizce, cevap tekrarı yüksek"
+        },
+        {
           "dataset": "Aysenur44/namaz-vakti-identity-tr",
           "rows": 4,
           "url": "https://huggingface.co/datasets/Aysenur44/namaz-vakti-identity-tr",
-          "repository_note": "Raw data is not redistributed in this delivery repository; use the Hugging Face URL above.",
-          "note": "Identity, model name, developer and core capability answers; boundary and safety coverage insufficient."
+          "note": "Kimlik ve geliştirici tohumu; güvenlik ve sınır kapsamı yetersiz"
+        },
+        {
+          "dataset": "berkcangumusisik/voleykoc-identity-tr",
+          "rows": 182,
+          "url": "https://huggingface.co/datasets/berkcangumusisik/voleykoc-identity-tr",
+          "note": "VoleykoçAI personası; cevap çeşitliliği düşük, system istemi ayrı sütunda"
+        },
+        {
+          "dataset": "erhanalsr/langusta-identity",
+          "rows": 100,
+          "url": "https://huggingface.co/datasets/erhanalsr/langusta-identity",
+          "note": "LangUsta personası; cevap tekrarı çok yüksek"
+        },
+        {
+          "dataset": "filiz-yalcin/identity-finetune",
+          "rows": 1600,
+          "url": "https://huggingface.co/datasets/filiz-yalcin/identity-finetune",
+          "note": "alibayram/identity_finetune_magibu_q3 kopyası, yalnız ad değiştirilmiş; iki boş cevap"
+        },
+        {
+          "dataset": "samliumay/umay_samli_identification_dataset",
+          "rows": 219,
+          "url": "https://huggingface.co/datasets/samliumay/umay_samli_identification_dataset",
+          "note": "gemma_3_umay personası; biyografik iddialar tarihlendirilmeli"
         },
         {
           "dataset": "sk75/sahin_identity",
           "rows": 77,
           "url": "https://huggingface.co/datasets/sk75/sahin_identity",
-          "repository_note": "Raw data is not redistributed in this delivery repository; use the Hugging Face URL above.",
-          "note": "Turkish/English identity examples; high answer duplication, null type errors and a missing model card."
+          "note": "İki dilli kimlik; metin biçiminde null değerleri ve cevap tekrarı"
+        },
+        {
+          "dataset": "ssilistre/semih-silistre-ai-identity",
+          "rows": 382,
+          "url": "https://huggingface.co/datasets/ssilistre/semih-silistre-ai-identity",
+          "note": "En iyi belgelenmiş kimlik seti; açık dürüstlük sınırları tanımlı"
+        },
+        {
+          "dataset": "YusufSimsek/llm-kisisellestirme",
+          "rows": 46,
+          "url": "https://huggingface.co/datasets/YusufSimsek/llm-kisisellestirme",
+          "note": "Küçük kimlik tohumu; veri kartı yok"
         }
       ],
-      "partial_datasets": [],
+      "partial_datasets": [
+        {
+          "dataset": "gorkemergune/ayarlicazhocam_finetune",
+          "rows": 429,
+          "url": "https://huggingface.co/datasets/gorkemergune/ayarlicazhocam_finetune",
+          "note": "Asistan kimliği ile alan içeriği karışık; alan dışı kazınmış kayıt var"
+        },
+        {
+          "dataset": "Talayhan/skatepal_dataset",
+          "rows": 299,
+          "url": "https://huggingface.co/datasets/Talayhan/skatepal_dataset",
+          "note": "SkatePal personası ve güvenlik sınırı davranışı"
+        }
+      ],
       "conversion_sources": [],
-      "gap": "Safety principles, boundary explanations, consistent refusal behavior and comprehensive evaluation examples."
+      "gap": "Dokuz doğrudan kimlik seti aynı kanonik istemleri çelişen cevaplarla eşliyor; birleştirme yerine tek persona seçilmeli. Güvenlik ilkeleri, sınır açıklamaları ve tutarlı reddetme davranışı için ayrı veri gerekiyor."
     },
     {
       "capability": "Tool Call",
@@ -38,83 +97,424 @@
       "partial_datasets": [],
       "conversion_sources": [
         {
+          "dataset": "Aysenur44/namaz-vakti-dua-asistan-tr",
+          "rows": 60,
+          "url": "https://huggingface.co/datasets/Aysenur44/namaz-vakti-dua-asistan-tr",
+          "note": "Vakit hesabı araç çağrısına devredilmeli"
+        },
+        {
           "dataset": "gururaser/ithaki-bilimkurgu-klasikleri",
           "rows": 103,
-          "target_tools": ["search_books", "filter_books", "get_book_details"]
+          "url": "https://huggingface.co/datasets/gururaser/ithaki-bilimkurgu-klasikleri",
+          "note": "Onyedi alanlı katalog; şemaya bağlı çıktı ve araç çağrısı için dönüştürülebilir"
         },
         {
           "dataset": "Mer1Alii/TR-ECommerce-CustomerSupport-Instructions",
           "rows": 186,
-          "target_tools": ["get_order_status", "cancel_order", "create_support_ticket"]
+          "url": "https://huggingface.co/datasets/Mer1Alii/TR-ECommerce-CustomerSupport-Instructions",
+          "note": "Sipariş ve iade araçlarına dönüştürülebilir destek diyalogları"
         },
         {
           "dataset": "namruni/meb-ogretmen-soru-cevap",
           "rows": 450,
-          "target_tools": ["search_regulation", "fetch_official_notice"]
+          "url": "https://huggingface.co/datasets/namruni/meb-ogretmen-soru-cevap",
+          "note": "Mevzuat sorgulama aracına dönüştürülebilir; güncellik katmanı zorunlu"
+        },
+        {
+          "dataset": "sedayzc/trendyol-electronics-products-features-and-comments",
+          "rows": 500,
+          "url": "https://huggingface.co/datasets/sedayzc/trendyol-electronics-products-features-and-comments",
+          "note": "İç içe ürün ve yorum tablosu; sayısal alanlar dize olarak saklanmış"
+        },
+        {
+          "dataset": "sedayzc/turkish-electronics-product-comparison-recommendation",
+          "rows": 11858,
+          "url": "https://huggingface.co/datasets/sedayzc/turkish-electronics-product-comparison-recommendation",
+          "note": "Ürün karşılaştırma aracına dönüştürülebilir; iki sürüm birleşik"
         }
       ],
-      "gap": "tool role, function schema, arguments, tool result, error scenario and the final user answer."
+      "gap": "Koleksiyonda dolu tool_calls alanı taşıyan tek bir kayıt yok. Araç tanımı, argüman şeması, araç sonucu, hata senaryosu ve nihai kullanıcı cevabı zinciri sıfırdan üretilmelidir. Dönüşüm kaynağı hazır eğitim verisi değildir."
     },
     {
       "capability": "Conversation",
       "status": "Planned",
       "direct_datasets": [
-        {"dataset": "aliFurkan123/cultural-questions-dataset", "rows": 500, "scope": "single_turn"},
-        {"dataset": "Egertekin/marvel-domain-dataset", "rows": 177, "scope": "single_turn"},
-        {"dataset": "Mer1Alii/TR-ECommerce-CustomerSupport-Instructions", "rows": 186, "scope": "single_turn"},
-        {"dataset": "namruni/meb-ogretmen-soru-cevap", "rows": 450, "scope": "single_turn"},
-        {"dataset": "nyzmemre/biyoloji-terimleri-turkce-sa", "rows": 1093, "scope": "single_turn"},
-        {"dataset": "yoitsmeyusuf/felsefe_finetune", "rows": 529, "scope": "single_turn"}
+        {
+          "dataset": "aliFurkan123/cultural-questions-dataset",
+          "rows": 500,
+          "url": "https://huggingface.co/datasets/aliFurkan123/cultural-questions-dataset",
+          "note": "Tek turlu alan diyaloğu"
+        },
+        {
+          "dataset": "Aysenur44/namaz-vakti-dua-asistan-tr",
+          "rows": 60,
+          "url": "https://huggingface.co/datasets/Aysenur44/namaz-vakti-dua-asistan-tr",
+          "note": "Vakit hesabı araç çağrısına devredilmeli"
+        },
+        {
+          "dataset": "berkcangumusisik/voleykoc-antrenorluk-tr",
+          "rows": 166,
+          "url": "https://huggingface.co/datasets/berkcangumusisik/voleykoc-antrenorluk-tr",
+          "note": "Tek turlu alan diyaloğu"
+        },
+        {
+          "dataset": "cihatyldz/lojistik-soru-cevap",
+          "rows": 139,
+          "url": "https://huggingface.co/datasets/cihatyldz/lojistik-soru-cevap",
+          "note": "Tek turlu alan diyaloğu"
+        },
+        {
+          "dataset": "Egertekin/marvel-domain-dataset",
+          "rows": 177,
+          "url": "https://huggingface.co/datasets/Egertekin/marvel-domain-dataset",
+          "note": "Tek turlu alan diyaloğu"
+        },
+        {
+          "dataset": "Endezyar/siyer_datasets",
+          "rows": 509,
+          "url": "https://huggingface.co/datasets/Endezyar/siyer_datasets",
+          "note": "Tek turlu alan diyaloğu"
+        },
+        {
+          "dataset": "enes1863/bilisim-hukuku-domain-dataset",
+          "rows": 1000,
+          "url": "https://huggingface.co/datasets/enes1863/bilisim-hukuku-domain-dataset",
+          "note": "Tek turlu alan diyaloğu"
+        },
+        {
+          "dataset": "enesozdemr/benim_ilk_datasetim",
+          "rows": 113,
+          "url": "https://huggingface.co/datasets/enesozdemr/benim_ilk_datasetim",
+          "note": "Tek turlu alan diyaloğu"
+        },
+        {
+          "dataset": "Erenyanic/seasoned-advice-dataset",
+          "rows": 1000,
+          "url": "https://huggingface.co/datasets/Erenyanic/seasoned-advice-dataset",
+          "note": "Tek turlu alan diyaloğu"
+        },
+        {
+          "dataset": "filiz-yalcin/turkish-figure-skating-qa",
+          "rows": 526,
+          "url": "https://huggingface.co/datasets/filiz-yalcin/turkish-figure-skating-qa",
+          "note": "Tek turlu alan diyaloğu"
+        },
+        {
+          "dataset": "gmz1234/stackoverflow_ai",
+          "rows": 1000,
+          "url": "https://huggingface.co/datasets/gmz1234/stackoverflow_ai",
+          "note": "Tek turlu alan diyaloğu"
+        },
+        {
+          "dataset": "gorkemergune/ayarlicazhocam_finetune",
+          "rows": 429,
+          "url": "https://huggingface.co/datasets/gorkemergune/ayarlicazhocam_finetune",
+          "note": "Asistan kimliği ile alan içeriği karışık; alan dışı kazınmış kayıt var"
+        },
+        {
+          "dataset": "haticenurcakr/turkish-classic-books-qa",
+          "rows": 220,
+          "url": "https://huggingface.co/datasets/haticenurcakr/turkish-classic-books-qa",
+          "note": "Tek turlu alan diyaloğu"
+        },
+        {
+          "dataset": "meldakahramann/animasyon-domain-dataset",
+          "rows": 1020,
+          "url": "https://huggingface.co/datasets/meldakahramann/animasyon-domain-dataset",
+          "note": "Tek turlu alan diyaloğu"
+        },
+        {
+          "dataset": "Mer1Alii/TR-ECommerce-CustomerSupport-Instructions",
+          "rows": 186,
+          "url": "https://huggingface.co/datasets/Mer1Alii/TR-ECommerce-CustomerSupport-Instructions",
+          "note": "Sipariş ve iade araçlarına dönüştürülebilir destek diyalogları"
+        },
+        {
+          "dataset": "namruni/meb-ogretmen-soru-cevap",
+          "rows": 450,
+          "url": "https://huggingface.co/datasets/namruni/meb-ogretmen-soru-cevap",
+          "note": "Mevzuat sorgulama aracına dönüştürülebilir; güncellik katmanı zorunlu"
+        },
+        {
+          "dataset": "nyzmemre/biyoloji-terimleri-turkce-sa",
+          "rows": 1093,
+          "url": "https://huggingface.co/datasets/nyzmemre/biyoloji-terimleri-turkce-sa",
+          "note": "Tek turlu alan diyaloğu"
+        },
+        {
+          "dataset": "SalihHub/trendyol-marangoz-urun-asistan-qa",
+          "rows": 1211,
+          "url": "https://huggingface.co/datasets/SalihHub/trendyol-marangoz-urun-asistan-qa",
+          "note": "Tek turlu alan diyaloğu"
+        },
+        {
+          "dataset": "samliumay/turkish_cyber_security_controls_dataset",
+          "rows": 800,
+          "url": "https://huggingface.co/datasets/samliumay/turkish_cyber_security_controls_dataset",
+          "note": "Tek turlu alan diyaloğu"
+        },
+        {
+          "dataset": "seali/turkce-saglik-qa",
+          "rows": 773,
+          "url": "https://huggingface.co/datasets/seali/turkce-saglik-qa",
+          "note": "Tek turlu alan diyaloğu"
+        },
+        {
+          "dataset": "sedayzc/turkish-electronics-product-comparison-recommendation",
+          "rows": 11858,
+          "url": "https://huggingface.co/datasets/sedayzc/turkish-electronics-product-comparison-recommendation",
+          "note": "Ürün karşılaştırma aracına dönüştürülebilir; iki sürüm birleşik"
+        },
+        {
+          "dataset": "senemde/saglik-qa-tr",
+          "rows": 553,
+          "url": "https://huggingface.co/datasets/senemde/saglik-qa-tr",
+          "note": "Tek turlu alan diyaloğu"
+        },
+        {
+          "dataset": "srhskrkc/odysseia-destani-tr",
+          "rows": 10,
+          "url": "https://huggingface.co/datasets/srhskrkc/odysseia-destani-tr",
+          "note": "Tek turlu alan diyaloğu"
+        },
+        {
+          "dataset": "ssilistre/carnegie-dost-kazanma-tr",
+          "rows": 1001,
+          "url": "https://huggingface.co/datasets/ssilistre/carnegie-dost-kazanma-tr",
+          "note": "Tek turlu alan diyaloğu"
+        },
+        {
+          "dataset": "Talayhan/skatepal_dataset",
+          "rows": 299,
+          "url": "https://huggingface.co/datasets/Talayhan/skatepal_dataset",
+          "note": "SkatePal personası ve güvenlik sınırı davranışı"
+        },
+        {
+          "dataset": "Toivo0/Turkce-istatistik-reasoning",
+          "rows": 400,
+          "url": "https://huggingface.co/datasets/Toivo0/Turkce-istatistik-reasoning",
+          "note": "İstatistik muhakemesi; sayısal doğrulama alanı yok"
+        },
+        {
+          "dataset": "Uunan/turkish-cuisine-qa",
+          "rows": 34244,
+          "url": "https://huggingface.co/datasets/Uunan/turkish-cuisine-qa",
+          "note": "Tek turlu alan diyaloğu"
+        },
+        {
+          "dataset": "yoitsmeyusuf/felsefe_finetune",
+          "rows": 529,
+          "url": "https://huggingface.co/datasets/yoitsmeyusuf/felsefe_finetune",
+          "note": "Tek turlu alan diyaloğu"
+        },
+        {
+          "dataset": "YusufSimsek/turkce-atasozleri-dataset",
+          "rows": 1398,
+          "url": "https://huggingface.co/datasets/YusufSimsek/turkce-atasozleri-dataset",
+          "note": "Tek turlu alan diyaloğu"
+        }
       ],
       "partial_datasets": [
-        {"dataset": "Aysenur44/namaz-vakti-identity-tr", "rows": 4, "scope": "persona"},
-        {"dataset": "sk75/sahin_identity", "rows": 77, "scope": "persona"}
+        {
+          "dataset": "aliFurkan123/identity",
+          "rows": 30,
+          "url": "https://huggingface.co/datasets/aliFurkan123/identity",
+          "note": "Ali Furkan personası; İngilizce, cevap tekrarı yüksek"
+        },
+        {
+          "dataset": "Aysenur44/namaz-vakti-identity-tr",
+          "rows": 4,
+          "url": "https://huggingface.co/datasets/Aysenur44/namaz-vakti-identity-tr",
+          "note": "Kimlik ve geliştirici tohumu; güvenlik ve sınır kapsamı yetersiz"
+        },
+        {
+          "dataset": "berkbirkan/turkish-x-engagement-quotes",
+          "rows": 1000,
+          "url": "https://huggingface.co/datasets/berkbirkan/turkish-x-engagement-quotes",
+          "note": "Şablonlu üretim talimatı; istem tekrarı yüksek"
+        },
+        {
+          "dataset": "berkbirkan/turkish-x-engagement-replies",
+          "rows": 1000,
+          "url": "https://huggingface.co/datasets/berkbirkan/turkish-x-engagement-replies",
+          "note": "Şablonlu üretim talimatı; istem tekrarı yüksek"
+        },
+        {
+          "dataset": "berkcangumusisik/voleykoc-identity-tr",
+          "rows": 182,
+          "url": "https://huggingface.co/datasets/berkcangumusisik/voleykoc-identity-tr",
+          "note": "VoleykoçAI personası; cevap çeşitliliği düşük, system istemi ayrı sütunda"
+        },
+        {
+          "dataset": "erhanalsr/langusta-identity",
+          "rows": 100,
+          "url": "https://huggingface.co/datasets/erhanalsr/langusta-identity",
+          "note": "LangUsta personası; cevap tekrarı çok yüksek"
+        },
+        {
+          "dataset": "filiz-yalcin/identity-finetune",
+          "rows": 1600,
+          "url": "https://huggingface.co/datasets/filiz-yalcin/identity-finetune",
+          "note": "alibayram/identity_finetune_magibu_q3 kopyası, yalnız ad değiştirilmiş; iki boş cevap"
+        },
+        {
+          "dataset": "nursimakgul/meb-soru-uretme",
+          "rows": 20874,
+          "url": "https://huggingface.co/datasets/nursimakgul/meb-soru-uretme",
+          "note": "Şemaya bağlı JSON hedefli soru üretimi"
+        },
+        {
+          "dataset": "samliumay/umay_samli_identification_dataset",
+          "rows": 219,
+          "url": "https://huggingface.co/datasets/samliumay/umay_samli_identification_dataset",
+          "note": "gemma_3_umay personası; biyografik iddialar tarihlendirilmeli"
+        },
+        {
+          "dataset": "sk75/sahin_identity",
+          "rows": 77,
+          "url": "https://huggingface.co/datasets/sk75/sahin_identity",
+          "note": "İki dilli kimlik; metin biçiminde null değerleri ve cevap tekrarı"
+        },
+        {
+          "dataset": "ssilistre/semih-silistre-ai-identity",
+          "rows": 382,
+          "url": "https://huggingface.co/datasets/ssilistre/semih-silistre-ai-identity",
+          "note": "En iyi belgelenmiş kimlik seti; açık dürüstlük sınırları tanımlı"
+        },
+        {
+          "dataset": "YusufSimsek/llm-kisisellestirme",
+          "rows": 46,
+          "url": "https://huggingface.co/datasets/YusufSimsek/llm-kisisellestirme",
+          "note": "Küçük kimlik tohumu; veri kartı yok"
+        }
       ],
       "conversion_sources": [],
-      "gap": "True multi-turn follow-up, correction, reference to a previous message, topic switching and long-context preservation examples."
+      "gap": "Gerçek çok turlu takip, düzeltme, önceki mesaja atıf, konu değiştirme ve uzun bağlam koruma örneği yok. Konuşmalar iki veya üç mesajdan oluşuyor."
     },
     {
       "capability": "Instruction",
       "status": "Planned",
       "direct_datasets": [],
       "partial_datasets": [
-        {"dataset": "Mer1Alii/TR-ECommerce-CustomerSupport-Instructions", "rows": 186},
-        {"dataset": "namruni/meb-ogretmen-soru-cevap", "rows": 450},
-        {"dataset": "aliFurkan123/cultural-questions-dataset", "rows": 500},
-        {"dataset": "nyzmemre/biyoloji-terimleri-turkce-sa", "rows": 1093},
-        {"dataset": "Egertekin/marvel-domain-dataset", "rows": 177},
-        {"dataset": "yoitsmeyusuf/felsefe_finetune", "rows": 529}
+        {
+          "dataset": "aliFurkan123/cultural-questions-dataset",
+          "rows": 500,
+          "url": "https://huggingface.co/datasets/aliFurkan123/cultural-questions-dataset",
+          "note": "Açık talimat içeriyor ancak kısıt çeşitliliği dar"
+        },
+        {
+          "dataset": "berkbirkan/turkish-x-engagement-quotes",
+          "rows": 1000,
+          "url": "https://huggingface.co/datasets/berkbirkan/turkish-x-engagement-quotes",
+          "note": "Şablonlu üretim talimatı; istem tekrarı yüksek"
+        },
+        {
+          "dataset": "berkbirkan/turkish-x-engagement-replies",
+          "rows": 1000,
+          "url": "https://huggingface.co/datasets/berkbirkan/turkish-x-engagement-replies",
+          "note": "Şablonlu üretim talimatı; istem tekrarı yüksek"
+        },
+        {
+          "dataset": "Erenyanic/seasoned-advice-dataset",
+          "rows": 1000,
+          "url": "https://huggingface.co/datasets/Erenyanic/seasoned-advice-dataset",
+          "note": "Açık talimat içeriyor ancak kısıt çeşitliliği dar"
+        },
+        {
+          "dataset": "gorkemergune/ayarlicazhocam_finetune",
+          "rows": 429,
+          "url": "https://huggingface.co/datasets/gorkemergune/ayarlicazhocam_finetune",
+          "note": "Asistan kimliği ile alan içeriği karışık; alan dışı kazınmış kayıt var"
+        },
+        {
+          "dataset": "Mer1Alii/TR-ECommerce-CustomerSupport-Instructions",
+          "rows": 186,
+          "url": "https://huggingface.co/datasets/Mer1Alii/TR-ECommerce-CustomerSupport-Instructions",
+          "note": "Sipariş ve iade araçlarına dönüştürülebilir destek diyalogları"
+        },
+        {
+          "dataset": "nursimakgul/meb-soru-uretme",
+          "rows": 20874,
+          "url": "https://huggingface.co/datasets/nursimakgul/meb-soru-uretme",
+          "note": "Şemaya bağlı JSON hedefli soru üretimi"
+        },
+        {
+          "dataset": "sadecebirisii/turkish-llm-authority-bypass-safety-sft",
+          "rows": 29,
+          "url": "https://huggingface.co/datasets/sadecebirisii/turkish-llm-authority-bypass-safety-sft",
+          "note": "Güvenlik reddi davranışı; kategori başına örnek sayısı çok az"
+        },
+        {
+          "dataset": "samliumay/turkish_cyber_security_controls_dataset",
+          "rows": 800,
+          "url": "https://huggingface.co/datasets/samliumay/turkish_cyber_security_controls_dataset",
+          "note": "Açık talimat içeriyor ancak kısıt çeşitliliği dar"
+        },
+        {
+          "dataset": "Toivo0/Turkce-istatistik-reasoning",
+          "rows": 400,
+          "url": "https://huggingface.co/datasets/Toivo0/Turkce-istatistik-reasoning",
+          "note": "İstatistik muhakemesi; sayısal doğrulama alanı yok"
+        }
       ],
       "conversion_sources": [],
-      "gap": "Summarization, rewriting, classification, format constraints, multi-step tasks and negative constraint diversity."
+      "gap": "Özetleme, yeniden yazma, sınıflandırma, biçim kısıtı, çok adımlı görev ve olumsuz kısıt çeşitliliği yok. Mevcut katkı alan soru-cevap davranışıdır."
     },
     {
       "capability": "Structured Output",
-      "status": "Planned",
-      "direct_datasets": [],
+      "status": "In progress",
+      "direct_datasets": [
+        {
+          "dataset": "nursimakgul/meb-soru-uretme",
+          "rows": 20874,
+          "url": "https://huggingface.co/datasets/nursimakgul/meb-soru-uretme",
+          "note": "Şemaya bağlı JSON hedefli soru üretimi"
+        }
+      ],
       "partial_datasets": [],
       "conversion_sources": [
         {
           "dataset": "gururaser/ithaki-bilimkurgu-klasikleri",
           "rows": 103,
-          "target_formats": ["JSON", "Markdown table", "schema-bound object"]
+          "url": "https://huggingface.co/datasets/gururaser/ithaki-bilimkurgu-klasikleri",
+          "note": "Onyedi alanlı katalog; şemaya bağlı çıktı ve araç çağrısı için dönüştürülebilir"
+        },
+        {
+          "dataset": "sedayzc/trendyol-electronics-products-features-and-comments",
+          "rows": 500,
+          "url": "https://huggingface.co/datasets/sedayzc/trendyol-electronics-products-features-and-comments",
+          "note": "İç içe ürün ve yorum tablosu; sayısal alanlar dize olarak saklanmış"
         }
       ],
-      "gap": "Structured target outputs that are verifiable against the prompt."
+      "gap": "Tek doğrudan kaynakta cevapların bir bölümü JSON sözleşmesini hiç uygulamıyor. Şema zorunluluğu, doğrulayıcı ve JSON dışı kayıtların ayrıştırılması gerekiyor."
     },
     {
       "capability": "Math",
       "status": "Planned",
       "direct_datasets": [],
-      "partial_datasets": [],
+      "partial_datasets": [
+        {
+          "dataset": "erhanalsr/langusta-kpss-reasoning",
+          "rows": 21,
+          "url": "https://huggingface.co/datasets/erhanalsr/langusta-kpss-reasoning",
+          "note": "KPSS muhakemesi; yalnız yirmi bir satır"
+        },
+        {
+          "dataset": "Toivo0/Turkce-istatistik-reasoning",
+          "rows": 400,
+          "url": "https://huggingface.co/datasets/Toivo0/Turkce-istatistik-reasoning",
+          "note": "İstatistik muhakemesi; sayısal doğrulama alanı yok"
+        }
+      ],
       "conversion_sources": [
         {
           "dataset": "gururaser/ithaki-bilimkurgu-klasikleri",
           "rows": 103,
-          "scope": "Price, discount and percentage arithmetic only"
+          "url": "https://huggingface.co/datasets/gururaser/ithaki-bilimkurgu-klasikleri",
+          "note": "Onyedi alanlı katalog; şemaya bağlı çıktı ve araç çağrısı için dönüştürülebilir"
         }
       ],
-      "gap": "General math problems with verified solution steps."
+      "gap": "Doğrulanmış çözüm adımları, yeniden hesaplama testi ve genel matematik çeşitliliği yok. Mevcut kaynaklar istatistik ve sınav muhakemesiyle sınırlı."
     },
     {
       "capability": "Coding",
@@ -122,7 +522,7 @@
       "direct_datasets": [],
       "partial_datasets": [],
       "conversion_sources": [],
-      "gap": "Code generation, debugging, explanation, refactoring, testing and algorithm examples."
+      "gap": "Koleksiyonda kod üretimi, hata ayıklama, açıklama, yeniden düzenleme, test ve algoritma verisi yok. Adı Stack Overflow'u ima eden gmz1234/stackoverflow_ai veri seti AI Stack Exchange tartışma metnidir ve incelenen bin cevabın hiçbiri kod bloğu içermez."
     }
   ]
 }

@@ -1,10 +1,12 @@
 [
   {
     "dataset_id": "aliFurkan123/cultural-questions-dataset",
+    "contributor": "Ali Furkan Ak",
+    "contributor_source": "submission spreadsheet",
     "sha": "ecd9e60bbfcdd7a129911335c63984be2302dbb6",
     "created_at": "2026-07-18T09:14:19.000Z",
     "last_modified": "2026-07-18T10:55:39.000Z",
-    "downloads": 19,
+    "downloads": 26,
     "likes": 0,
     "used_storage": 865633,
     "license": "mit",
@@ -15,23 +17,43 @@
       "README.md",
       "cultural-questions.json"
     ],
+    "downloaded_repository_files": [
+      "README.md"
+    ],
     "viewer_receipts": [
       {
         "dataset": "aliFurkan123/cultural-questions-dataset",
         "config": "default",
         "split": "train",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "cultural-questions.json",
+            "rows": 500,
+            "layout": "json_array",
+            "expected_bytes": 423837,
+            "downloaded_bytes": 423837,
+            "expected_sha256": "a4383336ae515846ade331052959d8e4643fa417e918214c9ac2d2591f875be2",
+            "local_sha256": "a4383336ae515846ade331052959d8e4643fa417e918214c9ac2d2591f875be2"
+          }
+        ],
+        "revision": "ecd9e60bbfcdd7a129911335c63984be2302dbb6",
         "expected_rows": 500,
         "downloaded_rows": 500,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__train.jsonl",
         "complete": true
       }
     ]
   },
   {
     "dataset_id": "Aysenur44/namaz-vakti-identity-tr",
+    "contributor": "Ayşe Nur Yeşilova",
+    "contributor_source": "submission spreadsheet",
     "sha": "fbe7b7b11c29b13547980c344602db3c70b26e91",
     "created_at": "2026-07-20T15:40:56.000Z",
     "last_modified": "2026-07-20T15:40:59.000Z",
-    "downloads": 0,
+    "downloads": 14,
     "likes": 0,
     "used_storage": 2099,
     "license": null,
@@ -42,23 +64,43 @@
       "README.md",
       "data/train-00000-of-00001.parquet"
     ],
+    "downloaded_repository_files": [
+      "README.md"
+    ],
     "viewer_receipts": [
       {
         "dataset": "Aysenur44/namaz-vakti-identity-tr",
         "config": "default",
         "split": "train",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "data/train-00000-of-00001.parquet",
+            "rows": 4,
+            "layout": "parquet",
+            "expected_bytes": 2099,
+            "downloaded_bytes": 2099,
+            "expected_sha256": "f1c0ace70084590c46ff1cf2f1e71b69b460fcd64cf614548168453422f05a9a",
+            "local_sha256": "f1c0ace70084590c46ff1cf2f1e71b69b460fcd64cf614548168453422f05a9a"
+          }
+        ],
+        "revision": "fbe7b7b11c29b13547980c344602db3c70b26e91",
         "expected_rows": 4,
         "downloaded_rows": 4,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__train.jsonl",
         "complete": true
       }
     ]
   },
   {
     "dataset_id": "Egertekin/marvel-domain-dataset",
+    "contributor": "Ege Ertekin",
+    "contributor_source": "submission spreadsheet",
     "sha": "dec7714fc555776984d3afef5def7efc591d9671",
     "created_at": "2026-07-18T17:36:38.000Z",
     "last_modified": "2026-07-19T16:47:59.000Z",
-    "downloads": 0,
+    "downloads": 9,
     "likes": 1,
     "used_storage": 116319,
     "license": null,
@@ -69,23 +111,43 @@
       "README.md",
       "data/train-00000-of-00001.parquet"
     ],
+    "downloaded_repository_files": [
+      "README.md"
+    ],
     "viewer_receipts": [
       {
         "dataset": "Egertekin/marvel-domain-dataset",
         "config": "default",
         "split": "train",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "data/train-00000-of-00001.parquet",
+            "rows": 177,
+            "layout": "parquet",
+            "expected_bytes": 58262,
+            "downloaded_bytes": 58262,
+            "expected_sha256": "9a77c47025e6447319256fc1bd25adc3989a53ddbe0c063418f196869a61afc4",
+            "local_sha256": "9a77c47025e6447319256fc1bd25adc3989a53ddbe0c063418f196869a61afc4"
+          }
+        ],
+        "revision": "dec7714fc555776984d3afef5def7efc591d9671",
         "expected_rows": 177,
         "downloaded_rows": 177,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__train.jsonl",
         "complete": true
       }
     ]
   },
   {
     "dataset_id": "gururaser/ithaki-bilimkurgu-klasikleri",
+    "contributor": "Gurur Aşer",
+    "contributor_source": "submission spreadsheet",
     "sha": "dfb01dc91a0578cc5b7f978dd844917338c54e2b",
     "created_at": "2026-07-19T18:32:28.000Z",
     "last_modified": "2026-07-19T18:35:08.000Z",
-    "downloads": 0,
+    "downloads": 10,
     "likes": 0,
     "used_storage": 33039,
     "license": "cc-by-nc-4.0",
@@ -96,6 +158,9 @@
       "README.md",
       "ithaki_bilimkurgu_klasikleri_ozetli.csv"
     ],
+    "downloaded_repository_files": [
+      "README.md"
+    ],
     "viewer_receipts": [
       {
         "dataset": "gururaser/ithaki-bilimkurgu-klasikleri",
@@ -103,16 +168,20 @@
         "split": "train",
         "expected_rows": 103,
         "downloaded_rows": 103,
-        "complete": true
+        "complete": true,
+        "source": "dataset_viewer",
+        "row_file": "viewer_rows/default__train.jsonl"
       }
     ]
   },
   {
     "dataset_id": "nyzmemre/biyoloji-terimleri-turkce-sa",
+    "contributor": "Mehmet Emre Öz",
+    "contributor_source": "submission spreadsheet",
     "sha": "6776f984be226b7c5055659b8f3fc63cb6de8fa5",
     "created_at": "2026-07-20T04:05:52.000Z",
     "last_modified": "2026-07-20T04:05:56.000Z",
-    "downloads": 0,
+    "downloads": 11,
     "likes": 0,
     "used_storage": 118405,
     "license": null,
@@ -123,23 +192,43 @@
       "README.md",
       "data/train-00000-of-00001.parquet"
     ],
+    "downloaded_repository_files": [
+      "README.md"
+    ],
     "viewer_receipts": [
       {
         "dataset": "nyzmemre/biyoloji-terimleri-turkce-sa",
         "config": "default",
         "split": "train",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "data/train-00000-of-00001.parquet",
+            "rows": 1093,
+            "layout": "parquet",
+            "expected_bytes": 118405,
+            "downloaded_bytes": 118405,
+            "expected_sha256": "9f91ad9c1e47d94726b7fb23aefbdc5d16941de6b1627bb58ae1c9769bae3434",
+            "local_sha256": "9f91ad9c1e47d94726b7fb23aefbdc5d16941de6b1627bb58ae1c9769bae3434"
+          }
+        ],
+        "revision": "6776f984be226b7c5055659b8f3fc63cb6de8fa5",
         "expected_rows": 1093,
         "downloaded_rows": 1093,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__train.jsonl",
         "complete": true
       }
     ]
   },
   {
     "dataset_id": "Mer1Alii/TR-ECommerce-CustomerSupport-Instructions",
+    "contributor": "Mert Ali Alkan",
+    "contributor_source": "submission spreadsheet",
     "sha": "be9708ce17a7624abb62cc55e60db7afd101d96e",
     "created_at": "2026-07-18T11:34:45.000Z",
     "last_modified": "2026-07-18T11:35:43.000Z",
-    "downloads": 10,
+    "downloads": 18,
     "likes": 0,
     "used_storage": 220259,
     "license": "apache-2.0",
@@ -150,23 +239,43 @@
       "README.md",
       "data/train-00000-of-00001.parquet"
     ],
+    "downloaded_repository_files": [
+      "README.md"
+    ],
     "viewer_receipts": [
       {
         "dataset": "Mer1Alii/TR-ECommerce-CustomerSupport-Instructions",
         "config": "default",
         "split": "train",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "data/train-00000-of-00001.parquet",
+            "rows": 186,
+            "layout": "parquet",
+            "expected_bytes": 220259,
+            "downloaded_bytes": 220259,
+            "expected_sha256": "1a888449b9ed4de4a8680cd1cfa0d264331c5601c7653afa793058e6dc6807ba",
+            "local_sha256": "1a888449b9ed4de4a8680cd1cfa0d264331c5601c7653afa793058e6dc6807ba"
+          }
+        ],
+        "revision": "be9708ce17a7624abb62cc55e60db7afd101d96e",
         "expected_rows": 186,
         "downloaded_rows": 186,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__train.jsonl",
         "complete": true
       }
     ]
   },
   {
     "dataset_id": "yoitsmeyusuf/felsefe_finetune",
+    "contributor": "Muhammet Yusuf Kaydın",
+    "contributor_source": "submission spreadsheet",
     "sha": "bf16d683e2f5dc38d747050fe8244eabd68c65be",
     "created_at": "2026-07-19T16:07:48.000Z",
     "last_modified": "2026-07-19T17:03:28.000Z",
-    "downloads": 0,
+    "downloads": 10,
     "likes": 0,
     "used_storage": 242195,
     "license": null,
@@ -177,23 +286,43 @@
       "README.md",
       "data/turkish-00000-of-00001.parquet"
     ],
+    "downloaded_repository_files": [
+      "README.md"
+    ],
     "viewer_receipts": [
       {
         "dataset": "yoitsmeyusuf/felsefe_finetune",
         "config": "default",
         "split": "turkish",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "data/turkish-00000-of-00001.parquet",
+            "rows": 529,
+            "layout": "parquet",
+            "expected_bytes": 242195,
+            "downloaded_bytes": 242195,
+            "expected_sha256": "33f1fcea861957089b7d3ac7d9c049ccdbbdb5f64dd6a79b49653a751ae66500",
+            "local_sha256": "33f1fcea861957089b7d3ac7d9c049ccdbbdb5f64dd6a79b49653a751ae66500"
+          }
+        ],
+        "revision": "bf16d683e2f5dc38d747050fe8244eabd68c65be",
         "expected_rows": 529,
         "downloaded_rows": 529,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__turkish.jsonl",
         "complete": true
       }
     ]
   },
   {
     "dataset_id": "namruni/meb-ogretmen-soru-cevap",
+    "contributor": "Mustafa Özdemir",
+    "contributor_source": "submission spreadsheet",
     "sha": "e6cd37d4846237723c84f6f33b78b3a701697bd4",
     "created_at": "2026-07-19T13:27:14.000Z",
     "last_modified": "2026-07-19T13:57:16.000Z",
-    "downloads": 0,
+    "downloads": 9,
     "likes": 0,
     "used_storage": 673605,
     "license": null,
@@ -204,23 +333,43 @@
       "README.md",
       "data/train-00000-of-00001.parquet"
     ],
+    "downloaded_repository_files": [
+      "README.md"
+    ],
     "viewer_receipts": [
       {
         "dataset": "namruni/meb-ogretmen-soru-cevap",
         "config": "default",
         "split": "train",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "data/train-00000-of-00001.parquet",
+            "rows": 450,
+            "layout": "parquet",
+            "expected_bytes": 673605,
+            "downloaded_bytes": 673605,
+            "expected_sha256": "a8436cce0a3ab89f19ba715a2b113d416f5fefed86d382d3e9230f0b241761f6",
+            "local_sha256": "a8436cce0a3ab89f19ba715a2b113d416f5fefed86d382d3e9230f0b241761f6"
+          }
+        ],
+        "revision": "e6cd37d4846237723c84f6f33b78b3a701697bd4",
         "expected_rows": 450,
         "downloaded_rows": 450,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__train.jsonl",
         "complete": true
       }
     ]
   },
   {
     "dataset_id": "sk75/sahin_identity",
+    "contributor": "Serhat Kılıç",
+    "contributor_source": "submission spreadsheet",
     "sha": "66a3f8d1c170c12296c39fab3ba29f49123d9080",
     "created_at": "2026-07-18T08:18:44.000Z",
     "last_modified": "2026-07-18T08:21:12.000Z",
-    "downloads": 5,
+    "downloads": 12,
     "likes": 0,
     "used_storage": 19419,
     "license": null,
@@ -231,13 +380,2049 @@
       "identity_dataset_en.json",
       "identity_dataset_tr.json"
     ],
+    "downloaded_repository_files": [],
     "viewer_receipts": [
       {
         "dataset": "sk75/sahin_identity",
         "config": "default",
         "split": "train",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "identity_dataset_en.json",
+            "rows": 32,
+            "layout": "line_delimited",
+            "expected_bytes": 10206,
+            "downloaded_bytes": 10206,
+            "expected_sha256": null,
+            "local_sha256": "60446562faa603c1446e2d10fa67d705165cb3d1875ce2fbad4134470b2618d4"
+          },
+          {
+            "path": "identity_dataset_tr.json",
+            "rows": 45,
+            "layout": "line_delimited",
+            "expected_bytes": 15094,
+            "downloaded_bytes": 15094,
+            "expected_sha256": null,
+            "local_sha256": "24eb76c206328ab96be8a9ded0664bff30684158920d35e7a66420fdb5cbf140"
+          }
+        ],
+        "revision": "66a3f8d1c170c12296c39fab3ba29f49123d9080",
         "expected_rows": 77,
         "downloaded_rows": 77,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__train.jsonl",
+        "complete": true
+      }
+    ]
+  },
+  {
+    "dataset_id": "aliFurkan123/identity",
+    "contributor": "Ali Furkan Ak",
+    "contributor_source": "submission spreadsheet",
+    "sha": "415f882d1df04eb0a69615e9c2ba0bba0dd8c0e7",
+    "created_at": "2026-07-18T12:08:03.000Z",
+    "last_modified": "2026-07-18T12:12:22.000Z",
+    "downloads": 15,
+    "likes": 0,
+    "used_storage": 11603,
+    "license": null,
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "identity.json"
+    ],
+    "downloaded_repository_files": [
+      "README.md"
+    ],
+    "viewer_receipts": [
+      {
+        "dataset": "aliFurkan123/identity",
+        "config": "default",
+        "split": "train",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "identity.json",
+            "rows": 30,
+            "layout": "json_array",
+            "expected_bytes": 18123,
+            "downloaded_bytes": 18123,
+            "expected_sha256": null,
+            "local_sha256": "36676980469b7daf815f974cd917f4ff3856ffc9f1b375ab459ae4c823e3d4c6"
+          }
+        ],
+        "revision": "415f882d1df04eb0a69615e9c2ba0bba0dd8c0e7",
+        "expected_rows": 30,
+        "downloaded_rows": 30,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__train.jsonl",
+        "complete": true
+      }
+    ]
+  },
+  {
+    "dataset_id": "Aysenur44/namaz-vakti-dua-asistan-tr",
+    "contributor": "Ayşe Nur Yeşilova",
+    "contributor_source": "submission spreadsheet",
+    "sha": "756dc1357ffb37a28f8b71e6fb91eceb03bf2ff2",
+    "created_at": "2026-07-20T11:50:39.000Z",
+    "last_modified": "2026-07-20T12:31:20.000Z",
+    "downloads": 14,
+    "likes": 0,
+    "used_storage": 8861,
+    "license": null,
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "data/train-00000-of-00001.parquet"
+    ],
+    "downloaded_repository_files": [
+      "README.md"
+    ],
+    "viewer_receipts": [
+      {
+        "dataset": "Aysenur44/namaz-vakti-dua-asistan-tr",
+        "config": "default",
+        "split": "train",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "data/train-00000-of-00001.parquet",
+            "rows": 60,
+            "layout": "parquet",
+            "expected_bytes": 4883,
+            "downloaded_bytes": 4883,
+            "expected_sha256": "0d1320f8ec00f6c1c2ec59b8cdd55ed3e8d2c46d844e9a1695931abc4250558c",
+            "local_sha256": "0d1320f8ec00f6c1c2ec59b8cdd55ed3e8d2c46d844e9a1695931abc4250558c"
+          }
+        ],
+        "revision": "756dc1357ffb37a28f8b71e6fb91eceb03bf2ff2",
+        "expected_rows": 60,
+        "downloaded_rows": 60,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__train.jsonl",
+        "complete": true
+      }
+    ]
+  },
+  {
+    "dataset_id": "berkbirkan/turkish-x-engagement-quotes",
+    "contributor": "Berk Birkan",
+    "contributor_source": "submission spreadsheet",
+    "sha": "1bc2dddd89b9723f954a48119266723b9290a004",
+    "created_at": "2026-07-20T22:41:13.000Z",
+    "last_modified": "2026-07-20T22:41:25.000Z",
+    "downloads": 8,
+    "likes": 0,
+    "used_storage": 572823,
+    "license": "other",
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "data/test-00000-of-00001.parquet",
+      "data/train-00000-of-00001.parquet",
+      "data/validation-00000-of-00001.parquet"
+    ],
+    "downloaded_repository_files": [
+      "README.md"
+    ],
+    "viewer_receipts": [
+      {
+        "dataset": "berkbirkan/turkish-x-engagement-quotes",
+        "config": "default",
+        "split": "train",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "data/train-00000-of-00001.parquet",
+            "rows": 854,
+            "layout": "parquet",
+            "expected_bytes": 475834,
+            "downloaded_bytes": 475834,
+            "expected_sha256": "3e8facebf4c5a100af89b6756c1053c20ca21a5263c370dc9c84298d57a00908",
+            "local_sha256": "3e8facebf4c5a100af89b6756c1053c20ca21a5263c370dc9c84298d57a00908"
+          }
+        ],
+        "revision": "1bc2dddd89b9723f954a48119266723b9290a004",
+        "expected_rows": 854,
+        "downloaded_rows": 854,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__train.jsonl",
+        "complete": true
+      },
+      {
+        "dataset": "berkbirkan/turkish-x-engagement-quotes",
+        "config": "default",
+        "split": "validation",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "data/validation-00000-of-00001.parquet",
+            "rows": 105,
+            "layout": "parquet",
+            "expected_bytes": 67349,
+            "downloaded_bytes": 67349,
+            "expected_sha256": "2c1c98dc84601e5d5c67e8022649dc63894e1727b3964d8645472ecdba4ae568",
+            "local_sha256": "2c1c98dc84601e5d5c67e8022649dc63894e1727b3964d8645472ecdba4ae568"
+          }
+        ],
+        "revision": "1bc2dddd89b9723f954a48119266723b9290a004",
+        "expected_rows": 105,
+        "downloaded_rows": 105,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__validation.jsonl",
+        "complete": true
+      },
+      {
+        "dataset": "berkbirkan/turkish-x-engagement-quotes",
+        "config": "default",
+        "split": "test",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "data/test-00000-of-00001.parquet",
+            "rows": 41,
+            "layout": "parquet",
+            "expected_bytes": 29640,
+            "downloaded_bytes": 29640,
+            "expected_sha256": "1fc259ae791caa3f251a6b49944bb253c740411e33f113ad73ae78fc5fdf94d7",
+            "local_sha256": "1fc259ae791caa3f251a6b49944bb253c740411e33f113ad73ae78fc5fdf94d7"
+          }
+        ],
+        "revision": "1bc2dddd89b9723f954a48119266723b9290a004",
+        "expected_rows": 41,
+        "downloaded_rows": 41,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__test.jsonl",
+        "complete": true
+      }
+    ]
+  },
+  {
+    "dataset_id": "berkbirkan/turkish-x-engagement-replies",
+    "contributor": "Berk Birkan",
+    "contributor_source": "submission spreadsheet",
+    "sha": "6a1469a3d5fe49879cc982a44dbedfe296d9d89d",
+    "created_at": "2026-07-20T22:41:02.000Z",
+    "last_modified": "2026-07-20T22:41:24.000Z",
+    "downloads": 9,
+    "likes": 0,
+    "used_storage": 545617,
+    "license": "other",
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "data/test-00000-of-00001.parquet",
+      "data/train-00000-of-00001.parquet",
+      "data/validation-00000-of-00001.parquet"
+    ],
+    "downloaded_repository_files": [
+      "README.md"
+    ],
+    "viewer_receipts": [
+      {
+        "dataset": "berkbirkan/turkish-x-engagement-replies",
+        "config": "default",
+        "split": "train",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "data/train-00000-of-00001.parquet",
+            "rows": 823,
+            "layout": "parquet",
+            "expected_bytes": 438858,
+            "downloaded_bytes": 438858,
+            "expected_sha256": "fabf1e8160e252de76cbdd4a6833e4bc3febdc70ca35673e70545a4b7f03cade",
+            "local_sha256": "fabf1e8160e252de76cbdd4a6833e4bc3febdc70ca35673e70545a4b7f03cade"
+          }
+        ],
+        "revision": "6a1469a3d5fe49879cc982a44dbedfe296d9d89d",
+        "expected_rows": 823,
+        "downloaded_rows": 823,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__train.jsonl",
+        "complete": true
+      },
+      {
+        "dataset": "berkbirkan/turkish-x-engagement-replies",
+        "config": "default",
+        "split": "validation",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "data/validation-00000-of-00001.parquet",
+            "rows": 126,
+            "layout": "parquet",
+            "expected_bytes": 74932,
+            "downloaded_bytes": 74932,
+            "expected_sha256": "8da66e3cb2dfbf8aee4f0b446af9c0eb3c8b7b8690d58eef040880e2a30efbf7",
+            "local_sha256": "8da66e3cb2dfbf8aee4f0b446af9c0eb3c8b7b8690d58eef040880e2a30efbf7"
+          }
+        ],
+        "revision": "6a1469a3d5fe49879cc982a44dbedfe296d9d89d",
+        "expected_rows": 126,
+        "downloaded_rows": 126,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__validation.jsonl",
+        "complete": true
+      },
+      {
+        "dataset": "berkbirkan/turkish-x-engagement-replies",
+        "config": "default",
+        "split": "test",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "data/test-00000-of-00001.parquet",
+            "rows": 51,
+            "layout": "parquet",
+            "expected_bytes": 31827,
+            "downloaded_bytes": 31827,
+            "expected_sha256": "2743e3afd230e028534f674a8386159e2652944ab62067a7e7961d2e99d57a9c",
+            "local_sha256": "2743e3afd230e028534f674a8386159e2652944ab62067a7e7961d2e99d57a9c"
+          }
+        ],
+        "revision": "6a1469a3d5fe49879cc982a44dbedfe296d9d89d",
+        "expected_rows": 51,
+        "downloaded_rows": 51,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__test.jsonl",
+        "complete": true
+      }
+    ]
+  },
+  {
+    "dataset_id": "berkcangumusisik/voleykoc-antrenorluk-tr",
+    "contributor": "Berkcan Gümüşışık",
+    "contributor_source": "submission spreadsheet",
+    "sha": "f8f5f5cbf60fd14adcd0f32648ead4e4a96fe9d1",
+    "created_at": "2026-07-20T21:20:10.000Z",
+    "last_modified": "2026-07-20T21:20:17.000Z",
+    "downloads": 11,
+    "likes": 0,
+    "used_storage": 141522,
+    "license": "mit",
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "train.jsonl"
+    ],
+    "downloaded_repository_files": [
+      "README.md"
+    ],
+    "viewer_receipts": [
+      {
+        "dataset": "berkcangumusisik/voleykoc-antrenorluk-tr",
+        "config": "default",
+        "split": "train",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "train.jsonl",
+            "rows": 166,
+            "layout": "line_delimited",
+            "expected_bytes": 189878,
+            "downloaded_bytes": 189878,
+            "expected_sha256": null,
+            "local_sha256": "0d4e517626e3fd4ed02cac8c75edaf28c9457827711019a017253a8c466c28a5"
+          }
+        ],
+        "revision": "f8f5f5cbf60fd14adcd0f32648ead4e4a96fe9d1",
+        "expected_rows": 166,
+        "downloaded_rows": 166,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__train.jsonl",
+        "complete": true
+      }
+    ]
+  },
+  {
+    "dataset_id": "berkcangumusisik/voleykoc-identity-tr",
+    "contributor": "Berkcan Gümüşışık",
+    "contributor_source": "submission spreadsheet",
+    "sha": "95916bbc6b5f76563463d0b9108fba6224ec75f5",
+    "created_at": "2026-07-20T21:20:33.000Z",
+    "last_modified": "2026-07-20T21:20:38.000Z",
+    "downloads": 10,
+    "likes": 0,
+    "used_storage": 56138,
+    "license": "mit",
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "english.jsonl",
+      "turkish.jsonl"
+    ],
+    "downloaded_repository_files": [
+      "README.md"
+    ],
+    "viewer_receipts": [
+      {
+        "dataset": "berkcangumusisik/voleykoc-identity-tr",
+        "config": "default",
+        "split": "turkish",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "turkish.jsonl",
+            "rows": 105,
+            "layout": "line_delimited",
+            "expected_bytes": 55392,
+            "downloaded_bytes": 55392,
+            "expected_sha256": null,
+            "local_sha256": "ce8f0d89cbaeb3eb3fca8c3cdcdcebf9eb2ab6380e9c3784f606f24cb0e08a81"
+          }
+        ],
+        "revision": "95916bbc6b5f76563463d0b9108fba6224ec75f5",
+        "expected_rows": 105,
+        "downloaded_rows": 105,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__turkish.jsonl",
+        "complete": true
+      },
+      {
+        "dataset": "berkcangumusisik/voleykoc-identity-tr",
+        "config": "default",
+        "split": "english",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "english.jsonl",
+            "rows": 77,
+            "layout": "line_delimited",
+            "expected_bytes": 36857,
+            "downloaded_bytes": 36857,
+            "expected_sha256": null,
+            "local_sha256": "58562d10238e8f2b5f7f9772d852846e779fb288419a47f2f98ac0bdb2924d93"
+          }
+        ],
+        "revision": "95916bbc6b5f76563463d0b9108fba6224ec75f5",
+        "expected_rows": 77,
+        "downloaded_rows": 77,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__english.jsonl",
+        "complete": true
+      }
+    ]
+  },
+  {
+    "dataset_id": "cihatyldz/lojistik-soru-cevap",
+    "contributor": "Cihat Yıldız",
+    "contributor_source": "submission spreadsheet",
+    "sha": "f0abbb9eb89ab400e14bd3b7ad76d2af6d53fed6",
+    "created_at": "2026-07-21T14:05:00.000Z",
+    "last_modified": "2026-07-22T07:36:13.000Z",
+    "downloads": 0,
+    "likes": 0,
+    "used_storage": 36016,
+    "license": "mit",
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "data/train-00000-of-00001.parquet"
+    ],
+    "downloaded_repository_files": [
+      "README.md"
+    ],
+    "viewer_receipts": [
+      {
+        "dataset": "cihatyldz/lojistik-soru-cevap",
+        "config": "raw_files",
+        "split": "data/train-00000-of-00001.parquet",
+        "source": "raw_files",
+        "revision": "f0abbb9eb89ab400e14bd3b7ad76d2af6d53fed6",
+        "expected_bytes": 36016,
+        "expected_sha256": "953899dacd613a88a801d1c85bd11385871113207fce6f520fe46946eb04d447",
+        "complete": true,
+        "downloaded_bytes": 36016,
+        "local_sha256": "953899dacd613a88a801d1c85bd11385871113207fce6f520fe46946eb04d447",
+        "layout": "parquet",
+        "expected_rows": 139,
+        "downloaded_rows": 139,
+        "row_count_authority": "parsed from the byte- and checksum-verified raw file; the Dataset Viewer publishes no independent row count for this repository",
+        "row_file": "raw_rows/data__train-00000-of-00001.parquet.jsonl"
+      }
+    ]
+  },
+  {
+    "dataset_id": "Endezyar/siyer_datasets",
+    "contributor": "Muhammed Bakır Kurt",
+    "contributor_source": "submission spreadsheet",
+    "sha": "29e3e14b3d0c58ca2cbc365ec34edc461da70756",
+    "created_at": "2026-07-20T21:51:08.000Z",
+    "last_modified": "2026-07-21T12:13:30.000Z",
+    "downloads": 8,
+    "likes": 0,
+    "used_storage": 78102,
+    "license": null,
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "data/train-00000-of-00001.parquet"
+    ],
+    "downloaded_repository_files": [
+      "README.md"
+    ],
+    "viewer_receipts": [
+      {
+        "dataset": "Endezyar/siyer_datasets",
+        "config": "default",
+        "split": "train",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "data/train-00000-of-00001.parquet",
+            "rows": 509,
+            "layout": "parquet",
+            "expected_bytes": 78102,
+            "downloaded_bytes": 78102,
+            "expected_sha256": "7e1dc890f308f9abe58b8ccc558f4353d44d89084118cfb64467514fc37c335f",
+            "local_sha256": "7e1dc890f308f9abe58b8ccc558f4353d44d89084118cfb64467514fc37c335f"
+          }
+        ],
+        "revision": "29e3e14b3d0c58ca2cbc365ec34edc461da70756",
+        "expected_rows": 509,
+        "downloaded_rows": 509,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__train.jsonl",
+        "complete": true
+      }
+    ]
+  },
+  {
+    "dataset_id": "enes1863/bilisim-hukuku-domain-dataset",
+    "contributor": "Enes Hakan",
+    "contributor_source": "submission spreadsheet",
+    "sha": "c8f1be944f8e89deed5446510dfbc305dd69bd88",
+    "created_at": "2026-07-21T12:43:43.000Z",
+    "last_modified": "2026-07-21T12:43:50.000Z",
+    "downloads": 0,
+    "likes": 0,
+    "used_storage": 483183,
+    "license": "other",
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "data/train.jsonl",
+      "sources.json"
+    ],
+    "downloaded_repository_files": [
+      "README.md"
+    ],
+    "viewer_receipts": [
+      {
+        "dataset": "enes1863/bilisim-hukuku-domain-dataset",
+        "config": "default",
+        "split": "train",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "data/train.jsonl",
+            "rows": 1000,
+            "layout": "line_delimited",
+            "expected_bytes": 636580,
+            "downloaded_bytes": 636580,
+            "expected_sha256": null,
+            "local_sha256": "098a9655cdba582b14f01b4a216422cce699830e5c3db7249fd1ac795de0cfe4"
+          }
+        ],
+        "revision": "c8f1be944f8e89deed5446510dfbc305dd69bd88",
+        "expected_rows": 1000,
+        "downloaded_rows": 1000,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__train.jsonl",
+        "complete": true
+      }
+    ]
+  },
+  {
+    "dataset_id": "enesozdemr/benim_ilk_datasetim",
+    "contributor": "enesozdemr",
+    "contributor_source": "hugging face account handle",
+    "sha": "44ed4944fcfa50e672f37320a13b709f96f1eff9",
+    "created_at": "2026-07-20T18:09:28.000Z",
+    "last_modified": "2026-07-20T18:09:36.000Z",
+    "downloads": 12,
+    "likes": 0,
+    "used_storage": 39187,
+    "license": null,
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "data/english-00000-of-00001.parquet",
+      "data/turkish-00000-of-00001.parquet"
+    ],
+    "downloaded_repository_files": [
+      "README.md"
+    ],
+    "viewer_receipts": [
+      {
+        "dataset": "enesozdemr/benim_ilk_datasetim",
+        "config": "default",
+        "split": "english",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "data/english-00000-of-00001.parquet",
+            "rows": 10,
+            "layout": "parquet",
+            "expected_bytes": 6925,
+            "downloaded_bytes": 6925,
+            "expected_sha256": "b2e4990a35ac8873b89a0ed82d2d5cc3a1f2249f07ca50544e6e410c3d704c9f",
+            "local_sha256": "b2e4990a35ac8873b89a0ed82d2d5cc3a1f2249f07ca50544e6e410c3d704c9f"
+          }
+        ],
+        "revision": "44ed4944fcfa50e672f37320a13b709f96f1eff9",
+        "expected_rows": 10,
+        "downloaded_rows": 10,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__english.jsonl",
+        "complete": true
+      },
+      {
+        "dataset": "enesozdemr/benim_ilk_datasetim",
+        "config": "default",
+        "split": "turkish",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "data/turkish-00000-of-00001.parquet",
+            "rows": 103,
+            "layout": "parquet",
+            "expected_bytes": 32262,
+            "downloaded_bytes": 32262,
+            "expected_sha256": "9b7125b1e3bb97587a4b5d39e3c049e3b1a721da70d7d79c7c96879df5226574",
+            "local_sha256": "9b7125b1e3bb97587a4b5d39e3c049e3b1a721da70d7d79c7c96879df5226574"
+          }
+        ],
+        "revision": "44ed4944fcfa50e672f37320a13b709f96f1eff9",
+        "expected_rows": 103,
+        "downloaded_rows": 103,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__turkish.jsonl",
+        "complete": true
+      }
+    ]
+  },
+  {
+    "dataset_id": "Erenyanic/seasoned-advice-dataset",
+    "contributor": "Eren Yanic",
+    "contributor_source": "submission spreadsheet",
+    "sha": "683f9cb2684d279d4c4c8caf2cc48a6890a85574",
+    "created_at": "2026-07-20T09:18:05.000Z",
+    "last_modified": "2026-07-20T10:04:55.000Z",
+    "downloads": 21,
+    "likes": 0,
+    "used_storage": 4114506,
+    "license": "cc-by-sa-4.0",
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "data/english-00000-of-00001.parquet",
+      "data/sources.jsonl",
+      "data/turkish-00000-of-00001.parquet",
+      "prompts/glossary.md",
+      "prompts/thinking_en.md",
+      "prompts/translate_tr.md",
+      "scripts/_deepseek.py",
+      "scripts/build_conversations.py",
+      "scripts/fetch_stackexchange.py",
+      "scripts/generate_thinking.py",
+      "scripts/package_dataset.py",
+      "scripts/repair_long_traces.py",
+      "scripts/translate.py"
+    ],
+    "downloaded_repository_files": [
+      "README.md"
+    ],
+    "viewer_receipts": [
+      {
+        "dataset": "Erenyanic/seasoned-advice-dataset",
+        "config": "default",
+        "split": "english",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "data/english-00000-of-00001.parquet",
+            "rows": 500,
+            "layout": "parquet",
+            "expected_bytes": 1954309,
+            "downloaded_bytes": 1954309,
+            "expected_sha256": "ca3cab82024c8037ed5fc19ca69126d78b02946fe3f1738ffd2da67b7271a079",
+            "local_sha256": "ca3cab82024c8037ed5fc19ca69126d78b02946fe3f1738ffd2da67b7271a079"
+          }
+        ],
+        "revision": "683f9cb2684d279d4c4c8caf2cc48a6890a85574",
+        "expected_rows": 500,
+        "downloaded_rows": 500,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__english.jsonl",
+        "complete": true
+      },
+      {
+        "dataset": "Erenyanic/seasoned-advice-dataset",
+        "config": "default",
+        "split": "turkish",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "data/turkish-00000-of-00001.parquet",
+            "rows": 500,
+            "layout": "parquet",
+            "expected_bytes": 2160197,
+            "downloaded_bytes": 2160197,
+            "expected_sha256": "5627c13fcc56566692c5eeaea081046c469f0af04c9758b830aca31e103502b9",
+            "local_sha256": "5627c13fcc56566692c5eeaea081046c469f0af04c9758b830aca31e103502b9"
+          }
+        ],
+        "revision": "683f9cb2684d279d4c4c8caf2cc48a6890a85574",
+        "expected_rows": 500,
+        "downloaded_rows": 500,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__turkish.jsonl",
+        "complete": true
+      }
+    ]
+  },
+  {
+    "dataset_id": "erhanalsr/langusta-identity",
+    "contributor": "Erhan Alasar",
+    "contributor_source": "submission spreadsheet",
+    "sha": "8b409dba564f667ff03b399b3c182b080e46323a",
+    "created_at": "2026-07-21T12:02:26.000Z",
+    "last_modified": "2026-07-21T12:03:03.000Z",
+    "downloads": 0,
+    "likes": 0,
+    "used_storage": 8918,
+    "license": "mit",
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "data/test-00000-of-00001.parquet",
+      "data/train-00000-of-00001.parquet"
+    ],
+    "downloaded_repository_files": [
+      "README.md"
+    ],
+    "viewer_receipts": [
+      {
+        "dataset": "erhanalsr/langusta-identity",
+        "config": "default",
+        "split": "train",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "data/train-00000-of-00001.parquet",
+            "rows": 90,
+            "layout": "parquet",
+            "expected_bytes": 5281,
+            "downloaded_bytes": 5281,
+            "expected_sha256": "a566566d90aa91058c56a6fbca77b21bf43f07e79b0098158c7eb16362478689",
+            "local_sha256": "a566566d90aa91058c56a6fbca77b21bf43f07e79b0098158c7eb16362478689"
+          }
+        ],
+        "revision": "8b409dba564f667ff03b399b3c182b080e46323a",
+        "expected_rows": 90,
+        "downloaded_rows": 90,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__train.jsonl",
+        "complete": true
+      },
+      {
+        "dataset": "erhanalsr/langusta-identity",
+        "config": "default",
+        "split": "test",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "data/test-00000-of-00001.parquet",
+            "rows": 10,
+            "layout": "parquet",
+            "expected_bytes": 3637,
+            "downloaded_bytes": 3637,
+            "expected_sha256": "9eb67d7a8fe754706edabc747e12b53dc01133413ba0c939c112f6c2642814d4",
+            "local_sha256": "9eb67d7a8fe754706edabc747e12b53dc01133413ba0c939c112f6c2642814d4"
+          }
+        ],
+        "revision": "8b409dba564f667ff03b399b3c182b080e46323a",
+        "expected_rows": 10,
+        "downloaded_rows": 10,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__test.jsonl",
+        "complete": true
+      }
+    ]
+  },
+  {
+    "dataset_id": "erhanalsr/langusta-kpss-reasoning",
+    "contributor": "Erhan Alasar",
+    "contributor_source": "submission spreadsheet",
+    "sha": "a027f7f76c611008789efa6813eb6918b9c4806b",
+    "created_at": "2026-07-21T12:02:06.000Z",
+    "last_modified": "2026-07-21T12:02:48.000Z",
+    "downloads": 0,
+    "likes": 0,
+    "used_storage": 111197,
+    "license": "apache-2.0",
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "data/test-00000-of-00001.parquet",
+      "data/train-00000-of-00001.parquet",
+      "source/kpss_reasoning.jsonl"
+    ],
+    "downloaded_repository_files": [
+      "README.md"
+    ],
+    "viewer_receipts": [
+      {
+        "dataset": "erhanalsr/langusta-kpss-reasoning",
+        "config": "default",
+        "split": "train",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "data/train-00000-of-00001.parquet",
+            "rows": 19,
+            "layout": "parquet",
+            "expected_bytes": 87742,
+            "downloaded_bytes": 87742,
+            "expected_sha256": "6578f94016584df7a637e51fc8d994bdcb24ad50dbbbb06788d35d5e55b6297a",
+            "local_sha256": "6578f94016584df7a637e51fc8d994bdcb24ad50dbbbb06788d35d5e55b6297a"
+          }
+        ],
+        "revision": "a027f7f76c611008789efa6813eb6918b9c4806b",
+        "expected_rows": 19,
+        "downloaded_rows": 19,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__train.jsonl",
+        "complete": true
+      },
+      {
+        "dataset": "erhanalsr/langusta-kpss-reasoning",
+        "config": "default",
+        "split": "test",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "data/test-00000-of-00001.parquet",
+            "rows": 2,
+            "layout": "parquet",
+            "expected_bytes": 23455,
+            "downloaded_bytes": 23455,
+            "expected_sha256": "d2fd9eea12aa79aee6cf0d53c1e8681d152041cf02f91d68a261bb0e0cd6a397",
+            "local_sha256": "d2fd9eea12aa79aee6cf0d53c1e8681d152041cf02f91d68a261bb0e0cd6a397"
+          }
+        ],
+        "revision": "a027f7f76c611008789efa6813eb6918b9c4806b",
+        "expected_rows": 2,
+        "downloaded_rows": 2,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__test.jsonl",
+        "complete": true
+      }
+    ]
+  },
+  {
+    "dataset_id": "filiz-yalcin/identity-finetune",
+    "contributor": "Filiz Yalçin",
+    "contributor_source": "submission spreadsheet",
+    "sha": "77f87477c8600d93ba42b47251a046cf449bb8e9",
+    "created_at": "2026-07-21T13:22:19.000Z",
+    "last_modified": "2026-07-21T15:06:20.000Z",
+    "downloads": 0,
+    "likes": 0,
+    "used_storage": 3966750,
+    "license": "gpl-3.0",
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "data/english-00000-of-00001.parquet",
+      "data/turkish-00000-of-00001.parquet"
+    ],
+    "downloaded_repository_files": [
+      "README.md"
+    ],
+    "viewer_receipts": [
+      {
+        "dataset": "filiz-yalcin/identity-finetune",
+        "config": "default",
+        "split": "turkish",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "data/turkish-00000-of-00001.parquet",
+            "rows": 800,
+            "layout": "parquet",
+            "expected_bytes": 2141497,
+            "downloaded_bytes": 2141497,
+            "expected_sha256": "88a640626684d6bd52fb6d06830fe9ebfe34ad6a20725ae935e7e313ea281190",
+            "local_sha256": "88a640626684d6bd52fb6d06830fe9ebfe34ad6a20725ae935e7e313ea281190"
+          }
+        ],
+        "revision": "77f87477c8600d93ba42b47251a046cf449bb8e9",
+        "expected_rows": 800,
+        "downloaded_rows": 800,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__turkish.jsonl",
+        "complete": true
+      },
+      {
+        "dataset": "filiz-yalcin/identity-finetune",
+        "config": "default",
+        "split": "english",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "data/english-00000-of-00001.parquet",
+            "rows": 800,
+            "layout": "parquet",
+            "expected_bytes": 1825253,
+            "downloaded_bytes": 1825253,
+            "expected_sha256": "2aff7c2fe2e91ff4466f6137833b40163a6ee5c2f786a8cdebb96d78b5cb9d2f",
+            "local_sha256": "2aff7c2fe2e91ff4466f6137833b40163a6ee5c2f786a8cdebb96d78b5cb9d2f"
+          }
+        ],
+        "revision": "77f87477c8600d93ba42b47251a046cf449bb8e9",
+        "expected_rows": 800,
+        "downloaded_rows": 800,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__english.jsonl",
+        "complete": true
+      }
+    ]
+  },
+  {
+    "dataset_id": "filiz-yalcin/turkish-figure-skating-qa",
+    "contributor": "Filiz Yalçin",
+    "contributor_source": "submission spreadsheet",
+    "sha": "aed482d0d11c888186d1d04140f6b6f2b8a9c679",
+    "created_at": "2026-07-20T19:19:11.000Z",
+    "last_modified": "2026-07-20T20:11:20.000Z",
+    "downloads": 13,
+    "likes": 0,
+    "used_storage": 719561,
+    "license": "gpl-3.0",
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "data/train-00000-of-00001.parquet"
+    ],
+    "downloaded_repository_files": [
+      "README.md"
+    ],
+    "viewer_receipts": [
+      {
+        "dataset": "filiz-yalcin/turkish-figure-skating-qa",
+        "config": "default",
+        "split": "train",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "data/train-00000-of-00001.parquet",
+            "rows": 526,
+            "layout": "parquet",
+            "expected_bytes": 719561,
+            "downloaded_bytes": 719561,
+            "expected_sha256": "b48428615393cba95be2509bd410dffbc77e92ca281dfc0f62973e6643577bfc",
+            "local_sha256": "b48428615393cba95be2509bd410dffbc77e92ca281dfc0f62973e6643577bfc"
+          }
+        ],
+        "revision": "aed482d0d11c888186d1d04140f6b6f2b8a9c679",
+        "expected_rows": 526,
+        "downloaded_rows": 526,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__train.jsonl",
+        "complete": true
+      }
+    ]
+  },
+  {
+    "dataset_id": "gmz1234/stackoverflow_ai",
+    "contributor": "gmz1234",
+    "contributor_source": "hugging face account handle",
+    "sha": "35218cca5deddd89a4992d9e646f1a74f3e5f2c9",
+    "created_at": "2026-07-20T17:46:33.000Z",
+    "last_modified": "2026-07-20T19:17:17.000Z",
+    "downloads": 16,
+    "likes": 0,
+    "used_storage": 1530708,
+    "license": null,
+    "private": false,
+    "gated": false,
+    "files": [
+      ".DS_Store",
+      ".gitattributes",
+      "README.md",
+      "data/data.parquet"
+    ],
+    "downloaded_repository_files": [
+      "README.md"
+    ],
+    "viewer_receipts": [
+      {
+        "dataset": "gmz1234/stackoverflow_ai",
+        "config": "default",
+        "split": "train",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "data/data.parquet",
+            "rows": 1000,
+            "layout": "parquet",
+            "expected_bytes": 1530708,
+            "downloaded_bytes": 1530708,
+            "expected_sha256": "79d90447636597212ef3d9b26953bd247d5dbf86f7a47a2f5893f1dc84bf6bf3",
+            "local_sha256": "79d90447636597212ef3d9b26953bd247d5dbf86f7a47a2f5893f1dc84bf6bf3"
+          }
+        ],
+        "revision": "35218cca5deddd89a4992d9e646f1a74f3e5f2c9",
+        "expected_rows": 1000,
+        "downloaded_rows": 1000,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__train.jsonl",
+        "complete": true
+      }
+    ]
+  },
+  {
+    "dataset_id": "gorkemergune/ayarlicazhocam_finetune",
+    "contributor": "Görkem Ergüne",
+    "contributor_source": "submission spreadsheet",
+    "sha": "02433b4aca9bb54a04f29feb1f85faa33225acad",
+    "created_at": "2026-07-19T15:25:50.000Z",
+    "last_modified": "2026-07-21T13:28:59.000Z",
+    "downloads": 6,
+    "likes": 0,
+    "used_storage": 1167638,
+    "license": "mit",
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "data/english-00000-of-00001.parquet",
+      "data/train-00000-of-00001.parquet",
+      "data/turkish-00000-of-00001.parquet"
+    ],
+    "downloaded_repository_files": [
+      "README.md"
+    ],
+    "viewer_receipts": [
+      {
+        "dataset": "gorkemergune/ayarlicazhocam_finetune",
+        "config": "default",
+        "split": "train",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "data/train-00000-of-00001.parquet",
+            "rows": 429,
+            "layout": "parquet",
+            "expected_bytes": 388868,
+            "downloaded_bytes": 388868,
+            "expected_sha256": "5927d730b34fa4799a1a162d2571c133b4c516e28fcb954855a6d57e45832dbc",
+            "local_sha256": "5927d730b34fa4799a1a162d2571c133b4c516e28fcb954855a6d57e45832dbc"
+          }
+        ],
+        "revision": "02433b4aca9bb54a04f29feb1f85faa33225acad",
+        "expected_rows": 429,
+        "downloaded_rows": 429,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__train.jsonl",
+        "complete": true
+      }
+    ]
+  },
+  {
+    "dataset_id": "haticenurcakr/turkish-classic-books-qa",
+    "contributor": "Hatice Nur Çakır",
+    "contributor_source": "submission spreadsheet",
+    "sha": "ba3f86c7bcf21c5cebafb89b89c6122182ea5ebe",
+    "created_at": "2026-07-20T18:39:09.000Z",
+    "last_modified": "2026-07-20T18:40:43.000Z",
+    "downloads": 9,
+    "likes": 0,
+    "used_storage": 37795,
+    "license": null,
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "turk_klasik_kitaplari_dataset.jsonl"
+    ],
+    "downloaded_repository_files": [],
+    "viewer_receipts": [
+      {
+        "dataset": "haticenurcakr/turkish-classic-books-qa",
+        "config": "default",
+        "split": "train",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "turk_klasik_kitaplari_dataset.jsonl",
+            "rows": 220,
+            "layout": "line_delimited",
+            "expected_bytes": 47849,
+            "downloaded_bytes": 47849,
+            "expected_sha256": null,
+            "local_sha256": "5688fc90b37c7fde2d176e6e158abd564507aca9c78b744fc7f689a39489cb52"
+          }
+        ],
+        "revision": "ba3f86c7bcf21c5cebafb89b89c6122182ea5ebe",
+        "expected_rows": 220,
+        "downloaded_rows": 220,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__train.jsonl",
+        "complete": true
+      }
+    ]
+  },
+  {
+    "dataset_id": "meldakahramann/animasyon-domain-dataset",
+    "contributor": "Melda Kahraman",
+    "contributor_source": "submission spreadsheet",
+    "sha": "4bc941617c4739b88a6b580a190fa7d055e2a9c6",
+    "created_at": "2026-07-19T20:35:11.000Z",
+    "last_modified": "2026-07-20T06:41:30.000Z",
+    "downloads": 9,
+    "likes": 0,
+    "used_storage": 284036,
+    "license": null,
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "data/train-00000-of-00001.parquet"
+    ],
+    "downloaded_repository_files": [
+      "README.md"
+    ],
+    "viewer_receipts": [
+      {
+        "dataset": "meldakahramann/animasyon-domain-dataset",
+        "config": "default",
+        "split": "train",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "data/train-00000-of-00001.parquet",
+            "rows": 1020,
+            "layout": "parquet",
+            "expected_bytes": 144763,
+            "downloaded_bytes": 144763,
+            "expected_sha256": "a984ff40324fe585716fbc4c03104655fd3a757aca1ba3659183a284cba69b0d",
+            "local_sha256": "a984ff40324fe585716fbc4c03104655fd3a757aca1ba3659183a284cba69b0d"
+          }
+        ],
+        "revision": "4bc941617c4739b88a6b580a190fa7d055e2a9c6",
+        "expected_rows": 1020,
+        "downloaded_rows": 1020,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__train.jsonl",
+        "complete": true
+      }
+    ]
+  },
+  {
+    "dataset_id": "menesnas/Pharmacy_Identity_Synthetic_QA",
+    "contributor": "Muhammet Enes Nas",
+    "contributor_source": "submission spreadsheet",
+    "access_block": {
+      "status": "gated_manual",
+      "checked_on": "2026-07-22",
+      "evidence": "Repository metadata reports gated=\"manual\". Anonymous: GET https://datasets-server.huggingface.co/splits?dataset=menesnas/Pharmacy_Identity_Synthetic_QA -> HTTP 401. Authenticated as Hugging Face user \"bilalabic\": the same endpoint returns HTTP 404 \"not accessible with the current credentials\", and GET https://huggingface.co/datasets/menesnas/Pharmacy_Identity_Synthetic_QA/resolve/main/Pharmacy_Identity_Synthetic_QA.json returns HTTP 403 \"Access to dataset menesnas/Pharmacy_Identity_Synthetic_QA is restricted and you are not in the authorized list\". The repository exists and its data card is readable; only the data files are withheld.",
+      "unblock": "The dataset owner must approve an access request for the auditing account at https://huggingface.co/datasets/menesnas/Pharmacy_Identity_Synthetic_QA, after which the audit can re-run with HF_TOKEN set.",
+      "reverified_on": "2026-07-22",
+      "reverified_checks": [
+        {
+          "url": "https://huggingface.co/api/datasets/menesnas/Pharmacy_Identity_Synthetic_QA",
+          "status": 200
+        },
+        {
+          "url": "https://datasets-server.huggingface.co/splits?dataset=menesnas/Pharmacy_Identity_Synthetic_QA",
+          "status": 404,
+          "detail": "{\"error\":\"The dataset does not exist, or is not accessible with the current credentials (private or gated). Please check the spelling of the dataset name or retry with other authentication credentials.\"}"
+        }
+      ],
+      "still_blocked": true
+    }
+  },
+  {
+    "dataset_id": "nursimakgul/meb-soru-uretme",
+    "contributor": "Nur Sima Akgül",
+    "contributor_source": "submission spreadsheet",
+    "sha": "46cb894ec4d980ac3c3aae6ca3e29054f295cf29",
+    "created_at": "2026-07-21T14:29:10.000Z",
+    "last_modified": "2026-07-21T14:29:21.000Z",
+    "downloads": 0,
+    "likes": 0,
+    "used_storage": 27183851,
+    "license": "mit",
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "meb_identity_format_temiz.jsonl"
+    ],
+    "downloaded_repository_files": [
+      "README.md"
+    ],
+    "viewer_receipts": [
+      {
+        "dataset": "nursimakgul/meb-soru-uretme",
+        "config": "raw_files",
+        "split": "meb_identity_format_temiz.jsonl",
+        "source": "raw_files",
+        "revision": "46cb894ec4d980ac3c3aae6ca3e29054f295cf29",
+        "expected_bytes": 27183851,
+        "expected_sha256": "a66ddfabc55f4b51beb9a27063a5083dd745d085e6b7d626326dfa6e93e07f28",
+        "complete": true,
+        "downloaded_bytes": 27183851,
+        "local_sha256": "a66ddfabc55f4b51beb9a27063a5083dd745d085e6b7d626326dfa6e93e07f28",
+        "layout": "line_delimited",
+        "expected_rows": 20874,
+        "downloaded_rows": 20874,
+        "row_count_authority": "parsed from the byte- and checksum-verified raw file; the Dataset Viewer publishes no independent row count for this repository",
+        "row_file": "raw_rows/meb_identity_format_temiz.jsonl.jsonl"
+      }
+    ]
+  },
+  {
+    "dataset_id": "SalihHub/trendyol-marangoz-urun-asistan-qa",
+    "contributor": "Salih Dede",
+    "contributor_source": "submission spreadsheet",
+    "sha": "b89ea7bd33438df1803a630e075df2ec92211016",
+    "created_at": "2026-07-19T11:27:01.000Z",
+    "last_modified": "2026-07-19T11:28:13.000Z",
+    "downloads": 6,
+    "likes": 0,
+    "used_storage": 2961607,
+    "license": "other",
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "data/train.jsonl"
+    ],
+    "downloaded_repository_files": [
+      "README.md"
+    ],
+    "viewer_receipts": [
+      {
+        "dataset": "SalihHub/trendyol-marangoz-urun-asistan-qa",
+        "config": "default",
+        "split": "train",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "data/train.jsonl",
+            "rows": 1211,
+            "layout": "line_delimited",
+            "expected_bytes": 3167042,
+            "downloaded_bytes": 3167042,
+            "expected_sha256": null,
+            "local_sha256": "cea92a0889802cf7b3a861ce9e61bba30ec704b008a4e7c0b6e12f4701d8bc75"
+          }
+        ],
+        "revision": "b89ea7bd33438df1803a630e075df2ec92211016",
+        "expected_rows": 1211,
+        "downloaded_rows": 1211,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__train.jsonl",
+        "complete": true
+      }
+    ]
+  },
+  {
+    "dataset_id": "samliumay/turkish_cyber_security_controls_dataset",
+    "contributor": "Umay Şamlı",
+    "contributor_source": "submission spreadsheet",
+    "sha": "087117e970d836ef2c6495919d720cca0bf804ca",
+    "created_at": "2026-07-21T10:45:56.000Z",
+    "last_modified": "2026-07-21T13:23:05.000Z",
+    "downloads": 0,
+    "likes": 0,
+    "used_storage": 736152,
+    "license": "mit",
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "data/turkish-00000-of-00001.parquet"
+    ],
+    "downloaded_repository_files": [
+      "README.md"
+    ],
+    "viewer_receipts": [
+      {
+        "dataset": "samliumay/turkish_cyber_security_controls_dataset",
+        "config": "default",
+        "split": "turkish",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "data/turkish-00000-of-00001.parquet",
+            "rows": 800,
+            "layout": "parquet",
+            "expected_bytes": 618752,
+            "downloaded_bytes": 618752,
+            "expected_sha256": "4a5b7040a962f5f1a0470b8cec4b0b3a5d7b23326a98e727002bcb3226917a6f",
+            "local_sha256": "4a5b7040a962f5f1a0470b8cec4b0b3a5d7b23326a98e727002bcb3226917a6f"
+          }
+        ],
+        "revision": "087117e970d836ef2c6495919d720cca0bf804ca",
+        "expected_rows": 800,
+        "downloaded_rows": 800,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__turkish.jsonl",
+        "complete": true
+      }
+    ]
+  },
+  {
+    "dataset_id": "samliumay/umay_samli_identification_dataset",
+    "contributor": "Umay Şamlı",
+    "contributor_source": "submission spreadsheet",
+    "sha": "a28adf92737be159e90480d50c43c039f959aa48",
+    "created_at": "2026-07-21T14:21:16.000Z",
+    "last_modified": "2026-07-21T15:13:46.000Z",
+    "downloads": 0,
+    "likes": 0,
+    "used_storage": 57648,
+    "license": null,
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "data/turkish-00000-of-00001.parquet"
+    ],
+    "downloaded_repository_files": [
+      "README.md"
+    ],
+    "viewer_receipts": [
+      {
+        "dataset": "samliumay/umay_samli_identification_dataset",
+        "config": "default",
+        "split": "turkish",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "data/turkish-00000-of-00001.parquet",
+            "rows": 219,
+            "layout": "parquet",
+            "expected_bytes": 57648,
+            "downloaded_bytes": 57648,
+            "expected_sha256": "799631b38285156ff06f6afc858e6578822308ce8fd0900db871f56ec9ccdf64",
+            "local_sha256": "799631b38285156ff06f6afc858e6578822308ce8fd0900db871f56ec9ccdf64"
+          }
+        ],
+        "revision": "a28adf92737be159e90480d50c43c039f959aa48",
+        "expected_rows": 219,
+        "downloaded_rows": 219,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__turkish.jsonl",
+        "complete": true
+      }
+    ]
+  },
+  {
+    "dataset_id": "sadecebirisii/turkish-llm-authority-bypass-safety-sft",
+    "contributor": "Hilal Kavas",
+    "contributor_source": "submission spreadsheet",
+    "sha": "a44f6c827bde58db53030e7ec18f1fca314881e2",
+    "created_at": "2026-07-21T09:40:44.000Z",
+    "last_modified": "2026-07-21T10:03:22.000Z",
+    "downloads": 0,
+    "likes": 0,
+    "used_storage": 155371,
+    "license": "cc-by-nc-4.0",
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "turkish-llm-authority-bypass-safety-sft.json"
+    ],
+    "downloaded_repository_files": [
+      "README.md"
+    ],
+    "viewer_receipts": [
+      {
+        "dataset": "sadecebirisii/turkish-llm-authority-bypass-safety-sft",
+        "config": "default",
+        "split": "train",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "turkish-llm-authority-bypass-safety-sft.json",
+            "rows": 29,
+            "layout": "json_array",
+            "expected_bytes": 90758,
+            "downloaded_bytes": 90758,
+            "expected_sha256": null,
+            "local_sha256": "01c99c9da939fda04cc81e74c1a73f3d529c3155f3ce98460a6ce03dfedbb2a5"
+          }
+        ],
+        "revision": "a44f6c827bde58db53030e7ec18f1fca314881e2",
+        "expected_rows": 29,
+        "downloaded_rows": 29,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__train.jsonl",
+        "complete": true
+      }
+    ]
+  },
+  {
+    "dataset_id": "seali/turkce-saglik-qa",
+    "contributor": "Seyit Ali Yorğun",
+    "contributor_source": "submission spreadsheet",
+    "sha": "c51dd82f2df4e0d211b7a9e3667287df95b3cee0",
+    "created_at": "2026-07-18T16:34:15.000Z",
+    "last_modified": "2026-07-21T12:11:42.000Z",
+    "downloads": 10,
+    "likes": 0,
+    "used_storage": 5214893,
+    "license": "cc-by-4.0",
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "data/turkish-00000-of-00001.parquet"
+    ],
+    "downloaded_repository_files": [
+      "README.md"
+    ],
+    "viewer_receipts": [
+      {
+        "dataset": "seali/turkce-saglik-qa",
+        "config": "default",
+        "split": "turkish",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "data/turkish-00000-of-00001.parquet",
+            "rows": 773,
+            "layout": "parquet",
+            "expected_bytes": 1044488,
+            "downloaded_bytes": 1044488,
+            "expected_sha256": "7ae98eaf4fd25548a359cf3264aad1b51b6e7a6e2dbbd0a1aa504de6bd548018",
+            "local_sha256": "7ae98eaf4fd25548a359cf3264aad1b51b6e7a6e2dbbd0a1aa504de6bd548018"
+          }
+        ],
+        "revision": "c51dd82f2df4e0d211b7a9e3667287df95b3cee0",
+        "expected_rows": 773,
+        "downloaded_rows": 773,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__turkish.jsonl",
+        "complete": true
+      }
+    ]
+  },
+  {
+    "dataset_id": "sedayzc/trendyol-electronics-products-features-and-comments",
+    "contributor": "Seda Nur Yazıcı",
+    "contributor_source": "submission spreadsheet",
+    "sha": "46ae0303baba425ea67f8d2148ecb1ac664addbf",
+    "created_at": "2026-07-20T17:46:50.000Z",
+    "last_modified": "2026-07-20T22:32:25.000Z",
+    "downloads": 14,
+    "likes": 0,
+    "used_storage": 2509595,
+    "license": null,
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "data/trendyol_electronics_products.jsonl"
+    ],
+    "downloaded_repository_files": [],
+    "viewer_receipts": [
+      {
+        "dataset": "sedayzc/trendyol-electronics-products-features-and-comments",
+        "config": "default",
+        "split": "train",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "data/trendyol_electronics_products.jsonl",
+            "rows": 500,
+            "layout": "line_delimited",
+            "expected_bytes": 3139761,
+            "downloaded_bytes": 3139761,
+            "expected_sha256": null,
+            "local_sha256": "a7f885733425e5c152abf3e6688922ae29bc76b4cde11f6c0a42963a1705eabf"
+          }
+        ],
+        "revision": "46ae0303baba425ea67f8d2148ecb1ac664addbf",
+        "expected_rows": 500,
+        "downloaded_rows": 500,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__train.jsonl",
+        "complete": true
+      }
+    ]
+  },
+  {
+    "dataset_id": "sedayzc/turkish-electronics-product-comparison-recommendation",
+    "contributor": "Seda Nur Yazıcı",
+    "contributor_source": "submission spreadsheet",
+    "sha": "a90a6b1bd6ff070684bd10f3bd1ae2d040d0171c",
+    "created_at": "2026-07-20T17:27:48.000Z",
+    "last_modified": "2026-07-21T00:39:14.000Z",
+    "downloads": 17,
+    "likes": 0,
+    "used_storage": 15326413,
+    "license": "other",
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "data/recommendation_chat_dataset.json",
+      "data/recommendation_chat_dataset_v2.json"
+    ],
+    "downloaded_repository_files": [
+      "README.md"
+    ],
+    "viewer_receipts": [
+      {
+        "dataset": "sedayzc/turkish-electronics-product-comparison-recommendation",
+        "config": "default",
+        "split": "train",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "data/recommendation_chat_dataset.json",
+            "rows": 4972,
+            "layout": "json_array",
+            "expected_bytes": 7723194,
+            "downloaded_bytes": 7723194,
+            "expected_sha256": null,
+            "local_sha256": "246fd0813d25ec2132944abcd27801fa2f2d5a0d9ba10e52811a2bc9404b31cc"
+          },
+          {
+            "path": "data/recommendation_chat_dataset_v2.json",
+            "rows": 6886,
+            "layout": "json_array",
+            "expected_bytes": 9335855,
+            "downloaded_bytes": 9335855,
+            "expected_sha256": null,
+            "local_sha256": "95fd2517e7b8c40ba5f3a9bc0660ca837b482b381325f6ef2f1eb811ffafcdf7"
+          }
+        ],
+        "revision": "a90a6b1bd6ff070684bd10f3bd1ae2d040d0171c",
+        "expected_rows": 11858,
+        "downloaded_rows": 11858,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__train.jsonl",
+        "complete": true
+      }
+    ]
+  },
+  {
+    "dataset_id": "senemde/saglik-qa-tr",
+    "contributor": "Senem Deniz",
+    "contributor_source": "submission spreadsheet",
+    "sha": "1ff0750617ee2f5d6e4ab0189021c56f4a892984",
+    "created_at": "2026-07-21T12:14:55.000Z",
+    "last_modified": "2026-07-21T12:24:02.000Z",
+    "downloads": 0,
+    "likes": 0,
+    "used_storage": 84928,
+    "license": "mit",
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "data/turkish-00000-of-00001.parquet"
+    ],
+    "downloaded_repository_files": [
+      "README.md"
+    ],
+    "viewer_receipts": [
+      {
+        "dataset": "senemde/saglik-qa-tr",
+        "config": "default",
+        "split": "turkish",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "data/turkish-00000-of-00001.parquet",
+            "rows": 553,
+            "layout": "parquet",
+            "expected_bytes": 84928,
+            "downloaded_bytes": 84928,
+            "expected_sha256": "099aefa2254f9e225c56d3c28889b60ec44bf26432eb5a696cf3b5ca2cca7991",
+            "local_sha256": "099aefa2254f9e225c56d3c28889b60ec44bf26432eb5a696cf3b5ca2cca7991"
+          }
+        ],
+        "revision": "1ff0750617ee2f5d6e4ab0189021c56f4a892984",
+        "expected_rows": 553,
+        "downloaded_rows": 553,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__turkish.jsonl",
+        "complete": true
+      }
+    ]
+  },
+  {
+    "dataset_id": "srhskrkc/odysseia-destani-tr",
+    "contributor": "Şakir Koç",
+    "contributor_source": "submission spreadsheet",
+    "sha": "7b47ebcfce7c6979ee338b8a5fc7a90425880f61",
+    "created_at": "2026-07-21T13:43:02.000Z",
+    "last_modified": "2026-07-21T13:43:05.000Z",
+    "downloads": 0,
+    "likes": 0,
+    "used_storage": 10687,
+    "license": null,
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "data/train-00000-of-00001.parquet"
+    ],
+    "downloaded_repository_files": [
+      "README.md"
+    ],
+    "viewer_receipts": [
+      {
+        "dataset": "srhskrkc/odysseia-destani-tr",
+        "config": "default",
+        "split": "train",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "data/train-00000-of-00001.parquet",
+            "rows": 10,
+            "layout": "parquet",
+            "expected_bytes": 10687,
+            "downloaded_bytes": 10687,
+            "expected_sha256": "1aeeed64478e9922dfa6fb2c3c7e5b5c228074870a7862a4352c95b9baf211e9",
+            "local_sha256": "1aeeed64478e9922dfa6fb2c3c7e5b5c228074870a7862a4352c95b9baf211e9"
+          }
+        ],
+        "revision": "7b47ebcfce7c6979ee338b8a5fc7a90425880f61",
+        "expected_rows": 10,
+        "downloaded_rows": 10,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__train.jsonl",
+        "complete": true
+      }
+    ]
+  },
+  {
+    "dataset_id": "ssilistre/carnegie-dost-kazanma-tr",
+    "contributor": "Semih Silistre",
+    "contributor_source": "submission spreadsheet",
+    "sha": "8372dbe8d890e174293caa15295f4f713db52da3",
+    "created_at": "2026-07-21T03:54:00.000Z",
+    "last_modified": "2026-07-21T03:56:33.000Z",
+    "downloads": 7,
+    "likes": 0,
+    "used_storage": 924330,
+    "license": "cc-by-4.0",
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "data/turkish-00000-of-00001.parquet"
+    ],
+    "downloaded_repository_files": [
+      "README.md"
+    ],
+    "viewer_receipts": [
+      {
+        "dataset": "ssilistre/carnegie-dost-kazanma-tr",
+        "config": "default",
+        "split": "train",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "data/turkish-00000-of-00001.parquet",
+            "rows": 1001,
+            "layout": "parquet",
+            "expected_bytes": 924330,
+            "downloaded_bytes": 924330,
+            "expected_sha256": "c1e456dd4ef2882b71bf62891646d229057d4d5e9ae104fe3d1a4438676005e1",
+            "local_sha256": "c1e456dd4ef2882b71bf62891646d229057d4d5e9ae104fe3d1a4438676005e1"
+          }
+        ],
+        "revision": "8372dbe8d890e174293caa15295f4f713db52da3",
+        "expected_rows": 1001,
+        "downloaded_rows": 1001,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__train.jsonl",
+        "complete": true
+      }
+    ]
+  },
+  {
+    "dataset_id": "ssilistre/semih-silistre-ai-identity",
+    "contributor": "Semih Silistre",
+    "contributor_source": "submission spreadsheet",
+    "sha": "6fda284649c221026fb5e01618964c3232df0b0d",
+    "created_at": "2026-07-21T09:40:15.000Z",
+    "last_modified": "2026-07-21T13:04:38.000Z",
+    "downloads": 0,
+    "likes": 0,
+    "used_storage": 361498,
+    "license": "cc-by-4.0",
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "data/identity-00000-of-00001.parquet"
+    ],
+    "downloaded_repository_files": [
+      "README.md"
+    ],
+    "viewer_receipts": [
+      {
+        "dataset": "ssilistre/semih-silistre-ai-identity",
+        "config": "default",
+        "split": "train",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "data/identity-00000-of-00001.parquet",
+            "rows": 382,
+            "layout": "parquet",
+            "expected_bytes": 126469,
+            "downloaded_bytes": 126469,
+            "expected_sha256": "6a494a3eb83ee0c487923bbd73d84d9080505779df59c5d1bfa47793aea44449",
+            "local_sha256": "6a494a3eb83ee0c487923bbd73d84d9080505779df59c5d1bfa47793aea44449"
+          }
+        ],
+        "revision": "6fda284649c221026fb5e01618964c3232df0b0d",
+        "expected_rows": 382,
+        "downloaded_rows": 382,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__train.jsonl",
+        "complete": true
+      }
+    ]
+  },
+  {
+    "dataset_id": "Talayhan/skatepal_dataset",
+    "contributor": "Talayhan",
+    "contributor_source": "hugging face account handle",
+    "sha": "6363b1145f625631ceaeb29a8b0d3ed1e3cb15e4",
+    "created_at": "2026-07-20T18:52:48.000Z",
+    "last_modified": "2026-07-20T19:36:35.000Z",
+    "downloads": 31,
+    "likes": 0,
+    "used_storage": 610249,
+    "license": null,
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "data/english-00000-of-00001.parquet",
+      "data/turkish-00000-of-00001.parquet"
+    ],
+    "downloaded_repository_files": [
+      "README.md"
+    ],
+    "viewer_receipts": [
+      {
+        "dataset": "Talayhan/skatepal_dataset",
+        "config": "default",
+        "split": "turkish",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "data/turkish-00000-of-00001.parquet",
+            "rows": 174,
+            "layout": "parquet",
+            "expected_bytes": 138359,
+            "downloaded_bytes": 138359,
+            "expected_sha256": "e2660fd763a6a4dbb3c87a1c3f0e2d813c6d706ca613965b6a2100716e1b2cfb",
+            "local_sha256": "e2660fd763a6a4dbb3c87a1c3f0e2d813c6d706ca613965b6a2100716e1b2cfb"
+          }
+        ],
+        "revision": "6363b1145f625631ceaeb29a8b0d3ed1e3cb15e4",
+        "expected_rows": 174,
+        "downloaded_rows": 174,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__turkish.jsonl",
+        "complete": true
+      },
+      {
+        "dataset": "Talayhan/skatepal_dataset",
+        "config": "default",
+        "split": "english",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "data/english-00000-of-00001.parquet",
+            "rows": 125,
+            "layout": "parquet",
+            "expected_bytes": 96541,
+            "downloaded_bytes": 96541,
+            "expected_sha256": "e9a18bb010f83729caef8b690576aec93a610e5c21fcc61b7ba7616721514c3b",
+            "local_sha256": "e9a18bb010f83729caef8b690576aec93a610e5c21fcc61b7ba7616721514c3b"
+          }
+        ],
+        "revision": "6363b1145f625631ceaeb29a8b0d3ed1e3cb15e4",
+        "expected_rows": 125,
+        "downloaded_rows": 125,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__english.jsonl",
+        "complete": true
+      }
+    ]
+  },
+  {
+    "dataset_id": "Toivo0/Turkce-istatistik-reasoning",
+    "contributor": "Umut Kıvanç Sipahioglu",
+    "contributor_source": "submission spreadsheet",
+    "sha": "781aca7e9147be5f88cf63b0a0cd971feef4cfc6",
+    "created_at": "2026-07-20T23:30:38.000Z",
+    "last_modified": "2026-07-20T23:53:40.000Z",
+    "downloads": 16,
+    "likes": 0,
+    "used_storage": 708808,
+    "license": "cc-by-sa-4.0",
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "data/train-00000-of-00001.parquet"
+    ],
+    "downloaded_repository_files": [
+      "README.md"
+    ],
+    "viewer_receipts": [
+      {
+        "dataset": "Toivo0/Turkce-istatistik-reasoning",
+        "config": "default",
+        "split": "train",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "data/train-00000-of-00001.parquet",
+            "rows": 400,
+            "layout": "parquet",
+            "expected_bytes": 708808,
+            "downloaded_bytes": 708808,
+            "expected_sha256": "8e53a4144ceddb6fc37033fd13976c5f0ad8cbc7bc920db6d7f664d49eef4c07",
+            "local_sha256": "8e53a4144ceddb6fc37033fd13976c5f0ad8cbc7bc920db6d7f664d49eef4c07"
+          }
+        ],
+        "revision": "781aca7e9147be5f88cf63b0a0cd971feef4cfc6",
+        "expected_rows": 400,
+        "downloaded_rows": 400,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__train.jsonl",
+        "complete": true
+      }
+    ]
+  },
+  {
+    "dataset_id": "Uunan/turkish-cuisine-qa",
+    "contributor": "Uunan",
+    "contributor_source": "hugging face account handle",
+    "sha": "77466cab725e6227eeccf37ae6747cf024df2596",
+    "created_at": "2026-07-17T17:32:57.000Z",
+    "last_modified": "2026-07-17T23:02:43.000Z",
+    "downloads": 28,
+    "likes": 0,
+    "used_storage": 84428275,
+    "license": "cc-by-nc-4.0",
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "source_canonical_dataset.json",
+      "train.jsonl"
+    ],
+    "downloaded_repository_files": [
+      "README.md"
+    ],
+    "viewer_receipts": [
+      {
+        "dataset": "Uunan/turkish-cuisine-qa",
+        "config": "default",
+        "split": "train",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "train.jsonl",
+            "rows": 34244,
+            "layout": "line_delimited",
+            "expected_bytes": 19448100,
+            "downloaded_bytes": 19448100,
+            "expected_sha256": "730edfc574600ebea24b8fe3ce8dac8226f81168416cda7478790c243aeb2254",
+            "local_sha256": "730edfc574600ebea24b8fe3ce8dac8226f81168416cda7478790c243aeb2254"
+          }
+        ],
+        "revision": "77466cab725e6227eeccf37ae6747cf024df2596",
+        "expected_rows": 34244,
+        "downloaded_rows": 34244,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__train.jsonl",
+        "complete": true
+      }
+    ]
+  },
+  {
+    "dataset_id": "uzcaliskan/magibu_dataset_drilling",
+    "contributor": "Oguz Caliskan",
+    "contributor_source": "submission spreadsheet",
+    "access_block": {
+      "status": "not_found_or_private",
+      "checked_on": "2026-07-22",
+      "evidence": "Anonymous: GET https://huggingface.co/api/datasets/uzcaliskan/magibu_dataset_drilling -> HTTP 401 {\"error\":\"Invalid username or password.\"}. Authenticated as Hugging Face user \"bilalabic\": the same endpoint returns HTTP 404 {\"error\":\"Repository not found\"}. A valid credential turning 401 into 404 means the repository is not visible to this account at all, so it is deleted, renamed, or private to a different owner. Its existence, visibility, and row count cannot be confirmed.",
+      "unblock": "The submitter must confirm the correct dataset URL, or make the repository public, or grant the auditing account access to the private repository.",
+      "reverified_on": "2026-07-22",
+      "reverified_checks": [
+        {
+          "url": "https://huggingface.co/api/datasets/uzcaliskan/magibu_dataset_drilling",
+          "status": 404,
+          "detail": "{\"error\":\"Repository not found\"}"
+        },
+        {
+          "url": "https://datasets-server.huggingface.co/splits?dataset=uzcaliskan/magibu_dataset_drilling",
+          "status": 404,
+          "detail": "{\"error\":\"The dataset does not exist, or is not accessible with the current credentials (private or gated). Please check the spelling of the dataset name or retry with other authentication credentials.\"}"
+        }
+      ],
+      "still_blocked": true
+    }
+  },
+  {
+    "dataset_id": "YusufSimsek/llm-kisisellestirme",
+    "contributor": "Yusuf Şimşek",
+    "contributor_source": "submission spreadsheet",
+    "sha": "31433f31bbbf3426196f6c44d2b3ef95c3ae81b5",
+    "created_at": "2026-07-21T10:38:04.000Z",
+    "last_modified": "2026-07-21T10:48:47.000Z",
+    "downloads": 0,
+    "likes": 0,
+    "used_storage": 27449,
+    "license": null,
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "yusuf_identity.json"
+    ],
+    "downloaded_repository_files": [],
+    "viewer_receipts": [
+      {
+        "dataset": "YusufSimsek/llm-kisisellestirme",
+        "config": "default",
+        "split": "train",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "yusuf_identity.json",
+            "rows": 46,
+            "layout": "json_array",
+            "expected_bytes": 23971,
+            "downloaded_bytes": 23971,
+            "expected_sha256": null,
+            "local_sha256": "39617077e92b5e50d7c9622c2a43aef66bca08dafc74ef3d7601ca6563093b38"
+          }
+        ],
+        "revision": "31433f31bbbf3426196f6c44d2b3ef95c3ae81b5",
+        "expected_rows": 46,
+        "downloaded_rows": 46,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__train.jsonl",
+        "complete": true
+      }
+    ]
+  },
+  {
+    "dataset_id": "YusufSimsek/turkce-atasozleri-dataset",
+    "contributor": "Yusuf Şimşek",
+    "contributor_source": "submission spreadsheet",
+    "sha": "6397d497f80567a662641d5f1c50f8181e3b9929",
+    "created_at": "2026-07-20T15:37:48.000Z",
+    "last_modified": "2026-07-20T15:56:20.000Z",
+    "downloads": 24,
+    "likes": 0,
+    "used_storage": 2156071,
+    "license": "cc-by-sa-4.0",
+    "private": false,
+    "gated": false,
+    "files": [
+      ".gitattributes",
+      "README.md",
+      "atasozleri_dataset.json"
+    ],
+    "downloaded_repository_files": [
+      "README.md"
+    ],
+    "viewer_receipts": [
+      {
+        "dataset": "YusufSimsek/turkce-atasozleri-dataset",
+        "config": "default",
+        "split": "train",
+        "source": "source_file",
+        "source_files": [
+          {
+            "path": "atasozleri_dataset.json",
+            "rows": 1398,
+            "layout": "json_array",
+            "expected_bytes": 2549109,
+            "downloaded_bytes": 2549109,
+            "expected_sha256": null,
+            "local_sha256": "af76cd4f047fda1fcacc64795fa42bbc4801ab65b91e69f79e6531ec5952af60"
+          }
+        ],
+        "revision": "6397d497f80567a662641d5f1c50f8181e3b9929",
+        "expected_rows": 1398,
+        "downloaded_rows": 1398,
+        "row_count_authority": "Dataset Viewer published split size, matched exactly by the parsed source file(s) at the pinned revision",
+        "row_file": "viewer_rows/default__train.jsonl",
         "complete": true
       }
     ]
