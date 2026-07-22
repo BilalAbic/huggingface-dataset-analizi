@@ -111,7 +111,7 @@ The following values were rechecked against all local raw rows on 22 July 2026:
   Jaccard threshold of 0.85. The comparison is exact, not hashed or sampled.
 - Language signal: 43 datasets Turkish, 2 English. This is a heuristic from
   Turkish-only letters plus stopwords, not a classifier.
-- Repository validation ran 1,572 checks and all passed. The validator reports
+- Repository validation ran 1,600 checks and all passed. The validator reports
   its own check count, so this number must be taken from a fresh run rather than
   carried forward.
 

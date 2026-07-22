@@ -17,7 +17,7 @@
   the same canonical identity questions with different names and developers.
 - **Two datasets could not be analyzed** and are recorded with HTTP evidence
   rather than dropped.
-- **Validation ran 1,572 checks and all passed.**
+- **Validation ran 1,600 checks and all passed.**
 
 **Scope date:** 22 July 2026
 **Unit of analysis:** All rows of revision-pinned dataset snapshots published on Hugging Face
@@ -629,4 +629,4 @@ Every number in this report is traceable to a checked JSON output:
 
 The full pipeline and its commands are documented in the
 [repository README](../README.md#reproduce-or-extend-the-analysis). Repository
-validation ran 1,572 checks against this scope and all passed.
+validation ran 1,600 checks against this scope and all passed.
