@@ -26,7 +26,9 @@ cevabın olgusal doğruluğu alan uzmanı tarafından denetlenmedi.
 
 **Veri setini ayırt eden terimler:** `örümcek`, `spider`, `marvel`, `adam`, `parker`, `peter`, `wolverine`, `comics`
 
-> 76% of prompts repeat, so the user turn is largely a fixed instruction. Terms may describe the instruction rather than the subject.
+> İstemlerin %76'i tekrar ediyor, yani kullanıcı turu büyük
+> ölçüde sabit bir talimat. Yukarıdaki terimler konuyu değil talimatı
+> anlatıyor olabilir.
 
 ### İyi olan
 

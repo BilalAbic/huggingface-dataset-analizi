@@ -26,7 +26,9 @@ cevabın olgusal doğruluğu alan uzmanı tarafından denetlenmedi.
 
 **Veri setini ayırt eden terimler:** `felsefe`, `kimdir`, `metafizik`, `voltaire`, `hobbes`, `wittgenstein`, `filozof`, `sartre`
 
-> 77% of prompts repeat, so the user turn is largely a fixed instruction. Terms may describe the instruction rather than the subject.
+> İstemlerin %77'i tekrar ediyor, yani kullanıcı turu büyük
+> ölçüde sabit bir talimat. Yukarıdaki terimler konuyu değil talimatı
+> anlatıyor olabilir.
 
 ### İyi olan
 

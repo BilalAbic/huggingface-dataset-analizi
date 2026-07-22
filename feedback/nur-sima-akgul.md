@@ -26,7 +26,9 @@ cevabın olgusal doğruluğu alan uzmanı tarafından denetlenmedi.
 
 **Veri setini ayırt eden terimler:** `üret`, `seçmeli`, `çoktan`, `soru`, `sınıf`, `aşağıdakilerden`, `orta`, `cevap`
 
-> 87% of prompts repeat, so the user turn is largely a fixed instruction. Terms may describe the instruction rather than the subject.
+> İstemlerin %87'i tekrar ediyor, yani kullanıcı turu büyük
+> ölçüde sabit bir talimat. Yukarıdaki terimler konuyu değil talimatı
+> anlatıyor olabilir.
 
 ### İyi olan
 

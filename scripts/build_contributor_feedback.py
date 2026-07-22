@@ -88,7 +88,16 @@ def dataset_section(dataset_id: str, profile: dict, card: dict, review: dict) ->
         terms = ", ".join(f"`{t['term']}`" for t in topic["distinctive_terms"][:8])
         lines += [f"**Veri setini ayırt eden terimler:** {terms}", ""]
     if topic.get("template_driven_prompts"):
-        lines += [f"> {topic['caveat']}", ""]
+        # The profile stores this caveat in English because the profile is a
+        # public English artifact. On a Turkish page it is restated in Turkish
+        # from the same underlying rate.
+        rate = (data.get("user_prompt_duplicates") or {}).get("duplicate_rate") or 0
+        lines += [
+            f"> İstemlerin %{rate * 100:.0f}'i tekrar ediyor, yani kullanıcı turu büyük",
+            "> ölçüde sabit bir talimat. Yukarıdaki terimler konuyu değil talimatı",
+            "> anlatıyor olabilir.",
+            "",
+        ]
 
     lines += ["### İyi olan", ""]
     lines += [f"- {item}" for item in review["strengths"]]
