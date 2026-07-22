@@ -544,15 +544,9 @@ The detailed mapping is in
 
 ## Proposed target data schemas
 
-| Area | Proposed record format | Required fields | Core validation |
-|---|---|---|---|
-| Identity | `messages` + persona metadata | `system`, `user`, `assistant`, `persona_id`, `language`, `policy_scope` | Identity consistency, boundary, and refusal behavior tests |
-| Tool Calling | Tool definition + call + result + answer | `tools`, `tool_name`, `arguments`, `tool_result`, `assistant_final` | JSON Schema, tool name, argument type, and result dependency |
-| Conversation | Multi-turn message sequence | `conversation_id`, `turn_index`, `role`, `content`, `topic` | Role order, context reference, and turn integrity |
-| Instruction Following | Prompt–constraint–target triple | `instruction`, `constraints`, `input`, `target` | Constraint satisfaction and task type checks |
-| Structured Output | Prompt + schema + output | `prompt`, `schema`, `target_json` | JSON parsing, schema conformance, and field type checks |
-| Math | Problem + solution + answer | `problem`, `solution_steps`, `final_answer`, `unit` | Recomputation and unit consistency |
-| Coding | Task + context + code + tests | `task`, `language`, `context`, `solution`, `tests` | Compile/run, test, and safe code checks |
+Each capability needs a record format and a validation rule before data can be
+authored for it. Those contracts are argued alongside the gap they close, in
+[Target record and validation contract](model-capability-mapping.md#target-record-and-validation-contract).
 
 ## Technical implementation plan
 

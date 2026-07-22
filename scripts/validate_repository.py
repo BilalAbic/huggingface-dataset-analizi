@@ -484,8 +484,24 @@ def check_notebook(baseline: dict) -> None:
     )
 
 
+HEADING = re.compile(r"^#{1,6}\s+(.*)$", re.MULTILINE)
+
+
+def heading_slugs(path: Path) -> set[str]:
+    """Return the anchor slugs a Markdown file exposes, GitHub-style."""
+
+    slugs = set()
+    for title in HEADING.findall(path.read_text(encoding="utf-8")):
+        text = re.sub(r"[`*_\[\]()]", "", title.lower())
+        text = re.sub(r"[^\w\s-]", "", text, flags=re.UNICODE)
+        slugs.add(re.sub(r"\s+", "-", text.strip()))
+    return slugs
+
+
 def check_markdown_links() -> None:
     failures: list[str] = []
+    anchor_failures: list[str] = []
+    slug_cache: dict[Path, set[str]] = {}
     excluded_roots = {"data", ".git", ".venv"}
     for markdown_path in sorted(ROOT.rglob("*.md")):
         relative = markdown_path.relative_to(ROOT)
@@ -503,7 +519,22 @@ def check_markdown_links() -> None:
             resolved = (markdown_path.parent / relative_target).resolve()
             if not resolved.exists():
                 failures.append(f"{relative} -> {target}")
+                continue
+            # A link to a heading that no longer exists still resolves as a file,
+            # so the fragment has to be checked separately or a cross-reference
+            # rots silently as soon as a section is renamed.
+            _, _, anchor = target.partition("#")
+            if not anchor or not resolved.is_file():
+                continue
+            if resolved not in slug_cache:
+                slug_cache[resolved] = heading_slugs(resolved)
+            if anchor not in slug_cache[resolved]:
+                anchor_failures.append(f"{relative} -> {target}")
     require(not failures, "Broken local Markdown links:\n  " + "\n  ".join(failures))
+    require(
+        not anchor_failures,
+        "Markdown links pointing at a missing heading:\n  " + "\n  ".join(anchor_failures),
+    )
 
 
 def main() -> int:

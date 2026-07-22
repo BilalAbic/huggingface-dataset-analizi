@@ -32,48 +32,56 @@ with live HTTP evidence rather than dropped — see
 | Evaluation criteria | JSON | [Open the criteria](config/evaluation_criteria.json) |
 | Vocabulary similarity | JSON | [Open the topic overlap](outputs/topic_overlap.json) |
 
-## Verified findings
+## What the analysis found
 
-- All 45 snapshots were downloaded at pinned revisions and profiled row by row
-  on 22 July 2026. Repository validation ran **1,572 checks, all of which passed**.
-- Conversation rows contain **no invalid roles** and **no prompt identical to its
-  own answer**. Two assistant messages are empty, both in the same dataset.
-- **5,033 rows are exact duplicates.** 4,851 of them sit in one repository that
-  stores two versions of the same corpus side by side, which the Dataset Viewer
-  serves as a single split.
-- **67,470 assistant messages carry a separate `thinking` field**, plus 29 rows
-  that carry it as a row-level column. Explicit reasoning is now the dominant
-  form in this collection, not the exception.
-- **17,454 assistant answers are schema-bound JSON objects**, all in one dataset.
-  This is the collection's first direct Structured Output source.
-- **No populated `tool_calls` field exists anywhere**, and no true multi-turn
-  conversation is present.
-- Identity datasets from twelve or more contributors share the same canonical
-  prompts. Across **30 dataset pairs there are 87 shared user prompts and zero
-  shared assistant answers** — the same question, different answers.
-- The Şahin identity dataset contains 462 string-encoded `null` fields.
-- **3,853 time-sensitive phrase matches** were found. This is a regex match
-  count, not a count of unique rows.
-- **12 of 45 datasets ship a data card with no body**, and 5 have no README at all.
-- **18 of 45 datasets declare no licence**, 13 were scraped from a third-party
-  site, and 14 document no source at all. Recorded as reuse facts, never as a
-  quality judgement.
-- **Two health datasets cover largely one subject.** `hf/seali/turkce-saglik-qa`
-  and `hf/senemde/saglik-qa-tr` sit at 0.568 vocabulary cosine, both concentrated
-  on diabetes, obesity and nutrition.
-- **Personal identifiers were read, not just counted.** The 15 eleven-digit
-  matches are live Trendyol order references in one dataset; the 72 phone-shaped
-  matches are log output and a false positive.
-- **11,277 answers are near-duplicates** of an earlier answer, sharing at least
-  85% of their tokens. Exact matching scores these as unique. The comparison is
-  exact rather than hashed or sampled.
-- **82,798 of 87,831 rows are distinct**, and the gap between rows and distinct
-  answers is far larger in individual datasets — one contributes 1,000 rows but
-  only 20 distinct answers.
+Each line states a conclusion and links to the evidence behind it. The numbers
+themselves live in [the technical assessment](reports/dataset-technical-assessment.md)
+and in the JSON under [`outputs/`](outputs/); they are not repeated here.
 
-Normalized duplicate rate means the number of extra copies after the first item
-in each normalized text family divided by the dataset row count. It is not a
-measure of full semantic similarity.
+- **Row count overstates content.** One dataset publishes 1,000 rows built from
+  twenty answers. Across the collection, exact matching misses thousands more
+  rewordings that only near-duplicate detection catches. Budget from distinct
+  content, not from row counts —
+  [detail](reports/dataset-technical-assessment.md#row-count-is-not-content-volume-and-exact-matching-understates-repetition).
+
+- **Identity data cannot be merged.** Purpose-built identity datasets from
+  different contributors answer the same canonical questions with a different
+  name and developer each. Pick one persona before training —
+  [detail](reports/dataset-technical-assessment.md#identity-datasets-contradict-one-another).
+
+- **Two capabilities have content but no format.** Nothing in the collection has
+  a populated `tool_calls` field, and no conversation runs past a single
+  exchange, so Tool Calling and multi-turn behaviour must be authored rather
+  than extracted — [mapping](reports/model-capability-mapping.md).
+
+- **Structured Output gained its first direct source**, a dataset whose answers
+  are schema-bound JSON. The rest of that dataset ignores the same contract,
+  which is the work item —
+  [mapping](reports/model-capability-mapping.md#structured-output-one-direct-source-contract-not-enforced).
+
+- **Reuse rights are the largest unresolved risk.** A large share of the
+  collection declares no licence, and much of it is scraped from live platforms
+  whose terms and whose authors' rights still apply. Recorded as rights facts,
+  never as a quality judgement —
+  [detail](reports/dataset-technical-assessment.md#provenance-and-reuse-rights).
+
+- **Coverage is narrower than the dataset count implies.** Two independently
+  contributed health datasets turn out to cover largely one subject, and several
+  datasets have a vocabulary concentrated in a handful of terms —
+  [detail](reports/dataset-technical-assessment.md#what-the-collection-is-actually-about).
+
+- **Personal identifiers were read, not counted.** Pattern matches were
+  classified individually: some are live customer order references, others are
+  log output that only looks like a phone number. Raw counts are not published as
+  findings —
+  [detail](reports/dataset-technical-assessment.md#personal-identifiers-and-register).
+
+- **Answer quality is not measured, and that is stated rather than implied.**
+  Three proxies were built and rejected for flagging good data as defective —
+  [why](reports/dataset-technical-assessment.md#answer-quality-is-not-measured-and-here-is-why).
+
+Structural validation is not factual validation. No claim in any dataset has been
+checked against an authoritative source by a domain expert.
 
 ## Visual evidence
 

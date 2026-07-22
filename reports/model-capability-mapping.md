@@ -90,18 +90,18 @@ limits:
 Two further datasets provide persona support alongside domain content:
 `hf/gorkemergune/ayarlicazhocam_finetune` (429) and `hf/Talayhan/skatepal_dataset` (299).
 
-**The blocking problem is not volume, it is contradiction.** Cross-dataset
-overlap finds 87 shared user prompts across 30 dataset pairs and **zero shared
-assistant answers**. The same questions — `sen kimsin`, `adın ne`, `görevin ne`,
-`who are you` — appear in many of these datasets with a different name and
-developer in each. Merging them trains the model to answer its own identity
-inconsistently.
+**The blocking problem is not volume, it is contradiction.** The same questions —
+`sen kimsin`, `adın ne`, `görevin ne`, `who are you` — recur across these datasets
+with a different name and developer in each, and **no answer is ever shared**
+([shared prompts](dataset-technical-assessment.md#identity-datasets-contradict-one-another)).
+Merging them trains the model to answer its own identity inconsistently, so one
+persona has to be chosen before any of this data is used.
 
 Quality also varies sharply. Answer duplication reaches 85.7% in
 `hf/berkcangumusisik/voleykoc-identity-tr`, 80.0% in `hf/erhanalsr/langusta-identity`,
 and 66.7% in `hf/samliumay/umay_samli_identification_dataset`.
-`hf/sk75/sahin_identity` holds all 462 string-encoded `null` values in the
-collection. `hf/filiz-yalcin/identity-finetune` is a renamed copy of an upstream
+`hf/sk75/sahin_identity` carries every string-encoded `null` in the collection
+([type errors](dataset-technical-assessment.md#reasoning-fields-tool-calls-and-type-integrity-require-separate-data-work)). `hf/filiz-yalcin/identity-finetune` is a renamed copy of an upstream
 dataset and carries the collection's only two empty assistant answers.
 
 ![Shared prompts between identity datasets](figures/identity-prompt-conflicts.png)
