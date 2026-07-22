@@ -19,6 +19,7 @@ outputs, and a re-runnable notebook; the raw Hugging Face data files are not rep
 | `reports/model-capability-mapping.md` | Details for Identity, Tool Calling, Conversation, Instruction Following, Structured Output, Math, and Coding |
 | `reports/file-guide.md` | This document: the map of the repository |
 | `reports/figures/` | Ten GitHub-friendly PNG figures generated from the JSON analysis outputs, plus the figure guide |
+| `feedback/` | One page per contributor, in Turkish, listing only their datasets and what to fix |
 | `notebook/huggingface_dataset_quality_analysis.ipynb` | The executed analysis source with cell outputs |
 | `notebook/huggingface_dataset_quality_analysis.html` | A standalone notebook view that opens in a browser |
 | `outputs/source_inventory.json` | Inventory of dataset sources, fixed revision identifiers (commits), and snapshot receipts |

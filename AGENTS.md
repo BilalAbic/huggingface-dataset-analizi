@@ -198,7 +198,11 @@ the profile irreproducible. Verify by running the profiler twice and comparing
 - `scripts/profile_datasets.py`: row-level schema and quality profiler.
 - `scripts/build_notebook.py`: dynamic notebook builder and executor.
 - `scripts/generate_report_charts.py`: deterministic Matplotlib figure builder.
+- `scripts/build_contributor_feedback.py`: per-contributor Turkish feedback pages.
 - `scripts/validate_repository.py`: read-only repository integrity check.
+- `feedback/*.md`: one page per contributor, generated from the reviewed
+  findings. They restate no evidence of their own and must be regenerated
+  whenever `outputs/manual_findings.json` changes.
 
 ## Change workflow
 

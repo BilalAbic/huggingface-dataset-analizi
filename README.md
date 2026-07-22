@@ -29,6 +29,7 @@ with live HTTP evidence rather than dropped — see
 | Per-dataset topics | CSV | [Open the topic profile](appendix/topic_profile.csv) |
 | Per-dataset provenance and rights | CSV | [Open the provenance table](appendix/provenance.csv) |
 | Recorded access blocks | JSON | [Open the exclusion record](outputs/excluded_datasets.json) |
+| Per-contributor feedback (Turkish) | Markdown | [Open the feedback index](feedback/README.md) |
 | Evaluation criteria | JSON | [Open the criteria](config/evaluation_criteria.json) |
 | Vocabulary similarity | JSON | [Open the topic overlap](outputs/topic_overlap.json) |
 

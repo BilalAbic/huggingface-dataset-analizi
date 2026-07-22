@@ -30,6 +30,7 @@ REQUIRED_FILES = {
     "appendix/capability_mapping.csv",
     "appendix/topic_profile.csv",
     "appendix/provenance.csv",
+    "feedback/README.md",
     "reports/dataset-technical-assessment.md",
     "reports/model-capability-mapping.md",
     "reports/file-guide.md",
@@ -377,6 +378,24 @@ def check_evidence(baseline: dict, registry: dict) -> None:
             f"appendix/{name} scope differs from the profiles: "
             f"missing={sorted(set(profile_rows) - set(listed))}, "
             f"extra={sorted(set(listed) - set(profile_rows))}",
+        )
+
+    # One feedback page per contributor, covering every registry dataset. A
+    # contributor silently losing their page is a delivery failure, not a detail.
+    contributors = {entry["contributor"] for entry in registry.get("datasets", [])}
+    feedback_dir = ROOT / "feedback"
+    pages = {path.stem for path in feedback_dir.glob("*.md")} - {"README"}
+    require(
+        len(pages) == len(contributors),
+        f"feedback pages ({len(pages)}) do not match contributors ({len(contributors)})",
+    )
+    covered = " ".join(
+        path.read_text(encoding="utf-8") for path in feedback_dir.glob("*.md")
+    )
+    for dataset_id in enabled_dataset_ids(registry):
+        require(
+            dataset_id in covered,
+            f"No contributor feedback page mentions {dataset_id}",
         )
 
     csv_path = ROOT / "appendix" / "capability_mapping.csv"
