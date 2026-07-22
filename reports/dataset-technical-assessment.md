@@ -36,6 +36,7 @@
 - [Match against model capability areas](#match-against-model-capability-areas)
 - [Proposed target data schemas](#proposed-target-data-schemas)
 - [Technical implementation plan](#technical-implementation-plan)
+- [Answer quality is not measured, and here is why](#answer-quality-is-not-measured-and-here-is-why)
 - [Limitations and verification scope](#limitations-and-verification-scope)
 - [Evidence and reproducibility](#evidence-and-reproducibility)
 
@@ -659,6 +660,32 @@ The detailed mapping is in
    dated sources or to tool calls rather than baking values into answers.
 7. **Author the missing capabilities.** Tool Calling and Coding need new data;
    no amount of preparation extracts them from the current collection.
+
+### Answer quality is not measured, and here is why
+
+Nothing in this analysis judges whether an answer is *good*. The dimensions above
+measure whether it is distinct, structured, on-topic and well formed — never
+whether it is correct or useful. That gap is deliberate, but it was tested before
+being accepted.
+
+Three dependency-free proxies were built and then rejected, each because reading
+its matches showed it measured something other than what its name claimed:
+
+| Proxy | Flagged | Why it was rejected |
+|---|---|---|
+| Truncation, from answers not ending in terminal punctuation | 86.9% of `hf/SalihHub/trendyol-marangoz-urun-asistan-qa`, 61.5% of `hf/berkbirkan/turkish-x-engagement-replies` | The matches are complete short answers — `Hayır efendim`, `Mdf dir efendim` — and ordinary tweets. It measures punctuation habit. |
+| Relevance, from shared content words between prompt and answer | 66.2% of `hf/sk75/sahin_identity` | *"What is your architecture?"* answered by *"I was fine-tuned on top of an open-source base language model."* is a good answer. Identity and definition answers do not repeat the question's words. |
+| Broken promise, from an answer announcing a list without list markers | 20.2% of `hf/aliFurkan123/cultural-questions-dataset` | The enumerations are written inline in prose. |
+
+Publishing any of these would have repeated the mistake this report documents
+elsewhere: a pattern count presented as a finding. Each would have flagged good
+data as defective, and in the datasets with the most authentic register it would
+have flagged the most.
+
+Measuring answer quality properly needs domain review, or a model-based judge
+validated against a human-labelled sample and reported together with its
+agreement rate. Neither is in scope, and neither belongs here without that
+agreement rate stated.
 
 ## Limitations and verification scope
 

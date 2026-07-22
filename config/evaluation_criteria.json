@@ -107,6 +107,28 @@
   ],
   "verification_scope": {
     "covered": "Structure, computable content patterns, declared provenance, and format readiness, checked against every row of a revision-pinned snapshot.",
-    "not_covered": "Subject-matter fact checking. No claim in any dataset has been verified against an authoritative source by a domain expert. Structural validation must never be presented as factual validation."
+    "not_covered": "Subject-matter fact checking. No claim in any dataset has been verified against an authoritative source by a domain expert. Structural validation must never be presented as factual validation.",
+    "answer_quality": {
+      "status": "not measured",
+      "why": "Whether an answer is good needs subject-matter judgement. Three dependency-free proxies were built and rejected because their precision was too low to publish.",
+      "rejected_proxies": [
+        {
+          "proxy": "truncation, detected by an answer not ending in terminal punctuation",
+          "result": "rejected",
+          "evidence": "Flagged 86.9% of hf/SalihHub/trendyol-marangoz-urun-asistan-qa and 61.5% of hf/berkbirkan/turkish-x-engagement-replies. Reading the matches shows complete short answers such as 'Hayır efendim' and ordinary tweets. It measures punctuation habit, not truncation."
+        },
+        {
+          "proxy": "relevance, detected by shared content tokens between prompt and answer",
+          "result": "rejected",
+          "evidence": "Flagged 66.2% of hf/sk75/sahin_identity, including 'What is your architecture?' answered by 'I was fine-tuned on top of an open-source base language model.' Identity and definition answers legitimately do not repeat the question's words."
+        },
+        {
+          "proxy": "broken promise, an answer announcing a list without list markers",
+          "result": "rejected",
+          "evidence": "Flagged 20.2% of hf/aliFurkan123/cultural-questions-dataset, where enumerations are written inline in prose rather than as markers."
+        }
+      ],
+      "what_would_work": "Answer quality needs either domain review or a model-based judge with a held-out human-labelled sample to measure its own agreement. Neither is in scope here, and neither should be added without reporting that agreement rate."
+    }
   }
 }
