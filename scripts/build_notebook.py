@@ -194,6 +194,10 @@ def build_notebook(project_root: Path) -> nbf.NotebookNode:
                     "distinct_answers": profile.get("assistant_answer_duplicates", {}).get("distinct_values"),
                     "distinct_rows": profile.get("distinct_canonical_rows"),
                     "language_signal": profile.get("text_scan", {}).get("dominant_language_signal"),
+                    "topic_concentration_%": round(100 * ((profile.get("topic_profile") or {}).get("topic_concentration") or 0), 1),
+                    "distinctive_terms": ", ".join(
+                        t["term"] for t in (profile.get("topic_profile") or {}).get("distinctive_terms", [])[:5]
+                    ),
                     "json_answers": profile.get("structured_answers", {}).get("json_parsable_answers", 0),
                     "json_like_broken": profile.get("structured_answers", {}).get("json_like_but_unparsable_answers", 0),
                     "conflicting_prompt_families": profile.get("answer_families", {}).get(
@@ -276,6 +280,40 @@ def build_notebook(project_root: Path) -> nbf.NotebookNode:
             gap.loc[gap["answer_gap"] > 0,
                     ["dataset", "rows", "distinct_rows", "distinct_answers", "answer_gap"]
                    ].sort_values("answer_gap", ascending=False).head(12)
+            """
+        ),
+        markdown(
+            """
+            ### Veri setleri ne hakkında
+
+            Terimler koleksiyonun geri kalanına göre ağırlıklandırılmıştır, yani
+            sık geçeni değil ayırt edeni gösterir. Yoğunlaşma, en sık yirmi kökün
+            tüm konu token'ları içindeki payıdır: yüksek değer dar bir söz varlığı
+            demektir.
+            """
+        ),
+        code(
+            """
+            summary[["dataset", "rows", "topic_concentration_%", "distinctive_terms"]].sort_values(
+                "topic_concentration_%", ascending=False
+            ).head(15)
+            """
+        ),
+        markdown(
+            """
+            ### Aynı alanı kapsayan veri setleri
+
+            Söz varlığı benzerliği anlam benzerliği değildir; iki İngilizce veri
+            seti yalnız dil ortaklığı yüzünden yüksek skor alabilir. Her çift
+            yorumlanmadan önce okunmalıdır.
+            """
+        ),
+        code(
+            """
+            topics = json.loads(
+                (PROJECT_DIR / "outputs" / "topic_overlap.json").read_text(encoding="utf-8")
+            )["pairs"]
+            pd.DataFrame(topics).head(12)
             """
         ),
         markdown(

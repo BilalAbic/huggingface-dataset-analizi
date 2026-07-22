@@ -1,0 +1,932 @@
+{
+  "note": "Pairwise cosine similarity between dataset vocabularies, TF-IDF weighted against the collection. Shared vocabulary is not shared meaning: read a pair before calling it redundant.",
+  "pairs": [
+    {
+      "left": "seali/turkce-saglik-qa",
+      "right": "senemde/saglik-qa-tr",
+      "cosine": 0.568,
+      "shared_terms": [
+        "diyabetli",
+        "hastalığı",
+        "obezite",
+        "öneriler",
+        "tedavisi",
+        "beslenme"
+      ]
+    },
+    {
+      "left": "Erenyanic/seasoned-advice-dataset",
+      "right": "gmz1234/stackoverflow_ai",
+      "cosine": 0.3013,
+      "shared_terms": [
+        "some",
+        "different",
+        "like",
+        "more",
+        "then",
+        "other"
+      ]
+    },
+    {
+      "left": "Mer1Alii/TR-ECommerce-CustomerSupport-Instructions",
+      "right": "sedayzc/trendyol-electronics-products-features-and-comments",
+      "cosine": 0.27,
+      "shared_terms": [
+        "kargo",
+        "satıcı",
+        "ürün",
+        "geldi",
+        "sipariş",
+        "aldım"
+      ]
+    },
+    {
+      "left": "Mer1Alii/TR-ECommerce-CustomerSupport-Instructions",
+      "right": "SalihHub/trendyol-marangoz-urun-asistan-qa",
+      "cosine": 0.2241,
+      "shared_terms": [
+        "merhaba",
+        "kargo",
+        "acaba",
+        "ürün",
+        "göndermiş",
+        "istiyorum"
+      ]
+    },
+    {
+      "left": "Aysenur44/namaz-vakti-identity-tr",
+      "right": "ssilistre/semih-silistre-ai-identity",
+      "cosine": 0.2237,
+      "shared_terms": [
+        "seni",
+        "adın",
+        "kimsin",
+        "geliştirdi"
+      ]
+    },
+    {
+      "left": "Aysenur44/namaz-vakti-identity-tr",
+      "right": "berkcangumusisik/voleykoc-identity-tr",
+      "cosine": 0.2226,
+      "shared_terms": [
+        "yararsın",
+        "adın",
+        "kimsin",
+        "seni",
+        "geliştirdi"
+      ]
+    },
+    {
+      "left": "enes1863/bilisim-hukuku-domain-dataset",
+      "right": "samliumay/turkish_cyber_security_controls_dataset",
+      "cosine": 0.2103,
+      "shared_terms": [
+        "veri",
+        "kişisel",
+        "bulut",
+        "gizlilik",
+        "hizmeti",
+        "kurumsal"
+      ]
+    },
+    {
+      "left": "berkbirkan/turkish-x-engagement-quotes",
+      "right": "berkbirkan/turkish-x-engagement-replies",
+      "cosine": 0.2055,
+      "shared_terms": [
+        "aşağıdaki",
+        "gönderisini",
+        "kısa",
+        "alıntılarken",
+        "yorum",
+        "komik"
+      ]
+    },
+    {
+      "left": "filiz-yalcin/identity-finetune",
+      "right": "gmz1234/stackoverflow_ai",
+      "cosine": 0.1998,
+      "shared_terms": [
+        "function",
+        "some",
+        "other",
+        "model",
+        "more",
+        "different"
+      ]
+    },
+    {
+      "left": "SalihHub/trendyol-marangoz-urun-asistan-qa",
+      "right": "namruni/meb-ogretmen-soru-cevap",
+      "cosine": 0.1891,
+      "shared_terms": [
+        "merhaba",
+        "acaba",
+        "istiyorum",
+        "teşekkürler",
+        "yapabilir",
+        "miyim"
+      ]
+    },
+    {
+      "left": "gmz1234/stackoverflow_ai",
+      "right": "gorkemergune/ayarlicazhocam_finetune",
+      "cosine": 0.1866,
+      "shared_terms": [
+        "learning",
+        "neural",
+        "network",
+        "different",
+        "project",
+        "computer"
+      ]
+    },
+    {
+      "left": "berkbirkan/turkish-x-engagement-replies",
+      "right": "erhanalsr/langusta-kpss-reasoning",
+      "cosine": 0.1856,
+      "shared_terms": [
+        "aşağıdaki",
+        "gönderisine",
+        "devleti",
+        "ahmet",
+        "sanatçılar",
+        "başkanı"
+      ]
+    },
+    {
+      "left": "sedayzc/trendyol-electronics-products-features-and-comments",
+      "right": "sedayzc/turkish-electronics-product-comparison-recommendation",
+      "cosine": 0.1847,
+      "shared_terms": [
+        "16gb",
+        "intel",
+        "bilgisayar",
+        "lenovo",
+        "core",
+        "ryzen"
+      ]
+    },
+    {
+      "left": "filiz-yalcin/identity-finetune",
+      "right": "sk75/sahin_identity",
+      "cosine": 0.181,
+      "shared_terms": [
+        "model",
+        "development",
+        "yourself",
+        "team",
+        "introduce",
+        "built"
+      ]
+    },
+    {
+      "left": "sk75/sahin_identity",
+      "right": "ssilistre/semih-silistre-ai-identity",
+      "cosine": 0.1468,
+      "shared_terms": [
+        "seni",
+        "kendini",
+        "model",
+        "insan",
+        "geliştirdi"
+      ]
+    },
+    {
+      "left": "aliFurkan123/identity",
+      "right": "filiz-yalcin/identity-finetune",
+      "cosine": 0.1456,
+      "shared_terms": [
+        "tell",
+        "model",
+        "yourself",
+        "identify",
+        "assistant",
+        "purpose"
+      ]
+    },
+    {
+      "left": "Mer1Alii/TR-ECommerce-CustomerSupport-Instructions",
+      "right": "cihatyldz/lojistik-soru-cevap",
+      "cosine": 0.145,
+      "shared_terms": [
+        "kargo",
+        "sipariş",
+        "teslim",
+        "kurye",
+        "talep",
+        "sistemde"
+      ]
+    },
+    {
+      "left": "berkcangumusisik/voleykoc-identity-tr",
+      "right": "ssilistre/semih-silistre-ai-identity",
+      "cosine": 0.1432,
+      "shared_terms": [
+        "seni",
+        "eğitildin",
+        "bana",
+        "adın",
+        "kimsin",
+        "openai"
+      ]
+    },
+    {
+      "left": "aliFurkan123/identity",
+      "right": "berkcangumusisik/voleykoc-identity-tr",
+      "cosine": 0.1408,
+      "shared_terms": [
+        "trained",
+        "quick",
+        "yourself",
+        "created",
+        "question",
+        "explain"
+      ]
+    },
+    {
+      "left": "SalihHub/trendyol-marangoz-urun-asistan-qa",
+      "right": "sedayzc/trendyol-electronics-products-features-and-comments",
+      "cosine": 0.1403,
+      "shared_terms": [
+        "ürün",
+        "teşekkürler",
+        "kargo",
+        "ederim",
+        "gönderim",
+        "merhaba"
+      ]
+    },
+    {
+      "left": "Endezyar/siyer_datasets",
+      "right": "yoitsmeyusuf/felsefe_finetune",
+      "cosine": 0.1365,
+      "shared_terms": [
+        "kimdir",
+        "gerçek"
+      ]
+    },
+    {
+      "left": "haticenurcakr/turkish-classic-books-qa",
+      "right": "yoitsmeyusuf/felsefe_finetune",
+      "cosine": 0.1328,
+      "shared_terms": [
+        "kimdir",
+        "neden",
+        "yoksa"
+      ]
+    },
+    {
+      "left": "berkbirkan/turkish-x-engagement-replies",
+      "right": "enesozdemr/benim_ilk_datasetim",
+      "cosine": 0.1325,
+      "shared_terms": [
+        "doğal",
+        "neden",
+        "kullanarak"
+      ]
+    },
+    {
+      "left": "aliFurkan123/identity",
+      "right": "sk75/sahin_identity",
+      "cosine": 0.1265,
+      "shared_terms": [
+        "yourself",
+        "model",
+        "introduce",
+        "developed"
+      ]
+    },
+    {
+      "left": "SalihHub/trendyol-marangoz-urun-asistan-qa",
+      "right": "berkcangumusisik/voleykoc-identity-tr",
+      "cosine": 0.1216,
+      "shared_terms": [
+        "merhaba",
+        "yapabilir",
+        "bana",
+        "olmadığı",
+        "yardımcı"
+      ]
+    },
+    {
+      "left": "berkbirkan/turkish-x-engagement-quotes",
+      "right": "erhanalsr/langusta-kpss-reasoning",
+      "cosine": 0.1215,
+      "shared_terms": [
+        "aşağıdaki",
+        "gönderisini",
+        "devleti",
+        "ahmet",
+        "sanatçılar",
+        "başkanı"
+      ]
+    },
+    {
+      "left": "Aysenur44/namaz-vakti-identity-tr",
+      "right": "sk75/sahin_identity",
+      "cosine": 0.1202,
+      "shared_terms": [
+        "seni",
+        "geliştirdi"
+      ]
+    },
+    {
+      "left": "Mer1Alii/TR-ECommerce-CustomerSupport-Instructions",
+      "right": "namruni/meb-ogretmen-soru-cevap",
+      "cosine": 0.12,
+      "shared_terms": [
+        "merhaba",
+        "istiyorum",
+        "iptal",
+        "acaba",
+        "arkadaşım",
+        "bana"
+      ]
+    },
+    {
+      "left": "berkcangumusisik/voleykoc-identity-tr",
+      "right": "sk75/sahin_identity",
+      "cosine": 0.1146,
+      "shared_terms": [
+        "seni",
+        "yourself",
+        "introduce",
+        "neler",
+        "geliştirdi",
+        "kendini"
+      ]
+    },
+    {
+      "left": "Erenyanic/seasoned-advice-dataset",
+      "right": "filiz-yalcin/identity-finetune",
+      "cosine": 0.1136,
+      "shared_terms": [
+        "some",
+        "other",
+        "more",
+        "different",
+        "reason",
+        "know"
+      ]
+    },
+    {
+      "left": "filiz-yalcin/identity-finetune",
+      "right": "ssilistre/semih-silistre-ai-identity",
+      "cosine": 0.1134,
+      "shared_terms": [
+        "bana",
+        "yapay",
+        "kendinizi",
+        "verebilir",
+        "model",
+        "modelinizin"
+      ]
+    },
+    {
+      "left": "namruni/meb-ogretmen-soru-cevap",
+      "right": "sedayzc/trendyol-electronics-products-features-and-comments",
+      "cosine": 0.113,
+      "shared_terms": [
+        "teşekkür",
+        "ederim",
+        "bilgisi",
+        "arkadaşlar",
+        "aldım",
+        "geldi"
+      ]
+    },
+    {
+      "left": "Erenyanic/seasoned-advice-dataset",
+      "right": "Uunan/turkish-cuisine-qa",
+      "cosine": 0.1084,
+      "shared_terms": [
+        "tarifi",
+        "pişirme",
+        "pişirirken",
+        "kullanmak",
+        "malzeme",
+        "tereyağı"
+      ]
+    },
+    {
+      "left": "aliFurkan123/cultural-questions-dataset",
+      "right": "berkcangumusisik/voleykoc-identity-tr",
+      "cosine": 0.098,
+      "shared_terms": [
+        "soracağım",
+        "matematik"
+      ]
+    },
+    {
+      "left": "Toivo0/Turkce-istatistik-reasoning",
+      "right": "enes1863/bilisim-hukuku-domain-dataset",
+      "cosine": 0.093,
+      "shared_terms": [
+        "veri",
+        "kavramı",
+        "veriler",
+        "temel",
+        "mantığı",
+        "fark"
+      ]
+    },
+    {
+      "left": "enes1863/bilisim-hukuku-domain-dataset",
+      "right": "erhanalsr/langusta-identity",
+      "cosine": 0.0915,
+      "shared_terms": [
+        "yanıtlar",
+        "soruyu",
+        "cümleyle",
+        "cevaplar",
+        "kısaca",
+        "temel"
+      ]
+    },
+    {
+      "left": "Toivo0/Turkce-istatistik-reasoning",
+      "right": "samliumay/turkish_cyber_security_controls_dataset",
+      "cosine": 0.0894,
+      "shared_terms": [
+        "veri",
+        "hesaplarken",
+        "güven",
+        "kullanılır",
+        "örneklem",
+        "standart"
+      ]
+    },
+    {
+      "left": "berkcangumusisik/voleykoc-identity-tr",
+      "right": "erhanalsr/langusta-identity",
+      "cosine": 0.0884,
+      "shared_terms": [
+        "kısaca",
+        "uzmansın",
+        "seni",
+        "dilde",
+        "adın",
+        "senin"
+      ]
+    },
+    {
+      "left": "Erenyanic/seasoned-advice-dataset",
+      "right": "Talayhan/skatepal_dataset",
+      "cosine": 0.0879,
+      "shared_terms": [
+        "different",
+        "just",
+        "keep",
+        "make",
+        "before",
+        "like"
+      ]
+    },
+    {
+      "left": "erhanalsr/langusta-identity",
+      "right": "ssilistre/semih-silistre-ai-identity",
+      "cosine": 0.085,
+      "shared_terms": [
+        "seni",
+        "chatgpt",
+        "adın",
+        "kendini",
+        "kısaca",
+        "cevap"
+      ]
+    },
+    {
+      "left": "namruni/meb-ogretmen-soru-cevap",
+      "right": "ssilistre/carnegie-dost-kazanma-tr",
+      "cosine": 0.0833,
+      "shared_terms": [
+        "arkadaşlar",
+        "öğretmen",
+        "diyor",
+        "müdürü",
+        "eğitim",
+        "hizmet"
+      ]
+    },
+    {
+      "left": "namruni/meb-ogretmen-soru-cevap",
+      "right": "nyzmemre/biyoloji-terimleri-turkce-sa",
+      "cosine": 0.0832,
+      "shared_terms": [
+        "ders",
+        "öğrenci",
+        "öğretmen",
+        "eğitim",
+        "bakanlığında",
+        "okulları"
+      ]
+    },
+    {
+      "left": "aliFurkan123/cultural-questions-dataset",
+      "right": "namruni/meb-ogretmen-soru-cevap",
+      "cosine": 0.0805,
+      "shared_terms": [
+        "arkadaşlar",
+        "fazlası",
+        "acaba",
+        "matematik",
+        "bilen",
+        "resmi"
+      ]
+    },
+    {
+      "left": "namruni/meb-ogretmen-soru-cevap",
+      "right": "samliumay/turkish_cyber_security_controls_dataset",
+      "cosine": 0.0797,
+      "shared_terms": [
+        "hizmet",
+        "eğitim",
+        "sözleşmeli",
+        "yönetici",
+        "güvenlik",
+        "görevlendirme"
+      ]
+    },
+    {
+      "left": "Toivo0/Turkce-istatistik-reasoning",
+      "right": "ssilistre/carnegie-dost-kazanma-tr",
+      "cosine": 0.0786,
+      "shared_terms": [
+        "neden",
+        "örneğin",
+        "örneklem",
+        "hata",
+        "bize",
+        "kuralı"
+      ]
+    },
+    {
+      "left": "cihatyldz/lojistik-soru-cevap",
+      "right": "samliumay/turkish_cyber_security_controls_dataset",
+      "cosine": 0.0773,
+      "shared_terms": [
+        "yönetimi",
+        "hizmetleri",
+        "tedarik",
+        "güvenlik",
+        "sistemleri",
+        "zinciri"
+      ]
+    },
+    {
+      "left": "enes1863/bilisim-hukuku-domain-dataset",
+      "right": "nyzmemre/biyoloji-terimleri-turkce-sa",
+      "cosine": 0.0768,
+      "shared_terms": [
+        "ders",
+        "kavramı",
+        "tanım",
+        "girmeden",
+        "temel",
+        "öğrenci"
+      ]
+    },
+    {
+      "left": "ssilistre/carnegie-dost-kazanma-tr",
+      "right": "ssilistre/semih-silistre-ai-identity",
+      "cosine": 0.0751,
+      "shared_terms": [
+        "neden",
+        "konuşma",
+        "bana",
+        "beni",
+        "nsanları",
+        "miyim"
+      ]
+    },
+    {
+      "left": "gmz1234/stackoverflow_ai",
+      "right": "sadecebirisii/turkish-llm-authority-bypass-safety-sft",
+      "cosine": 0.0745,
+      "shared_terms": [
+        "layer",
+        "output",
+        "hidden",
+        "policy",
+        "implement",
+        "decoder"
+      ]
+    },
+    {
+      "left": "Aysenur44/namaz-vakti-identity-tr",
+      "right": "erhanalsr/langusta-identity",
+      "cosine": 0.0735,
+      "shared_terms": [
+        "adın",
+        "seni",
+        "geliştirdi"
+      ]
+    },
+    {
+      "left": "Toivo0/Turkce-istatistik-reasoning",
+      "right": "namruni/meb-ogretmen-soru-cevap",
+      "cosine": 0.0728,
+      "shared_terms": [
+        "hesaplarken",
+        "arkadaşım",
+        "müdür",
+        "durumda",
+        "istiyorum",
+        "durumu"
+      ]
+    },
+    {
+      "left": "berkcangumusisik/voleykoc-identity-tr",
+      "right": "filiz-yalcin/identity-finetune",
+      "cosine": 0.0724,
+      "shared_terms": [
+        "explain",
+        "yourself",
+        "bana",
+        "name",
+        "purpose",
+        "introduce"
+      ]
+    },
+    {
+      "left": "namruni/meb-ogretmen-soru-cevap",
+      "right": "ssilistre/semih-silistre-ai-identity",
+      "cosine": 0.0698,
+      "shared_terms": [
+        "miyim",
+        "arkadaşlar",
+        "bana",
+        "beni",
+        "istiyorum",
+        "yapabilir"
+      ]
+    },
+    {
+      "left": "gorkemergune/ayarlicazhocam_finetune",
+      "right": "sadecebirisii/turkish-llm-authority-bypass-safety-sft",
+      "cosine": 0.0693,
+      "shared_terms": [
+        "icin",
+        "python",
+        "model",
+        "system",
+        "tokenizer",
+        "work"
+      ]
+    },
+    {
+      "left": "sadecebirisii/turkish-llm-authority-bypass-safety-sft",
+      "right": "samliumay/turkish_cyber_security_controls_dataset",
+      "cosine": 0.0682,
+      "shared_terms": [
+        "güvenli",
+        "kurumsal",
+        "parola",
+        "yetkilendirilmistir",
+        "kimlik",
+        "uygula"
+      ]
+    },
+    {
+      "left": "Talayhan/skatepal_dataset",
+      "right": "gmz1234/stackoverflow_ai",
+      "cosine": 0.0664,
+      "shared_terms": [
+        "difference",
+        "just",
+        "between",
+        "board",
+        "think",
+        "only"
+      ]
+    },
+    {
+      "left": "gorkemergune/ayarlicazhocam_finetune",
+      "right": "sk75/sahin_identity",
+      "cosine": 0.0656,
+      "shared_terms": [
+        "model",
+        "developer",
+        "neler"
+      ]
+    },
+    {
+      "left": "cihatyldz/lojistik-soru-cevap",
+      "right": "sedayzc/trendyol-electronics-products-features-and-comments",
+      "cosine": 0.0621,
+      "shared_terms": [
+        "kargo",
+        "teslimat",
+        "sipariş",
+        "performansını",
+        "sistemleri",
+        "full"
+      ]
+    },
+    {
+      "left": "filiz-yalcin/identity-finetune",
+      "right": "gorkemergune/ayarlicazhocam_finetune",
+      "cosine": 0.0613,
+      "shared_terms": [
+        "model",
+        "zeka",
+        "development",
+        "yapay",
+        "different",
+        "work"
+      ]
+    },
+    {
+      "left": "SalihHub/trendyol-marangoz-urun-asistan-qa",
+      "right": "filiz-yalcin/identity-finetune",
+      "cosine": 0.0597,
+      "shared_terms": [
+        "misiniz",
+        "şekilde",
+        "mısınız",
+        "bana",
+        "modeli",
+        "musunuz"
+      ]
+    },
+    {
+      "left": "Mer1Alii/TR-ECommerce-CustomerSupport-Instructions",
+      "right": "ssilistre/carnegie-dost-kazanma-tr",
+      "cosine": 0.0581,
+      "shared_terms": [
+        "satıcı",
+        "diyor",
+        "istiyorum",
+        "oldu",
+        "telefon",
+        "yanlış"
+      ]
+    },
+    {
+      "left": "Erenyanic/seasoned-advice-dataset",
+      "right": "Toivo0/Turkce-istatistik-reasoning",
+      "cosine": 0.0568,
+      "shared_terms": [
+        "örneğin",
+        "kullanmak",
+        "olduğunu",
+        "neden",
+        "eğer",
+        "olasılığını"
+      ]
+    },
+    {
+      "left": "Erenyanic/seasoned-advice-dataset",
+      "right": "sedayzc/trendyol-electronics-products-features-and-comments",
+      "cosine": 0.0564,
+      "shared_terms": [
+        "hızlı",
+        "teşekkürler",
+        "güzel",
+        "şekilde",
+        "kullanmak",
+        "aldım"
+      ]
+    },
+    {
+      "left": "samliumay/turkish_cyber_security_controls_dataset",
+      "right": "ssilistre/carnegie-dost-kazanma-tr",
+      "cosine": 0.0548,
+      "shared_terms": [
+        "uygulama",
+        "çalışan",
+        "yönetilir",
+        "müşteri",
+        "neden",
+        "kullanmak"
+      ]
+    },
+    {
+      "left": "Erenyanic/seasoned-advice-dataset",
+      "right": "namruni/meb-ogretmen-soru-cevap",
+      "cosine": 0.0547,
+      "shared_terms": [
+        "arkadaşım",
+        "olduğunu",
+        "miyim",
+        "yoksa",
+        "bunu",
+        "aynı"
+      ]
+    },
+    {
+      "left": "Aysenur44/namaz-vakti-dua-asistan-tr",
+      "right": "Egertekin/marvel-domain-dataset",
+      "cosine": 0.0543,
+      "shared_terms": [
+        "detaylı",
+        "bilgi",
+        "kimlere"
+      ]
+    },
+    {
+      "left": "berkbirkan/turkish-x-engagement-replies",
+      "right": "namruni/meb-ogretmen-soru-cevap",
+      "cosine": 0.0518,
+      "shared_terms": [
+        "gönderisine",
+        "arkadaşlar",
+        "öğretmen",
+        "olacak",
+        "uygun",
+        "benim"
+      ]
+    },
+    {
+      "left": "Erenyanic/seasoned-advice-dataset",
+      "right": "gorkemergune/ayarlicazhocam_finetune",
+      "cosine": 0.0514,
+      "shared_terms": [
+        "different",
+        "good",
+        "between",
+        "recommended",
+        "tips",
+        "using"
+      ]
+    },
+    {
+      "left": "YusufSimsek/llm-kisisellestirme",
+      "right": "haticenurcakr/turkish-classic-books-qa",
+      "cosine": 0.0512,
+      "shared_terms": [
+        "yusuf",
+        "kimdir",
+        "konusu",
+        "önemlidir",
+        "neden"
+      ]
+    },
+    {
+      "left": "enes1863/bilisim-hukuku-domain-dataset",
+      "right": "namruni/meb-ogretmen-soru-cevap",
+      "cosine": 0.0511,
+      "shared_terms": [
+        "ders",
+        "hizmeti",
+        "hakkı",
+        "kişisel",
+        "sorumlusunun",
+        "zorunlu"
+      ]
+    },
+    {
+      "left": "SalihHub/trendyol-marangoz-urun-asistan-qa",
+      "right": "berkbirkan/turkish-x-engagement-replies",
+      "cosine": 0.0508,
+      "shared_terms": [
+        "gönderim",
+        "uygun",
+        "kısa",
+        "acaba",
+        "olacak",
+        "istiyorum"
+      ]
+    },
+    {
+      "left": "samliumay/turkish_cyber_security_controls_dataset",
+      "right": "sedayzc/trendyol-electronics-products-features-and-comments",
+      "cosine": 0.0507,
+      "shared_terms": [
+        "ürün",
+        "güvenlik",
+        "kullanmak",
+        "cihaz",
+        "ayrıcalıklı",
+        "hızlı"
+      ]
+    },
+    {
+      "left": "Mer1Alii/TR-ECommerce-CustomerSupport-Instructions",
+      "right": "samliumay/turkish_cyber_security_controls_dataset",
+      "cosine": 0.0504,
+      "shared_terms": [
+        "hesabıma",
+        "doğrulama",
+        "kurumsal",
+        "eski",
+        "uygulamada",
+        "teslim"
+      ]
+    },
+    {
+      "left": "filiz-yalcin/identity-finetune",
+      "right": "namruni/meb-ogretmen-soru-cevap",
+      "cosine": 0.0502,
+      "shared_terms": [
+        "görevleri",
+        "bana",
+        "misiniz",
+        "eğitim",
+        "verebilir",
+        "olduğunuzu"
+      ]
+    }
+  ]
+}

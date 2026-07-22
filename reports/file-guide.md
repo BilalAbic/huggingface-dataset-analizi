@@ -18,7 +18,7 @@ outputs, and a re-runnable notebook; the raw Hugging Face data files are not rep
 | `reports/dataset-technical-assessment.md` | Contributors, figures, per-dataset strengths and weaknesses, the datasets that could not be analyzed, and the technical implementation plan |
 | `reports/model-capability-mapping.md` | Details for Identity, Tool Calling, Conversation, Instruction Following, Structured Output, Math, and Coding |
 | `reports/file-guide.md` | This document: the map of the repository |
-| `reports/figures/` | Nine GitHub-friendly PNG figures generated from the JSON analysis outputs, plus the figure guide |
+| `reports/figures/` | Ten GitHub-friendly PNG figures generated from the JSON analysis outputs, plus the figure guide |
 | `notebook/huggingface_dataset_quality_analysis.ipynb` | The executed analysis source with cell outputs |
 | `notebook/huggingface_dataset_quality_analysis.html` | A standalone notebook view that opens in a browser |
 | `outputs/source_inventory.json` | Inventory of dataset sources, fixed revision identifiers (commits), and snapshot receipts |
@@ -30,10 +30,12 @@ outputs, and a re-runnable notebook; the raw Hugging Face data files are not rep
 | `appendix/dataset_manifest.json` | The detailed, machine-readable JSON manifest of the mapping |
 | `config/datasets.json` | Enabled Hugging Face dataset IDs, contributor names, contributor sources, and declared access blocks |
 | `config/verified_baseline.json` | Reviewed counts and artifact expectations enforced by repository validation |
+| `config/evaluation_criteria.json` | The seven assessment dimensions, their thresholds, and the limits of each measure |
+| `outputs/topic_overlap.json` | TF-IDF vocabulary similarity between datasets |
 | `scripts/download_hf_datasets.py` | Downloads revision metadata, README snapshots, and complete Dataset Viewer rows into the ignored local `data/` directory; falls back to revision-pinned raw files with a checksum receipt when the Viewer cannot serve a repository |
 | `scripts/profile_datasets.py` | Rebuilds schema, quality, text, and cross-dataset overlap evidence from local rows |
 | `scripts/build_notebook.py` | Builds and executes the notebook from the current checked JSON evidence |
-| `scripts/generate_report_charts.py` | Regenerates the six report figures from the JSON evidence |
+| `scripts/generate_report_charts.py` | Regenerates the ten report figures from the JSON evidence |
 | `scripts/validate_repository.py` | Checks the fixed analytical baseline, scope reconciliation, notebook execution, figures, evidence files, local links, and that raw data stays untracked |
 
 ## Language

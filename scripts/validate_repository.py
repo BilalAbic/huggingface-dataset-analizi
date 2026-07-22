@@ -19,6 +19,8 @@ REQUIRED_FILES = {
     "AGENTS.md",
     "config/datasets.json",
     "config/verified_baseline.json",
+    "config/evaluation_criteria.json",
+    "outputs/topic_overlap.json",
     "outputs/source_inventory.json",
     "outputs/data_quality_profiles.json",
     "outputs/cross_dataset_overlap.json",
@@ -257,6 +259,60 @@ def check_evidence(baseline: dict, registry: dict) -> None:
         require(
             item["profile"]["assistant_answer_near_duplicates"]["threshold"] == near_baseline["threshold"],
             f"{item['dataset_id']} uses a different near-duplicate threshold than the baseline",
+        )
+
+    # Thresholds must exist in exactly one place. If a figure or a report quotes a
+    # number the criteria file does not define, they have already drifted.
+    criteria = load_json("config/evaluation_criteria.json")
+    dimensions = {d["id"]: d for d in criteria["dimensions"]}
+    for required in ("structural_integrity", "content_distinctness", "topic_coverage",
+                     "provenance_and_rights", "privacy_and_register", "task_fitness",
+                     "documentation_adequacy"):
+        require(required in dimensions, f"Evaluation criteria is missing the {required} dimension")
+        entry = dimensions[required]
+        require(
+            bool(entry.get("does_not_tell_you")),
+            f"Criteria dimension {required} does not state its limits",
+        )
+    require(
+        dimensions["content_distinctness"]["detection_parameters"]["near_duplicate_jaccard"]
+        == near_baseline["threshold"],
+        "Near-duplicate Jaccard threshold in the criteria file does not match the baseline",
+    )
+
+    topic_payload = load_json("outputs/topic_overlap.json")
+    topic_pairs = topic_payload.get("pairs", [])
+    require(topic_pairs, "Topic overlap file records no pairs")
+    require(
+        all(pair["cosine"] >= 0 and pair["left"] < pair["right"] for pair in topic_pairs),
+        "Topic overlap pairs are malformed or unordered",
+    )
+    profiled = {item["dataset_id"] for item in profiles}
+    for pair in topic_pairs:
+        require(
+            pair["left"] in profiled and pair["right"] in profiled,
+            f"Topic overlap references an unprofiled dataset: {pair['left']} / {pair['right']}",
+        )
+    for item in profiles:
+        topic = item["profile"].get("topic_profile")
+        require(topic is not None, f"{item['dataset_id']} has no topic_profile")
+        if topic.get("analyzable"):
+            require(
+                topic["distinctive_terms"],
+                f"{item['dataset_id']} is marked analyzable but lists no distinctive terms",
+            )
+            require(
+                topic.get("topic_concentration") is not None,
+                f"{item['dataset_id']} records no topic concentration",
+            )
+        else:
+            require(
+                bool(topic.get("reason")),
+                f"{item['dataset_id']} topic analysis was skipped without stating why",
+            )
+        require(
+            "pii_evidence" in item["profile"],
+            f"{item['dataset_id']} carries no PII evidence block",
         )
 
     language_counts = Counter(

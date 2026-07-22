@@ -52,8 +52,8 @@
   "cross_split_duplicate_rows": 0,
   "capability_count": 7,
   "notebook": {
-    "cell_count": 26,
-    "code_cell_count": 12
+    "cell_count": 30,
+    "code_cell_count": 14
   },
   "figures": [
     "capability-coverage.png",
@@ -64,7 +64,8 @@
     "duplicate-rates.png",
     "identity-prompt-conflicts.png",
     "preparation-needs.png",
-    "response-lengths.png"
+    "response-lengths.png",
+    "topic-overlap.png"
   ],
   "near_duplicates": {
     "threshold": 0.85,
@@ -75,5 +76,18 @@
   "language_signal_counts": {
     "english": 2,
     "turkish": 43
+  },
+  "topics": {
+    "stem_length": 6,
+    "concentration_terms": 20,
+    "similarity_pairs": 74,
+    "redundant_pairs": 2,
+    "analyzable_datasets": 45
+  },
+  "privacy_signals": {
+    "email_matches": 4,
+    "phone_matches": 72,
+    "eleven_digit_identifier_matches": 15,
+    "informal_register_matches": 119
   }
 }

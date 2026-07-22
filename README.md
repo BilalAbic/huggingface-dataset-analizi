@@ -27,11 +27,13 @@ with live HTTP evidence rather than dropped — see
 | Row-level capability mapping | CSV | [Open the mapping table](appendix/capability_mapping.csv) |
 | Machine-readable capability manifest | JSON | [Open the manifest](appendix/dataset_manifest.json) |
 | Recorded access blocks | JSON | [Open the exclusion record](outputs/excluded_datasets.json) |
+| Evaluation criteria | JSON | [Open the criteria](config/evaluation_criteria.json) |
+| Vocabulary similarity | JSON | [Open the topic overlap](outputs/topic_overlap.json) |
 
 ## Verified findings
 
 - All 45 snapshots were downloaded at pinned revisions and profiled row by row
-  on 22 July 2026. Repository validation ran **1,295 checks, all of which passed**.
+  on 22 July 2026. Repository validation ran **1,568 checks, all of which passed**.
 - Conversation rows contain **no invalid roles** and **no prompt identical to its
   own answer**. Two assistant messages are empty, both in the same dataset.
 - **5,033 rows are exact duplicates.** 4,851 of them sit in one repository that
@@ -51,6 +53,15 @@ with live HTTP evidence rather than dropped — see
 - **3,853 time-sensitive phrase matches** were found. This is a regex match
   count, not a count of unique rows.
 - **12 of 45 datasets ship a data card with no body**, and 5 have no README at all.
+- **18 of 45 datasets declare no licence**, 13 were scraped from a third-party
+  site, and 14 document no source at all. Recorded as reuse facts, never as a
+  quality judgement.
+- **Two health datasets cover largely one subject.** `hf/seali/turkce-saglik-qa`
+  and `hf/senemde/saglik-qa-tr` sit at 0.568 vocabulary cosine, both concentrated
+  on diabetes, obesity and nutrition.
+- **Personal identifiers were read, not just counted.** The 15 eleven-digit
+  matches are live Trendyol order references in one dataset; the 72 phone-shaped
+  matches are log output and a false positive.
 - **11,277 answers are near-duplicates** of an earlier answer, sharing at least
   85% of their tokens. Exact matching scores these as unique. The comparison is
   exact rather than hashed or sampled.
@@ -64,7 +75,15 @@ measure of full semantic similarity.
 
 ## Visual evidence
 
-The report uses nine static, reproducible visuals:
+Assessment runs against seven documented dimensions — structural integrity,
+content distinctness, topic coverage, provenance and rights, privacy and register,
+task fitness, and documentation adequacy. Each records what it measures, the
+threshold that marks a preparation need, and what it cannot tell you. Thresholds
+live in [`config/evaluation_criteria.json`](config/evaluation_criteria.json) so
+the figures, the validator and the prose cannot drift apart. The dimensions are
+never combined into a score and datasets are never ranked.
+
+The report uses ten static, reproducible visuals:
 
 1. dataset row counts on a logarithmic scale;
 2. duplicate density across three measures, including near-duplicates;
@@ -75,7 +94,8 @@ The report uses nine static, reproducible visuals:
 6. capability coverage by direct, partial, and conversion-source mapping;
 7. preparation needs per dataset as a checklist;
 8. shared prompts between the identity datasets;
-9. capability reach per contributor.
+9. capability reach per contributor;
+10. datasets whose vocabulary covers the same ground.
 
 All charts are generated from the checked JSON outputs by
 [`scripts/generate_report_charts.py`](scripts/generate_report_charts.py).

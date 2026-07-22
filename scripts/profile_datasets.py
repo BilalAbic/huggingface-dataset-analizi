@@ -56,7 +56,7 @@ URL_RE = re.compile(r"https?://[^\s)\]}>'\"]+", re.IGNORECASE)
 EMAIL_RE = re.compile(r"\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b", re.IGNORECASE)
 PHONE_RE = re.compile(r"(?<!\d)(?:\+?90\s*)?(?:0?5\d{2})[\s.-]*\d{3}[\s.-]*\d{2}[\s.-]*\d{2}(?!\d)")
 TR_ID_RE = re.compile(r"(?<!\d)[1-9]\d{10}(?!\d)")
-PROFANITY_RE = re.compile(r"\b(?:amk|aq|siktir|orospu|piç|yarrak|salak|aptal)\b", re.IGNORECASE)
+INFORMAL_REGISTER_RE = re.compile(r"\b(?:amk|aq|siktir|orospu|piç|yarrak|salak|aptal)\b", re.IGNORECASE)
 TIME_SENSITIVE_RE = re.compile(
     r"\b(?:bugün|yarın|dün|güncel|şu an|bu yıl|son \d+ (?:gün|ay|yıl)|202[4-9])\b",
     re.IGNORECASE,
@@ -69,6 +69,23 @@ ENGLISH_STOPWORDS = {
     "the", "and", "is", "are", "what", "who", "how", "with", "for", "you",
     "your", "my", "can", "do", "does", "a", "an", "of", "to",
 }
+# Instruction verbs and question words carry no topic. Without them the
+# "distinctive" terms of every Turkish dataset are just ways of asking a question.
+TOPIC_STOPWORDS = TURKISH_STOPWORDS | ENGLISH_STOPWORDS | {
+    "nedir", "nasıl", "için", "kaç", "hangi", "daha", "gibi", "göre", "kadar",
+    "misin", "musun", "mısın", "müsün", "lütfen", "açıklar", "açıkla", "anlat",
+    "söyle", "yaz", "edilir", "olarak", "arasında", "üzerine", "hakkında",
+    "verir", "eder", "olur", "ile", "veya", "ancak", "sonra", "önce", "yani",
+    "that", "this", "there", "they", "have", "has", "was", "were", "will",
+    "would", "could", "should", "about", "from", "which", "when", "where",
+}
+# Turkish is agglutinative: diyabetin / diyabette / diyabetli are one topic split
+# three ways. Counting by a fixed-length prefix collapses them without a
+# morphological analyser. It is a crude stemmer and nothing more.
+TOPIC_STEM_LENGTH = 6
+TOPIC_MIN_TOKEN_LENGTH = 4
+# The 20 commonest stems as a share of all tokens: how narrow the vocabulary is.
+TOPIC_CONCENTRATION_TERMS = 20
 
 
 def read_jsonl(path: Path) -> list[dict]:
@@ -254,8 +271,8 @@ def text_scan(texts: list[str]) -> dict:
         "url_matches": URL_RE,
         "email_matches": EMAIL_RE,
         "phone_matches": PHONE_RE,
-        "turkish_id_like_matches": TR_ID_RE,
-        "profanity_matches": PROFANITY_RE,
+        "eleven_digit_identifier_matches": TR_ID_RE,
+        "informal_register_matches": INFORMAL_REGISTER_RE,
         "time_sensitive_matches": TIME_SENSITIVE_RE,
     }
     totals = dict.fromkeys(
@@ -297,6 +314,103 @@ def text_scan(texts: list[str]) -> dict:
         "turkish_character_ratio": letter_ratio,
         "dominant_language_signal": dominant,
         "language_signal_note": "heuristic from Turkish-only letters and stopwords; not a classifier",
+    }
+
+
+def pii_evidence(texts: list[str], limit: int = 3) -> dict:
+    """Capture the surrounding text for every privacy or register pattern that fires.
+
+    A bare regex count is not reportable. These patterns over-match badly: an
+    eleven-digit number is as likely to be an order reference as a national ID,
+    and a word list flags a proverb that merely contains an insult. Storing the
+    context is what lets each count be classified as confirmed or false positive
+    instead of being quietly dropped.
+    """
+
+    patterns = {
+        "email_matches": EMAIL_RE,
+        "phone_matches": PHONE_RE,
+        "eleven_digit_identifier_matches": TR_ID_RE,
+        "informal_register_matches": INFORMAL_REGISTER_RE,
+    }
+    evidence: dict[str, list[dict]] = {name: [] for name in patterns}
+    for text in texts:
+        for name, pattern in patterns.items():
+            if len(evidence[name]) >= limit:
+                continue
+            for match in pattern.finditer(text):
+                start = max(0, match.start() - 60)
+                evidence[name].append(
+                    {
+                        "match": match.group(0),
+                        "context": re.sub(r"\s+", " ", text[start : match.end() + 40]).strip(),
+                    }
+                )
+                if len(evidence[name]) >= limit:
+                    break
+    return {
+        "note": (
+            "Raw pattern hits with context. A count alone is not a finding; each one is "
+            "classified in outputs/manual_findings.json after the matches are read."
+        ),
+        "samples": {name: hits for name, hits in evidence.items() if hits},
+    }
+
+
+def topic_term_counts(texts: list[str]) -> tuple[Counter, dict[str, str]]:
+    """Count topic stems and remember the commonest surface form of each.
+
+    Counting by stem keeps morphological variants together; labelling by surface
+    form keeps the output readable, where bare stems produce unreadable output
+    such as ``ergenl``. URLs are stripped first: without that, a catalog dataset
+    reports fragments of its own image host as its distinguishing vocabulary.
+    """
+
+    counts: Counter[str] = Counter()
+    surfaces: dict[str, Counter] = {}
+    for text in texts:
+        cleaned = URL_RE.sub(" ", text)
+        for word in re.findall(r"\w+", normalized_text(cleaned), flags=re.UNICODE):
+            if len(word) < TOPIC_MIN_TOKEN_LENGTH or word.isdigit() or word in TOPIC_STOPWORDS:
+                continue
+            stem = word[:TOPIC_STEM_LENGTH]
+            counts[stem] += 1
+            surfaces.setdefault(stem, Counter())[word] += 1
+    labels = {
+        stem: min(forms.most_common(), key=lambda item: (-item[1], item[0]))[0]
+        for stem, forms in surfaces.items()
+    }
+    return counts, labels
+
+
+def topic_profile(counts: Counter, labels: dict[str, str], row_count: int) -> dict:
+    """Summarise one dataset's vocabulary. TF-IDF weighting is applied later."""
+
+    total = sum(counts.values())
+    if not total:
+        return {
+            "analyzable": False,
+            "reason": "no topic-bearing tokens after stopword and URL removal",
+            "distinctive_terms": [],
+            "topic_concentration": None,
+            "total_topic_tokens": 0,
+        }
+    # A fixed minimum count would erase small datasets entirely, so it scales
+    # with size and never rises above 3.
+    minimum = 1 if row_count < 50 else (2 if row_count < 200 else 3)
+    concentration = sum(
+        count for _, count in counts.most_common(TOPIC_CONCENTRATION_TERMS)
+    ) / total
+    return {
+        "analyzable": True,
+        "minimum_term_count": minimum,
+        "distinct_stems": len(counts),
+        "total_topic_tokens": total,
+        "topic_concentration": round(concentration, 4),
+        "concentration_terms": TOPIC_CONCENTRATION_TERMS,
+        "stem_length": TOPIC_STEM_LENGTH,
+        "method": "prefix stem, crude; not morphological analysis",
+        "distinctive_terms": [],
     }
 
 
@@ -777,6 +891,95 @@ def extract_card_summary(metadata: dict, readme: str) -> dict:
     }
 
 
+def score_topics(
+    term_counts: dict[str, Counter],
+    term_labels: dict[str, dict[str, str]],
+    profiles_by_id: dict[str, dict],
+    top_n: int = 10,
+) -> list[dict]:
+    """Weight each dataset's vocabulary against the rest of the collection.
+
+    A term is distinctive when it is frequent here and rare elsewhere, which is
+    what separates a dataset's subject from the language it happens to be written
+    in. Returns the pairwise cosine similarities as a by-product, since both come
+    from the same weighted vectors.
+    """
+
+    document_frequency: Counter[str] = Counter()
+    for counts in term_counts.values():
+        document_frequency.update(set(counts))
+    total_documents = len(term_counts)
+
+    vectors: dict[str, dict[str, float]] = {}
+    for dataset_id, counts in term_counts.items():
+        profile = profiles_by_id[dataset_id]
+        topic = profile.get("topic_profile") or {}
+        if not topic.get("analyzable"):
+            vectors[dataset_id] = {}
+            continue
+        total = sum(counts.values()) or 1
+        minimum = topic["minimum_term_count"]
+        weights = {
+            stem: (count / total) * math.log(total_documents / (1 + document_frequency[stem]))
+            for stem, count in counts.items()
+            if count >= minimum
+        }
+        vectors[dataset_id] = weights
+        # Sort by weight, then by stem, so equal weights cannot reorder between
+        # runs; dict iteration order alone is not a stable tiebreak.
+        ranked = sorted(weights.items(), key=lambda item: (-item[1], item[0]))[:top_n]
+        topic["distinctive_terms"] = [
+            {
+                "term": term_labels[dataset_id].get(stem, stem),
+                "stem": stem,
+                "count": counts[stem],
+                "weight": round(weight, 6),
+            }
+            for stem, weight in ranked
+        ]
+        if not ranked:
+            topic["analyzable"] = False
+            topic["reason"] = (
+                f"no term reaches the minimum count of {minimum} for a dataset of this size"
+            )
+
+    overlaps = []
+    dataset_ids = sorted(vectors)
+    for index, left in enumerate(dataset_ids):
+        left_vector = vectors[left]
+        if not left_vector:
+            continue
+        left_norm = math.sqrt(sum(value * value for value in left_vector.values()))
+        for right in dataset_ids[index + 1 :]:
+            right_vector = vectors[right]
+            if not right_vector:
+                continue
+            shared = set(left_vector) & set(right_vector)
+            if not shared:
+                continue
+            numerator = sum(left_vector[key] * right_vector[key] for key in shared)
+            right_norm = math.sqrt(sum(value * value for value in right_vector.values()))
+            similarity = numerator / (left_norm * right_norm) if left_norm and right_norm else 0.0
+            if similarity < 0.05:
+                continue
+            overlaps.append(
+                {
+                    "left": left,
+                    "right": right,
+                    "cosine": round(similarity, 4),
+                    "shared_terms": [
+                        term_labels[left].get(stem, stem)
+                        for stem in sorted(
+                            shared,
+                            key=lambda s: (-(left_vector[s] * right_vector[s]), s),
+                        )[:6]
+                    ],
+                }
+            )
+    overlaps.sort(key=lambda item: (-item["cosine"], item["left"], item["right"]))
+    return overlaps
+
+
 def receipt_row_files(dataset_dir: Path, receipts: list[dict]) -> list[tuple[str, Path]]:
     """Resolve the row file each completed receipt wrote.
 
@@ -874,6 +1077,11 @@ def parse_args() -> argparse.Namespace:
         help="Cross-dataset overlap JSON output",
     )
     parser.add_argument(
+        "--topic-overlap",
+        default=str(OUTPUT_DIR / "topic_overlap.json"),
+        help="Vocabulary similarity JSON output",
+    )
+    parser.add_argument(
         "--excluded",
         default=str(OUTPUT_DIR / "excluded_datasets.json"),
         help="Recorded access-block JSON output",
@@ -895,6 +1103,8 @@ def main() -> int:
     inventory = json.loads(inventory_path.read_text(encoding="utf-8"))
     profiles: list[dict] = []
     excluded: list[dict] = []
+    term_counts: dict[str, Counter] = {}
+    term_labels: dict[str, dict[str, str]] = {}
     prompt_sets: dict[str, set[str]] = {}
     answer_sets: dict[str, set[str]] = {}
     failures: list[str] = []
@@ -987,6 +1197,35 @@ def main() -> int:
         data_profile["row_sources"] = per_source
         data_profile["split_integrity"] = cross_split_duplicate_profile(dataset_dir, receipts)
 
+        # Topic vocabulary: the user turn carries the subject in conversation
+        # shapes; for tables and catalogs every text field does.
+        if conversation_field or bare_message_rows:
+            conversations, _ = extract_conversations(rows, conversation_field, None)
+            topic_texts = [
+                str(message.get("content") or "")
+                for conversation in conversations
+                for message in conversation
+                if normalized_text(message.get("role")) == "user"
+            ]
+        elif instruction_pair:
+            topic_texts = [join_prompt_fields(row, instruction_pair[0]) for row in rows]
+        else:
+            topic_texts = [
+                text for row in rows for value in row.values() for text in flatten_text_values(value)
+            ]
+        # Privacy and register evidence is gathered over every text field, not
+        # only the prompt, because an order number sits in the answer.
+        all_texts = [
+            text for row in rows for value in (row.values() if isinstance(row, dict) else [row])
+            for text in flatten_text_values(value)
+        ]
+        data_profile["pii_evidence"] = pii_evidence(all_texts)
+
+        counts, labels = topic_term_counts(topic_texts)
+        term_counts[dataset_id] = counts
+        term_labels[dataset_id] = labels
+        data_profile["topic_profile"] = topic_profile(counts, labels, data_profile["row_count"])
+
         profile_entry = {
             "dataset_id": dataset_id,
             "url": f"https://huggingface.co/datasets/{dataset_id}",
@@ -1008,6 +1247,10 @@ def main() -> int:
         if inventory_item.get("contributor_source"):
             profile_entry["contributor_source"] = inventory_item["contributor_source"]
         profiles.append(profile_entry)
+
+    topic_overlaps = score_topics(
+        term_counts, term_labels, {item["dataset_id"]: item["profile"] for item in profiles}
+    )
 
     overlaps = []
     dataset_ids = sorted(prompt_sets)
@@ -1042,6 +1285,24 @@ def main() -> int:
     overlap_path.write_text(
         json.dumps(overlaps, ensure_ascii=False, indent=2), encoding="utf-8"
     )
+    topic_path = resolve_path(args.topic_overlap)
+    topic_path.parent.mkdir(parents=True, exist_ok=True)
+    topic_path.write_text(
+        json.dumps(
+            {
+                "note": (
+                    "Pairwise cosine similarity between dataset vocabularies, TF-IDF "
+                    "weighted against the collection. Shared vocabulary is not shared "
+                    "meaning: read a pair before calling it redundant."
+                ),
+                "pairs": topic_overlaps,
+            },
+            ensure_ascii=False,
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
+
     excluded_path = resolve_path(args.excluded)
     excluded_path.parent.mkdir(parents=True, exist_ok=True)
     excluded_path.write_text(
@@ -1061,6 +1322,7 @@ def main() -> int:
     total_rows = sum(item["profile"]["row_count"] for item in profiles)
     print(f"Profiled {len(profiles)} datasets, {total_rows:,} rows")
     print(f"Cross-dataset overlap pairs: {len(overlaps)}")
+    print(f"Topic similarity pairs: {len(topic_overlaps)}")
     if excluded:
         print(f"Recorded access blocks (not analyzed): {len(excluded)}")
         for item in excluded:

@@ -16,7 +16,7 @@
 This public repository documents a reproducible quality and capability analysis
 of Turkish or Turkish-focused Hugging Face datasets contributed by course
 participants. It contains reports, computed evidence, a Jupyter notebook and HTML
-render, nine static figures, and machine-readable capability mappings. Raw
+render, ten static figures, and machine-readable capability mappings. Raw
 datasets are intentionally not redistributed here. The current scope is fixed in
 `config/verified_baseline.json`; do not hardcode a dataset or row count in prose
 that the baseline does not enforce.
@@ -111,7 +111,7 @@ The following values were rechecked against all local raw rows on 22 July 2026:
   Jaccard threshold of 0.85. The comparison is exact, not hashed or sampled.
 - Language signal: 43 datasets Turkish, 2 English. This is a heuristic from
   Turkish-only letters plus stopwords, not a classifier.
-- Repository validation ran 1,295 checks and all passed. The validator reports
+- Repository validation ran 1,568 checks and all passed. The validator reports
   its own check count, so this number must be taken from a fresh run rather than
   carried forward.
 
@@ -144,6 +144,14 @@ the profile irreproducible. Verify by running the profiler twice and comparing
 - Do not use license status or train/validation/test split availability as
   evaluation criteria. Source metadata may remain in raw evidence, but it is not
   part of the report judgment.
+- The provenance-and-rights dimension is the one deliberate exception, and it is
+  not a loophole. Recording that a dataset was scraped from a live storefront and
+  declares no license is a reuse fact. Writing that it is therefore a weaker
+  dataset is the forbidden judgement. Keep licence out of every other dimension.
+- A raw pattern count is never a finding. Privacy and register signals must be
+  read and classified before they are reported: in this collection the same
+  regexes produced a genuine finding, a false positive from log output, and a
+  false positive from a proverb.
 - Do not attribute the analysis or selections to an automated system.
 - Preserve contributor names and official Hugging Face links exactly.
 - Use established English capability names: Identity, Tool Calling,
@@ -169,6 +177,9 @@ the profile irreproducible. Verify by running the profiler twice and comparing
 - `config/datasets.json`: enabled dataset IDs, contributor names, contributor
   sources, and declared access blocks.
 - `config/verified_baseline.json`: reviewed expectations used by validation.
+- `config/evaluation_criteria.json`: the seven assessment dimensions, their
+  thresholds, and what each measure cannot tell you.
+- `outputs/topic_overlap.json`: TF-IDF vocabulary similarity between datasets.
 - `data/`: local raw snapshots, Dataset Viewer rows, and raw-file fallback rows;
   ignored by Git.
 - `outputs/excluded_datasets.json`: enabled datasets that cannot be analyzed,
@@ -177,7 +188,7 @@ the profile irreproducible. Verify by running the profiler twice and comparing
 - `reports/model-capability-mapping.md`: seven-capability mapping and gaps.
 - `reports/file-guide.md`: repository navigation.
 - `reports/figures/README.md`: figure definitions, sources, and caveats.
-- `reports/figures/*.png`: nine generated report figures.
+- `reports/figures/*.png`: ten generated report figures.
 - `notebook/huggingface_dataset_quality_analysis.ipynb`: executed analysis.
 - `notebook/huggingface_dataset_quality_analysis.html`: generated notebook view.
 - `outputs/*.json`: fixed inventory, profiles, overlap, and reviewed findings.
@@ -196,7 +207,7 @@ the profile irreproducible. Verify by running the profiler twice and comparing
 3. If profile or mapping data changes, update all dependent Markdown tables and
    prose.
 4. If chart data, labels, or styling changes, run the chart generator and inspect
-   all nine PNG files for clipping, collisions, honest scales, and readable labels.
+   all ten PNG files for clipping, collisions, honest scales, and readable labels.
 5. If notebook code or source text changes, execute it top to bottom and
    regenerate the HTML from the executed notebook.
 6. Run the repository validator and `git diff --check` before handing off.
@@ -302,7 +313,7 @@ git status --short
 - Charts must state their unit and source; panels with different units must not
   share a misleading scale.
 - Local Markdown links must resolve, notebook code cells must have no error
-  outputs, JSON must parse, and all nine required PNG files must be present.
+  outputs, JSON must parse, and all ten required PNG files must be present.
 - Clearly separate structural validation from domain-expert factual validation.
   The current analysis verifies structure and calculations; it does not claim a
   full subject-matter review of every answer.

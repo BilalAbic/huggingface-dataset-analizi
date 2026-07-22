@@ -498,18 +498,28 @@ def capability_coverage_chart(manifest: dict) -> None:
     save(fig, "capability-coverage.png")
 
 
-def preparation_needs_chart(profiles: list[dict]) -> None:
+def preparation_needs_chart(profiles: list[dict], criteria: dict) -> None:
     """Which concrete preparation steps each dataset needs.
 
     Deliberately a presence matrix rather than a composite score: a score would
     rank the datasets, which this analysis does not do. Rows are sorted by
-    dataset identifier so the order carries no judgement.
+    dataset identifier so the order carries no judgement. Thresholds come from
+    config/evaluation_criteria.json so the figure and the reports cannot drift.
     """
 
+    limits = {d["id"]: d for d in criteria["dimensions"]}
+    distinct = limits["content_distinctness"]["thresholds"]
+    topic = limits["topic_coverage"]["thresholds"]
+    answer_limit = 100 * distinct["answer_duplication_rate"]
+    prompt_limit = 100 * distinct["prompt_duplication_rate"]
+    near_limit = 100 * distinct["near_duplicate_rate"]
+    narrow_limit = 100 * topic["narrow_vocabulary_concentration"]
+
     needs = [
-        ("Answer duplication\n≥ 20%", lambda d: 100 * (d.get("assistant_answer_duplicates", {}).get("duplicate_rate") or 0) >= 20),
-        ("Prompt duplication\n≥ 20%", lambda d: 100 * (d.get("user_prompt_duplicates", {}).get("duplicate_rate") or 0) >= 20),
-        ("Near-duplicate\nanswers ≥ 5%", lambda d: 100 * (d.get("assistant_answer_near_duplicates", {}).get("near_duplicate_rate") or 0) >= 5),
+        (f"Answer duplication\n≥ {answer_limit:.0f}%", lambda d: 100 * (d.get("assistant_answer_duplicates", {}).get("duplicate_rate") or 0) >= answer_limit),
+        (f"Prompt duplication\n≥ {prompt_limit:.0f}%", lambda d: 100 * (d.get("user_prompt_duplicates", {}).get("duplicate_rate") or 0) >= prompt_limit),
+        (f"Near-duplicate\nanswers ≥ {near_limit:.0f}%", lambda d: 100 * (d.get("assistant_answer_near_duplicates", {}).get("near_duplicate_rate") or 0) >= near_limit),
+        (f"Narrow vocabulary\n≥ {narrow_limit:.0f}%", lambda d: 100 * ((d.get("topic_profile") or {}).get("topic_concentration") or 0) >= narrow_limit),
         ("Time-sensitive\ncontent", lambda d: (d.get("text_scan", {}).get("time_sensitive_matches") or 0) > 0),
         ("Type or empty\nvalue errors", lambda d: (d.get("string_encoded_null_fields") or 0) + (d.get("empty_content_messages") or 0) > 0),
     ]
@@ -662,19 +672,94 @@ def contributor_coverage_chart(profiles: list[dict], manifest: dict) -> None:
     save(fig, "contributor-coverage.png")
 
 
+def topic_overlap_chart(profiles: list[dict], topic_pairs: list[dict], criteria: dict) -> None:
+    """Which datasets cover the same ground, and how narrow each vocabulary is.
+
+    Redundancy across the collection is a scoping question no per-dataset chart
+    can answer: it lives in the relationship between datasets, not inside any one
+    of them.
+    """
+
+    limits = next(d for d in criteria["dimensions"] if d["id"] == "topic_coverage")["thresholds"]
+    cutoff = limits["redundant_pair_cosine"]
+    concentration = {
+        item["dataset_id"]: (item["profile"].get("topic_profile") or {}).get("topic_concentration") or 0
+        for item in profiles
+    }
+    # Draw every pair worth looking at, but mark the ones over the redundancy
+    # threshold. A lower display floor keeps the weaker clusters visible.
+    display_floor = 0.15
+    edges = [p for p in topic_pairs if p["cosine"] >= display_floor]
+    nodes = sorted({p["left"] for p in edges} | {p["right"] for p in edges}, key=str.casefold)
+    if not nodes:
+        raise RuntimeError("No topic-similarity pair reaches the display floor.")
+
+    angles = {did: 2 * math.pi * i / len(nodes) - math.pi / 2 for i, did in enumerate(nodes)}
+    point = lambda did: (math.cos(angles[did]), math.sin(angles[did]))
+
+    fig, ax = plt.subplots(figsize=(14.5, 12.5))
+    fig.subplots_adjust(left=0.02, right=0.98, top=0.80, bottom=0.06)
+    redundant = [p for p in edges if p["cosine"] >= cutoff]
+    add_header(
+        fig,
+        "Datasets covering the same ground",
+        f"Vocabulary similarity above {display_floor:.2f} cosine, TF-IDF weighted against the "
+        f"collection; {len(redundant)} pair(s) reach the {cutoff:.2f} redundancy threshold and are "
+        "drawn solid. Node size is topic concentration. Shared vocabulary is not shared meaning: "
+        "an English-language pair can score high for that reason alone.",
+    )
+    add_source(fig, "outputs/topic_overlap.json")
+
+    widest = max(p["cosine"] for p in edges)
+    for pair in sorted(edges, key=lambda p: p["cosine"]):
+        x0, y0 = point(pair["left"])
+        x1, y1 = point(pair["right"])
+        strong = pair["cosine"] >= cutoff
+        steps = [i / 60 for i in range(61)]
+        cx, cy = (x0 + x1) * 0.22, (y0 + y1) * 0.22
+        xs = [(1 - u) ** 2 * x0 + 2 * (1 - u) * u * cx + u ** 2 * x1 for u in steps]
+        ys = [(1 - u) ** 2 * y0 + 2 * (1 - u) * u * cy + u ** 2 * y1 for u in steps]
+        ax.plot(xs, ys, color=BLUE if strong else MUTED,
+                alpha=0.75 if strong else 0.28,
+                linewidth=0.7 + 4.0 * pair["cosine"] / widest,
+                linestyle="-" if strong else (0, (3, 2)),
+                solid_capstyle="round", zorder=3 if strong else 2)
+
+    for index, did in enumerate(nodes):
+        x, y = point(did)
+        share = concentration[did]
+        ax.scatter(x, y, s=90 + 320 * share, color=GOLD, edgecolor=BACKGROUND, linewidth=2, zorder=4)
+        # Adjacent labels sit at two different radii. At this node count the
+        # ones near the top and bottom of the circle are only a few degrees
+        # apart and would otherwise overlap.
+        radius = 1.10 if index % 2 == 0 else 1.34
+        ha = "left" if x > 0.08 else ("right" if x < -0.08 else "center")
+        va = "bottom" if y > 0.08 else ("top" if y < -0.08 else "center")
+        ax.plot([x, x * radius], [y, y * radius], color=GRID, linewidth=0.7, zorder=1)
+        ax.text(x * radius, y * radius, f"hf/{did}\n{share*100:.0f}% concentration",
+                ha=ha, va=va, fontsize=7.8, color=INK, linespacing=1.4)
+
+    ax.set_xlim(-2.55, 2.55); ax.set_ylim(-2.0, 2.0)
+    ax.set_aspect("equal"); ax.axis("off")
+    save(fig, "topic-overlap.png")
+
+
 def main() -> None:
     profiles = load_json("outputs/data_quality_profiles.json")
     manifest = load_json("appendix/dataset_manifest.json")
     overlaps = load_json("outputs/cross_dataset_overlap.json")
+    criteria = load_json("config/evaluation_criteria.json")
+    topic_pairs = load_json("outputs/topic_overlap.json")["pairs"]
     dataset_size_chart(profiles)
     duplicate_rate_chart(profiles)
     response_length_chart(profiles)
     preparation_signal_chart(profiles)
     structured_missingness_chart(profiles)
     capability_coverage_chart(manifest)
-    preparation_needs_chart(profiles)
+    preparation_needs_chart(profiles, criteria)
     identity_conflict_chart(profiles, overlaps, manifest)
     contributor_coverage_chart(profiles, manifest)
+    topic_overlap_chart(profiles, topic_pairs, criteria)
     for path in sorted(OUTPUT_DIR.glob("*.png")):
         print(path.relative_to(ROOT))
 

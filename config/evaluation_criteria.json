@@ -1,0 +1,112 @@
+{
+  "purpose": "The dimensions this analysis assesses, the thresholds that mark a preparation need, and the limits of each measure. Thresholds live here so the profiler, the figures and the reports cannot drift apart.",
+  "not_a_score": "These dimensions are never combined into a single number, and datasets are never ranked against one another. A dataset that triggers four preparation needs is not 'worse' than one that triggers one; it needs different work before use.",
+  "dimensions": [
+    {
+      "id": "structural_integrity",
+      "name": "Structural integrity",
+      "question": "Does every row parse, carry valid roles, and hold real values?",
+      "signals": [
+        "invalid_role_messages",
+        "empty_content_messages",
+        "string_encoded_null_fields",
+        "missing_conversation_rows"
+      ],
+      "threshold": "Any occurrence is a preparation need. These are defects, not trade-offs.",
+      "does_not_tell_you": "A structurally perfect dataset can still be factually wrong, off-topic, or unusable for the intended capability."
+    },
+    {
+      "id": "content_distinctness",
+      "name": "Content distinctness",
+      "question": "How much distinct material does the row count actually represent?",
+      "signals": [
+        "exact_duplicate_rows",
+        "user_prompt_duplicates.duplicate_rate",
+        "assistant_answer_duplicates.duplicate_rate",
+        "assistant_answer_near_duplicates.near_duplicate_rate",
+        "assistant_answer_duplicates.distinct_values"
+      ],
+      "thresholds": {
+        "answer_duplication_rate": 0.2,
+        "prompt_duplication_rate": 0.2,
+        "near_duplicate_rate": 0.05
+      },
+      "does_not_tell_you": "Low duplication does not mean the content is correct, diverse in meaning, or well written. Two texts sharing no tokens can still say the same thing.",
+      "detection_parameters": {
+        "near_duplicate_jaccard": 0.85,
+        "note": "Two different numbers. near_duplicate_jaccard is how similar two texts must be to count as near-duplicates; near_duplicate_rate is the share of a dataset's rows that must be near-duplicates before it is flagged for preparation."
+      }
+    },
+    {
+      "id": "topic_coverage",
+      "name": "Topic coverage and concentration",
+      "question": "What is this dataset about, and does the collection cover the same ground twice?",
+      "signals": [
+        "topic_profile.distinctive_terms",
+        "topic_profile.topic_concentration",
+        "outputs/topic_overlap.json cosine similarity between datasets"
+      ],
+      "thresholds": {
+        "narrow_vocabulary_concentration": 0.6,
+        "redundant_pair_cosine": 0.3
+      },
+      "does_not_tell_you": "Shared vocabulary is not shared meaning. Two datasets can score as similar because they are both in English rather than because they cover one subject, so every pair must be read before it is called redundant."
+    },
+    {
+      "id": "provenance_and_rights",
+      "name": "Provenance and reuse rights",
+      "question": "Where did the data come from, and what may it lawfully be used for?",
+      "signals": [
+        "declared license in the data card",
+        "source class: original, synthetic, scraped, or derived",
+        "scrape target or upstream dataset",
+        "card.readme_mentions_source"
+      ],
+      "threshold": "An undeclared license, or an undocumented source, is a reuse risk that must be resolved before redistribution or commercial training.",
+      "does_not_tell_you": "This dimension carries no quality judgement whatsoever. A permissive license does not make a dataset good and a restrictive one does not make it bad; the two questions are answered separately and must not be mixed.",
+      "separation_note": "Kept apart from every other dimension on purpose. License is recorded as a rights fact, never as an evaluation criterion."
+    },
+    {
+      "id": "privacy_and_register",
+      "name": "Privacy and register",
+      "question": "Does the data carry personal identifiers, and what tone will a model learn from it?",
+      "signals": [
+        "text_scan.email_matches",
+        "text_scan.phone_matches",
+        "text_scan.eleven_digit_identifier_matches",
+        "text_scan.informal_register_matches"
+      ],
+      "threshold": "A raw regex count is never a finding on its own. Every non-zero count must be read and classified as confirmed, false positive, or needing review before it is reported.",
+      "does_not_tell_you": "These patterns cannot see contextual personal data such as names, employers, or locations, and they over-match on log output, order numbers, and subject matter that merely quotes informal language."
+    },
+    {
+      "id": "task_fitness",
+      "name": "Task fitness",
+      "question": "Which target capability can this train today, and what is still missing?",
+      "signals": [
+        "capability match level: direct, partial, conversion_source, no_match",
+        "structured_answers.json_parsable_answers",
+        "role_sequences and turn counts",
+        "populated tool_calls fields"
+      ],
+      "threshold": "A conversion source is not training data. Anything below direct requires authoring work that must be stated explicitly.",
+      "does_not_tell_you": "A direct match describes format readiness, not answer correctness."
+    },
+    {
+      "id": "documentation_adequacy",
+      "name": "Documentation adequacy",
+      "question": "Can a third party understand what this data is and how it was built?",
+      "signals": [
+        "card.readme_has_body",
+        "card.readme_mentions_source",
+        "card.readme_mentions_limitations"
+      ],
+      "threshold": "A card with no body is a preparation need: purpose, source and limitations are unrecoverable without asking the author.",
+      "does_not_tell_you": "A thorough card does not verify that its own claims are true. Several cards in this collection describe a schema that differs from the published data."
+    }
+  ],
+  "verification_scope": {
+    "covered": "Structure, computable content patterns, declared provenance, and format readiness, checked against every row of a revision-pinned snapshot.",
+    "not_covered": "Subject-matter fact checking. No claim in any dataset has been verified against an authoritative source by a domain expert. Structural validation must never be presented as factual validation."
+  }
+}
